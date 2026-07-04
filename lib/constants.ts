@@ -25,7 +25,8 @@ import type {
 import { TEACHER_AVATARS } from "./teacherData";
 
 export const API_BASE =
-  process.env.NEXT_PUBLIC_API_URL || "https://api.bdonlinequranacademy.com/api";
+  process.env.NEXT_PUBLIC_API_URL ||
+  "https://bdoq-academy.onrender.com/api";
 
 export const ACADEMY_FOUNDED_YEAR = 2019;
 
