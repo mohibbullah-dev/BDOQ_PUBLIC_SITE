@@ -7,9 +7,7 @@ import { PACKAGE_KEYS } from "@/lib/i18n/contentKeys";
 export function useLocalizedPackage(pkg: IPackage) {
   const packageKey = PACKAGE_KEYS[pkg.name.toLowerCase()];
   const t = useTranslations(
-    packageKey
-      ? `content.pricing.packages.${packageKey}`
-      : "content.pricing"
+    packageKey ? `content.pricing.packages.${packageKey}` : "content.pricing"
   );
 
   if (!packageKey) {

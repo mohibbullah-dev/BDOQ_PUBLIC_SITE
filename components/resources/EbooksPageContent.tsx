@@ -47,8 +47,7 @@ export function EbooksPageContent({ ebooks }: IEbooksPageContentProps) {
         count: categoryCounts.all,
       },
       ...EBOOK_CATEGORIES.map((cat) => {
-        const key =
-          cat.id === "islamic-history" ? "islamicHistory" : cat.id;
+        const key = cat.id === "islamic-history" ? "islamicHistory" : cat.id;
         const icons = {
           tajweed: BookOpen,
           "islamic-history": History,
@@ -195,7 +194,9 @@ export function EbooksPageContent({ ebooks }: IEbooksPageContentProps) {
                 <h2 className="mb-6 font-amiri text-2xl font-bold text-primary-dark md:text-3xl">
                   {activeCategory === "all"
                     ? tEbooks("allBooks")
-                    : tEbooks(`categories.${activeCategory === "islamic-history" ? "islamicHistory" : activeCategory}`)}
+                    : tEbooks(
+                        `categories.${activeCategory === "islamic-history" ? "islamicHistory" : activeCategory}`
+                      )}
                 </h2>
               ) : null}
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -54,10 +54,7 @@ export function TopBar() {
     >
       <div className="container flex h-9 max-w-[1280px] items-center justify-between gap-4">
         <p className="flex min-w-0 items-center gap-2 text-[12px] font-medium leading-none tracking-wide text-white/90">
-          <span
-            className="relative flex h-2 w-2 shrink-0"
-            aria-hidden="true"
-          >
+          <span className="relative flex h-2 w-2 shrink-0" aria-hidden="true">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--gold)] opacity-40" />
             <Star className="relative h-2 w-2 fill-[var(--gold)] text-[var(--gold)]" />
           </span>

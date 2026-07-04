@@ -102,9 +102,7 @@ export function TeachersPageClient({ tabs }: { tabs: ITeacherGenderTab[] }) {
         return;
       }
 
-      const currentIndex = tabs.findIndex(
-        (tab) => tab.id === activeTab
-      );
+      const currentIndex = tabs.findIndex((tab) => tab.id === activeTab);
       const nextIndex =
         event.key === "ArrowRight"
           ? Math.min(currentIndex + 1, tabs.length - 1)

@@ -66,9 +66,7 @@ export async function getFemaleTeachers(): Promise<ITeacher[]> {
   return getTeachers({ gender: "female" });
 }
 
-export async function getTeacherBySlug(
-  slug: string
-): Promise<ITeacher | null> {
+export async function getTeacherBySlug(slug: string): Promise<ITeacher | null> {
   try {
     const response = await apiFetch<IApiTeacherResponse>(
       `/public/teachers/${encodeURIComponent(slug)}`,
@@ -79,9 +77,7 @@ export async function getTeacherBySlug(
     // fall through to static lookup
   }
 
-  return (
-    getStaticTeachers().find((teacher) => teacher.slug === slug) ?? null
-  );
+  return getStaticTeachers().find((teacher) => teacher.slug === slug) ?? null;
 }
 
 export async function getTeacherSlugs(): Promise<string[]> {
@@ -151,7 +147,10 @@ export function getTeacherLanguages(teacher: ITeacher): string[] {
   return teacher.languages ?? ["Bengali", "Arabic"];
 }
 
-export function getTeacherCourses(teacher: ITeacher, courses: ICourse[]): ICourse[] {
+export function getTeacherCourses(
+  teacher: ITeacher,
+  courses: ICourse[]
+): ICourse[] {
   if (!teacher.courseSlugs?.length) {
     return courses.slice(0, 3);
   }

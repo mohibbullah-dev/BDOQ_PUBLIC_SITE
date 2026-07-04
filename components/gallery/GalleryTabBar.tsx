@@ -2,10 +2,7 @@
 
 import { Grid3X3, ImageIcon, Mic, Video } from "lucide-react";
 import { useTranslations } from "next-intl";
-import {
-  GALLERY_TAB_ORDER,
-  type GalleryTabType,
-} from "@/lib/galleryTabs";
+import { GALLERY_TAB_ORDER, type GalleryTabType } from "@/lib/galleryTabs";
 import { SegmentedTabBar } from "@/components/shared/SegmentedTabBar";
 
 const TAB_ICONS = {

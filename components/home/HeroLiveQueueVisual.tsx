@@ -176,7 +176,11 @@ export function HeroLiveQueueVisual() {
         <motion.div
           initial={hasLoadedOnce.current ? false : { opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, delay: 0.12, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{
+            duration: 0.45,
+            delay: 0.12,
+            ease: [0.25, 0.1, 0.25, 1],
+          }}
           className={cn(heroPanel("mt-2.5 p-3 sm:mt-3 sm:p-3.5"))}
         >
           <p className="mb-2 font-inter text-[10px] font-bold uppercase tracking-wide text-[#6B7280] sm:text-xs">

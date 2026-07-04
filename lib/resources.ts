@@ -61,9 +61,9 @@ interface IApiResourceListResponse {
   data: { items: IApiResource[] };
 }
 
-function sortByFeaturedThenOrder<T extends { featured?: boolean; sortOrder?: number }>(
-  items: T[]
-): T[] {
+function sortByFeaturedThenOrder<
+  T extends { featured?: boolean; sortOrder?: number },
+>(items: T[]): T[] {
   return [...items].sort((a, b) => {
     const aFeatured = a.featured ? 1 : 0;
     const bFeatured = b.featured ? 1 : 0;
@@ -113,15 +113,6 @@ function mapApiRecitation(api: IApiResource): IAudioRecitation {
     paraInfo: api.paraInfo ?? "",
     duration: api.duration ?? "",
     progress: api.progress ?? 0,
-  };
-}
-
-function mapApiVerse(api: IApiResource, index: number): IAudioVerse {
-  const verse = api.verses?.[index];
-  return {
-    id: `${api.id}-v${index + 1}`,
-    arabic: verse?.arabic ?? "",
-    translation: verse?.translation ?? "",
   };
 }
 

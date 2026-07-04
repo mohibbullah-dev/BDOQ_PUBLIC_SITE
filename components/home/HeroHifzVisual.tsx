@@ -74,10 +74,7 @@ export function HeroHifzVisual() {
         <div className="space-y-3">
           {isLoading ? (
             Array.from({ length: 3 }).map((_, index) => (
-              <div
-                key={index}
-                className={`${heroPanel()} animate-pulse`}
-              >
+              <div key={index} className={`${heroPanel()} animate-pulse`}>
                 <div className="mb-2 h-4 w-1/3 rounded bg-gray-200" />
                 <div className="h-2 rounded-full bg-gray-100" />
               </div>

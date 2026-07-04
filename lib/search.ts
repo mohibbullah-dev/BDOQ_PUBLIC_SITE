@@ -168,12 +168,14 @@ function ebookToResult(book: IEbook): ISearchResult {
   };
 }
 
-export function buildSearchIndex(input: {
-  blogPosts?: IBlogPost[];
-  teachers?: ITeacher[];
-  ebooks?: IEbook[];
-  courses?: ICourse[];
-} = {}): ISearchResult[] {
+export function buildSearchIndex(
+  input: {
+    blogPosts?: IBlogPost[];
+    teachers?: ITeacher[];
+    ebooks?: IEbook[];
+    courses?: ICourse[];
+  } = {}
+): ISearchResult[] {
   const blogPosts = input.blogPosts ?? [];
   const teachers = input.teachers ?? [];
   const ebooks = input.ebooks ?? [];

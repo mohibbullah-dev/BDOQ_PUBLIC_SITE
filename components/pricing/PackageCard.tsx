@@ -113,7 +113,11 @@ export function PackageCard({ pkg, index = 0 }: IPackageCardProps) {
                   : "bg-bg-light text-primary"
               )}
             >
-              <Crown className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
+              <Crown
+                className="h-5 w-5"
+                strokeWidth={1.75}
+                aria-hidden="true"
+              />
             </div>
           </div>
 

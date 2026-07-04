@@ -1,9 +1,6 @@
 import { apiFetch } from "./api";
 import type { LocaleType } from "@/i18n/routing";
-import {
-  mapApiBlogToPost,
-  type IApiBlogPost,
-} from "@/lib/i18n/localizeBlog";
+import { mapApiBlogToPost, type IApiBlogPost } from "@/lib/i18n/localizeBlog";
 import type { IBlogPost } from "./types";
 
 const BLOG_REVALIDATE = 300;

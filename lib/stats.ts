@@ -39,12 +39,7 @@ export async function getPublicStats(): Promise<IPublicStats> {
 
 export interface IStatDisplay {
   value: string;
-  labelKey:
-    | "hours"
-    | "years"
-    | "teachers"
-    | "students"
-    | "popularTeachers";
+  labelKey: "hours" | "years" | "teachers" | "students" | "popularTeachers";
 }
 
 export async function getPublicStatsDisplay(): Promise<IStatDisplay[]> {

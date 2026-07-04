@@ -64,7 +64,9 @@ export function SegmentedTabBar<T extends string>({
     >
       <div
         className={cn(
-          useWrap ? "flex flex-wrap gap-1.5" : cn("grid gap-1.5", GRID_COLUMNS[resolvedColumns])
+          useWrap
+            ? "flex flex-wrap gap-1.5"
+            : cn("grid gap-1.5", GRID_COLUMNS[resolvedColumns])
         )}
       >
         {tabs.map((tab) => {
@@ -88,7 +90,8 @@ export function SegmentedTabBar<T extends string>({
                   : "min-h-[52px] flex-col gap-0.5 px-2 py-2.5 text-sm font-semibold sm:min-h-[56px] sm:flex-row sm:gap-2 sm:px-3",
                 "font-inter",
                 isActive ? "text-white" : "text-text-gray hover:text-primary",
-                useWrap && "min-w-[calc(50%-0.375rem)] flex-1 sm:min-w-[9rem] sm:flex-none"
+                useWrap &&
+                  "min-w-[calc(50%-0.375rem)] flex-1 sm:min-w-[9rem] sm:flex-none"
               )}
             >
               {isActive && (

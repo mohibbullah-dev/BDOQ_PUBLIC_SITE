@@ -148,38 +148,38 @@ export function FreeClassWizard({
   return (
     <FreeClassSubjectsProvider subjects={subjects}>
       <div className={className}>
-      {showTitle && (
-        <div className="mb-8 text-center">
-          <p className="mb-2 font-inter text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-            {tPage("eyebrow")}
-          </p>
-          <h1 className="mb-2 font-amiri text-2xl font-bold text-primary-dark md:text-3xl">
-            {tPage("title")}
-          </h1>
-          <p className="font-inter text-sm text-text-gray">
-            {tPage("subtitle")}
-          </p>
-        </div>
-      )}
+        {showTitle && (
+          <div className="mb-8 text-center">
+            <p className="mb-2 font-inter text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+              {tPage("eyebrow")}
+            </p>
+            <h1 className="mb-2 font-amiri text-2xl font-bold text-primary-dark md:text-3xl">
+              {tPage("title")}
+            </h1>
+            <p className="font-inter text-sm text-text-gray">
+              {tPage("subtitle")}
+            </p>
+          </div>
+        )}
 
-      <FormProvider {...methods}>
-        <form onSubmit={(event) => event.preventDefault()} noValidate>
-          {submitState === "error" && (
-            <FormAlert type="error" message={t("error")} className="mb-6" />
-          )}
+        <FormProvider {...methods}>
+          <form onSubmit={(event) => event.preventDefault()} noValidate>
+            {submitState === "error" && (
+              <FormAlert type="error" message={t("error")} className="mb-6" />
+            )}
 
-          <FormWizardShell
-            steps={[...FREE_CLASS_STEPS]}
-            currentStep={currentStep}
-            onBack={handleBack}
-            onNext={handleWizardNext}
-            isSubmitting={submitState === "loading"}
-            submitLabel={t("submit")}
-          >
-            <StepComponent />
-          </FormWizardShell>
-        </form>
-      </FormProvider>
+            <FormWizardShell
+              steps={[...FREE_CLASS_STEPS]}
+              currentStep={currentStep}
+              onBack={handleBack}
+              onNext={handleWizardNext}
+              isSubmitting={submitState === "loading"}
+              submitLabel={t("submit")}
+            >
+              <StepComponent />
+            </FormWizardShell>
+          </form>
+        </FormProvider>
       </div>
     </FreeClassSubjectsProvider>
   );

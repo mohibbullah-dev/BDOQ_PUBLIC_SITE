@@ -38,7 +38,10 @@ const CATEGORY_KEYS: Record<
   religious: "religious",
 };
 
-export function EbookDetailView({ book, relatedEbooks }: IEbookDetailViewProps) {
+export function EbookDetailView({
+  book,
+  relatedEbooks,
+}: IEbookDetailViewProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [viewerBook, setViewerBook] = useState<IEbook | null>(null);
   const t = useTranslations("content.ebooks");

@@ -1,5 +1,5 @@
 import { TEACHER_AVATARS } from "@/lib/teacherData";
-import { defaultTeacherAvatarUrl, teacherAvatarUrl } from "@/lib/avatarCatalog";
+import { teacherAvatarUrl } from "@/lib/avatarCatalog";
 import type { ITeacher } from "@/lib/types";
 
 export type TeacherAvatarContext = "card" | "detail";

@@ -9,9 +9,7 @@ export function getRelatedEbooks(
   limit = 3
 ): IEbook[] {
   return allEbooks
-    .filter(
-      (item) => item.category === book.category && item.id !== book.id
-    )
+    .filter((item) => item.category === book.category && item.id !== book.id)
     .slice(0, limit);
 }
 

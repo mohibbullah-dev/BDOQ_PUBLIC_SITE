@@ -9,9 +9,7 @@ export const GALLERY_TAB_ORDER: GalleryTabType[] = [
   "image",
 ];
 
-export function resolveGalleryMediaType(
-  item: IGalleryItem
-): GalleryMediaType {
+export function resolveGalleryMediaType(item: IGalleryItem): GalleryMediaType {
   return item.mediaType ?? "photo";
 }
 
@@ -21,8 +19,7 @@ export function filterGalleryByTab(
 ): IGalleryItem[] {
   if (tab === "gallery") return items;
 
-  const target: GalleryMediaType =
-    tab === "image" ? "photo" : tab;
+  const target: GalleryMediaType = tab === "image" ? "photo" : tab;
 
   return items.filter((item) => resolveGalleryMediaType(item) === target);
 }

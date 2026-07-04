@@ -6,7 +6,9 @@ export interface IFormSelectOption {
   label: string;
 }
 
-export function buildFreeClassSubjects(courses: ICourse[]): IFormSelectOption[] {
+export function buildFreeClassSubjects(
+  courses: ICourse[]
+): IFormSelectOption[] {
   return courses.map((course) => ({
     value: course.slug,
     label: course.title,
@@ -125,15 +127,35 @@ export const TEACHING_LANGUAGE_OPTIONS = [
 ] as const;
 
 export const TOPIC_INTEREST_OPTIONS = [
-  { value: "quran-education", labelBn: "কুরআন শিক্ষা", labelEn: "Quran Education" },
-  { value: "quran-recitation", labelBn: "কুরআন তিলাওয়াত", labelEn: "Quran Recitation" },
+  {
+    value: "quran-education",
+    labelBn: "কুরআন শিক্ষা",
+    labelEn: "Quran Education",
+  },
+  {
+    value: "quran-recitation",
+    labelBn: "কুরআন তিলাওয়াত",
+    labelEn: "Quran Recitation",
+  },
   { value: "tafsir", labelBn: "তাফসীরুল কুরআন", labelEn: "Tafsirul Quran" },
-  { value: "seerah-history", labelBn: "সীরাহ ও ইতিহাস", labelEn: "Seerah and History" },
-  { value: "islamic-studies", labelBn: "ইসলামিক শিক্ষা", labelEn: "Islamic Studies" },
+  {
+    value: "seerah-history",
+    labelBn: "সীরাহ ও ইতিহাস",
+    labelEn: "Seerah and History",
+  },
+  {
+    value: "islamic-studies",
+    labelBn: "ইসলামিক শিক্ষা",
+    labelEn: "Islamic Studies",
+  },
   { value: "urdu", labelBn: "উর্দু ভাষা", labelEn: "Urdu Language" },
   { value: "tajweed", labelBn: "তাজবিদ", labelEn: "Tajweed" },
   { value: "hifz", labelBn: "হিফজুল কুরআন", labelEn: "Hifzul Quran" },
-  { value: "surah-memorization", labelBn: "সুরা মুখস্থ", labelEn: "Surah Memorization" },
+  {
+    value: "surah-memorization",
+    labelBn: "সুরা মুখস্থ",
+    labelEn: "Surah Memorization",
+  },
   { value: "adab", labelBn: "আদব-কায়দা", labelEn: "Adab & Etiquette" },
   { value: "arabic", labelBn: "আরবি ভাষা", labelEn: "Arabic Language" },
   { value: "english", labelBn: "ইংরেজি ভাষা", labelEn: "English Language" },
@@ -177,14 +199,34 @@ export const HAFIZ_OPTIONS = [
 ] as const;
 
 export const TEACHER_SUBJECT_OPTIONS = [
-  { value: "quran-education", labelBn: "কুরআন শিক্ষা", labelEn: "Quran Education" },
-  { value: "quran-recitation", labelBn: "কুরআন তিলাওয়াত", labelEn: "Quran Recitation" },
+  {
+    value: "quran-education",
+    labelBn: "কুরআন শিক্ষা",
+    labelEn: "Quran Education",
+  },
+  {
+    value: "quran-recitation",
+    labelBn: "কুরআন তিলাওয়াত",
+    labelEn: "Quran Recitation",
+  },
   { value: "tajweed", labelBn: "তাজবিদ", labelEn: "Tajweed" },
   { value: "hifz", labelBn: "হিফজ", labelEn: "Hifz" },
-  { value: "surah-memorization", labelBn: "সুরা মুখস্থ", labelEn: "Surah Memorization" },
-  { value: "islamic-studies", labelBn: "ইসলামিক শিক্ষা", labelEn: "Islamic Studies" },
+  {
+    value: "surah-memorization",
+    labelBn: "সুরা মুখস্থ",
+    labelEn: "Surah Memorization",
+  },
+  {
+    value: "islamic-studies",
+    labelBn: "ইসলামিক শিক্ষা",
+    labelEn: "Islamic Studies",
+  },
   { value: "tafsir", labelBn: "তাফসীর", labelEn: "Tafsir" },
-  { value: "seerah-history", labelBn: "সীরাহ ও ইতিহাস", labelEn: "Seerah & History" },
+  {
+    value: "seerah-history",
+    labelBn: "সীরাহ ও ইতিহাস",
+    labelEn: "Seerah & History",
+  },
   { value: "arabic", labelBn: "আরবি", labelEn: "Arabic Language" },
   { value: "urdu", labelBn: "উর্দু", labelEn: "Urdu" },
   { value: "english", labelBn: "ইংরেজি", labelEn: "English" },

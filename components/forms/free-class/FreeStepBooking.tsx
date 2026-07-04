@@ -12,10 +12,7 @@ import {
   formInputClass,
 } from "@/components/forms/shared/formStyles";
 import { useLocalizedOptionLookup } from "@/lib/i18n/useFormLocale";
-import {
-  CLASS_TIME_SLOTS,
-  TIMEZONE_OPTIONS,
-} from "@/lib/formOptions";
+import { CLASS_TIME_SLOTS, TIMEZONE_OPTIONS } from "@/lib/formOptions";
 import { useFreeClassSubjects } from "@/components/forms/free-class/FreeClassSubjectsContext";
 import type { FreeClassFormValues } from "@/lib/validators/freeClass";
 
@@ -37,7 +34,7 @@ export function FreeStepBooking() {
 
   const selectedSubjectLabel = useMemo(() => {
     const match = subjects.find((subject) => subject.value === values.subject);
-    return match ? tCourses(match.value) : values.subject ?? "";
+    return match ? tCourses(match.value) : (values.subject ?? "");
   }, [subjects, values.subject, tCourses]);
 
   const genderOptions = useMemo(

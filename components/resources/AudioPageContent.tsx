@@ -56,7 +56,10 @@ export function AudioPageContent({ data }: IAudioPageContentProps) {
             </ScrollReveal>
 
             <ScrollReveal direction="right" delay={0.1}>
-              <FeaturedAudioPlayer src={data.featuredSrc} title={data.featuredTitle} />
+              <FeaturedAudioPlayer
+                src={data.featuredSrc}
+                title={data.featuredTitle}
+              />
             </ScrollReveal>
           </div>
 

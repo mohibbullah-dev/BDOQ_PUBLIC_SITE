@@ -4,9 +4,7 @@ import { useLocalizedCourseDetailFromBase } from "@/lib/i18n/useLocalizedCourseD
 import type { ICourse, ICourseDetail, ITeacher } from "@/lib/types";
 import type { IFormSelectOption } from "@/lib/formOptions";
 import { useLocalizedCourse } from "@/lib/i18n/useLocalizedCourse";
-import {
-  useCourseDetailUi,
-} from "@/lib/i18n/useLocalizedCourseDetail";
+import { useCourseDetailUi } from "@/lib/i18n/useLocalizedCourseDetail";
 import { FreeClassForm } from "@/components/forms/FreeClassForm";
 import { CourseHero } from "@/components/courses/CourseHero";
 import { CourseBenefits } from "@/components/courses/CourseBenefits";

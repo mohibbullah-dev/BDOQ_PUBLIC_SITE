@@ -201,8 +201,7 @@ export const contentMessages = {
       },
       image: {
         title: "এখনো কোনো ইমেজ নেই",
-        description:
-          "একাডেমির ছবি ও ক্লাসের মুহূর্তগুলো এই বিভাগে দেখাবে।",
+        description: "একাডেমির ছবি ও ক্লাসের মুহূর্তগুলো এই বিভাগে দেখাবে।",
       },
       video: {
         title: "এখনো কোনো ভিডিও নেই",
@@ -211,8 +210,7 @@ export const contentMessages = {
       },
       audio: {
         title: "এখনো কোনো অডিও নেই",
-        description:
-          "তিলাওয়াত ও অডিও ক্লিপ BDOQ Academy-র এই বিভাগে দেখাবে।",
+        description: "তিলাওয়াত ও অডিও ক্লিপ BDOQ Academy-র এই বিভাগে দেখাবে।",
       },
     },
     albums: {

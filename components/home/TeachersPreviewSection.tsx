@@ -36,11 +36,7 @@ function TeacherPreviewCard({ teacher }: ITeacherPreviewCardProps) {
   );
 }
 
-export function TeachersPreviewSection({
-  teachers,
-}: {
-  teachers: ITeacher[];
-}) {
+export function TeachersPreviewSection({ teachers }: { teachers: ITeacher[] }) {
   const t = useTranslations("home.teachers");
   const tCta = useTranslations("cta");
 

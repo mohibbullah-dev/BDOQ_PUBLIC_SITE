@@ -32,9 +32,9 @@ export default function TermsOfUsePage() {
               packages are agreed upon at enrollment.
             </p>
             <p>
-              Teachers registered with BDOQ Academy agree to uphold Islamic adab,
-              maintain student confidentiality, and deliver lessons according to
-              academy standards.
+              Teachers registered with BDOQ Academy agree to uphold Islamic
+              adab, maintain student confidentiality, and deliver lessons
+              according to academy standards.
             </p>
             <p>
               BDOQ Academy reserves the right to update these terms. Continued

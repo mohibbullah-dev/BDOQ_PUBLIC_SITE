@@ -31,10 +31,7 @@ export const metadata: Metadata = {
 };
 
 export default async function FreeClassPage() {
-  const [messages, courses] = await Promise.all([
-    getMessages(),
-    getCourses(),
-  ]);
+  const [messages, courses] = await Promise.all([getMessages(), getCourses()]);
   const subjectOptions = buildFreeClassSubjects(courses);
   const clientMessages = getFormClientMessages(
     messages as Record<string, unknown>,

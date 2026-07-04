@@ -23,11 +23,7 @@ export function PricingPageContent({ packages }: { packages: IPackage[] }) {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2 lg:gap-8 xl:grid-cols-4">
             {packages.map((pkg, index) => (
-              <PackageCard
-                key={pkg.slug ?? pkg.name}
-                pkg={pkg}
-                index={index}
-              />
+              <PackageCard key={pkg.slug ?? pkg.name} pkg={pkg} index={index} />
             ))}
           </div>
         </div>

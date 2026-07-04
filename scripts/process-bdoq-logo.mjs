@@ -31,7 +31,8 @@ function floodRemoveBackground(data, width, height) {
     const idx = y * width + x;
     if (visited[idx]) return;
     const i = idx * 4;
-    if (!isRemovableBackground(data[i], data[i + 1], data[i + 2], data[i + 3])) return;
+    if (!isRemovableBackground(data[i], data[i + 1], data[i + 2], data[i + 3]))
+      return;
     visited[idx] = 1;
     queue.push(idx);
   }
@@ -156,19 +157,29 @@ async function main() {
 
   const outputs = [
     [join(portalRoot, "public/brand/bdoq-logo.png"), colorLogo],
-    [join(portalRoot, "public/certificates/logo_after_BGRemove.png"), colorLogo],
+    [
+      join(portalRoot, "public/certificates/logo_after_BGRemove.png"),
+      colorLogo,
+    ],
     [join(publicSiteRoot, "public/images/brand/bdoq-logo.png"), colorLogo],
-    [join(publicSiteRoot, "public/images/brand/bdoq-logo-footer.png"), footerLogo],
+    [
+      join(publicSiteRoot, "public/images/brand/bdoq-logo-footer.png"),
+      footerLogo,
+    ],
   ];
 
   for (const [path, buffer] of outputs) {
     mkdirSync(dirname(path), { recursive: true });
     writeFileSync(path, buffer);
     const meta = await sharp(buffer).metadata();
-    console.log(`${path} -> ${meta.width}x${meta.height}, ${buffer.length} bytes`);
+    console.log(
+      `${path} -> ${meta.width}x${meta.height}, ${buffer.length} bytes`
+    );
   }
 
-  console.log(`Footer palette tuned for teal #${FOOTER_TEAL.r.toString(16)}${FOOTER_TEAL.g.toString(16)}${FOOTER_TEAL.b.toString(16)}`);
+  console.log(
+    `Footer palette tuned for teal #${FOOTER_TEAL.r.toString(16)}${FOOTER_TEAL.g.toString(16)}${FOOTER_TEAL.b.toString(16)}`
+  );
 }
 
 await main();
