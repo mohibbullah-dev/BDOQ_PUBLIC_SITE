@@ -1,0 +1,21 @@
+{
+  "language": {
+    "en": "English",
+    "bn": "Bengali",
+    "switchTo": "Switch language"
+  },
+  "hero": {
+    "marquee": {
+      "bismillah": "In the name of Allah, the Most Gracious, the Most Merciful",
+      "iqra": "Read in the name of your Lord who created",
+      "easy_quran": "We have certainly made the Qur'an easy for remembrance",
+      "recite": "So recite what is easy for you of the Qur'an",
+      "best_people": "The best of you are those who learn the Qur'an and teach it",
+      "seek_knowledge": "Seeking knowledge is an obligation upon every Muslim",
+      "tajweed": "Recite the Qur'an with measured recitation",
+      "patience": "Indeed, with hardship comes ease",
+      "hearts": "Verily, in the remembrance of Allah hearts find rest",
+      "teach": "Convey from me even if it is one verse"
+    }
+  }
+}

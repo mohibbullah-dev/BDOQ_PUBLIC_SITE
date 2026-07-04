@@ -2,26 +2,450 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Design tokens ───────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --brand-mint: #adebb3;
+  --green-primary: #1b6b44;
+  --green-dark: #0d4a2f;
+  --green-light: #e8f5ee;
+  --teal: #0d9488;
+  --brand-red: #e84b3a;
+  --brand-red-light: #ffddd6;
+  --brand-red-dark: #c62828;
+  /* Legacy aliases — gold is now brand red */
+  --gold: var(--brand-red);
+  --gold-light: var(--brand-red-light);
+  --dark: #0a1628;
+  --cream: #fdf6e3;
+  --white: #ffffff;
+  --text-dark: #111827;
+  --text-gray: #6b7280;
+
+  /* 8-point Islamic star — 60px tile, 4% white (dark surfaces) */
+  --islamic-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath fill='rgba(255,255,255,0.04)' d='M30 0 L36.5 23.5 L60 30 L36.5 36.5 L30 60 L23.5 36.5 L0 30 L23.5 23.5 Z'/%3E%3Ccircle cx='30' cy='30' r='3' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E");
+
+  /* 8-point star — green tint for light inner pages */
+  --islamic-pattern-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath fill='rgba(27,107,68,0.07)' d='M30 0 L36.5 23.5 L60 30 L36.5 36.5 L30 60 L23.5 36.5 L0 30 L23.5 23.5 Z'/%3E%3Ccircle cx='30' cy='30' r='3' fill='rgba(27,107,68,0.05)'/%3E%3C/svg%3E");
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ─── Base typography & reset ─────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    overflow-x: clip;
+  }
+
+  body {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-dark);
+    background-color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .font-display {
+    font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--green-dark);
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem); /* 40px → 72px */
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem); /* 32px → 56px */
+  }
+
+  h3 {
+    font-size: clamp(1.75rem, 3vw, 2.5rem); /* 28px → 40px */
+  }
+
+  h4 {
+    font-size: clamp(1.5rem, 2.5vw, 2rem); /* 24px → 32px */
+  }
+
+  h5 {
+    font-size: 1.5rem; /* 24px */
+  }
+
+  h6 {
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+
+  [lang="ar"],
+  .font-arabic {
+    font-family: var(--font-amiri), serif;
+    line-height: 1.8;
+  }
+
+  /* ─── Bangla typography (Hind Siliguri + Tiro Bangla) ─────── */
+  html[lang="bn"] {
+    font-size: 17px;
+  }
+
+  html[lang="bn"] body {
+    font-family: var(--font-bengali), system-ui, sans-serif;
+    line-height: 1.85;
+  }
+
+  html[lang="bn"] h1,
+  html[lang="bn"] h2,
+  html[lang="bn"] h3,
+  html[lang="bn"] h4,
+  html[lang="bn"] h5,
+  html[lang="bn"] h6,
+  html[lang="bn"] .font-display {
+    font-family: var(--font-bengali-display), var(--font-bengali), serif;
+    line-height: 1.35;
+    letter-spacing: 0;
+  }
+
+  html[lang="bn"] h1 {
+    line-height: 1.28;
+  }
+
+  html[lang="bn"] .font-inter,
+  html[lang="bn"] .font-sans {
+    font-family: var(--font-bengali), system-ui, sans-serif;
+  }
+
+  html[lang="bn"] .font-playfair {
+    font-family: var(--font-bengali-display), var(--font-bengali), serif;
+  }
+
+  ::selection {
+    background-color: var(--green-primary);
+    color: var(--white);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--green-light);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--green-primary);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--green-dark);
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Layout & pattern components ───────────────────────────── */
+@layer components {
+  .section-padding {
+    padding: 96px 0;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .islamic-pattern-bg {
+    background-color: var(--dark);
+    background-image: var(--islamic-pattern);
+    background-repeat: repeat;
+    background-size: 60px 60px;
+  }
+
+  /* Inner page title hero — Islamic geometric branding */
+  .page-hero-bg {
+    background-color: var(--green-light);
+    background-image:
+      radial-gradient(
+        ellipse 120% 80% at 50% -20%,
+        rgba(255, 255, 255, 0.7) 0%,
+        transparent 55%
+      ),
+      var(--islamic-pattern-light);
+    background-repeat: no-repeat, repeat;
+    background-size:
+      100% 100%,
+      60px 60px;
+  }
+
+  /* ─── Site header (modern glass + overlay) ─────────────────── */
+  .site-topbar {
+    position: relative;
+    z-index: 10;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .site-topbar::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(232, 75, 58, 0.55) 50%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+
+  .site-topbar--overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 22, 40, 0.92) 0%,
+      rgba(13, 74, 47, 0.75) 100%
+    );
+    backdrop-filter: blur(12px);
+  }
+
+  .site-topbar--solid {
+    background: linear-gradient(90deg, #0a1628 0%, #0d4a2f 55%, #0a1628 100%);
+  }
+
+  .site-navbar {
+    position: relative;
+    z-index: 30;
+  }
+
+  .site-navbar--overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(13, 74, 47, 0.55) 0%,
+      rgba(13, 74, 47, 0.25) 70%,
+      transparent 100%
+    );
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .site-navbar--solid {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(27, 107, 68, 0.08);
+    box-shadow: 0 4px 24px rgba(13, 74, 47, 0.06);
+  }
+
+  .site-navbar--solid.site-navbar--scrolled {
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow:
+      0 1px 0 rgba(27, 107, 68, 0.06),
+      0 8px 32px rgba(13, 74, 47, 0.1);
+  }
+
+  .site-nav-pill {
+    border-radius: 9999px;
+    transition:
+      background-color 0.4s ease,
+      border-color 0.4s ease,
+      box-shadow 0.4s ease;
+  }
+
+  .site-nav-pill--overlay {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      0 8px 32px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(20px);
+  }
+
+  .site-nav-pill--solid {
+    background: rgba(232, 245, 238, 0.65);
+    border: 1px solid rgba(27, 107, 68, 0.1);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      0 2px 12px rgba(13, 74, 47, 0.06);
+    backdrop-filter: blur(12px);
+  }
+
+  html[lang="bn"] .site-nav-pill {
+    gap: 0.125rem;
+    padding: 0.375rem 0.625rem;
+  }
+
+  html[lang="bn"] .site-nav-pill a,
+  html[lang="bn"] .site-nav-pill button {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    font-size: 0.9375rem;
+  }
+
+  html[lang="bn"] .hero-eyebrow {
+    text-transform: none;
+    letter-spacing: 0.02em;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  html[lang="bn"] .hero-headline {
+    line-height: 1.28;
+    font-family: var(--font-bengali-display), var(--font-bengali), serif;
+  }
+
+  html[lang="bn"] .hero-subtext {
+    line-height: 1.9;
+    font-family: var(--font-bengali), system-ui, sans-serif;
+  }
+
+  html[lang="bn"] .section-eyebrow {
+    text-transform: none;
+    letter-spacing: 0.03em;
+    font-weight: 600;
+  }
+
+  .site-marquee {
+    position: relative;
+    z-index: 10;
+    background: linear-gradient(90deg, #0a1628 0%, #0d4a2f 50%, #0a1628 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  /* Headings inside dark panels — explicit white (beats base h* green) */
+  .text-on-dark h1,
+  .text-on-dark h2,
+  .text-on-dark h3,
+  .text-on-dark h4,
+  .text-on-dark h5,
+  .text-on-dark h6 {
+    color: #ffffff;
+  }
+
+  .home-hero-section {
+    padding-top: calc(68px + env(safe-area-inset-top, 0px));
+  }
+
+  @media (min-width: 768px) {
+    .home-hero-section {
+      padding-top: calc(104px + env(safe-area-inset-top, 0px));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .home-hero-section {
+      padding-top: calc(154px + env(safe-area-inset-top, 0px));
+    }
+  }
 }
 
+/* ─── Utilities ───────────────────────────────────────────────── */
 @layer utilities {
+  .gold-text,
+  .brand-text {
+    color: var(--brand-red);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--green-primary), var(--brand-red));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
   .text-balance {
     text-wrap: balance;
   }
+
+  .shadow-gold,
+  .shadow-brand {
+    box-shadow:
+      0 12px 40px rgba(232, 75, 58, 0.38),
+      0 4px 14px rgba(232, 75, 58, 0.22);
+  }
+
+  .animate-orbit {
+    animation: orbit calc(var(--duration) * 1s) linear infinite;
+  }
+
+  .animate-hero-dot-progress {
+    animation: hero-dot-progress linear forwards;
+    transform-origin: left center;
+  }
+
+  .animate-hero-float {
+    animation: hero-float 7s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    will-change: transform;
+  }
+
+  .animate-hero-live-pulse {
+    animation: hero-live-pulse 2.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -5px, 0);
+  }
+}
+
+@keyframes hero-live-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}
+
+@keyframes hero-dot-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Lightweight scroll reveal — no framer-motion */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.45s ease-out,
+    transform 0.45s ease-out;
+  will-change: opacity, transform;
+}
+
+.scroll-reveal--left {
+  transform: translateX(-20px);
+}
+
+.scroll-reveal--right {
+  transform: translateX(20px);
+}
+
+.scroll-reveal--none {
+  transform: none;
+}
+
+.scroll-reveal--visible {
+  opacity: 1;
+  transform: translate(0);
 }
