@@ -85,7 +85,15 @@ export function LoginPageContent() {
             />
 
             <div className="relative z-[1] flex flex-1 flex-col p-8 xl:p-10">
-              <div className="inline-flex rounded-2xl bg-white/95 p-3 shadow-lg ring-1 ring-white/30">
+              <p className="text-center font-amiri text-xl leading-relaxed text-white/95 md:text-2xl">
+                {tCommon("bismillah")}
+              </p>
+              <div
+                className="mx-auto mt-4 h-px w-20 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                aria-hidden="true"
+              />
+
+              <div className="mt-6 inline-flex rounded-2xl bg-white/95 p-3 shadow-lg ring-1 ring-white/30">
                 <BdoqLogo size="sm" priority />
               </div>
 
@@ -131,10 +139,6 @@ export function LoginPageContent() {
                   );
                 })}
               </ul>
-
-              <p className="mt-auto pt-8 font-amiri text-lg leading-relaxed text-white/90">
-                {tCommon("bismillah")}
-              </p>
             </div>
           </motion.aside>
 
