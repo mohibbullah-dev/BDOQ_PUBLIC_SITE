@@ -27,16 +27,16 @@ export function WizardNavigation({
   const t = useTranslations("forms.common");
 
   return (
-    <div className="mt-8 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <div className="mt-10 flex flex-col-reverse gap-3 border-t border-gray-100 pt-6 sm:flex-row sm:items-center sm:justify-between">
       <button
         type="button"
         onClick={onBack}
         disabled={isFirstStep || isSubmitting}
         className={cn(
-          "inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border-2 border-gray-200 px-6 font-inter text-sm font-semibold text-text-dark transition-all",
+          "inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border-2 px-6 font-inter text-sm font-semibold transition-all",
           isFirstStep
-            ? "cursor-not-allowed opacity-40"
-            : "hover:border-primary hover:text-primary"
+            ? "cursor-not-allowed border-gray-100 text-text-gray/40"
+            : "border-gray-200 bg-white text-text-dark hover:border-primary/40 hover:text-primary"
         )}
       >
         <ArrowLeft className="h-4 w-4" aria-hidden="true" />
@@ -53,7 +53,7 @@ export function WizardNavigation({
           type="button"
           onClick={onNext}
           disabled={isSubmitting}
-          className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-primary px-8 font-inter text-sm font-semibold text-white transition-all hover:bg-primary-dark hover:shadow-lg"
+          className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-primary px-8 font-inter text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-dark hover:shadow-xl disabled:opacity-60"
         >
           {nextLabel ?? t("continue")}
           <ArrowRight className="h-4 w-4" aria-hidden="true" />

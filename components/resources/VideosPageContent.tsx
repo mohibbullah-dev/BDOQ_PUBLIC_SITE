@@ -74,7 +74,7 @@ export function VideosPageContent({ data }: IVideosPageContentProps) {
       </PageHero>
 
       <section className="py-12 md:py-16 bg-bg-light">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="site-container">
           <ScrollReveal>
             <h2 className="font-amiri text-2xl md:text-3xl font-bold text-primary-dark mb-8">
               Other videos
@@ -96,7 +96,7 @@ export function VideosPageContent({ data }: IVideosPageContentProps) {
       </section>
 
       <section className="py-12 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="site-container">
           <ScrollReveal>
             <h2 className="font-amiri text-2xl md:text-3xl font-bold text-primary-dark mb-8">
               Watch from playlist

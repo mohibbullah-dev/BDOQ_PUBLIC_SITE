@@ -22,6 +22,7 @@ import { BookCard } from "@/components/resources/BookCard";
 import { EbookViewerModal } from "@/components/resources/EbookViewerModal";
 import { GradientPlaceholder } from "@/components/shared/GradientPlaceholder";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
+import { IslamicShapeBackdrop } from "@/components/shared/IslamicShapeBackdrop";
 import { cn } from "@/lib/cn";
 
 interface IEbookDetailViewProps {
@@ -67,8 +68,9 @@ export function EbookDetailView({
 
   return (
     <>
-      <section className="page-hero-bg relative overflow-hidden border-b border-primary/10 py-12 md:py-16">
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden border-b border-primary/10 bg-bg-light py-12 md:py-16">
+        <IslamicShapeBackdrop overlay="page" />
+        <div className="site-container">
           <Link
             href="/resources/ebooks"
             className="mb-8 inline-flex items-center gap-2 font-inter text-sm font-medium text-text-gray transition-colors hover:text-primary"
@@ -202,7 +204,7 @@ export function EbookDetailView({
 
       {related.length > 0 && (
         <section className="border-t border-gray-100 bg-bg-light py-12 md:py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="site-container">
             <h2 className="mb-8 font-inter text-2xl font-semibold text-primary-dark">
               {tDetail("moreInCategory")}
             </h2>

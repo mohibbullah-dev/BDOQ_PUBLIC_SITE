@@ -82,21 +82,11 @@ export function HeroOrbitingVisual() {
       className={cn(
         "dark relative mx-auto flex h-[min(420px,72vw)] w-full max-w-[440px] items-center justify-center",
         "overflow-hidden rounded-3xl border border-white/10",
-        "bg-[linear-gradient(160deg,rgba(10,22,40,0.85),rgba(13,74,47,0.9))]"
+        "bg-[linear-gradient(160deg,rgba(232,250,242,0.95),rgba(255,255,255,0.98))]"
       )}
     >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-100"
-        style={{
-          backgroundImage: "var(--islamic-pattern)",
-          backgroundRepeat: "repeat",
-          backgroundSize: "60px 60px",
-        }}
-        aria-hidden="true"
-      />
-
       <div className="relative z-10 flex h-full w-full items-center justify-center">
-        <div className="absolute z-20 flex h-24 w-24 items-center justify-center rounded-full border border-[var(--gold)]/40 bg-[linear-gradient(135deg,#1B6B44,#0D4A2F)] shadow-[0_0_40px_rgba(27,107,68,0.45)]">
+        <div className="absolute z-20 flex h-24 w-24 items-center justify-center rounded-full border border-[var(--gold)]/40 bg-[linear-gradient(135deg,#32C991,#269B6F)] shadow-[0_0_40px_rgba(50,201,145,0.45)]">
           <MosqueIcon className="h-12 w-12 text-[var(--gold)]" />
         </div>
 

@@ -18,17 +18,8 @@ export function CourseHero({ course }: ICourseHeroProps) {
         className="absolute inset-0 bg-gradient-to-r from-primary-dark/95 via-primary/80 to-teal/70"
         aria-hidden="true"
       />
-      <div
-        className="absolute inset-0 opacity-100"
-        style={{
-          backgroundImage: "var(--islamic-pattern)",
-          backgroundRepeat: "repeat",
-          backgroundSize: "60px 60px",
-        }}
-        aria-hidden="true"
-      />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      <div className="site-container relative py-16 md:py-20">
         <nav aria-label="Breadcrumb" className="mb-6">
           <ol className="flex flex-wrap items-center gap-1.5 font-inter text-sm text-white/70">
             <li>

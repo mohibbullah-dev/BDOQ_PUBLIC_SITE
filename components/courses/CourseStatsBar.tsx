@@ -59,7 +59,7 @@ export function CourseStatsBar() {
 
   return (
     <section className="bg-primary text-white py-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <div className="grid grid-cols-3 gap-6 text-center">
           {stats.map((stat) => (
             <div key={stat.label}>

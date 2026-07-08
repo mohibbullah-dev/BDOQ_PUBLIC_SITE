@@ -50,7 +50,7 @@ export function BlogTableOfContents({ headings }: IBlogTableOfContentsProps) {
       <p className="mb-3 font-inter text-xs font-bold uppercase tracking-wider text-text-gray">
         {t("onThisPage")}
       </p>
-      <ul className="space-y-1 border-l-2 border-[#E8F5EE] pl-3">
+      <ul className="space-y-1 border-l-2 border-[#E8FAF2] pl-3">
         {headings.map((heading) => {
           const isActive = activeId === heading.id;
 

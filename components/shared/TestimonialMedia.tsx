@@ -23,7 +23,7 @@ export function TestimonialMedia({
   if (mediaType === "audio" && testimonial.mediaUrl) {
     return (
       <div className={cn("mt-3", className)}>
-        <div className="mb-2 flex items-center gap-1.5 font-inter text-[11px] font-semibold uppercase tracking-wide text-[#1B6B44]">
+        <div className="mb-2 flex items-center gap-1.5 font-inter text-[11px] font-semibold uppercase tracking-wide text-[#32C991]">
           <Mic className="h-3.5 w-3.5" aria-hidden="true" />
           Audio review
         </div>
@@ -47,9 +47,9 @@ export function TestimonialMedia({
           onClick={() => setVideoOpen(true)}
           className={cn(
             "mt-3 flex w-full items-center justify-center gap-2 rounded-xl",
-            "border border-[#1B6B44]/15 bg-[#F0FBF6] px-3 py-2.5",
-            "font-inter text-xs font-semibold text-[#0D4A2F]",
-            "transition-colors hover:bg-[#E8F5EE]",
+            "border border-[#32C991]/15 bg-[#E8FAF2] px-3 py-2.5",
+            "font-inter text-xs font-semibold text-[#269B6F]",
+            "transition-colors hover:bg-[#E8FAF2]",
             className
           )}
         >
@@ -60,7 +60,7 @@ export function TestimonialMedia({
           isOpen={videoOpen}
           onClose={() => setVideoOpen(false)}
           videoId={testimonial.youtubeId}
-          title={`${testimonial.name} — video review`}
+          title={`${testimonial.name} â€” video review`}
         />
       </>
     );

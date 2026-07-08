@@ -1,0 +1,1 @@
+export const HERO_CAROUSEL_AUTO_PLAY_MS = 7000;

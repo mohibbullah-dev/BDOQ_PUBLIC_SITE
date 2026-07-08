@@ -63,17 +63,7 @@ export function GlobalPresenceSection() {
 
   return (
     <section className="relative overflow-hidden bg-bg-light py-16 md:py-24">
-      <div
-        className="pointer-events-none absolute inset-0 opacity-60"
-        style={{
-          backgroundImage: "var(--islamic-pattern-light)",
-          backgroundRepeat: "repeat",
-          backgroundSize: "60px 60px",
-        }}
-        aria-hidden="true"
-      />
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="site-container relative">
         <ScrollReveal className="mb-12 text-center">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/80 px-4 py-1.5 font-inter text-xs font-bold uppercase tracking-widest text-primary shadow-sm backdrop-blur-sm">
             <Globe2 className="h-3.5 w-3.5" aria-hidden="true" />

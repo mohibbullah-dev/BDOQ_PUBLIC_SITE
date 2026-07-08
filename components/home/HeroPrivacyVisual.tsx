@@ -35,7 +35,7 @@ function ClassPathCard({
       className={cn(
         heroPanel("flex flex-1 flex-col p-3"),
         accent === "brothers"
-          ? "border-l-4 border-l-[#1B6B44]"
+          ? "border-l-4 border-l-[#32C991]"
           : "border-l-4 border-l-[var(--gold)]"
       )}
     >
@@ -44,7 +44,7 @@ function ClassPathCard({
           className={cn(
             "flex h-9 w-9 items-center justify-center rounded-xl",
             accent === "brothers"
-              ? "bg-[#F0FBF6] text-[#1B6B44]"
+              ? "bg-[#E8FAF2] text-[#32C991]"
               : "bg-[var(--gold)]/10 text-[var(--gold)]"
           )}
         >
@@ -58,11 +58,11 @@ function ClassPathCard({
           Private
         </span>
       </div>
-      <p className="font-inter text-sm font-bold text-[#0D4A2F]">{title}</p>
+      <p className="font-inter text-sm font-bold text-[#269B6F]">{title}</p>
       <p className="mb-2 text-xs text-[#6B7280]">{subtitle}</p>
       <div className="mt-auto space-y-1 border-t border-gray-100 pt-2">
         <p className="text-[10px] text-[#6B7280]">{teacher}</p>
-        <p className="text-xs font-semibold text-[#1B6B44]">{course}</p>
+        <p className="text-xs font-semibold text-[#32C991]">{course}</p>
       </div>
     </motion.div>
   );
@@ -76,7 +76,7 @@ export function HeroPrivacyVisual() {
           {...fadeIn(0)}
           className="mb-4 flex items-center justify-between gap-2"
         >
-          <span className="flex items-center gap-2 font-inter text-sm font-bold uppercase tracking-wide text-[#0D4A2F]">
+          <span className="flex items-center gap-2 font-inter text-sm font-bold uppercase tracking-wide text-[#269B6F]">
             <ShieldCheck
               className="h-5 w-5 text-[var(--gold)]"
               aria-hidden="true"
@@ -91,7 +91,7 @@ export function HeroPrivacyVisual() {
             title="Brothers"
             subtitle="Male students only"
             teacher="Male Hafiz teachers"
-            course="Tajweed · Hifz"
+            course="Tajweed Â· Hifz"
             accent="brothers"
             delay={0.08}
           />
@@ -99,7 +99,7 @@ export function HeroPrivacyVisual() {
             title="Sisters"
             subtitle="Female students only"
             teacher="Certified female teachers"
-            course="Tajweed · Noorani"
+            course="Tajweed Â· Noorani"
             accent="sisters"
             delay={0.14}
           />
@@ -107,11 +107,11 @@ export function HeroPrivacyVisual() {
 
         <motion.div {...fadeIn(0.2)} className={heroPanel("mb-3")}>
           <div className="flex items-start gap-3">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#F0FBF6] text-[#0D9488]">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#E8FAF2] text-[#0D9488]">
               <Baby className="h-5 w-5" aria-hidden="true" />
             </span>
             <div>
-              <p className="font-inter text-sm font-bold text-[#0D4A2F]">
+              <p className="font-inter text-sm font-bold text-[#269B6F]">
                 Children&apos;s Classes
               </p>
               <p className="mt-1 text-xs leading-relaxed text-[#6B7280]">
@@ -129,7 +129,7 @@ export function HeroPrivacyVisual() {
             { label: "20% Off", sub: "2nd Child" },
           ].map((item) => (
             <div key={item.label} className={heroStatBox()}>
-              <p className="font-inter text-xs font-bold text-[#0D4A2F]">
+              <p className="font-inter text-xs font-bold text-[#269B6F]">
                 {item.label}
               </p>
               <p className="text-[10px] text-[#6B7280]">{item.sub}</p>
@@ -139,14 +139,14 @@ export function HeroPrivacyVisual() {
 
         <motion.div
           {...fadeIn(0.32)}
-          className="flex items-center gap-2 rounded-xl border border-[#1B6B44]/20 bg-[#F0FBF6] px-3 py-3"
+          className="flex items-center gap-2 rounded-xl border border-[#32C991]/20 bg-[#E8FAF2] px-3 py-3"
         >
           <Lock
             className="h-4 w-4 shrink-0 text-[var(--gold)]"
             aria-hidden="true"
           />
-          <p className="text-xs leading-relaxed text-[#0D4A2F]">
-            Your family&apos;s dignity is protected — learning stays private,
+          <p className="text-xs leading-relaxed text-[#269B6F]">
+            Your family&apos;s dignity is protected â€” learning stays private,
             respectful, and within Islamic values.
           </p>
         </motion.div>

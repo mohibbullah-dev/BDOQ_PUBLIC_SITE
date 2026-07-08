@@ -17,7 +17,7 @@ export function CoursePricingBanner({
 
   return (
     <section className="py-12 md:py-16 bg-gradient-to-r from-primary-dark via-primary to-gold/90 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           <div>
             <p className="font-inter text-sm uppercase tracking-widest text-white/80 mb-2">

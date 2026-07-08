@@ -14,7 +14,7 @@ export function useSiteHeaderTheme(): {
   const pathname = usePathname();
   const { isScrolled } = useScrollPosition({ threshold: 24 });
   const isHome = pathname === "/";
-  const isOverlay = isHome && !isScrolled;
+  const isOverlay = false;
 
   return {
     theme: isOverlay ? "overlay" : "solid",

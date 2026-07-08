@@ -24,7 +24,7 @@ export function AudioPageContent({ data }: IAudioPageContentProps) {
       />
 
       <section className="pb-16 md:pb-24 bg-bg-light">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 md:pt-16">
+        <div className="site-container pt-12 md:pt-16">
           <div className="grid lg:grid-cols-2 gap-8 items-start">
             <ScrollReveal direction="left">
               <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-md max-h-[480px] overflow-y-auto">

@@ -19,14 +19,14 @@ export function HeroStatsBar({ stats }: IHeroStatsBarProps) {
   }, []);
 
   return (
-    <div className="w-full min-w-0 max-w-7xl" aria-label="Academy statistics">
+    <div className="w-full min-w-0" aria-label="Academy statistics">
       <motion.div
         initial={hasMounted ? { opacity: 0, y: 16 } : false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.55, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
-          "mx-auto max-w-7xl rounded-2xl border border-white/15",
-          "bg-[#0A1628]/45 px-3 py-3 shadow-lg backdrop-blur-md sm:px-6 sm:py-5"
+          "w-full rounded-2xl border border-[var(--green-primary)]/15",
+          "bg-white/90 px-3 py-3 shadow-lg backdrop-blur-md sm:px-6 sm:py-5"
         )}
       >
         <div
@@ -43,13 +43,14 @@ export function HeroStatsBar({ stats }: IHeroStatsBarProps) {
               className={cn(
                 "min-w-[42%] shrink-0 snap-center px-2 text-center sm:min-w-0 sm:px-3",
                 "first:min-w-[46%] sm:first:min-w-0",
-                index < stats.length - 1 && "lg:border-r lg:border-white/10"
+                index < stats.length - 1 &&
+                  "lg:border-r lg:border-[var(--green-primary)]/10"
               )}
             >
-              <p className="font-inter text-xl font-bold text-white sm:text-2xl md:text-3xl lg:text-4xl">
+              <p className="font-inter text-xl font-bold text-[var(--green-dark)] sm:text-2xl md:text-3xl lg:text-4xl">
                 {stat.value}
               </p>
-              <p className="mt-0.5 font-inter text-[11px] leading-tight text-white/65 sm:text-xs md:text-sm">
+              <p className="mt-0.5 font-inter text-[11px] leading-tight text-[var(--text-gray)] sm:text-xs md:text-sm">
                 {t(stat.labelKey)}
               </p>
             </div>

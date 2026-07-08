@@ -66,7 +66,7 @@ export default async function BlogPage() {
       <LocalizedPageHero pageKey="blog" centered />
 
       <section className="pb-16 md:pb-24 bg-bg-light">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 md:pt-16">
+        <div className="site-container pt-12 md:pt-16">
           <ClientMessagesProvider messages={clientMessages}>
             <Suspense fallback={<BlogListFallback />}>
               <BlogPageClient posts={posts} />

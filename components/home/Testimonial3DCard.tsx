@@ -19,7 +19,7 @@ export function Testimonial3DCard({
   return (
     <figure
       className={cn(
-        "w-[260px] shrink-0 rounded-2xl border border-[#1B6B44]/10 bg-white p-4",
+        "w-[260px] shrink-0 rounded-2xl border border-[#32C991]/10 bg-white p-4",
         "shadow-[0_12px_40px_rgba(10,22,40,0.12)]",
         "transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(10,22,40,0.18)]",
         className
@@ -31,11 +31,11 @@ export function Testimonial3DCard({
           alt={testimonial.name}
           width={40}
           height={40}
-          className="h-10 w-10 rounded-full border-2 border-[#1B6B44]/15 object-cover"
+          className="h-10 w-10 rounded-full border-2 border-[#32C991]/15 object-cover"
           unoptimized={!avatarSrc.includes("res.cloudinary.com")}
         />
         <div className="min-w-0 text-left">
-          <p className="truncate font-inter text-sm font-bold text-[#0D4A2F]">
+          <p className="truncate font-inter text-sm font-bold text-[#269B6F]">
             {testimonial.name}
           </p>
           <p className="truncate font-inter text-xs text-[#6B7280]">

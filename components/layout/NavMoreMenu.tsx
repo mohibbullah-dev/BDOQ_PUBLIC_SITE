@@ -68,7 +68,7 @@ export function NavMoreMenu({ items }: INavMoreMenuProps) {
               className={cn(
                 "overflow-hidden rounded-2xl py-2 shadow-2xl",
                 isOverlay
-                  ? "border border-white/10 bg-[#0D4A2F]/95 backdrop-blur-2xl"
+                  ? "border border-white/10 bg-[#269B6F]/95 backdrop-blur-2xl"
                   : "border border-black/5 bg-white/95 backdrop-blur-xl ring-1 ring-black/5"
               )}
             >

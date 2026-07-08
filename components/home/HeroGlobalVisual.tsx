@@ -73,7 +73,7 @@ export function HeroGlobalVisual() {
               key={stat.label}
               className={heroStatBox("px-2 py-2.5 sm:px-3 sm:py-3.5")}
             >
-              <p className="font-inter text-base font-bold text-[#0D4A2F] sm:text-lg">
+              <p className="font-inter text-base font-bold text-[#269B6F] sm:text-lg">
                 {stat.value}
               </p>
               <p className="font-inter text-[9px] font-medium text-[#6B7280] sm:text-[10px]">

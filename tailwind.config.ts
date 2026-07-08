@@ -10,8 +10,8 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#1B6B44",
-          dark: "#0D4A2F",
+          DEFAULT: "#32C991",
+          dark: "#269B6F",
           mint: "#ADEBB3",
         },
         teal: {
@@ -25,7 +25,7 @@ const config: Config = {
         },
         gold: "#E84B3A",
         "gold-light": "#FFDDD6",
-        "bg-light": "#E8F5EE",
+        "bg-light": "#E8FAF2",
         cream: "#FDF6E3",
         dark: "#0A1628",
         "text-dark": "#111827",

@@ -58,7 +58,7 @@ export function Navbar() {
           isScrolled && "site-navbar--scrolled"
         )}
       >
-        <div className="container max-w-[1280px] px-4 sm:px-6 lg:px-8">
+        <div className="site-container">
           <div
             className={cn(
               "grid grid-cols-[auto_1fr_auto] items-center gap-3 transition-all duration-500 lg:gap-5",
@@ -116,7 +116,7 @@ export function Navbar() {
                 variant="gradient"
                 size="sm"
                 className={cn(
-                  "shrink-0 shadow-[0_4px_20px_rgba(27,107,68,0.35)]",
+                  "shrink-0 shadow-[0_4px_20px_rgba(50,201,145,0.35)]",
                   isOverlay && "ring-1 ring-white/20"
                 )}
               />

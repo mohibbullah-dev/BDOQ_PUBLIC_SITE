@@ -1,5 +1,6 @@
 "use client";
 
+import { Check } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { useOptionLabel } from "@/lib/i18n/useFormLocale";
 
@@ -46,22 +47,27 @@ export function SingleSelectChips<T extends string>({
               onClick={() => onChange(option.value)}
               aria-pressed={selected}
               className={cn(
-                "min-h-[52px] rounded-2xl border px-4 py-3 text-left font-inter transition-all duration-200",
+                "group relative min-h-[56px] rounded-2xl border px-4 py-3.5 text-left font-inter transition-all duration-200",
                 selected
-                  ? "border-primary bg-primary/10 shadow-sm"
-                  : "border-gray-200 bg-white hover:border-primary/40"
+                  ? "border-primary bg-primary/10 shadow-md shadow-primary/10 ring-1 ring-primary/20"
+                  : "border-gray-200/90 bg-white shadow-sm hover:border-primary/35 hover:shadow-md"
               )}
             >
+              {selected && (
+                <span className="absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-white">
+                  <Check className="h-3 w-3" aria-hidden="true" />
+                </span>
+              )}
               <span
                 className={cn(
-                  "block text-sm font-semibold",
+                  "block pr-6 text-sm font-semibold",
                   selected ? "text-primary-dark" : "text-text-dark"
                 )}
               >
                 {labelFor(option)}
               </span>
               {option.description && (
-                <span className="mt-1 block text-xs text-text-gray/80">
+                <span className="mt-1 block text-xs leading-relaxed text-text-gray">
                   {option.description}
                 </span>
               )}
@@ -70,7 +76,10 @@ export function SingleSelectChips<T extends string>({
         })}
       </div>
       {error && (
-        <p className="mt-1 text-xs text-red-600" role="alert">
+        <p
+          className="mt-2 font-inter text-xs font-medium text-red-600"
+          role="alert"
+        >
           {error}
         </p>
       )}

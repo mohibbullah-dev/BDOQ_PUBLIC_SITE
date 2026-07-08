@@ -22,7 +22,7 @@ export function QuranVerseMarqueeItem({ item }: IQuranVerseMarqueeItemProps) {
   return (
     <span className="inline-flex shrink-0 items-center gap-2.5 px-5 xl:gap-3.5 xl:px-8">
       <span
-        className="shrink-0 font-amiri text-[18px] font-normal leading-[1.65] tracking-wide text-white xl:text-[20px]"
+        className="shrink-0 font-amiri text-[18px] font-normal leading-[1.65] tracking-wide text-[var(--green-dark)] xl:text-[20px]"
         dir="rtl"
         lang="ar"
       >
@@ -31,13 +31,13 @@ export function QuranVerseMarqueeItem({ item }: IQuranVerseMarqueeItemProps) {
 
       <MarqueeSeparator />
 
-      <span className="shrink-0 font-inter text-[13px] font-medium leading-snug text-white/90 xl:text-sm">
+      <span className="shrink-0 font-inter text-[13px] font-medium leading-snug text-[var(--text-gray)] xl:text-sm">
         {item.translation}
       </span>
 
       <MarqueeSeparator />
 
-      <span className="shrink-0 whitespace-nowrap font-inter text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--gold-light)] xl:text-[11px]">
+      <span className="shrink-0 whitespace-nowrap font-inter text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--brand-red)] xl:text-[11px]">
         {item.reference}
       </span>
     </span>

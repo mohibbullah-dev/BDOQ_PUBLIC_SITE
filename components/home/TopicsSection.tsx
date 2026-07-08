@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import { motion } from "framer-motion";
@@ -7,7 +8,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { TOPICS, TOPICS_SECTION } from "@/lib/constants";
 import type { ILocalizedText, ITopic } from "@/lib/types";
 import type { LocaleType } from "@/i18n/routing";
-import { getTopicIcon } from "@/lib/topicIcons";
+import { getTopicImagePath } from "@/lib/topicImages";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { cn } from "@/lib/cn";
 
@@ -24,7 +25,6 @@ interface ITopicCardProps {
 }
 
 function TopicCard({ topic, locale, index }: ITopicCardProps) {
-  const Icon = getTopicIcon(topic.icon);
   const label = locale === "bn" ? topic.labelBn : topic.label;
 
   return (
@@ -33,39 +33,52 @@ function TopicCard({ topic, locale, index }: ITopicCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-30px" }}
       transition={{ duration: 0.45, delay: index * 0.04, ease: revealEase }}
-      className="relative bg-white"
+      className="relative overflow-hidden bg-white"
     >
       <Link
         href="/free-class"
         className="group relative flex h-full flex-col items-center gap-3 overflow-hidden px-3 py-5 text-center sm:px-4 sm:py-6"
       >
         <span
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(27,107,68,0.1),transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          className={cn(
+            "pointer-events-none absolute inset-0 z-0 bg-[var(--brand-overlay)]",
+            "opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
+            "group-hover:opacity-100"
+          )}
           aria-hidden="true"
         />
 
         <ArrowUpRight
-          className="absolute right-2.5 top-2.5 h-3.5 w-3.5 text-[var(--green-primary)] opacity-0 transition-all duration-300 group-hover:opacity-100"
+          className="absolute right-2.5 top-2.5 z-[2] h-3.5 w-3.5 text-[var(--green-primary)] opacity-0 transition-all duration-300 group-hover:opacity-100"
           aria-hidden="true"
         />
 
-        <div
-          className={cn(
-            "relative flex h-11 w-11 items-center justify-center rounded-xl",
-            "bg-gradient-to-br from-[var(--green-primary)] to-[var(--green-dark)] text-white",
-            "shadow-[0_8px_20px_-8px_rgba(27,107,68,0.5)]",
-            "transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:scale-105"
-          )}
-        >
-          <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
+        <div className="relative z-[1] w-full max-w-[104px]">
+          <div
+            className={cn(
+              "relative aspect-[4/3] w-full overflow-hidden rounded-[12px]",
+              "border border-[var(--green-primary)]/10",
+              "shadow-[0_6px_20px_-6px_rgba(50,201,145,0.35)]",
+              "transition-all duration-500 ease-out",
+              "group-hover:-translate-y-0.5 group-hover:scale-[1.03] group-hover:shadow-[0_10px_28px_-8px_rgba(50,201,145,0.5)]"
+            )}
+          >
+            <Image
+              src={getTopicImagePath(topic.id)}
+              alt={label}
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 640px) 92px, 104px"
+            />
+          </div>
         </div>
 
-        <p className="font-inter text-sm font-medium leading-snug text-[var(--text-dark)] transition-colors duration-300 group-hover:text-[var(--green-primary)]">
+        <p className="relative z-[1] font-inter text-sm font-medium leading-snug text-[var(--text-dark)] transition-colors duration-300 group-hover:text-[var(--green-primary)]">
           {label}
         </p>
 
         <span
-          className="h-0.5 w-0 rounded-full bg-[var(--brand-red)] transition-all duration-500 group-hover:w-6"
+          className="relative z-[1] h-0.5 w-0 rounded-full bg-[var(--brand-red)] transition-all duration-500 group-hover:w-6"
           aria-hidden="true"
         />
       </Link>
@@ -78,7 +91,7 @@ export function TopicsSection() {
 
   return (
     <section className="bg-bg-light py-14 md:py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <ScrollReveal className="mx-auto mb-10 max-w-3xl text-center md:mb-12">
           <p className="font-inter text-xs font-semibold uppercase tracking-widest text-[var(--green-primary)]">
             {pickLocalized(TOPICS_SECTION.eyebrow, locale)}
@@ -109,7 +122,7 @@ export function TopicsSection() {
           transition={{ duration: 0.55, ease: revealEase }}
           className={cn(
             "overflow-hidden rounded-3xl border border-[var(--green-primary)]/10 bg-white",
-            "shadow-[0_24px_56px_-24px_rgba(27,107,68,0.22)]"
+            "shadow-[0_24px_56px_-24px_rgba(50,201,145,0.22)]"
           )}
         >
           <div className="grid grid-cols-2 divide-x divide-y divide-gray-100 sm:grid-cols-3 lg:grid-cols-4">

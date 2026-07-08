@@ -22,23 +22,13 @@ export function ContactGlobalMap() {
             Global presence
           </p>
           <p className="font-inter text-sm text-text-gray">
-            20+ countries · HQ in Gopalganj, Bangladesh
+            20+ countries Â· HQ in Gopalganj, Bangladesh
           </p>
         </div>
       </div>
 
       <div className="grid lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]">
-        <div className="relative border-b border-gray-100 bg-[linear-gradient(180deg,#F0FBF6_0%,#FFFFFF_100%)] px-3 py-5 sm:px-5 lg:border-b-0 lg:border-r">
-          <div
-            className="pointer-events-none absolute inset-0 opacity-30"
-            style={{
-              backgroundImage: "var(--islamic-pattern-light)",
-              backgroundRepeat: "repeat",
-              backgroundSize: "48px 48px",
-            }}
-            aria-hidden="true"
-          />
-
+        <div className="relative border-b border-gray-100 bg-[linear-gradient(180deg,#E8FAF2_0%,#FFFFFF_100%)] px-3 py-5 sm:px-5 lg:border-b-0 lg:border-r">
           <div className="relative mx-auto aspect-[2/1] w-full lg:max-w-none">
             <DottedMap
               width={MAP_VIEWBOX.width}
@@ -46,8 +36,8 @@ export function ContactGlobalMap() {
               markers={CONTACT_MAP_MARKERS}
               precomputed={CONTACT_MAP_PRECOMPUTED}
               dotRadius={0.16}
-              dotColor="rgba(27, 107, 68, 0.32)"
-              markerColor="#1B6B44"
+              dotColor="rgba(50, 201, 145, 0.32)"
+              markerColor="#32C991"
               pulse={false}
               className="h-full w-full"
             />
@@ -67,7 +57,7 @@ export function ContactGlobalMap() {
                 </span>
               </div>
               <div
-                className="mx-auto mt-1 h-2 w-2 rounded-full bg-primary shadow-[0_0_0_4px_rgba(27,107,68,0.25)]"
+                className="mx-auto mt-1 h-2 w-2 rounded-full bg-primary shadow-[0_0_0_4px_rgba(50,201,145,0.25)]"
                 aria-hidden="true"
               />
             </div>

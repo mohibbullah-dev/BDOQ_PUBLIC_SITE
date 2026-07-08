@@ -80,7 +80,7 @@ export function HeroPersonalScheduleVisual() {
           {...fadeIn(0)}
           className="mb-4 flex items-center justify-between gap-2"
         >
-          <span className="font-inter text-sm font-bold uppercase tracking-wide text-[#0D4A2F]">
+          <span className="font-inter text-sm font-bold uppercase tracking-wide text-[#269B6F]">
             Your Personal Plan
           </span>
           <span className={heroBadge()}>1-to-1 Focus</span>
@@ -90,12 +90,12 @@ export function HeroPersonalScheduleVisual() {
           {...fadeIn(0.08)}
           className={cn(
             heroPanel(),
-            "mb-4 flex items-center gap-3 border-[#1B6B44]/15 bg-[#F0FBF6]/80"
+            "mb-4 flex items-center gap-3 border-[#32C991]/15 bg-[#E8FAF2]/80"
           )}
         >
-          <User className="h-5 w-5 text-[#1B6B44]" aria-hidden="true" />
+          <User className="h-5 w-5 text-[#32C991]" aria-hidden="true" />
           <div>
-            <p className="font-inter text-sm font-semibold text-[#0D4A2F]">
+            <p className="font-inter text-sm font-semibold text-[#269B6F]">
               {hasData ? "Live academy schedule" : "Flexible weekly slots"}
             </p>
             <p className="font-inter text-xs text-[#6B7280]">
@@ -118,14 +118,14 @@ export function HeroPersonalScheduleVisual() {
                 className={cn(
                   "rounded-xl border px-1 py-2 text-center transition-colors",
                   active
-                    ? "border-[#1B6B44]/30 bg-[#1B6B44]/10"
+                    ? "border-[#32C991]/30 bg-[#32C991]/10"
                     : "border-gray-100 bg-white/70"
                 )}
               >
                 <p
                   className={cn(
                     "font-inter text-[10px] font-semibold uppercase",
-                    active ? "text-[#1B6B44]" : "text-[#9CA3AF]"
+                    active ? "text-[#32C991]" : "text-[#9CA3AF]"
                   )}
                 >
                   {day}
@@ -133,10 +133,10 @@ export function HeroPersonalScheduleVisual() {
                 <p
                   className={cn(
                     "mt-1 font-inter text-xs font-bold",
-                    active ? "text-[#1B6B44]" : "text-[#D1D5DB]"
+                    active ? "text-[#32C991]" : "text-[#D1D5DB]"
                   )}
                 >
-                  {isLoading ? "…" : active ? "✓" : "—"}
+                  {isLoading ? "â€¦" : active ? "âœ“" : "â€”"}
                 </p>
               </motion.div>
             );
@@ -150,7 +150,7 @@ export function HeroPersonalScheduleVisual() {
             {
               icon: ChartLine,
               label: "Active days",
-              value: hasData ? String(activeDays) : "—",
+              value: hasData ? String(activeDays) : "â€”",
             },
           ].map((stat, index) => (
             <motion.div
@@ -159,10 +159,10 @@ export function HeroPersonalScheduleVisual() {
               className={heroStatBox()}
             >
               <stat.icon
-                className="mx-auto mb-1 h-4 w-4 text-[#1B6B44]"
+                className="mx-auto mb-1 h-4 w-4 text-[#32C991]"
                 aria-hidden="true"
               />
-              <p className="font-inter text-sm font-bold text-[#0D4A2F]">
+              <p className="font-inter text-sm font-bold text-[#269B6F]">
                 {stat.value}
               </p>
               <p className="font-inter text-[10px] text-[#6B7280]">
@@ -174,13 +174,13 @@ export function HeroPersonalScheduleVisual() {
 
         <motion.div
           {...fadeIn(0.5)}
-          className="mt-4 flex items-center gap-2 rounded-2xl border border-[#1B6B44]/15 bg-[#1B6B44]/5 px-4 py-3"
+          className="mt-4 flex items-center gap-2 rounded-2xl border border-[#32C991]/15 bg-[#32C991]/5 px-4 py-3"
         >
           <CalendarCheck
-            className="h-4 w-4 shrink-0 text-[#1B6B44]"
+            className="h-4 w-4 shrink-0 text-[#32C991]"
             aria-hidden="true"
           />
-          <p className="font-inter text-xs leading-relaxed text-[#0D4A2F]">
+          <p className="font-inter text-xs leading-relaxed text-[#269B6F]">
             {hasData
               ? "Schedule preview reflects active portal session slots."
               : "Book a free trial to set your personal class schedule."}

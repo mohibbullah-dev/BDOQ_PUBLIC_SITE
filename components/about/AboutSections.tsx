@@ -11,7 +11,7 @@ export function MissionVisionSection() {
 
   return (
     <section className="py-16 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
           <div>
             <h2 className="font-amiri text-2xl md:text-3xl font-bold text-primary-dark mb-6">
@@ -60,7 +60,7 @@ export function ClassSystemSection() {
 
   return (
     <section className="py-12 md:py-16 bg-bg-light">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="site-container text-center">
         <h2 className="font-inter text-xl font-semibold text-primary-dark mb-6">
           {t("classSystemTitle")}
         </h2>

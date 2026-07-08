@@ -78,9 +78,9 @@ function LearningPlanCard({ plan, index }: ILearningPlanCardProps) {
               ]
             : [
                 "border border-gray-100 bg-white text-[var(--text-dark)]",
-                "shadow-[0_16px_40px_-20px_rgba(27,107,68,0.18)]",
+                "shadow-[0_16px_40px_-20px_rgba(50,201,145,0.18)]",
                 "hover:-translate-y-2 hover:border-[var(--green-primary)]/25",
-                "hover:shadow-[0_28px_56px_-20px_rgba(27,107,68,0.28)]",
+                "hover:shadow-[0_28px_56px_-20px_rgba(50,201,145,0.28)]",
               ]
         )}
       >
@@ -175,12 +175,7 @@ export function LearningPlansSection() {
 
   return (
     <section className="relative overflow-hidden bg-white py-16 md:py-24">
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(27,107,68,0.06),transparent_55%)]"
-        aria-hidden="true"
-      />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <ScrollReveal className="mx-auto mb-12 max-w-2xl text-center md:mb-16">
           <p className="font-inter text-xs font-semibold uppercase tracking-widest text-[var(--green-primary)]">
             {t("eyebrow")}

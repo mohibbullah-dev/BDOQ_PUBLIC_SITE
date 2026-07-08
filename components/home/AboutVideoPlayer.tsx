@@ -77,7 +77,7 @@ export function AboutVideoPlayer({ compact = false }: IAboutVideoPlayerProps) {
             "relative overflow-hidden rounded-2xl bg-[var(--green-dark)]",
             compact
               ? "shadow-lg ring-1 ring-gray-200/80"
-              : "shadow-[0_24px_50px_-24px_rgba(27,107,68,0.35)] ring-1 ring-[var(--green-primary)]/10 sm:rounded-3xl"
+              : "shadow-[0_24px_50px_-24px_rgba(50,201,145,0.35)] ring-1 ring-[var(--green-primary)]/10 sm:rounded-3xl"
           )}
         >
           <button

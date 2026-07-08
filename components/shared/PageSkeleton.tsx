@@ -21,17 +21,8 @@ function SkeletonBlock({ className }: { className?: string }) {
 
 function HeroBanner() {
   return (
-    <div className="relative overflow-hidden bg-primary-dark/10 py-16 md:py-20">
-      <div
-        className="absolute inset-0 opacity-40"
-        style={{
-          backgroundImage: "var(--islamic-pattern-light)",
-          backgroundRepeat: "repeat",
-          backgroundSize: "48px 48px",
-        }}
-        aria-hidden="true"
-      />
-      <div className="relative mx-auto max-w-7xl space-y-4 px-4 sm:px-6 lg:px-8">
+    <div className="relative overflow-hidden bg-bg-light py-16 md:py-20">
+      <div className="site-container relative space-y-4">
         <SkeletonBlock className="h-4 w-32" />
         <SkeletonBlock className="h-10 max-w-xl" />
         <SkeletonBlock className="h-5 max-w-lg" />
@@ -110,7 +101,7 @@ function PricingCards() {
 
 function DetailLayout() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="site-container py-12">
       <div className="grid gap-10 lg:grid-cols-[1fr_320px]">
         <div className="space-y-4">
           {Array.from({ length: 8 }).map((_, i) => (
@@ -145,7 +136,7 @@ export function PageSkeleton({
         <>
           <HeroBanner />
           <div className="py-12 md:py-16">
-            <div className="mx-auto max-w-7xl space-y-12 px-4 sm:px-6 lg:px-8">
+            <div className="site-container space-y-12">
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {Array.from({ length: 6 }).map((_, i) => (
                   <div
@@ -173,7 +164,7 @@ export function PageSkeleton({
 
       {variant === "blog" && (
         <div className="py-16 md:py-24">
-          <div className="mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:px-8">
+          <div className="site-container space-y-8">
             <div className="mx-auto space-y-3 text-center">
               <SkeletonBlock className="mx-auto h-10 max-w-md" />
               <SkeletonBlock className="mx-auto h-4 max-w-lg" />
@@ -197,7 +188,7 @@ export function PageSkeleton({
         <>
           <HeroBanner />
           <div className="py-12 md:py-16">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="site-container">
               <PricingCards />
             </div>
           </div>
@@ -208,7 +199,7 @@ export function PageSkeleton({
         <>
           <HeroBanner />
           <div className="py-12 md:py-16">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="site-container">
               <TabPills />
               <CardGrid count={8} />
             </div>
@@ -218,7 +209,7 @@ export function PageSkeleton({
 
       {variant === "grid" && (
         <div className="py-16 md:py-24">
-          <div className="mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:px-8">
+          <div className="site-container space-y-8">
             <div className="mx-auto space-y-3 text-center">
               <SkeletonBlock className="mx-auto h-10 max-w-md" />
               <SkeletonBlock className="mx-auto h-4 max-w-lg" />
@@ -232,7 +223,7 @@ export function PageSkeleton({
         <>
           <HeroBanner />
           <div className="py-12 md:py-16">
-            <div className="mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:px-8">
+            <div className="site-container space-y-8">
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {Array.from({ length: 6 }).map((_, i) => (
                   <SkeletonBlock

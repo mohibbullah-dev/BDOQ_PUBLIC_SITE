@@ -56,7 +56,7 @@ export function HeroHifzVisual() {
             <BookMarked className="h-6 w-6" aria-hidden="true" />
           </span>
           <div>
-            <p className="font-playfair text-xl font-bold text-[#0D4A2F]">
+            <p className="font-playfair text-xl font-bold text-[#269B6F]">
               Your Hifz Journey
             </p>
             <p className="font-inter text-sm text-[#6B7280]">
@@ -89,16 +89,16 @@ export function HeroHifzVisual() {
                 className={heroPanel()}
               >
                 <div className="mb-2 flex items-center justify-between">
-                  <span className="font-inter text-sm font-semibold text-[#0D4A2F]">
+                  <span className="font-inter text-sm font-semibold text-[#269B6F]">
                     {item.label}
                   </span>
                   <span className="font-inter text-sm font-bold text-[var(--gold)]">
                     {item.percent}%
                   </span>
                 </div>
-                <div className="h-2 overflow-hidden rounded-full bg-[#E8F5EE]">
+                <div className="h-2 overflow-hidden rounded-full bg-[#E8FAF2]">
                   <motion.div
-                    className="h-full rounded-full bg-gradient-to-r from-[#1B6B44] to-[var(--gold)]"
+                    className="h-full rounded-full bg-gradient-to-r from-[#32C991] to-[var(--gold)]"
                     initial={{ width: 0 }}
                     animate={{ width: `${item.percent}%` }}
                     transition={{
@@ -124,7 +124,7 @@ export function HeroHifzVisual() {
             fill="currentColor"
             aria-hidden="true"
           />
-          <p className="font-inter text-sm leading-relaxed text-[#0D4A2F]">
+          <p className="font-inter text-sm leading-relaxed text-[#269B6F]">
             A patient teacher beside you — until the Quran lives in your heart.
           </p>
         </div>

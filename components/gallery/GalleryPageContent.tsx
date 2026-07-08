@@ -84,7 +84,7 @@ export function GalleryPageContent({ items }: { items: IGalleryItem[] }) {
           aria-hidden="true"
         />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 md:pt-14">
+        <div className="site-container relative pt-10 md:pt-14">
           <AnimatePresence mode="wait">
             {filteredItems.length === 0 ? (
               <motion.div

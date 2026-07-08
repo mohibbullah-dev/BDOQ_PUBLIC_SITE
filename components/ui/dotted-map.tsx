@@ -81,7 +81,7 @@ export function DottedMap<M extends Marker = Marker>({
   markers = [],
   precomputed,
   dotColor = "currentColor",
-  markerColor = "#1B6B44",
+  markerColor = "#32C991",
   dotRadius = 0.2,
   stagger = true,
   pulse = false,

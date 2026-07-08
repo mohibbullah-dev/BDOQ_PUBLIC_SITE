@@ -41,23 +41,23 @@ export function ReviewCard({ testimonial, className }: IReviewCardProps) {
 
       <TestimonialMedia testimonial={testimonial} />
 
-      <div className="mt-6 flex items-center gap-3 border-t border-[#1B6B44]/10 pt-5">
+      <div className="mt-6 flex items-center gap-3 border-t border-[#32C991]/10 pt-5">
         <Image
           src={avatarSrc}
           alt={testimonial.name}
           width={48}
           height={48}
-          className="h-12 w-12 rounded-full border-2 border-[#1B6B44]/15 object-cover"
+          className="h-12 w-12 rounded-full border-2 border-[#32C991]/15 object-cover"
           unoptimized={!avatarSrc.includes("res.cloudinary.com")}
         />
         <div className="min-w-0">
-          <p className="font-inter text-sm font-bold text-[#0D4A2F]">
+          <p className="font-inter text-sm font-bold text-[#269B6F]">
             {testimonial.name}
           </p>
           <p className="font-inter text-xs text-[#6B7280]">
             {testimonial.role}
           </p>
-          <p className="font-inter text-xs font-medium text-[#1B6B44]">
+          <p className="font-inter text-xs font-medium text-[#32C991]">
             {testimonial.location}
           </p>
         </div>

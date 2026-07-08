@@ -36,7 +36,7 @@ export function HeroFreeTrialVisual() {
           {...fadeIn(0)}
           className="mb-4 flex items-center justify-between gap-2"
         >
-          <span className="flex items-center gap-2 font-inter text-sm font-bold uppercase tracking-wide text-[#0D4A2F]">
+          <span className="flex items-center gap-2 font-inter text-sm font-bold uppercase tracking-wide text-[#269B6F]">
             <Gift className="h-5 w-5 text-[var(--gold)]" aria-hidden="true" />
             Free Trial Booking
           </span>
@@ -56,7 +56,7 @@ export function HeroFreeTrialVisual() {
             >
               {index > 0 && (
                 <span
-                  className="absolute right-1/2 top-4 h-0.5 w-full bg-[#E8F5EE]"
+                  className="absolute right-1/2 top-4 h-0.5 w-full bg-[#E8FAF2]"
                   aria-hidden="true"
                 />
               )}
@@ -64,7 +64,7 @@ export function HeroFreeTrialVisual() {
                 className={cn(
                   "relative z-[1] mb-1 flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold",
                   step.done
-                    ? "bg-[#1B6B44] text-white"
+                    ? "bg-[#32C991] text-white"
                     : "border-2 border-[var(--gold)] bg-white text-[var(--gold)]"
                 )}
               >
@@ -82,7 +82,7 @@ export function HeroFreeTrialVisual() {
         </motion.div>
 
         <motion.div {...fadeIn(0.14)} className={heroPanel("mb-4 space-y-3")}>
-          <p className="font-playfair text-xl font-bold text-[#0D4A2F]">
+          <p className="font-playfair text-xl font-bold text-[#269B6F]">
             Your First Class
             <span className="ml-1 text-[var(--gold)]">Is Free</span>
           </p>
@@ -121,7 +121,7 @@ export function HeroFreeTrialVisual() {
                   className={cn(
                     "text-sm",
                     highlight
-                      ? "font-semibold text-[#0D4A2F]"
+                      ? "font-semibold text-[#269B6F]"
                       : "text-[#6B7280]"
                   )}
                 >

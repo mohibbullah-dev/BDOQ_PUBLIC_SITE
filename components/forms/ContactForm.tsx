@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLocale, useTranslations } from "next-intl";
+import { Mail, MessageSquare, User } from "lucide-react";
 import { API_BASE } from "@/lib/constants";
 import { mapContactFormToApi } from "@/lib/mappers/contactMessage";
 import { useFormValidation } from "@/lib/i18n/useFormValidation";
@@ -12,6 +13,7 @@ import {
   type ContactFormValues,
 } from "@/lib/validators/contact";
 import { FormAlert } from "@/components/forms/shared/FormAlert";
+import { FormCard } from "@/components/forms/shared/FormCard";
 import { SubmitButton } from "@/components/forms/shared/SubmitButton";
 import {
   formErrorClass,
@@ -19,6 +21,15 @@ import {
   formLabelClass,
   formTextareaClass,
 } from "@/components/forms/shared/formStyles";
+import { cn } from "@/lib/cn";
+
+function FieldIcon({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-primary/50">
+      {children}
+    </span>
+  );
+}
 
 export function ContactForm() {
   const locale = useLocale();
@@ -61,11 +72,11 @@ export function ContactForm() {
   };
 
   return (
-    <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-lg ring-1 ring-primary/5 md:p-8">
-      <p className="mb-1 font-inter text-xs font-bold uppercase tracking-widest text-primary">
+    <FormCard>
+      <p className="mb-1 font-inter text-xs font-bold uppercase tracking-[0.16em] text-primary">
         {t("formEyebrow")}
       </p>
-      <h2 className="mb-6 font-amiri text-2xl font-bold text-primary-dark">
+      <h2 className="mb-6 font-amiri text-2xl font-bold text-primary-dark md:text-3xl">
         {t("formTitle")}
       </h2>
 
@@ -78,46 +89,63 @@ export function ContactForm() {
       )}
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
-        <div>
-          <label htmlFor="contact-name" className={formLabelClass}>
-            {t("name")} <span className="text-red-500">*</span>
-          </label>
-          <input
-            id="contact-name"
-            className={formInputClass}
-            autoComplete="name"
-            {...register("name")}
-          />
-          {errors.name && (
-            <p className={formErrorClass}>{errors.name.message}</p>
-          )}
-        </div>
+        <div className="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label htmlFor="contact-name" className={formLabelClass}>
+              {t("name")} <span className="text-primary">*</span>
+            </label>
+            <div className="relative">
+              <FieldIcon>
+                <User className="h-4 w-4" aria-hidden="true" />
+              </FieldIcon>
+              <input
+                id="contact-name"
+                className={cn(formInputClass, "pl-10")}
+                autoComplete="name"
+                {...register("name")}
+              />
+            </div>
+            {errors.name && (
+              <p className={formErrorClass}>{errors.name.message}</p>
+            )}
+          </div>
 
-        <div>
-          <label htmlFor="contact-email" className={formLabelClass}>
-            {t("email")} <span className="text-red-500">*</span>
-          </label>
-          <input
-            id="contact-email"
-            type="email"
-            className={formInputClass}
-            autoComplete="email"
-            {...register("email")}
-          />
-          {errors.email && (
-            <p className={formErrorClass}>{errors.email.message}</p>
-          )}
+          <div>
+            <label htmlFor="contact-email" className={formLabelClass}>
+              {t("email")} <span className="text-primary">*</span>
+            </label>
+            <div className="relative">
+              <FieldIcon>
+                <Mail className="h-4 w-4" aria-hidden="true" />
+              </FieldIcon>
+              <input
+                id="contact-email"
+                type="email"
+                className={cn(formInputClass, "pl-10")}
+                autoComplete="email"
+                {...register("email")}
+              />
+            </div>
+            {errors.email && (
+              <p className={formErrorClass}>{errors.email.message}</p>
+            )}
+          </div>
         </div>
 
         <div>
           <label htmlFor="contact-subject" className={formLabelClass}>
-            {t("subject")} <span className="text-red-500">*</span>
+            {t("subject")} <span className="text-primary">*</span>
           </label>
-          <input
-            id="contact-subject"
-            className={formInputClass}
-            {...register("subject")}
-          />
+          <div className="relative">
+            <FieldIcon>
+              <MessageSquare className="h-4 w-4" aria-hidden="true" />
+            </FieldIcon>
+            <input
+              id="contact-subject"
+              className={cn(formInputClass, "pl-10")}
+              {...register("subject")}
+            />
+          </div>
           {errors.subject && (
             <p className={formErrorClass}>{errors.subject.message}</p>
           )}
@@ -125,7 +153,7 @@ export function ContactForm() {
 
         <div>
           <label htmlFor="contact-message" className={formLabelClass}>
-            {t("message")} <span className="text-red-500">*</span>
+            {t("message")} <span className="text-primary">*</span>
           </label>
           <textarea
             id="contact-message"
@@ -142,8 +170,9 @@ export function ContactForm() {
           isLoading={submitState === "loading"}
           label={tCta("sendMessage")}
           loadingLabel={tCta("sending")}
+          className="w-full sm:w-auto"
         />
       </form>
-    </div>
+    </FormCard>
   );
 }

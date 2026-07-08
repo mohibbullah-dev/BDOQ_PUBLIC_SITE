@@ -14,11 +14,11 @@ export const metadata: Metadata = {
 export default function TermsOfUsePage() {
   return (
     <>
-      <LocalizedPageHero pageKey="terms" containerClassName="max-w-3xl" />
+      <LocalizedPageHero pageKey="terms" />
 
       <section className="pb-16 md:pb-24 bg-bg-light">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
-          <div className="space-y-6 font-inter text-base text-text-dark leading-relaxed">
+        <div className="site-container pt-12">
+          <div className="mx-auto max-w-3xl space-y-6 font-inter text-base text-text-dark leading-relaxed">
             <p>
               By using the BD Online Quran Academy website and enrolling in our
               courses, you agree to these terms. BDOQ Academy provides online

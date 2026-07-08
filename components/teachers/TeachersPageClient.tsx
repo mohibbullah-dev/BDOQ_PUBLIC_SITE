@@ -130,7 +130,7 @@ export function TeachersPageClient({ tabs }: { tabs: ITeacherGenderTab[] }) {
       className="scroll-mt-28 bg-bg-light py-12 md:py-16"
       aria-labelledby="all-teachers-heading"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <div className="mb-8 text-center md:mb-10">
           <h2
             id="all-teachers-heading"

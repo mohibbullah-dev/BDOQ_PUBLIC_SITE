@@ -12,6 +12,7 @@ import { SectionHeader } from "@/components/shared/SectionHeader";
 import { SegmentedTabBar } from "@/components/shared/SegmentedTabBar";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { GradientPlaceholder } from "@/components/shared/GradientPlaceholder";
+import { IslamicShapeBackdrop } from "@/components/shared/IslamicShapeBackdrop";
 
 interface IEbooksPageContentProps {
   ebooks: IEbook[];
@@ -112,8 +113,9 @@ export function EbooksPageContent({ ebooks }: IEbooksPageContentProps) {
 
   return (
     <>
-      <section className="page-hero-bg relative overflow-hidden border-b border-primary/10 py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden border-b border-primary/10 bg-bg-light py-16 md:py-20">
+        <IslamicShapeBackdrop overlay="page" />
+        <div className="site-container">
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <ScrollReveal>
               <SectionHeader
@@ -156,7 +158,7 @@ export function EbooksPageContent({ ebooks }: IEbooksPageContentProps) {
       </section>
 
       <section className="bg-bg-light py-12 md:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="site-container">
           <div className="mb-10">
             <SegmentedTabBar
               tabs={ebookTabs}

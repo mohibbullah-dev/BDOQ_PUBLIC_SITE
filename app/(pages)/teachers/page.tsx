@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 function TeachersTabsFallback() {
   return (
     <section className="py-12 md:py-16">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <div className="mx-auto mb-8 h-14 max-w-2xl animate-pulse rounded-2xl bg-gray-200" />
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {Array.from({ length: 4 }).map((_, index) => (

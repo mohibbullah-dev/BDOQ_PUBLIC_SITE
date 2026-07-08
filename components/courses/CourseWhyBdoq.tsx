@@ -11,7 +11,7 @@ export function CourseWhyBdoq() {
 
   return (
     <section className="py-16 md:py-24 bg-bg-light">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <div className="grid lg:grid-cols-2 gap-10 items-start">
           <SectionHeader title={t("title")} subtitle={t("subtitle")} />
           <ul className="space-y-4">

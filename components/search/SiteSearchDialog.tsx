@@ -184,7 +184,7 @@ export function SiteSearchDialog({ isOpen, onClose }: ISiteSearchDialogProps) {
         >
           <motion.button
             type="button"
-            className="absolute inset-0 bg-[#0D4A2F]/55 backdrop-blur-sm"
+            className="absolute inset-0 bg-[#269B6F]/55 backdrop-blur-sm"
             aria-label="Close search"
             onClick={handleClose}
             initial={{ opacity: 0 }}

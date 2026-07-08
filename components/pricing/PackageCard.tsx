@@ -57,9 +57,9 @@ export function PackageCard({ pkg, index = 0 }: IPackageCardProps) {
               ]
             : [
                 "border border-gray-100 bg-white text-text-dark",
-                "shadow-[0_16px_40px_-20px_rgba(27,107,68,0.15)]",
+                "shadow-[0_16px_40px_-20px_rgba(50,201,145,0.15)]",
                 "hover:-translate-y-2 hover:border-primary/25",
-                "hover:shadow-[0_28px_56px_-20px_rgba(27,107,68,0.22)]",
+                "hover:shadow-[0_28px_56px_-20px_rgba(50,201,145,0.22)]",
               ]
         )}
       >
@@ -71,17 +71,10 @@ export function PackageCard({ pkg, index = 0 }: IPackageCardProps) {
         )}
 
         {isPopular && (
-          <>
-            <div
-              className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-white/[0.07] blur-2xl"
-              aria-hidden="true"
-            />
-            <div
-              className="pointer-events-none absolute inset-0 opacity-40"
-              style={{ backgroundImage: "var(--islamic-pattern)" }}
-              aria-hidden="true"
-            />
-          </>
+          <div
+            className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-white/[0.07] blur-2xl"
+            aria-hidden="true"
+          />
         )}
 
         <div className="relative px-6 pb-2 pt-7 md:px-7 md:pt-8">

@@ -49,17 +49,19 @@ export function CourseDetailView({
       />
 
       <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-amiri text-2xl md:text-3xl font-bold text-primary-dark mb-3 text-center">
-            {tUi("trialForm.title")}
-          </h2>
-          <p className="font-inter text-sm text-text-gray text-center mb-8">
-            {tUi("trialForm.description")}
-          </p>
-          <FreeClassForm
-            subjects={subjectOptions}
-            defaultSubject={displayCourse.slug}
-          />
+        <div className="site-container">
+          <div className="mx-auto max-w-3xl">
+            <h2 className="font-amiri text-2xl md:text-3xl font-bold text-primary-dark mb-3 text-center">
+              {tUi("trialForm.title")}
+            </h2>
+            <p className="font-inter text-sm text-text-gray text-center mb-8">
+              {tUi("trialForm.description")}
+            </p>
+            <FreeClassForm
+              subjects={subjectOptions}
+              defaultSubject={displayCourse.slug}
+            />
+          </div>
         </div>
       </section>
 

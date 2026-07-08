@@ -15,6 +15,39 @@ export const formsMessages = {
     pm: "PM",
     emptyValue: "—",
   },
+  layout: {
+    bismillah: "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ",
+    tagline: "এক শিক্ষক · এক শিক্ষার্থী",
+    helpTitle: "সাহায্য দরকার?",
+    helpBody: "WhatsApp-এ লিখুন — সাধারণত কয়েক ঘণ্টার মধ্যে উত্তর পাবেন।",
+    freeClass: {
+      title: "ফ্রি ট্রায়াল ক্লাস বুক করুন",
+      subtitle:
+        "কয়েকটি তথ্য দিন — আমরা যোগ্য শিক্ষকের সাথে এক-এক ফ্রি ট্রায়াল ক্লাসের ব্যবস্থা করব।",
+      estimate: "~৩ মিনিট সময় লাগবে",
+      trustSecure: "গোপনীয় ও নিরাপদ",
+      trustWhatsapp: "WhatsApp-এ নিশ্চিতকরণ",
+      trustTeachers: "প্রশিক্ষিত হাফেজ শিক্ষক",
+    },
+    studentAdmission: {
+      title: "শিক্ষার্থী ভর্তি",
+      subtitle:
+        "লাইভ এক-এক কুরআন ক্লাসের জন্য আবেদন করুন — বিশ্বজুড়ে নমনীয় সময়সূচি।",
+      estimate: "~৮ মিনিট সময় লাগবে",
+      trustSecure: "নিরাপদ আবেদন",
+      trustWhatsapp: "অভিভাবকের WhatsApp যোগাযোগ",
+      trustTeachers: "পুরুষ ও মহিলা শিক্ষক",
+    },
+    teacherRegistration: {
+      title: "শিক্ষক হিসেবে যোগ দিন",
+      subtitle:
+        "আপনার যোগ্যতা ও শিক্ষাদান প্রোফাইল জমা দিন। প্রতিটি আবেদন যাচাই করা হয়।",
+      estimate: "~১২ মিনিট সময় লাগবে",
+      trustSecure: "ডকুমেন্ট গোপনীয়",
+      trustWhatsapp: "যাচাইয়ের পর যোগাযোগ",
+      trustTeachers: "আন্তর্জাতিক মানের একাডেমি",
+    },
+  },
   address: {
     currentTitle: "বর্তমান ঠিকানা",
     permanentTitle: "স্থায়ী ঠিকানা",

@@ -63,7 +63,7 @@ export default async function ContactPage() {
       <LocalizedPageHero pageKey="contact" centered />
 
       <section className="pb-16 md:pb-24 bg-bg-light">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 md:pt-16">
+        <div className="site-container pt-12 md:pt-16">
           <div className="mb-10 grid gap-4 sm:grid-cols-3">
             {stats.map((item) => (
               <div

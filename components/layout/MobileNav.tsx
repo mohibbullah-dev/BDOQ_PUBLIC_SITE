@@ -144,22 +144,12 @@ export function MobileNav({ items, isOpen, onClose }: IMobileNavProps) {
           transition={{ duration: 0.2 }}
         >
           <motion.div
-            className="absolute inset-0 bg-[#0D4A2F]"
+            className="absolute inset-0 bg-[#269B6F]"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div
-              className="pointer-events-none absolute inset-0 opacity-[0.07]"
-              style={{
-                backgroundImage: "var(--islamic-pattern)",
-                backgroundRepeat: "repeat",
-                backgroundSize: "48px 48px",
-              }}
-              aria-hidden="true"
-            />
-
             <div className="relative flex h-full min-h-0 flex-col">
               <div className="flex shrink-0 items-center justify-between border-b border-white/10 px-4 py-3.5 pt-[max(0.875rem,env(safe-area-inset-top))]">
                 <Link href="/" onClick={onClose} className="shrink-0">

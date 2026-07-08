@@ -52,7 +52,7 @@ function renderContent(content: string): ReactNode {
               {intro}
             </p>
           )}
-          <ul className="space-y-3 rounded-2xl border border-[#E8F5EE] bg-[#F0FBF6]/60 p-5">
+          <ul className="space-y-3 rounded-2xl border border-[#E8FAF2] bg-[#E8FAF2]/60 p-5">
             {items.map((item) => (
               <li
                 key={item}

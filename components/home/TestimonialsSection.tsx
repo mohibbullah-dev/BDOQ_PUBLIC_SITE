@@ -24,21 +24,10 @@ export function TestimonialsSection({
     <section
       id={id}
       className={cn(
-        "relative overflow-hidden py-16 md:py-24 text-white",
-        "bg-[linear-gradient(160deg,#0A1628_0%,#0D4A2F_55%,#1B6B44_100%)]"
+        "relative overflow-hidden bg-bg-light py-16 text-[var(--green-dark)] md:py-24"
       )}
     >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-100"
-        style={{
-          backgroundImage: "var(--islamic-pattern)",
-          backgroundRepeat: "repeat",
-          backgroundSize: "60px 60px",
-        }}
-        aria-hidden="true"
-      />
-
-      <div className="relative z-[1] mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="site-container relative">
         <ScrollReveal className="mb-8 text-center md:mb-10">
           <span
             className={cn(
@@ -49,10 +38,10 @@ export function TestimonialsSection({
           >
             {t("eyebrow")}
           </span>
-          <h2 className="font-playfair text-3xl font-bold text-white md:text-4xl">
+          <h2 className="font-playfair text-3xl font-bold text-[var(--green-dark)] md:text-4xl">
             {t("title")}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl font-inter text-base leading-relaxed text-white/80">
+          <p className="mx-auto mt-4 max-w-2xl font-inter text-base leading-relaxed text-[var(--text-gray)]">
             {t("subtitle")}
           </p>
         </ScrollReveal>
@@ -78,9 +67,9 @@ export function TestimonialsSection({
             <Link
               href="/reviews"
               className={cn(
-                "inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/50 px-8 py-3.5",
-                "bg-white/10 font-inter text-sm font-semibold text-white backdrop-blur-sm",
-                "transition-all duration-300 hover:border-white hover:bg-white/20"
+                "inline-flex items-center justify-center gap-2 rounded-full border-2 border-[var(--green-primary)] px-8 py-3.5",
+                "bg-white font-inter text-sm font-semibold text-[var(--green-primary)]",
+                "transition-all duration-300 hover:bg-[var(--green-primary)] hover:text-white"
               )}
             >
               {tCta("allReviews")}
@@ -92,11 +81,11 @@ export function TestimonialsSection({
             <AvatarCircles
               numPeople={300}
               avatarUrls={getTestimonialAvatarUrls()}
-              avatarClassName="border-[#1B6B44] bg-[#E8F5EE]"
-              countClassName="border-[#1B6B44] bg-[#0D4A2F] text-white"
+              avatarClassName="border-[#32C991] bg-[#E8FAF2]"
+              countClassName="border-[#32C991] bg-[#269B6F] text-white"
               className="justify-center"
             />
-            <p className="font-inter text-sm text-white/70">
+            <p className="font-inter text-sm text-[var(--text-gray)]">
               {t("studentsWorldwide")}
             </p>
           </div>

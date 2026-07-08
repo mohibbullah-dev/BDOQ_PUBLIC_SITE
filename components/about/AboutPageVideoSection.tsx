@@ -5,6 +5,7 @@ import { ACADEMY_INFO } from "@/lib/constants";
 import { AboutVideoPlayer } from "@/components/home/AboutVideoPlayer";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { SectionHeader } from "@/components/shared/SectionHeader";
+import { IslamicShapeBackdrop } from "@/components/shared/IslamicShapeBackdrop";
 
 export function AboutPageVideoSection() {
   const t = useTranslations("pages.about");
@@ -12,8 +13,10 @@ export function AboutPageVideoSection() {
   const tAcademy = useTranslations("academy");
 
   return (
-    <section className="page-hero-bg relative overflow-hidden border-b border-primary/10 py-14 md:py-20">
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden border-b border-primary/10 bg-bg-light py-14 md:py-20">
+      <IslamicShapeBackdrop overlay="page" />
+
+      <div className="site-container relative z-[1]">
         <ScrollReveal>
           <SectionHeader
             eyebrow={t("videoEyebrow")}

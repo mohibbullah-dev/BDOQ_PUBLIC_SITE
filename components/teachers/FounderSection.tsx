@@ -6,7 +6,7 @@ import { FOUNDER, FOUNDER_VISION } from "@/lib/constants";
 export function FounderSection() {
   return (
     <section className="py-16 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="flex justify-center md:justify-start">
             <div className="relative w-full max-w-sm rounded-2xl border border-gray-100 bg-bg-light shadow-xl overflow-hidden">

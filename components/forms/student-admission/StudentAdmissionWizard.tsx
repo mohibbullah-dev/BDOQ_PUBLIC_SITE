@@ -15,6 +15,8 @@ import {
 } from "@/lib/validators/studentAdmission";
 import { FormWizardShell } from "@/components/forms/wizard/FormWizardShell";
 import { FormAlert } from "@/components/forms/shared/FormAlert";
+import { FormSuccessScreen } from "@/components/forms/shared/FormSuccessScreen";
+import { FormPageLayout } from "@/components/forms/shared/FormPageLayout";
 import { StudentStepAddress } from "@/components/forms/student-admission/StudentStepAddress";
 import { StudentStepGuardian } from "@/components/forms/student-admission/StudentStepGuardian";
 import { StudentStepLearning } from "@/components/forms/student-admission/StudentStepLearning";
@@ -125,23 +127,22 @@ export function StudentAdmissionWizard() {
 
   if (submitState === "success") {
     return (
-      <div className="space-y-4 text-center">
-        <FormAlert type="success" message={t("successBody")} />
-        <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+      <FormPageLayout variant="studentAdmission">
+        <FormSuccessScreen title={t("successTitle")} body={t("successBody")}>
           <Link
             href="/free-class"
-            className="inline-flex min-h-[44px] items-center justify-center rounded-full border-2 border-primary px-6 py-3 font-semibold text-primary"
+            className="inline-flex min-h-[48px] items-center justify-center rounded-full border-2 border-primary px-6 py-3 font-semibold text-primary transition-colors hover:bg-primary/5"
           >
             {t("bookTrial")}
           </Link>
           <Link
             href="/"
-            className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-primary px-6 py-3 font-semibold text-white"
+            className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-primary px-8 py-3 font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-dark"
           >
             {tCommon("returnHome")}
           </Link>
-        </div>
-      </div>
+        </FormSuccessScreen>
+      </FormPageLayout>
     );
   }
 
@@ -155,6 +156,7 @@ export function StudentAdmissionWizard() {
         )}
 
         <FormWizardShell
+          layoutVariant="studentAdmission"
           steps={[...STUDENT_ADMISSION_STEPS]}
           currentStep={currentStep}
           onBack={handleBack}

@@ -57,10 +57,10 @@ export function createTopicCloudIcons(): ReactNode[] {
     return (
       <div
         key={slug}
-        className="flex h-11 w-11 flex-col items-center justify-center rounded-full bg-[#E8F5EE]"
+        className="flex h-11 w-11 flex-col items-center justify-center rounded-full bg-[#E8FAF2]"
         title={label}
       >
-        <Icon className="h-5 w-5 text-[#1B6B44]" strokeWidth={2} aria-hidden />
+        <Icon className="h-5 w-5 text-[#32C991]" strokeWidth={2} aria-hidden />
       </div>
     );
   });

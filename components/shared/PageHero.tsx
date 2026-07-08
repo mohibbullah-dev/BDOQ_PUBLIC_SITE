@@ -5,12 +5,17 @@ import {
   SectionHeader,
   type ISectionHeaderProps,
 } from "@/components/shared/SectionHeader";
+import {
+  IslamicShapeBackdrop,
+  type IslamicShapeOverlayVariant,
+} from "@/components/shared/IslamicShapeBackdrop";
 
 export interface IPageHeroProps extends ISectionHeaderProps {
   children?: ReactNode;
   className?: string;
   containerClassName?: string;
   animate?: boolean;
+  heroOverlay?: IslamicShapeOverlayVariant;
 }
 
 export function PageHero({
@@ -19,6 +24,7 @@ export function PageHero({
   containerClassName,
   animate = true,
   titleAs = "h1",
+  heroOverlay = "page",
   ...headerProps
 }: IPageHeroProps) {
   const header = (
@@ -28,16 +34,13 @@ export function PageHero({
   return (
     <section
       className={cn(
-        "page-hero-bg relative overflow-hidden border-b border-primary/10 py-14 md:py-20",
+        "relative overflow-hidden border-b border-primary/10 bg-bg-light py-14 md:py-20",
         className
       )}
     >
-      <div
-        className={cn(
-          "relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
-          containerClassName
-        )}
-      >
+      <IslamicShapeBackdrop overlay={heroOverlay} />
+
+      <div className={cn("site-container relative z-[1]", containerClassName)}>
         {animate ? <ScrollReveal>{header}</ScrollReveal> : header}
         {children}
       </div>

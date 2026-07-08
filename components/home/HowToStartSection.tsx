@@ -1,27 +1,17 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  ClipboardPen,
-  MonitorPlay,
-  Sparkles,
-  type LucideIcon,
-} from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { HOW_TO_START_STEPS } from "@/lib/constants";
 import type { IHowToStartStep } from "@/lib/types";
+import { getHowToStartImagePath } from "@/lib/howToStartImages";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { cn } from "@/lib/cn";
 
 const revealEase = [0.22, 1, 0.36, 1] as const;
-
-const STEP_ICONS: Record<number, LucideIcon> = {
-  1: ClipboardPen,
-  2: MonitorPlay,
-  3: Sparkles,
-};
 
 interface IStepCardProps {
   step: IHowToStartStep;
@@ -30,67 +20,107 @@ interface IStepCardProps {
 
 function StepCard({ step, index }: IStepCardProps) {
   const t = useTranslations(`home.howToStart.steps.${step.step}`);
-  const Icon = STEP_ICONS[step.step] ?? ClipboardPen;
   const stepLabel = String(step.step).padStart(2, "0");
+  const isCenter = step.step === 2;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
+    <motion.article
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.5, delay: index * 0.12, ease: revealEase }}
-      className="group relative flex-1"
+      transition={{ duration: 0.55, delay: index * 0.1, ease: revealEase }}
+      className={cn(
+        "group relative flex flex-1 flex-col",
+        isCenter && "lg:-mt-2"
+      )}
     >
       <div
         className={cn(
-          "relative h-full overflow-hidden rounded-3xl border border-gray-100 bg-white p-6 md:p-7",
-          "shadow-[0_16px_40px_-20px_rgba(27,107,68,0.2)]",
-          "transition-all duration-500 hover:-translate-y-2",
-          "hover:border-[var(--green-primary)]/20 hover:shadow-[0_28px_56px_-22px_rgba(27,107,68,0.3)]"
+          "relative flex h-full flex-col overflow-hidden rounded-[20px] border border-[var(--green-primary)]/10 bg-white",
+          "shadow-[0_20px_48px_-24px_rgba(50,201,145,0.28)]",
+          "transition-all duration-500 ease-out",
+          "hover:-translate-y-1.5 hover:border-[var(--green-primary)]/20",
+          "hover:shadow-[0_28px_60px_-20px_rgba(50,201,145,0.35)]",
+          isCenter && "lg:shadow-[0_24px_56px_-20px_rgba(50,201,145,0.32)]"
         )}
       >
         <span
-          className="pointer-events-none absolute inset-x-0 top-0 h-1 scale-x-0 bg-gradient-to-r from-transparent via-[var(--green-primary)] to-transparent transition-transform duration-500 group-hover:scale-x-100"
+          className={cn(
+            "pointer-events-none absolute inset-0 z-[1] bg-[var(--brand-overlay)]",
+            "opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
+            "group-hover:opacity-100"
+          )}
           aria-hidden="true"
         />
 
-        <span
-          className="pointer-events-none absolute -right-2 -top-4 font-playfair text-7xl font-bold text-[var(--green-light)] opacity-80"
-          aria-hidden="true"
-        >
-          {stepLabel}
-        </span>
+        <div className="relative z-[2] p-3 sm:p-4 sm:pb-0">
+          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[12px]">
+            <Image
+              src={getHowToStartImagePath(step.step)}
+              alt={t("title")}
+              fill
+              className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+            <div
+              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0B5D3B]/50 via-transparent to-transparent opacity-80"
+              aria-hidden="true"
+            />
 
-        <div className="relative flex items-center gap-4">
-          <div
-            className={cn(
-              "flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl",
-              "bg-gradient-to-br from-[var(--green-primary)] to-[var(--green-dark)] text-white",
-              "shadow-[0_10px_24px_-8px_rgba(27,107,68,0.5)]",
-              "transition-transform duration-500 group-hover:scale-105"
-            )}
-          >
-            <Icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
+            <span
+              className={cn(
+                "absolute left-3 top-3 rounded-full px-3 py-1",
+                "bg-white/95 font-inter text-[11px] font-bold uppercase tracking-wider text-[#0B5D3B]",
+                "shadow-sm backdrop-blur-sm sm:text-xs"
+              )}
+            >
+              Step {stepLabel}
+            </span>
+
+            <span
+              className="pointer-events-none absolute bottom-2 right-3 font-playfair text-5xl font-bold text-white/25 sm:text-6xl"
+              aria-hidden="true"
+            >
+              {stepLabel}
+            </span>
           </div>
-
-          <span
-            className={cn(
-              "flex h-8 w-8 items-center justify-center rounded-full",
-              "bg-[var(--green-light)] font-inter text-sm font-bold text-[var(--green-primary)]"
-            )}
-          >
-            {step.step}
-          </span>
         </div>
 
-        <h3 className="relative mt-5 font-inter text-lg font-semibold text-[var(--green-dark)]">
-          {t("title")}
-        </h3>
-        <p className="relative mt-2 font-inter text-sm leading-relaxed text-[var(--text-gray)]">
-          {t("description")}
-        </p>
+        <div className="relative z-[2] flex flex-1 flex-col p-5 sm:p-6">
+          <div className="mb-3 flex items-center justify-between gap-3">
+            <span
+              className={cn(
+                "inline-flex h-9 w-9 items-center justify-center rounded-full",
+                "bg-[var(--green-light)] font-inter text-sm font-bold text-[var(--green-primary)]",
+                "ring-2 ring-white"
+              )}
+            >
+              {step.step}
+            </span>
+            <ArrowUpRight
+              className={cn(
+                "h-4 w-4 shrink-0 text-[var(--green-primary)]",
+                "translate-x-1 -translate-y-1 opacity-0 transition-all duration-300",
+                "group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"
+              )}
+              aria-hidden="true"
+            />
+          </div>
+
+          <h3 className="font-inter text-lg font-semibold leading-snug text-[var(--green-dark)] sm:text-xl">
+            {t("title")}
+          </h3>
+          <p className="mt-2 flex-1 font-inter text-sm leading-relaxed text-[var(--text-gray)]">
+            {t("description")}
+          </p>
+
+          <span
+            className="mt-4 h-0.5 w-0 rounded-full bg-[var(--brand-red)] transition-all duration-500 group-hover:w-10"
+            aria-hidden="true"
+          />
+        </div>
       </div>
-    </motion.div>
+    </motion.article>
   );
 }
 
@@ -100,15 +130,23 @@ export function HowToStartSection() {
   return (
     <section className="relative overflow-hidden bg-bg-light py-16 md:py-24">
       <div
-        className="pointer-events-none absolute -left-24 top-16 h-64 w-64 rounded-full bg-[var(--green-primary)]/[0.05] blur-3xl"
+        className="pointer-events-none absolute inset-0 opacity-[0.4]"
+        style={{
+          backgroundImage: "var(--islamic-pattern-light)",
+          backgroundSize: "60px 60px",
+        }}
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute -right-20 bottom-10 h-56 w-56 rounded-full bg-[var(--brand-red)]/[0.04] blur-3xl"
+        className="pointer-events-none absolute -left-24 top-0 h-72 w-72 rounded-full bg-[var(--green-primary)]/[0.06] blur-3xl"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-[var(--brand-red)]/[0.05] blur-3xl"
         aria-hidden="true"
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container relative">
         <ScrollReveal className="mx-auto mb-12 max-w-2xl text-center md:mb-14">
           <p className="font-inter text-xs font-semibold uppercase tracking-widest text-[var(--green-primary)]">
             {t("eyebrow")}
@@ -121,19 +159,10 @@ export function HowToStartSection() {
           </p>
         </ScrollReveal>
 
-        <div className="relative">
-          <div
-            className="pointer-events-none absolute left-[10%] right-[10%] top-[4.5rem] hidden h-0.5 md:block"
-            aria-hidden="true"
-          >
-            <div className="h-full w-full bg-gradient-to-r from-transparent via-[var(--green-primary)]/25 to-transparent" />
-          </div>
-
-          <div className="relative flex flex-col gap-6 md:flex-row md:gap-5 lg:gap-8">
-            {HOW_TO_START_STEPS.map((step, index) => (
-              <StepCard key={step.step} step={step} index={index} />
-            ))}
-          </div>
+        <div className="grid gap-6 md:grid-cols-3 lg:gap-8">
+          {HOW_TO_START_STEPS.map((step, index) => (
+            <StepCard key={step.step} step={step} index={index} />
+          ))}
         </div>
 
         <ScrollReveal delay={0.25} className="mt-12 text-center">
@@ -142,6 +171,7 @@ export function HowToStartSection() {
             className={cn(
               "inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5",
               "bg-[linear-gradient(135deg,#E84B3A,#C62828)] font-inter text-sm font-semibold text-white",
+              "shadow-[0_12px_28px_-8px_rgba(232,75,58,0.45)]",
               "transition-all duration-300 hover:scale-[1.02] hover:shadow-brand"
             )}
           >

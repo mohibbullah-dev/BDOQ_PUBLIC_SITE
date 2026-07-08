@@ -14,11 +14,11 @@ export const metadata: Metadata = {
 export default function PrivacyPolicyPage() {
   return (
     <>
-      <LocalizedPageHero pageKey="privacy" containerClassName="max-w-3xl" />
+      <LocalizedPageHero pageKey="privacy" />
 
       <section className="pb-16 md:pb-24 bg-bg-light">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
-          <div className="space-y-6 font-inter text-base text-text-dark leading-relaxed">
+        <div className="site-container pt-12">
+          <div className="mx-auto max-w-3xl space-y-6 font-inter text-base text-text-dark leading-relaxed">
             <p>
               BD Online Quran Academy (&quot;BDOQ Academy&quot;) collects
               personal information you provide when registering for classes,

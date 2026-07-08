@@ -25,6 +25,7 @@ import { BlogReadingProgress } from "@/components/blog/BlogReadingProgress";
 import { BlogRelatedCard } from "@/components/blog/BlogRelatedCard";
 import { BlogShareBar } from "@/components/blog/BlogShareBar";
 import { BlogTableOfContents } from "@/components/blog/BlogTableOfContents";
+import { IslamicShapeBackdrop } from "@/components/shared/IslamicShapeBackdrop";
 import { cn } from "@/lib/cn";
 
 interface IBlogDetailViewProps {
@@ -51,21 +52,16 @@ export function BlogDetailView({
     <>
       <BlogReadingProgress />
 
-      <section className="relative overflow-hidden bg-[linear-gradient(160deg,#0A1628_0%,#0D4A2F_55%,#1B6B44_100%)] text-white">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-100"
-          style={{
-            backgroundImage: "var(--islamic-pattern)",
-            backgroundRepeat: "repeat",
-            backgroundSize: "60px 60px",
-          }}
-          aria-hidden="true"
-        />
-        <div className="relative mx-auto max-w-7xl px-4 pb-12 pt-8 sm:px-6 md:pb-16 md:pt-10 lg:px-8">
+      <section className="relative overflow-hidden border-b border-primary/10 bg-bg-light text-[var(--green-dark)]">
+        <IslamicShapeBackdrop overlay="page" />
+        <div className="site-container relative z-[1] pb-12 pt-8 md:pb-16 md:pt-10">
           <nav aria-label="Breadcrumb" className="mb-6">
-            <ol className="flex flex-wrap items-center gap-1.5 font-inter text-sm text-white/70">
+            <ol className="flex flex-wrap items-center gap-1.5 font-inter text-sm text-[var(--text-gray)]">
               <li>
-                <Link href="/" className="transition-colors hover:text-white">
+                <Link
+                  href="/"
+                  className="transition-colors hover:text-[var(--green-primary)]"
+                >
                   {t("home")}
                 </Link>
               </li>
@@ -75,7 +71,7 @@ export function BlogDetailView({
               <li>
                 <Link
                   href="/blog"
-                  className="transition-colors hover:text-white"
+                  className="transition-colors hover:text-[var(--green-primary)]"
                 >
                   {t("blog")}
                 </Link>
@@ -83,7 +79,9 @@ export function BlogDetailView({
               <li aria-hidden="true">
                 <ChevronRight className="h-4 w-4" />
               </li>
-              <li className="line-clamp-1 text-white/90">{post.title}</li>
+              <li className="line-clamp-1 text-[var(--green-dark)]">
+                {post.title}
+              </li>
             </ol>
           </nav>
 
@@ -93,23 +91,23 @@ export function BlogDetailView({
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-white/20 bg-white/10 px-3 py-1 font-inter text-xs font-semibold uppercase tracking-wide text-white/90 backdrop-blur-sm"
+                    className="rounded-full border border-[var(--green-primary)]/20 bg-white px-3 py-1 font-inter text-xs font-semibold uppercase tracking-wide text-[var(--green-dark)]"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <h1 className="font-playfair text-3xl font-bold leading-tight text-white md:text-4xl lg:text-5xl">
+              <h1 className="font-playfair text-3xl font-bold leading-tight text-[var(--green-dark)] md:text-4xl lg:text-5xl">
                 {post.title}
               </h1>
 
-              <p className="mt-4 max-w-2xl font-inter text-base leading-relaxed text-white/80 md:text-lg">
+              <p className="mt-4 max-w-2xl font-inter text-base leading-relaxed text-[var(--text-gray)] md:text-lg">
                 {post.excerpt}
               </p>
 
-              <div className="mt-6 flex flex-wrap items-center gap-4 font-inter text-sm text-white/75">
-                <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5">
+              <div className="mt-6 flex flex-wrap items-center gap-4 font-inter text-sm text-[var(--text-gray)]">
+                <span className="inline-flex items-center gap-2 rounded-full border border-[var(--green-primary)]/15 bg-white px-3 py-1.5">
                   <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[var(--gold)] text-xs font-bold text-white">
                     {authorInitials}
                   </div>
@@ -133,7 +131,7 @@ export function BlogDetailView({
       </section>
 
       <section className="bg-white py-12 md:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="site-container">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] xl:gap-14">
             <article className="min-w-0">
               <BlogArticleBody content={post.content} />
@@ -236,7 +234,7 @@ export function BlogDetailView({
 
                 <div
                   className={cn(
-                    "overflow-hidden rounded-2xl bg-[linear-gradient(135deg,#1B6B44,#0D4A2F)] p-5 text-white shadow-lg"
+                    "overflow-hidden rounded-2xl bg-[linear-gradient(135deg,#32C991,#269B6F)] p-5 text-white shadow-lg"
                   )}
                 >
                   <p className="font-inter text-lg font-semibold">
@@ -247,7 +245,7 @@ export function BlogDetailView({
                   </p>
                   <Link
                     href="/free-class"
-                    className="mt-4 inline-flex min-h-[44px] items-center justify-center rounded-full bg-white px-5 py-2.5 font-inter text-sm font-semibold text-primary transition-colors hover:bg-[#F0FBF6]"
+                    className="mt-4 inline-flex min-h-[44px] items-center justify-center rounded-full bg-white px-5 py-2.5 font-inter text-sm font-semibold text-primary transition-colors hover:bg-[#E8FAF2]"
                   >
                     {tCta("freeTrialClass")}
                   </Link>

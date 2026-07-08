@@ -36,7 +36,7 @@ function HeroStatVisual({
             <Icon className="h-6 w-6 text-[var(--gold)]" aria-hidden="true" />
           </span>
           <div>
-            <p className="font-playfair text-xl font-bold text-[#0D4A2F]">
+            <p className="font-playfair text-xl font-bold text-[#269B6F]">
               {title}
             </p>
             <p className="text-sm text-[#6B7280]">{subtitle}</p>
@@ -45,7 +45,7 @@ function HeroStatVisual({
         <div className="grid grid-cols-3 gap-3">
           {stats.map((stat) => (
             <div key={stat.label} className={heroStatBox()}>
-              <p className="font-inter text-xl font-bold text-[#0D4A2F]">
+              <p className="font-inter text-xl font-bold text-[#269B6F]">
                 {stat.value}
               </p>
               <p className="mt-1 text-[10px] font-medium uppercase tracking-wide text-[#6B7280]">

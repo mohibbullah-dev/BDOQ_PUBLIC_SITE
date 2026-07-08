@@ -15,6 +15,39 @@ export const formsMessages = {
     pm: "PM",
     emptyValue: "—",
   },
+  layout: {
+    bismillah: "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ",
+    tagline: "One teacher · One student",
+    helpTitle: "Need help?",
+    helpBody: "Our team replies on WhatsApp — usually within a few hours.",
+    freeClass: {
+      title: "Book Your Free Trial",
+      subtitle:
+        "Tell us a few details and we will match you with a qualified teacher for a one-to-one trial class.",
+      estimate: "~3 min to complete",
+      trustSecure: "Private & confidential",
+      trustWhatsapp: "WhatsApp confirmation",
+      trustTeachers: "Certified Hafiz teachers",
+    },
+    studentAdmission: {
+      title: "Student Admission",
+      subtitle:
+        "Complete this application for live one-to-one Quran classes with flexible scheduling worldwide.",
+      estimate: "~8 min to complete",
+      trustSecure: "Secure application",
+      trustWhatsapp: "Guardian contact on WhatsApp",
+      trustTeachers: "Male & female teachers",
+    },
+    teacherRegistration: {
+      title: "Join as a Teacher",
+      subtitle:
+        "Share your qualifications and teaching profile. We review every application carefully.",
+      estimate: "~12 min to complete",
+      trustSecure: "Documents kept private",
+      trustWhatsapp: "We contact you after review",
+      trustTeachers: "International academy standards",
+    },
+  },
   address: {
     currentTitle: "Current address",
     permanentTitle: "Permanent address",

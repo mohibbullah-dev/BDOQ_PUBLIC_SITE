@@ -23,16 +23,6 @@ export function BlogHeroCover({ post, readTime }: IBlogHeroCoverProps) {
         label={post.title}
       />
 
-      <div
-        className="pointer-events-none absolute inset-0 opacity-30"
-        style={{
-          backgroundImage: "var(--islamic-pattern)",
-          backgroundRepeat: "repeat",
-          backgroundSize: "48px 48px",
-        }}
-        aria-hidden="true"
-      />
-
       <div className="absolute inset-0 flex flex-col justify-between p-4 sm:p-5">
         <div className="flex items-start justify-between gap-3">
           <span className="rounded-full border border-white/25 bg-black/30 px-3 py-1 font-inter text-[11px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">

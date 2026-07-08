@@ -14,6 +14,8 @@ import {
 } from "@/lib/validators/teacherRegistration";
 import { FormWizardShell } from "@/components/forms/wizard/FormWizardShell";
 import { FormAlert } from "@/components/forms/shared/FormAlert";
+import { FormSuccessScreen } from "@/components/forms/shared/FormSuccessScreen";
+import { FormPageLayout } from "@/components/forms/shared/FormPageLayout";
 import { TeacherStepAcademic } from "@/components/forms/teacher-registration/TeacherStepAcademic";
 import { TeacherStepDocuments } from "@/components/forms/teacher-registration/TeacherStepDocuments";
 import { TeacherStepPersonal } from "@/components/forms/teacher-registration/TeacherStepPersonal";
@@ -151,15 +153,16 @@ export function TeacherRegistrationWizard() {
 
   if (submitState === "success") {
     return (
-      <div className="space-y-4 text-center">
-        <FormAlert type="success" message={t("successBody")} />
-        <Link
-          href="/"
-          className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-primary px-8 py-3 font-semibold text-white"
-        >
-          {tCommon("returnHome")}
-        </Link>
-      </div>
+      <FormPageLayout variant="teacherRegistration">
+        <FormSuccessScreen title={t("successTitle")} body={t("successBody")}>
+          <Link
+            href="/"
+            className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-primary px-8 py-3 font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-dark"
+          >
+            {tCommon("returnHome")}
+          </Link>
+        </FormSuccessScreen>
+      </FormPageLayout>
     );
   }
 
@@ -173,6 +176,7 @@ export function TeacherRegistrationWizard() {
         )}
 
         <FormWizardShell
+          layoutVariant="teacherRegistration"
           steps={[...TEACHER_REGISTRATION_STEPS]}
           currentStep={currentStep}
           onBack={handleBack}

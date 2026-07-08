@@ -36,7 +36,7 @@ export function Testimonial3DMarquee({
   return (
     <div
       className={cn(
-        "relative mx-auto flex h-[420px] w-full max-w-6xl items-center justify-center overflow-hidden md:h-[480px]",
+        "relative mx-auto flex h-[420px] w-full max-w-full items-center justify-center overflow-hidden md:h-[480px]",
         "[mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent),linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]",
         className
       )}

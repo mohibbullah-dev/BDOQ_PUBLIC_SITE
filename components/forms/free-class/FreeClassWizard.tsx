@@ -17,10 +17,11 @@ import {
 } from "@/lib/validators/freeClass";
 import { FormWizardShell } from "@/components/forms/wizard/FormWizardShell";
 import { FormAlert } from "@/components/forms/shared/FormAlert";
+import { FormSuccessScreen } from "@/components/forms/shared/FormSuccessScreen";
+import { FormPageLayout } from "@/components/forms/shared/FormPageLayout";
 import { FreeStepBooking } from "@/components/forms/free-class/FreeStepBooking";
 import { FreeStepPersonal } from "@/components/forms/free-class/FreeStepPersonal";
 import { FreeClassSubjectsProvider } from "@/components/forms/free-class/FreeClassSubjectsContext";
-import { cn } from "@/lib/cn";
 
 const STEP_COMPONENTS = [FreeStepPersonal, FreeStepBooking] as const;
 
@@ -126,20 +127,16 @@ export function FreeClassWizard({
 
   if (submitState === "success") {
     return (
-      <div className={cn("space-y-4 text-center", className)}>
-        <p className="font-amiri text-2xl font-bold text-primary-dark">
-          {t("successTitle")}
-        </p>
-        <p className="font-inter text-sm leading-relaxed text-text-gray">
-          {t("successBody")}
-        </p>
-        <Link
-          href="/"
-          className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-primary px-8 py-3 font-semibold text-white"
-        >
-          {tCommon("returnHome")}
-        </Link>
-      </div>
+      <FormPageLayout variant="freeClass" className={className}>
+        <FormSuccessScreen title={t("successTitle")} body={t("successBody")}>
+          <Link
+            href="/"
+            className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-primary px-8 py-3 font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-dark"
+          >
+            {tCommon("returnHome")}
+          </Link>
+        </FormSuccessScreen>
+      </FormPageLayout>
     );
   }
 
@@ -169,6 +166,7 @@ export function FreeClassWizard({
             )}
 
             <FormWizardShell
+              layoutVariant="freeClass"
               steps={[...FREE_CLASS_STEPS]}
               currentStep={currentStep}
               onBack={handleBack}

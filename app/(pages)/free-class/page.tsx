@@ -43,7 +43,7 @@ export default async function FreeClassPage() {
       <LocalizedPageHero pageKey="freeClass" centered />
 
       <section className="py-12 md:py-16 bg-bg-light">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="site-container">
           <ClientMessagesProvider messages={clientMessages}>
             <FreeClassForm subjects={subjectOptions} />
           </ClientMessagesProvider>

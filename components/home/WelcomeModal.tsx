@@ -101,16 +101,6 @@ export function WelcomeModal() {
               aria-hidden="true"
             />
 
-            <div
-              className="pointer-events-none absolute inset-0 opacity-[0.35]"
-              style={{
-                backgroundImage: "var(--islamic-pattern-light)",
-                backgroundRepeat: "repeat",
-                backgroundSize: "48px 48px",
-              }}
-              aria-hidden="true"
-            />
-
             <div className="relative px-5 pb-5 pt-4 sm:px-6 sm:pb-6 sm:pt-5">
               <button
                 type="button"
@@ -158,7 +148,7 @@ export function WelcomeModal() {
                   onClick={() => close(true)}
                   className={cn(
                     "flex min-h-[48px] w-full items-center justify-center rounded-full",
-                    "bg-[linear-gradient(135deg,#1B6B44,#0D9488)] font-inter text-sm font-semibold text-white",
+                    "bg-[linear-gradient(135deg,#32C991,#0D9488)] font-inter text-sm font-semibold text-white",
                     "transition-all duration-300 hover:shadow-lg active:scale-[0.99]"
                   )}
                 >

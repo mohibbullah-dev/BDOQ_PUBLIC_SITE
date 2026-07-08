@@ -25,7 +25,7 @@ export function SubmitButton({
       type="submit"
       disabled={isLoading}
       className={cn(
-        "inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-primary px-8 py-3 font-semibold text-white transition-all duration-300 hover:bg-primary-dark disabled:opacity-60",
+        "inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-primary px-8 py-3 font-inter text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all duration-300 hover:bg-primary-dark hover:shadow-xl disabled:opacity-60 sm:w-auto",
         className
       )}
     >

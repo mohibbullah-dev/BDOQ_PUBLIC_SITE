@@ -55,10 +55,10 @@ function ProfileSection({
   return (
     <section className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:p-8">
       <div className="mb-5 flex items-center gap-3">
-        <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#F0FBF6] text-[#1B6B44]">
+        <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#E8FAF2] text-[#32C991]">
           <Icon className="h-5 w-5" aria-hidden="true" />
         </span>
-        <h2 className="font-inter text-xl font-semibold text-[#0D4A2F]">
+        <h2 className="font-inter text-xl font-semibold text-[#269B6F]">
           {title}
         </h2>
       </div>
@@ -76,7 +76,7 @@ function BulletList({ items }: { items: string[] }) {
           className="flex items-start gap-3 font-inter text-sm leading-relaxed text-[#1A1A2E]/85 md:text-base"
         >
           <span
-            className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#1B6B44]"
+            className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#32C991]"
             aria-hidden="true"
           />
           {item}
@@ -98,15 +98,15 @@ export function TeacherDetailView({
   const languages = getTeacherLanguages(teacher);
 
   return (
-    <div className="bg-[#F0FBF6]">
-      <section className="border-b border-[#1B6B44]/10 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div className="bg-[#E8FAF2]">
+      <section className="border-b border-[#32C991]/10 bg-white">
+        <div className="site-container py-6">
           <nav aria-label="Breadcrumb">
             <ol className="flex flex-wrap items-center gap-2 font-inter text-sm text-[#6B7280]">
               <li>
                 <Link
                   href="/"
-                  className="inline-flex items-center gap-1 transition-colors hover:text-[#1B6B44]"
+                  className="inline-flex items-center gap-1 transition-colors hover:text-[#32C991]"
                 >
                   <Home className="h-4 w-4" aria-hidden="true" />
                   Home
@@ -116,24 +116,24 @@ export function TeacherDetailView({
               <li>
                 <Link
                   href="/teachers"
-                  className="transition-colors hover:text-[#1B6B44]"
+                  className="transition-colors hover:text-[#32C991]"
                 >
                   Teachers
                 </Link>
               </li>
               <ChevronRight className="h-4 w-4" aria-hidden="true" />
-              <li className="font-medium text-[#0D4A2F]">{teacher.name}</li>
+              <li className="font-medium text-[#269B6F]">{teacher.name}</li>
             </ol>
           </nav>
         </div>
       </section>
 
       <section className="py-10 md:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="site-container">
           <div className="grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)] xl:grid-cols-[360px_minmax(0,1fr)] xl:gap-10">
             <aside className="lg:sticky lg:top-28 lg:self-start">
-              <div className="overflow-hidden rounded-3xl border border-[#1B6B44]/10 bg-white shadow-lg">
-                <div className="bg-[linear-gradient(160deg,#F0FBF6,#E6F5EE)] px-6 py-8 text-center">
+              <div className="overflow-hidden rounded-3xl border border-[#32C991]/10 bg-white shadow-lg">
+                <div className="bg-[linear-gradient(160deg,#E8FAF2,#FFFFFF)] px-6 py-8 text-center">
                   <TeacherAvatar
                     teacher={teacher}
                     context="detail"
@@ -143,21 +143,21 @@ export function TeacherDetailView({
                     size={128}
                     className="mx-auto shadow-md"
                   />
-                  <h1 className="mt-5 font-inter text-2xl font-bold text-[#0D4A2F]">
+                  <h1 className="mt-5 font-inter text-2xl font-bold text-[#269B6F]">
                     {teacher.name}
                   </h1>
-                  <p className="mt-2 font-inter text-sm font-medium text-[#1B6B44]">
+                  <p className="mt-2 font-inter text-sm font-medium text-[#32C991]">
                     {teacher.role}
                   </p>
-                  <span className="mt-4 inline-flex items-center rounded-full bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-[#0D4A2F] shadow-sm">
-                    {honorific} · BDOQ Academy
+                  <span className="mt-4 inline-flex items-center rounded-full bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-[#269B6F] shadow-sm">
+                    {honorific} Â· BDOQ Academy
                   </span>
                 </div>
 
                 <div className="space-y-3 border-t border-gray-100 p-6">
-                  <div className="flex items-start gap-3 rounded-2xl border border-[#1B6B44]/10 bg-[#F0FBF6]/70 px-4 py-3">
+                  <div className="flex items-start gap-3 rounded-2xl border border-[#32C991]/10 bg-[#E8FAF2]/70 px-4 py-3">
                     <MapPin
-                      className="mt-0.5 h-5 w-5 shrink-0 text-[#1B6B44]"
+                      className="mt-0.5 h-5 w-5 shrink-0 text-[#32C991]"
                       aria-hidden="true"
                     />
                     <div>
@@ -170,9 +170,9 @@ export function TeacherDetailView({
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3 rounded-2xl border border-[#1B6B44]/10 bg-[#F0FBF6]/70 px-4 py-3">
+                  <div className="flex items-start gap-3 rounded-2xl border border-[#32C991]/10 bg-[#E8FAF2]/70 px-4 py-3">
                     <Mail
-                      className="mt-0.5 h-5 w-5 shrink-0 text-[#1B6B44]"
+                      className="mt-0.5 h-5 w-5 shrink-0 text-[#32C991]"
                       aria-hidden="true"
                     />
                     <div>
@@ -181,16 +181,16 @@ export function TeacherDetailView({
                       </p>
                       <a
                         href={`mailto:${getTeacherContactEmail()}`}
-                        className="font-inter text-sm font-medium text-[#1B6B44] hover:underline"
+                        className="font-inter text-sm font-medium text-[#32C991] hover:underline"
                       >
                         {getTeacherContactEmail()}
                       </a>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3 rounded-2xl border border-[#1B6B44]/10 bg-[#F0FBF6]/70 px-4 py-3">
+                  <div className="flex items-start gap-3 rounded-2xl border border-[#32C991]/10 bg-[#E8FAF2]/70 px-4 py-3">
                     <Phone
-                      className="mt-0.5 h-5 w-5 shrink-0 text-[#1B6B44]"
+                      className="mt-0.5 h-5 w-5 shrink-0 text-[#32C991]"
                       aria-hidden="true"
                     />
                     <div>
@@ -199,7 +199,7 @@ export function TeacherDetailView({
                       </p>
                       <a
                         href={`tel:${getTeacherContactPhone()}`}
-                        className="font-inter text-sm font-medium text-[#1B6B44] hover:underline"
+                        className="font-inter text-sm font-medium text-[#32C991] hover:underline"
                       >
                         {getTeacherContactPhone()}
                       </a>
@@ -212,8 +212,8 @@ export function TeacherDetailView({
                     href="/free-class"
                     className={cn(
                       "flex w-full items-center justify-center gap-2 rounded-full px-6 py-3",
-                      "bg-[#1B6B44] font-inter text-sm font-semibold text-white",
-                      "transition-all duration-300 hover:bg-[#0D4A2F] hover:shadow-lg"
+                      "bg-[#32C991] font-inter text-sm font-semibold text-white",
+                      "transition-all duration-300 hover:bg-[#269B6F] hover:shadow-lg"
                     )}
                   >
                     Book a Free Trial Class
@@ -224,9 +224,9 @@ export function TeacherDetailView({
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cn(
-                      "flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#1B6B44]",
-                      "px-6 py-3 font-inter text-sm font-semibold text-[#1B6B44]",
-                      "transition-all duration-300 hover:bg-[#1B6B44] hover:text-white"
+                      "flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#32C991]",
+                      "px-6 py-3 font-inter text-sm font-semibold text-[#32C991]",
+                      "transition-all duration-300 hover:bg-[#32C991] hover:text-white"
                     )}
                   >
                     <MessageCircle className="h-4 w-4" aria-hidden="true" />
@@ -258,10 +258,10 @@ export function TeacherDetailView({
                     className="rounded-2xl border border-white bg-white p-3 text-center shadow-sm"
                   >
                     <stat.icon
-                      className="mx-auto h-4 w-4 text-[#1B6B44]"
+                      className="mx-auto h-4 w-4 text-[#32C991]"
                       aria-hidden="true"
                     />
-                    <p className="mt-2 font-inter text-sm font-bold text-[#0D4A2F]">
+                    <p className="mt-2 font-inter text-sm font-bold text-[#269B6F]">
                       {stat.value}
                     </p>
                     <p className="font-inter text-[10px] uppercase tracking-wide text-[#6B7280]">
@@ -288,7 +288,7 @@ export function TeacherDetailView({
                     {personalInfo.map((item) => (
                       <div
                         key={item.label}
-                        className="rounded-2xl bg-[#F0FBF6] px-4 py-4"
+                        className="rounded-2xl bg-[#E8FAF2] px-4 py-4"
                       >
                         <dt className="font-inter text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
                           {item.label}
@@ -308,30 +308,30 @@ export function TeacherDetailView({
               >
                 <div className="space-y-8">
                   <div>
-                    <h3 className="mb-3 font-inter text-sm font-semibold uppercase tracking-wide text-[#1B6B44]">
+                    <h3 className="mb-3 font-inter text-sm font-semibold uppercase tracking-wide text-[#32C991]">
                       Educational Qualification
                     </h3>
                     <BulletList items={getTeacherQualifications(teacher)} />
                   </div>
 
                   <div>
-                    <h3 className="mb-3 font-inter text-sm font-semibold uppercase tracking-wide text-[#1B6B44]">
+                    <h3 className="mb-3 font-inter text-sm font-semibold uppercase tracking-wide text-[#32C991]">
                       Special Skills
                     </h3>
                     <BulletList items={getTeacherSkills(teacher)} />
                   </div>
 
                   <div className="grid gap-4 md:grid-cols-2">
-                    <div className="rounded-2xl bg-[#F0FBF6] px-5 py-4">
-                      <h3 className="font-inter text-sm font-semibold uppercase tracking-wide text-[#1B6B44]">
+                    <div className="rounded-2xl bg-[#E8FAF2] px-5 py-4">
+                      <h3 className="font-inter text-sm font-semibold uppercase tracking-wide text-[#32C991]">
                         Experience
                       </h3>
                       <p className="mt-2 font-inter text-sm leading-relaxed text-[#1A1A2E]/85">
                         {getTeacherExperience(teacher)}
                       </p>
                     </div>
-                    <div className="rounded-2xl bg-[#F0FBF6] px-5 py-4">
-                      <h3 className="font-inter text-sm font-semibold uppercase tracking-wide text-[#1B6B44]">
+                    <div className="rounded-2xl bg-[#E8FAF2] px-5 py-4">
+                      <h3 className="font-inter text-sm font-semibold uppercase tracking-wide text-[#32C991]">
                         Language Skills
                       </h3>
                       <p className="mt-2 font-inter text-sm leading-relaxed text-[#1A1A2E]/85">
@@ -346,20 +346,20 @@ export function TeacherDetailView({
         </div>
       </section>
 
-      <section className="border-t border-[#1B6B44]/10 bg-white py-12 md:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="border-t border-[#32C991]/10 bg-white py-12 md:py-16">
+        <div className="site-container">
           <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="font-inter text-sm font-semibold uppercase tracking-wider text-[#1B6B44]">
+              <p className="font-inter text-sm font-semibold uppercase tracking-wider text-[#32C991]">
                 Courses
               </p>
-              <h2 className="font-inter text-2xl font-semibold text-[#0D4A2F] md:text-3xl">
+              <h2 className="font-inter text-2xl font-semibold text-[#269B6F] md:text-3xl">
                 All classes of {honorific}
               </h2>
             </div>
             <Link
               href="/courses"
-              className="inline-flex items-center gap-2 font-inter text-sm font-semibold text-[#1B6B44] hover:underline"
+              className="inline-flex items-center gap-2 font-inter text-sm font-semibold text-[#32C991] hover:underline"
             >
               Browse all courses
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -376,8 +376,8 @@ export function TeacherDetailView({
 
       {relatedTeachers.length > 0 && (
         <section className="py-12 md:py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="mb-8 text-center font-inter text-2xl font-semibold text-[#0D4A2F]">
+          <div className="site-container">
+            <h2 className="mb-8 text-center font-inter text-2xl font-semibold text-[#269B6F]">
               More {teacher.gender === "female" ? "Female" : "Male"} Teachers
             </h2>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -396,18 +396,18 @@ export function TeacherDetailView({
       )}
 
       <section className="pb-16 md:pb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="overflow-hidden rounded-3xl bg-[linear-gradient(135deg,#0D4A2F,#1B6B44)] px-6 py-10 text-center text-white md:px-12 md:py-14">
-            <h2 className="font-playfair text-3xl font-bold md:text-4xl">
+        <div className="site-container">
+          <div className="overflow-hidden rounded-3xl border border-[var(--green-primary)]/15 bg-[#E8FAF2] px-6 py-10 text-center md:px-12 md:py-14">
+            <h2 className="font-playfair text-3xl font-bold text-[var(--green-dark)] md:text-4xl">
               Learn with {teacher.name.split(" ").slice(-1)[0]}
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl font-inter text-base leading-relaxed text-white/85">
+            <p className="mx-auto mt-4 max-w-2xl font-inter text-base leading-relaxed text-[var(--text-gray)]">
               Book a free trial class and experience one-to-one Quran learning
               with a qualified BDOQ Academy {honorific.toLowerCase()}.
             </p>
             <Link
               href="/free-class"
-              className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-3 font-inter text-sm font-bold text-[#0D4A2F] transition-all duration-300 hover:scale-[1.03] hover:shadow-lg"
+              className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[var(--green-primary)] px-8 py-3 font-inter text-sm font-bold text-white transition-all duration-300 hover:scale-[1.03] hover:shadow-lg"
             >
               Start Free Trial
               <ArrowRight className="h-4 w-4" aria-hidden="true" />

@@ -36,8 +36,8 @@ export function QuranVerseMarquee() {
         aria-hidden="true"
       />
 
-      <div className="absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#0A1628] via-[#0A1628]/90 to-transparent" />
-      <div className="absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#0A1628] via-[#0A1628]/90 to-transparent" />
+      <div className="absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#E8FAF2] via-[#E8FAF2]/90 to-transparent" />
+      <div className="absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#E8FAF2] via-[#E8FAF2]/90 to-transparent" />
 
       <div className="flex h-11 items-center overflow-hidden xl:h-12">
         <div className="flex w-max flex-row items-center whitespace-nowrap animate-marquee-left motion-reduce:animate-none group-hover/marquee:[animation-play-state:paused]">

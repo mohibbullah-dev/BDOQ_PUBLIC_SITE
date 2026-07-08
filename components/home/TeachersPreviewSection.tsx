@@ -42,7 +42,7 @@ export function TeachersPreviewSection({ teachers }: { teachers: ITeacher[] }) {
 
   return (
     <section className="py-16 md:py-24 bg-teal-accent/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <ScrollReveal className="text-center mb-10 md:mb-12">
           <h2 className="font-inter text-2xl md:text-3xl font-semibold text-primary-dark">
             {t("title")}

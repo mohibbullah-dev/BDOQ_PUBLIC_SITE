@@ -1,4 +1,46 @@
 export const homeMessages = {
+  premiumHero: {
+    badge: "Join 300+ Students on the Quran Learning Journey",
+    titleLine1: "Learn the Quran Online",
+    titleLine2: "With Trusted Hafiz Teachers",
+    description:
+      "One-to-one live classes for kids and adults — Noorani Qaida, Tajweed, and Hifz from home.",
+    chips: ["One-to-One Live Classes", "Flexible Schedule"],
+    featuresAria: "Key features",
+    primaryCta: "Start Free Trial",
+    secondaryCta: "Chat on WhatsApp",
+    carousel: {
+      aria: "Course highlights",
+      prev: "Previous slide",
+      next: "Next slide",
+      slides: {
+        "slide-1": {
+          badge: "Guidance & Confidence",
+          title: "Read the Quran with Guidance, Confidence, and Heart.",
+          subtitle:
+            "From your first letter to fluent recitation, our certified teachers help you build strong Tajweed skills and a lifelong connection with the Quran.",
+          imageAlt:
+            "Young student reading the Quran with Tajweed guidance and reflection",
+        },
+        "slide-2": {
+          badge: "Lifelong Connection",
+          title: "Build a Lifelong Connection with the Quran.",
+          subtitle:
+            "Learn Quran Reading, Tajweed, Hifz, and Islamic Studies through a structured curriculum and personalized guidance from certified Hafiz teachers—designed for children, adults, and families worldwide.",
+          imageAlt:
+            "Student in a live one-to-one online Quran class with a certified teacher",
+        },
+        "slide-3": {
+          badge: "Every Step Counts",
+          title: "Every Quran Lesson. Every Step. Every Achievement.",
+          subtitle:
+            "From Noorani Qaida to Tajweed, Hifz, and Islamic Studies, we help learners grow with confidence through expert one-to-one guidance.",
+          imageAlt:
+            "Quran, rehal, and study materials representing structured Quran learning",
+        },
+      },
+    },
+  },
   hero: {
     trustAria: "Trust highlights",
     carouselAria: "Hero highlights",
@@ -48,6 +90,12 @@ export const homeMessages = {
         trust: ["Free Trial Class", "No Hidden Fees", "Start in Minutes"],
       },
     },
+  },
+  showcase: {
+    eyebrow: "Experience BDOQ Academy",
+    title: "Live Learning, Global Reach, Sacred Trust",
+    subtitle:
+      "Explore how one-to-one classes, worldwide scheduling, structured Hifz paths, and private learning spaces come together at BD Online Quran Academy.",
   },
   quickNav: {
     maleTeachers: {
@@ -175,7 +223,10 @@ export const homeMessages = {
     cta: "Book a free trial class",
   },
   whyChoose: {
+    eyebrow: "Why BDOQ Academy",
     title: "Why choose us?",
+    subtitle:
+      "Personalized Quran education with trusted teachers, flexible schedules, and a learning environment built for every student.",
     items: {
       oneToOne: {
         title: "One to One System",

@@ -58,7 +58,7 @@ export function BlogShareBar({ post, className }: IBlogShareBarProps) {
             aria-label={`Share on ${label}`}
             className={cn(
               "inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-200",
-              "text-text-gray transition-all duration-200 hover:border-primary hover:bg-[#F0FBF6] hover:text-primary"
+              "text-text-gray transition-all duration-200 hover:border-primary hover:bg-[#E8FAF2] hover:text-primary"
             )}
           >
             <Icon className="h-4 w-4" aria-hidden="true" />
@@ -72,8 +72,8 @@ export function BlogShareBar({ post, className }: IBlogShareBarProps) {
             "inline-flex h-10 min-w-10 items-center justify-center gap-1.5 rounded-full border px-3",
             "font-inter text-xs font-semibold transition-all duration-200",
             copied
-              ? "border-primary bg-[#F0FBF6] text-primary"
-              : "border-gray-200 text-text-gray hover:border-primary hover:bg-[#F0FBF6] hover:text-primary"
+              ? "border-primary bg-[#E8FAF2] text-primary"
+              : "border-gray-200 text-text-gray hover:border-primary hover:bg-[#E8FAF2] hover:text-primary"
           )}
         >
           {copied ? (

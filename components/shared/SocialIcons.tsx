@@ -86,7 +86,7 @@ export function FreeTrialButton({
 
   const variantClasses =
     variant === "gradient"
-      ? "bg-[linear-gradient(135deg,#1B6B44,#0D9488)] hover:shadow-lg hover:-translate-y-0.5"
+      ? "bg-[linear-gradient(135deg,#32C991,#0D9488)] hover:shadow-lg hover:-translate-y-0.5"
       : "bg-primary hover:bg-primary-dark hover:shadow-lg";
 
   return (

@@ -42,17 +42,17 @@ export function TestimonialMarqueeCard({
         &ldquo;{testimonial.content}&rdquo;
       </blockquote>
 
-      <figcaption className="mt-5 flex items-center gap-3 border-t border-[#1B6B44]/10 pt-4">
+      <figcaption className="mt-5 flex items-center gap-3 border-t border-[#32C991]/10 pt-4">
         <Image
           src={avatarSrc}
           alt={testimonial.name}
           width={48}
           height={48}
-          className="h-12 w-12 rounded-full border-2 border-[#1B6B44]/15 object-cover"
+          className="h-12 w-12 rounded-full border-2 border-[#32C991]/15 object-cover"
           unoptimized={avatarSrc.includes("res.cloudinary.com") === false}
         />
         <div className="min-w-0 text-left">
-          <p className="truncate font-inter text-sm font-bold text-[#0D4A2F]">
+          <p className="truncate font-inter text-sm font-bold text-[#269B6F]">
             {testimonial.name}
           </p>
           <p className="truncate font-inter text-xs text-[#6B7280]">
