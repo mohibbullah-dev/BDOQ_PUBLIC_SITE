@@ -109,6 +109,7 @@ export interface IVideoItem {
   youtubeId: string;
   description?: string;
   startSeconds?: number;
+  thumbnailSrc?: string;
 }
 
 export type GalleryAlbumType = "gallery-01" | "gallery-02" | "gallery-03";

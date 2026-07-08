@@ -29,7 +29,9 @@ export function AboutVideoPlayer({ compact = false }: IAboutVideoPlayerProps) {
   const [highlightStats, setHighlightStats] = useState<
     { value: string; label: string }[]
   >([]);
-  const thumbnailSrc = `https://img.youtube.com/vi/${FEATURED_VIDEO.youtubeId}/maxresdefault.jpg`;
+  const thumbnailSrc =
+    FEATURED_VIDEO.thumbnailSrc ??
+    `https://img.youtube.com/vi/${FEATURED_VIDEO.youtubeId}/maxresdefault.jpg`;
 
   useEffect(() => {
     let cancelled = false;
@@ -83,19 +85,20 @@ export function AboutVideoPlayer({ compact = false }: IAboutVideoPlayerProps) {
           <button
             type="button"
             onClick={() => setIsModalOpen(true)}
-            className="group relative block aspect-video w-full overflow-hidden"
+            className="group relative block aspect-[3/2] w-full overflow-hidden"
             aria-label={`Play video: ${FEATURED_VIDEO.title}`}
           >
             <Image
               src={thumbnailSrc}
               alt={FEATURED_VIDEO.title}
               fill
+              unoptimized={thumbnailSrc.startsWith("/")}
               sizes="(max-width: 1024px) 100vw, 42vw"
-              className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
               priority={compact}
             />
             <div
-              className="absolute inset-0 bg-[var(--green-primary)]/30 transition-colors duration-300 group-hover:bg-[var(--green-primary)]/20"
+              className="absolute inset-0 bg-[var(--green-primary)]/10 transition-colors duration-300 group-hover:bg-[var(--green-primary)]/5"
               aria-hidden="true"
             />
 
@@ -114,9 +117,7 @@ export function AboutVideoPlayer({ compact = false }: IAboutVideoPlayerProps) {
               />
             </span>
 
-            <span className="absolute bottom-3 left-3 rounded-full bg-black/55 px-3 py-1 font-inter text-[11px] font-semibold text-white backdrop-blur-sm sm:bottom-4 sm:left-4 sm:text-xs">
-              Watch intro
-            </span>
+            {/* Keep the preview clean: only play button overlay */}
           </button>
         </div>
 

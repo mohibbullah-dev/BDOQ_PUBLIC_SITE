@@ -897,6 +897,7 @@ export const FEATURED_VIDEO: IVideoItem = {
   title: "Welcome to BD Online Quran Academy",
   youtubeId: "uu0FOZZtz_M",
   startSeconds: 3,
+  thumbnailSrc: "/images/boq-video-thumbnail.png",
   description:
     "Discover how BDOQ Academy delivers one-to-one online Quran education with experienced teachers worldwide.",
 };
