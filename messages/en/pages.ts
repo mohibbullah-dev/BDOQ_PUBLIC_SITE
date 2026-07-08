@@ -71,14 +71,37 @@ export const pagesMessages = {
     eyebrow: "BDOQ Academy Portal",
     title: "Hi, Welcome back!",
     subtitle: "Sign in to access your student or teacher dashboard",
+    panelTitle: "Your learning portal",
+    panelSubtitle:
+      "Manage classes, attendance, progress, and schedules from one secure BDOQ platform.",
+    secureBadge: "Secure encrypted access",
+    highlights: [
+      {
+        title: "Student dashboard",
+        description: "Classes, reports, and learning progress",
+      },
+      {
+        title: "Teacher portal",
+        description: "Schedules, students, and attendance tools",
+      },
+      {
+        title: "Safe & private",
+        description: "Separate systems for men and women",
+      },
+    ],
     username: "Username / Email",
     password: "Password",
+    emailPlaceholder: "you@example.com",
+    passwordPlaceholder: "Enter your password",
     remember: "Keep me signed in",
     forgot: "Forgot Password?",
     signIn: "Sign In",
     noAccount: "Don't have an account?",
     register: "Register Now",
+    teacherApply: "Apply as a teacher",
     backToSite: "← Back to website",
+    showPassword: "Show password",
+    hidePassword: "Hide password",
   },
   privacy: {
     title: "Privacy Policy",

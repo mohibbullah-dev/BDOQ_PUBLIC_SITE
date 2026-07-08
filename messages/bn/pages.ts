@@ -67,14 +67,37 @@ export const pagesMessages = {
     eyebrow: "BDOQ Academy পোর্টাল",
     title: "আসসালামু আলাইকুম, স্বাগতম!",
     subtitle: "শিক্ষার্থী বা শিক্ষক ড্যাশবোর্ডে প্রবেশ করুন",
+    panelTitle: "আপনার লার্নিং পোর্টাল",
+    panelSubtitle:
+      "ক্লাস, উপস্থিতি, অগ্রগতি ও সময়সূচি—সবকিছু একটি নিরাপদ BDOQ প্ল্যাটফর্ম থেকে পরিচালনা করুন।",
+    secureBadge: "নিরাপদ এনক্রিপ্টেড অ্যাক্সেস",
+    highlights: [
+      {
+        title: "শিক্ষার্থী ড্যাশবোর্ড",
+        description: "ক্লাস, রিপোর্ট ও শেখার অগ্রগতি",
+      },
+      {
+        title: "শিক্ষক পোর্টাল",
+        description: "সময়সূচি, শিক্ষার্থী ও উপস্থিতি টুল",
+      },
+      {
+        title: "নিরাপদ ও গোপনীয়",
+        description: "পুরুষ ও মহিলাদের জন্য আলাদা সিস্টেম",
+      },
+    ],
     username: "ইউজারনেম / ইমেইল",
     password: "পাসওয়ার্ড",
+    emailPlaceholder: "you@example.com",
+    passwordPlaceholder: "পাসওয়ার্ড লিখুন",
     remember: "লগইন রাখুন",
     forgot: "পাসওয়ার্ড ভুলে গেছেন?",
     signIn: "সাইন ইন",
     noAccount: "অ্যাকাউন্ট নেই?",
     register: "এখনই রেজিস্টার করুন",
+    teacherApply: "শিক্ষক হিসেবে আবেদন করুন",
     backToSite: "← ওয়েবসাইটে ফিরে যান",
+    showPassword: "পাসওয়ার্ড দেখান",
+    hidePassword: "পাসওয়ার্ড লুকান",
   },
   privacy: {
     title: "গোপনীয়তা নীতি",

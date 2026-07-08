@@ -95,6 +95,14 @@ export function getContactClientMessages(messages: MessageTree): MessageTree {
   };
 }
 
+export function getLoginClientMessages(messages: MessageTree): MessageTree {
+  const forms = messages.forms as MessageTree | undefined;
+  return {
+    pages: pickNestedPages(messages, ["login"]),
+    ...(forms?.layout ? { forms: { layout: forms.layout } } : {}),
+  };
+}
+
 export function getAboutClientMessages(messages: MessageTree): MessageTree {
   const contentAbout = pickContentSections(messages, ["about"]);
   return {
