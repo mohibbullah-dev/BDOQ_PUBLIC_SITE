@@ -17,7 +17,8 @@ export function BlogCard({ post }: IBlogCardProps) {
   const t = useTranslations("content.blog");
 
   return (
-    <article className="group bg-white rounded-2xl border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden hover:-translate-y-1 flex flex-col h-full">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+      <span className="site-card-hover-overlay z-0" aria-hidden="true" />
       <Link href={`/blog/${post.slug}`} className="block">
         <GradientPlaceholder
           gradient={getBlogImageGradient(post.image)}
@@ -25,7 +26,7 @@ export function BlogCard({ post }: IBlogCardProps) {
           label={post.title}
         />
       </Link>
-      <div className="p-5 flex flex-col flex-1">
+      <div className="relative z-[1] flex flex-col flex-1 p-5">
         <div className="flex flex-wrap gap-2 mb-3">
           {post.tags.map((tag) => (
             <span

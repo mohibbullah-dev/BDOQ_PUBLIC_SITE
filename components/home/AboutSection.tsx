@@ -51,7 +51,7 @@ export function AboutSection() {
                 className={cn(
                   "inline-flex items-center justify-center rounded-full px-7 py-3",
                   "bg-[var(--green-primary)] font-inter text-sm font-semibold text-white",
-                  "transition-all duration-300 hover:bg-[var(--green-dark)] hover:shadow-md"
+                  "transition-all duration-300 hover:brightness-95 hover:shadow-md"
                 )}
               >
                 {tCta("bookFreeTrial")}

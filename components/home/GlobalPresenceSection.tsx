@@ -27,12 +27,9 @@ function CountryPresenceCard({ country, index }: ICountryPresenceCardProps) {
           className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-primary/[0.06] transition-transform duration-500 group-hover:scale-125"
           aria-hidden="true"
         />
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-          aria-hidden="true"
-        />
+        <span className="site-card-hover-overlay z-0" aria-hidden="true" />
 
-        <div className="relative flex flex-col items-center gap-3 text-center">
+        <div className="relative z-[1] flex flex-col items-center gap-3 text-center">
           <div className="relative h-11 w-[4.25rem] overflow-hidden rounded-lg shadow-md ring-1 ring-black/10 transition-transform duration-300 group-hover:scale-105 sm:h-12 sm:w-[4.75rem]">
             <Image
               src={`https://flagcdn.com/w320/${country.code}.png`}

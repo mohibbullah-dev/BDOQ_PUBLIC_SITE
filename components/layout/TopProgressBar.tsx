@@ -90,7 +90,7 @@ function TopProgressBarInner() {
       <div
         className={cn(
           "h-full bg-gradient-to-r from-brand-light via-brand to-brand-dark",
-          "shadow-[0_0_10px_rgba(232,75,58,0.5)]",
+          "shadow-[0_0_10px_rgba(50,201,145,0.5)]",
           "transition-[width] duration-200 ease-out motion-reduce:transition-none"
         )}
         style={{ width: `${progress}%` }}

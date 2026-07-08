@@ -337,8 +337,16 @@ BDOQ Academy packages start from ৳2,000/month with classes 2–5 days per week
     },
   },
   about: {
+    purposeEyebrow: "Purpose & Direction",
+    purposeTitle: "Mission & Vision — BDOQ Academy",
+    purposeSubtitle:
+      "Our purpose and future goals — combining technology, quality, and Islamic values.",
     mission: "Our Mission",
+    missionSubtitle:
+      "Delivering quality, safe, and structured Quran education for every learner.",
     vision: "Our Vision",
+    visionSubtitle:
+      "Becoming a globally trusted online Quran education platform.",
     classSystemTitle: "BDOQ Academy — Class System & Promise",
     classSystem: "Class system",
     ourPromise: "Our promise",

@@ -63,7 +63,7 @@ export function HeroCarouselDots({
                   key={progressKey}
                   className={cn(
                     "absolute inset-0 rounded-full",
-                    "bg-[linear-gradient(90deg,var(--gold),#E84B3A)]",
+                    "bg-[var(--green-primary)]",
                     "animate-hero-dot-progress"
                   )}
                   style={{

@@ -22,7 +22,7 @@ const config: Config = {
       colors: {
         primary: {
           DEFAULT: "#32C991",
-          dark: "#269B6F",
+          dark: "#32C991",
           mint: "#ADEBB3",
         },
         teal: {
@@ -30,12 +30,12 @@ const config: Config = {
           DEFAULT: "#0D9488",
         },
         brand: {
-          DEFAULT: "#E84B3A",
-          light: "#FFDDD6",
-          dark: "#C62828",
+          DEFAULT: "#32C991",
+          light: "#E8FAF2",
+          dark: "#32C991",
         },
-        gold: "#E84B3A",
-        "gold-light": "#FFDDD6",
+        gold: "#32C991",
+        "gold-light": "#E8FAF2",
         "bg-light": "#E8FAF2",
         cream: "#FDF6E3",
         dark: "#0A1628",

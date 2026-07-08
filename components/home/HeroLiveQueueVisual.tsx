@@ -77,7 +77,7 @@ export function HeroLiveQueueVisual() {
               <span className="absolute inline-flex h-full w-full animate-hero-live-pulse rounded-full bg-emerald-500" />
               <span className="relative inline-flex h-full w-full rounded-full bg-emerald-500" />
             </span>
-            <span className="truncate font-inter text-xs font-bold uppercase tracking-wide text-[#269B6F] sm:text-sm">
+            <span className="truncate font-inter text-xs font-bold uppercase tracking-wide text-[#32C991] sm:text-sm">
               Live Class Queue
             </span>
           </div>
@@ -144,7 +144,7 @@ export function HeroLiveQueueVisual() {
                     >
                       <div className="flex items-start justify-between gap-2 sm:gap-3">
                         <div className="min-w-0 flex-1">
-                          <p className="truncate font-inter text-sm font-bold text-[#269B6F] sm:text-base">
+                          <p className="truncate font-inter text-sm font-bold text-[#32C991] sm:text-base">
                             {session.studentLabel}
                           </p>
                           <p className="truncate font-inter text-xs text-[#6B7280] sm:text-sm">
@@ -244,7 +244,7 @@ export function HeroLiveQueueVisual() {
                   ))}
               </div>
               <div className="shrink-0 text-right">
-                <p className="font-inter text-lg font-bold text-[#269B6F] sm:text-xl">
+                <p className="font-inter text-lg font-bold text-[#32C991] sm:text-xl">
                   {isLoading ? "…" : activeTeacherDisplay}
                 </p>
                 <p className="font-inter text-[10px] text-[#6B7280]">

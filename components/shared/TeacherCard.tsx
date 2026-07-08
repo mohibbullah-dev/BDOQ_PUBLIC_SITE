@@ -14,8 +14,9 @@ export function TeacherCard({
   avatarVariant,
 }: ITeacherCardProps) {
   return (
-    <article className="flex flex-col h-full rounded-2xl bg-white border border-gray-100 p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center">
-      <div className="flex justify-center mb-4">
+    <article className="group relative flex flex-col h-full rounded-2xl bg-white border border-gray-100 p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center overflow-hidden">
+      <span className="site-card-hover-overlay z-0" aria-hidden="true" />
+      <div className="relative z-[1] flex justify-center mb-4">
         <TeacherAvatar
           teacher={teacher}
           avatarVariant={avatarVariant}
@@ -36,7 +37,7 @@ export function TeacherCard({
       {showDetailsLink && (
         <Link
           href={`/teachers/${teacher.slug}`}
-          className="mt-auto inline-flex items-center justify-center rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold px-5 py-2 text-sm transition-all duration-300"
+          className="site-btn-hover-overlay relative z-[1] mt-auto inline-flex items-center justify-center rounded-full border-2 border-primary text-primary hover:text-white font-semibold px-5 py-2 text-sm transition-all duration-300"
         >
           See details
         </Link>

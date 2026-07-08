@@ -60,7 +60,7 @@ export function NavDropdown({ item }: INavDropdownProps) {
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="absolute left-0 top-full z-[100] min-w-[240px] pt-2"
           >
-            <div className="overflow-hidden rounded-[8px] border border-[var(--nav-hover)]/15 bg-white py-2 shadow-[0_18px_40px_-12px_rgba(189,68,64,0.28)] ring-1 ring-black/5">
+            <div className="overflow-hidden rounded-[8px] border border-[var(--nav-hover)]/15 bg-white py-2 shadow-[0_18px_40px_-12px_rgba(50,201,145,0.28)] ring-1 ring-black/5">
               {item.children.map((child) => {
                 const childActive = isNavLinkActive(child.href, pathname);
 

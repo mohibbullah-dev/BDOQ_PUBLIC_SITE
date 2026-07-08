@@ -53,7 +53,7 @@ export function WizardNavigation({
           type="button"
           onClick={onNext}
           disabled={isSubmitting}
-          className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-primary px-8 font-inter text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-dark hover:shadow-xl disabled:opacity-60"
+          className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-primary px-8 font-inter text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:shadow-xl disabled:opacity-60"
         >
           {nextLabel ?? t("continue")}
           <ArrowRight className="h-4 w-4" aria-hidden="true" />

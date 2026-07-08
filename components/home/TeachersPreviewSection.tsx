@@ -61,7 +61,7 @@ export function TeachersPreviewSection({ teachers }: { teachers: ITeacher[] }) {
         <ScrollReveal delay={0.2} className="text-center mt-10">
           <Link
             href="/teachers"
-            className="inline-flex items-center justify-center rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold px-8 py-3 transition-all duration-300"
+            className="site-btn-hover-overlay inline-flex items-center justify-center rounded-full border-2 border-primary text-primary font-semibold px-8 py-3 transition-all duration-300"
           >
             {tCta("seeAllMentors")}
           </Link>

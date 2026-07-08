@@ -109,9 +109,9 @@ export async function Footer() {
               links={socialLinks}
               className="flex-wrap gap-2.5"
               iconClassName={cn(
-                "flex h-9 w-9 items-center justify-center rounded-[8px]",
+                "site-btn-hover-overlay flex h-9 w-9 items-center justify-center rounded-[8px]",
                 "border border-[var(--green-primary)]/20 bg-white/95 text-[var(--green-dark)] shadow-sm",
-                "transition-all duration-300 hover:border-[var(--green-primary)] hover:bg-[var(--green-primary)] hover:text-white"
+                "transition-all duration-300 hover:border-[var(--green-primary)]"
               )}
             />
           </div>

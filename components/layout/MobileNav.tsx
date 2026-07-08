@@ -144,7 +144,7 @@ export function MobileNav({ items, isOpen, onClose }: IMobileNavProps) {
           transition={{ duration: 0.2 }}
         >
           <motion.div
-            className="absolute inset-0 bg-[#269B6F]"
+            className="absolute inset-0 bg-[#32C991]"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}

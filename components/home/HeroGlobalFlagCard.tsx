@@ -18,7 +18,7 @@ export function HeroGlobalFlagCard({ country }: IHeroGlobalFlagCardProps) {
           quality={90}
         />
       </div>
-      <span className="max-w-full truncate font-inter text-[9px] font-semibold text-[#269B6F] sm:text-[10px]">
+      <span className="max-w-full truncate font-inter text-[9px] font-semibold text-[#32C991] sm:text-[10px]">
         {country.name}
       </span>
     </div>

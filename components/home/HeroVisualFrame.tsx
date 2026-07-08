@@ -12,9 +12,9 @@ interface IHeroVisualFrameProps {
 }
 
 const ACCENT_BAR = {
-  teal: "from-teal-accent via-[#32C991] to-[#269B6F]",
-  gold: "from-[var(--gold)] via-[#32C991] to-[#269B6F]",
-  green: "from-emerald-400 via-[#32C991] to-[#269B6F]",
+  teal: "from-teal-accent via-[#32C991] to-[#32C991]",
+  gold: "from-[var(--gold)] via-[#32C991] to-[#32C991]",
+  green: "from-emerald-400 via-[#32C991] to-[#32C991]",
 } as const;
 
 export function HeroVisualFrame({
@@ -53,7 +53,7 @@ export function HeroVisualFrame({
         {label && (
           <p
             className={cn(
-              "border-b border-gray-100 bg-white font-inter font-bold uppercase text-[#269B6F]",
+              "border-b border-gray-100 bg-white font-inter font-bold uppercase text-[#32C991]",
               isSection
                 ? "px-5 py-3 text-[11px] tracking-[0.14em] sm:px-8 sm:py-3.5 sm:text-xs"
                 : "px-3 py-2.5 text-[10px] tracking-[0.12em] sm:px-5 sm:py-3 sm:text-[11px] sm:tracking-[0.14em]"

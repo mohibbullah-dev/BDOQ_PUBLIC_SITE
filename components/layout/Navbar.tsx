@@ -67,7 +67,7 @@ export function Navbar() {
           >
             <Link
               href="/"
-              className="group flex h-full max-h-full shrink-0 items-center py-2 lg:py-2.5"
+              className="group flex h-full max-h-full shrink-0 items-center py-1.5 lg:py-2"
               onClick={closeMobile}
             >
               <BdoqLogo
@@ -100,7 +100,7 @@ export function Navbar() {
                   "xl:px-4 xl:py-2",
                   isOverlay
                     ? "border-white/35 text-white hover:border-white hover:bg-white/10"
-                    : "border-[var(--green-primary)] text-[var(--green-primary)] hover:bg-[var(--green-primary)] hover:text-white"
+                    : "site-btn-hover-overlay border-[var(--green-primary)] text-[var(--green-primary)]"
                 )}
               >
                 {tNav("login")}

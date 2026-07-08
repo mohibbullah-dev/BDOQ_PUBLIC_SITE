@@ -32,14 +32,14 @@ export function QuranVerseMarquee() {
       aria-label={MARQUEE_ARIA[locale]}
     >
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 z-20 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/50 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 z-20 h-0.5 bg-gradient-to-r from-transparent via-[var(--green-primary)] to-transparent"
         aria-hidden="true"
       />
 
-      <div className="absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#E8FAF2] via-[#E8FAF2]/90 to-transparent" />
-      <div className="absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#E8FAF2] via-[#E8FAF2]/90 to-transparent" />
+      <div className="absolute inset-y-0 left-0 z-10 w-28 bg-gradient-to-r from-white via-white/95 to-transparent" />
+      <div className="absolute inset-y-0 right-0 z-10 w-28 bg-gradient-to-l from-white via-white/95 to-transparent" />
 
-      <div className="flex h-11 items-center overflow-hidden xl:h-12">
+      <div className="flex h-14 items-center overflow-hidden xl:h-[3.75rem]">
         <div className="flex w-max flex-row items-center whitespace-nowrap animate-marquee-left motion-reduce:animate-none group-hover/marquee:[animation-play-state:paused]">
           {loopItems.map((item, index) => (
             <QuranVerseMarqueeItem key={`${item.id}-${index}`} item={item} />

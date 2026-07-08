@@ -74,7 +74,7 @@ export function VideoPlayerModal({
             )}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="text-on-dark relative overflow-hidden bg-[linear-gradient(135deg,#269B6F_0%,#32C991_55%,#0D9488_100%)] px-5 py-5 text-white sm:px-6 sm:py-6">
+            <div className="text-on-dark relative overflow-hidden bg-[var(--green-primary)] px-5 py-5 text-white sm:px-6 sm:py-6">
               <div className="relative flex items-start justify-between gap-4">
                 <div className="flex min-w-0 flex-1 items-start gap-3 sm:gap-4">
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm sm:h-12 sm:w-12">

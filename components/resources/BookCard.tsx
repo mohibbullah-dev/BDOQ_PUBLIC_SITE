@@ -21,6 +21,7 @@ export function BookCard({ book, onView, onDownload }: IBookCardProps) {
 
   return (
     <article className="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+      <span className="site-card-hover-overlay z-0" aria-hidden="true" />
       {book.featured ? (
         <span className="absolute right-3 top-3 z-10 inline-flex items-center gap-1 rounded-full bg-gold px-2.5 py-1 font-inter text-[10px] font-bold uppercase tracking-wide text-primary-dark shadow-sm">
           <Star className="size-3 fill-current" aria-hidden="true" />
@@ -34,7 +35,7 @@ export function BookCard({ book, onView, onDownload }: IBookCardProps) {
           label={tItem("title")}
         />
       </Link>
-      <div className="space-y-3 p-5">
+      <div className="relative z-[1] space-y-3 p-5">
         <span className="inline-block rounded-full bg-bg-light px-3 py-1 font-inter text-xs font-medium text-primary">
           {t(`categories.${categoryKey}`)}
         </span>
@@ -55,7 +56,7 @@ export function BookCard({ book, onView, onDownload }: IBookCardProps) {
             onClick={() => onDownload(book)}
             className={cn(
               "inline-flex min-h-[44px] items-center gap-2 rounded-full bg-primary px-5 py-2",
-              "font-inter text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+              "font-inter text-sm font-semibold text-white transition-colors"
             )}
           >
             <Download className="h-4 w-4" aria-hidden="true" />
@@ -66,7 +67,7 @@ export function BookCard({ book, onView, onDownload }: IBookCardProps) {
             onClick={() => onView(book)}
             className={cn(
               "inline-flex min-h-[44px] items-center gap-2 rounded-full border-2 border-primary px-5 py-2",
-              "font-inter text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
+              "font-inter text-sm font-semibold text-primary transition-colors"
             )}
           >
             <Eye className="h-4 w-4" aria-hidden="true" />

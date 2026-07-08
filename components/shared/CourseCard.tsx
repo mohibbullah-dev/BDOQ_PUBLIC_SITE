@@ -34,15 +34,16 @@ export function CourseCard({ course, variant = "default" }: ICourseCardProps) {
   return (
     <article
       className={cn(
-        "flex flex-col h-full rounded-2xl bg-white border overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl",
+        "group relative flex flex-col h-full rounded-2xl bg-white border overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl",
         isFeatured
           ? "border-gold shadow-lg ring-2 ring-gold/30"
           : "border-gray-100 shadow-md"
       )}
     >
+      <span className="site-card-hover-overlay z-[1]" aria-hidden="true" />
       <div
         className={cn(
-          "flex items-center justify-center bg-gradient-to-br min-h-[140px]",
+          "relative z-[2] flex items-center justify-center bg-gradient-to-br min-h-[140px]",
           getCourseGradient(course.slug)
         )}
       >
@@ -51,7 +52,7 @@ export function CourseCard({ course, variant = "default" }: ICourseCardProps) {
         </span>
       </div>
 
-      <div className="flex flex-col flex-1 p-6">
+      <div className="relative z-[2] flex flex-col flex-1 p-6">
         {localized.target && (
           <span className="inline-block self-start rounded-full bg-bg-light px-2.5 py-0.5 text-xs font-medium text-primary mb-3">
             {localized.target}
@@ -65,7 +66,7 @@ export function CourseCard({ course, variant = "default" }: ICourseCardProps) {
         </p>
         <Link
           href={`/courses/${course.slug}`}
-          className="inline-flex items-center justify-center rounded-full bg-primary hover:bg-primary-dark text-white font-semibold px-6 py-2.5 text-sm transition-all duration-300"
+          className="site-btn-hover-overlay site-btn-hover-overlay--filled relative z-[2] inline-flex items-center justify-center rounded-full bg-primary text-white font-semibold px-6 py-2.5 text-sm transition-all duration-300"
         >
           {tCta("enrollNow")}
         </Link>

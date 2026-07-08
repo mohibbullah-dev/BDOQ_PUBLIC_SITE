@@ -35,7 +35,7 @@ export function Testimonial3DCard({
           unoptimized={!avatarSrc.includes("res.cloudinary.com")}
         />
         <div className="min-w-0 text-left">
-          <p className="truncate font-inter text-sm font-bold text-[#269B6F]">
+          <p className="truncate font-inter text-sm font-bold text-[#32C991]">
             {testimonial.name}
           </p>
           <p className="truncate font-inter text-xs text-[#6B7280]">

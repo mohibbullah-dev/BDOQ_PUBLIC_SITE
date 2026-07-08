@@ -224,9 +224,9 @@ export const homeMessages = {
   },
   liveAcademy: {
     eyebrow: "Live Academy System",
-    title: "See our virtual classroom running in real time",
+    title: "A Software-Powered Modern Quran Education Institution",
     subtitle:
-      "Live class queues and online teachers from the BDOQ Academy portal — updated as classes happen.",
+      "At BDOQ, classes, payments, attendance, progress, and teacher management are all run from one smart platform. Every student gets their own Student Portal where they can easily view classes, reports, and learning progress.",
     adminImageAlt: "BDOQ Academy admin portal overview",
     panelLabel: "BDOQ Portal · Live Dashboard",
     slideQueue: "Live Class Queue",

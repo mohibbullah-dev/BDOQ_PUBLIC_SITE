@@ -94,7 +94,7 @@ function FAQAccordionItem({
           <span className="mb-1 block font-inter text-[11px] font-bold uppercase tracking-widest text-[#6B7280]">
             Question {String(index + 1).padStart(2, "0")}
           </span>
-          <span className="font-inter text-base font-semibold leading-snug text-[#269B6F] md:text-[17px]">
+          <span className="font-inter text-base font-semibold leading-snug text-[#32C991] md:text-[17px]">
             {t("q")}
           </span>
         </span>
@@ -171,7 +171,7 @@ export function FAQSection({ items = [] }: { items?: IFAQItem[] }) {
                 {t("eyebrow")}
               </span>
 
-              <h2 className="font-playfair text-3xl font-bold leading-tight text-[#269B6F] md:text-4xl lg:text-[2.75rem]">
+              <h2 className="font-playfair text-3xl font-bold leading-tight text-[#32C991] md:text-4xl lg:text-[2.75rem]">
                 {t("title")}
                 <span className="mt-1 block text-[#32C991]">
                   {t("titleAccent")}
@@ -188,7 +188,7 @@ export function FAQSection({ items = [] }: { items?: IFAQItem[] }) {
                     key={item.labelKey}
                     className="rounded-2xl border border-white/80 bg-white/90 px-3 py-4 text-center shadow-sm"
                   >
-                    <p className="font-inter text-xl font-bold text-[#269B6F]">
+                    <p className="font-inter text-xl font-bold text-[#32C991]">
                       {item.value}
                     </p>
                     <p className="mt-1 font-inter text-[10px] uppercase tracking-wide text-[#6B7280]">
@@ -204,7 +204,7 @@ export function FAQSection({ items = [] }: { items?: IFAQItem[] }) {
                   className={cn(
                     "inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5",
                     "bg-[#32C991] font-inter text-sm font-semibold text-white",
-                    "transition-all duration-300 hover:bg-[#269B6F] hover:shadow-lg"
+                    "transition-all duration-300 hover:bg-[#32C991] hover:shadow-lg"
                   )}
                 >
                   {tCta("bookFreeTrial")}

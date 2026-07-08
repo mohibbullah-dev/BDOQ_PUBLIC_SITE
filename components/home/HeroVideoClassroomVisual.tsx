@@ -46,13 +46,13 @@ function ParticipantTile({
         className={cn(
           "mb-2 flex h-14 w-14 items-center justify-center rounded-full text-sm font-bold text-white shadow-md",
           accent === "teacher"
-            ? "bg-[linear-gradient(135deg,#32C991,#269B6F)]"
-            : "bg-[linear-gradient(135deg,#0D9488,#269B6F)]"
+            ? "bg-[linear-gradient(135deg,#32C991,#32C991)]"
+            : "bg-[linear-gradient(135deg,#0D9488,#32C991)]"
         )}
       >
         {initials}
       </div>
-      <p className="font-inter text-sm font-bold text-[#269B6F]">{name}</p>
+      <p className="font-inter text-sm font-bold text-[#32C991]">{name}</p>
       <p className="text-xs text-[#6B7280]">{role}</p>
       {badge && (
         <span className="mt-1.5 rounded-full bg-[var(--gold)]/15 px-2 py-0.5 text-[9px] font-bold uppercase text-[var(--gold)]">
@@ -82,7 +82,7 @@ export function HeroVideoClassroomVisual() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60" />
               <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-500" />
             </span>
-            <span className="font-inter text-sm font-bold uppercase tracking-wide text-[#269B6F]">
+            <span className="font-inter text-sm font-bold uppercase tracking-wide text-[#32C991]">
               Live Session
             </span>
           </div>
@@ -96,7 +96,7 @@ export function HeroVideoClassroomVisual() {
           className={heroPanel("mb-3 overflow-hidden p-0")}
         >
           <div className="flex items-center justify-between border-b border-gray-100 bg-[#E8FAF2] px-3 py-2">
-            <span className="flex items-center gap-1.5 text-xs font-semibold text-[#269B6F]">
+            <span className="flex items-center gap-1.5 text-xs font-semibold text-[#32C991]">
               <Video className="h-3.5 w-3.5" aria-hidden="true" />
               Tajweed Â· Sisters Class
             </span>
@@ -125,12 +125,12 @@ export function HeroVideoClassroomVisual() {
               className="h-4 w-4 text-[var(--gold)]"
               aria-hidden="true"
             />
-            <span className="text-xs font-bold text-[#269B6F]">
+            <span className="text-xs font-bold text-[#32C991]">
               Shared Lesson Â· Surah Al-Fatiha
             </span>
           </div>
           <div className="rounded-lg bg-[#E8FAF2] px-3 py-2">
-            <p className="font-arabic text-right text-lg leading-relaxed text-[#269B6F]">
+            <p className="font-arabic text-right text-lg leading-relaxed text-[#32C991]">
               Ø¨ÙØ³Ù’Ù…Ù Ø§Ù„Ù„ÙŽÙ‘Ù‡Ù Ø§Ù„Ø±ÙŽÙ‘Ø­Ù’Ù…ÙŽÙ°Ù†Ù
               Ø§Ù„Ø±ÙŽÙ‘Ø­ÙÙŠÙ…Ù
             </p>
@@ -156,7 +156,7 @@ export function HeroVideoClassroomVisual() {
             <span className="ml-1 text-xs text-[#6B7280]">+4 more</span>
           </div>
           <div className="text-right">
-            <p className="font-inter text-lg font-bold text-[#269B6F]">300+</p>
+            <p className="font-inter text-lg font-bold text-[#32C991]">300+</p>
             <p className="text-[10px] text-[#6B7280]">Students</p>
           </div>
         </motion.div>

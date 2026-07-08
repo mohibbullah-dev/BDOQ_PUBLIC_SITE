@@ -58,7 +58,7 @@ function ClassPathCard({
           Private
         </span>
       </div>
-      <p className="font-inter text-sm font-bold text-[#269B6F]">{title}</p>
+      <p className="font-inter text-sm font-bold text-[#32C991]">{title}</p>
       <p className="mb-2 text-xs text-[#6B7280]">{subtitle}</p>
       <div className="mt-auto space-y-1 border-t border-gray-100 pt-2">
         <p className="text-[10px] text-[#6B7280]">{teacher}</p>
@@ -76,7 +76,7 @@ export function HeroPrivacyVisual() {
           {...fadeIn(0)}
           className="mb-4 flex items-center justify-between gap-2"
         >
-          <span className="flex items-center gap-2 font-inter text-sm font-bold uppercase tracking-wide text-[#269B6F]">
+          <span className="flex items-center gap-2 font-inter text-sm font-bold uppercase tracking-wide text-[#32C991]">
             <ShieldCheck
               className="h-5 w-5 text-[var(--gold)]"
               aria-hidden="true"
@@ -111,7 +111,7 @@ export function HeroPrivacyVisual() {
               <Baby className="h-5 w-5" aria-hidden="true" />
             </span>
             <div>
-              <p className="font-inter text-sm font-bold text-[#269B6F]">
+              <p className="font-inter text-sm font-bold text-[#32C991]">
                 Children&apos;s Classes
               </p>
               <p className="mt-1 text-xs leading-relaxed text-[#6B7280]">
@@ -129,7 +129,7 @@ export function HeroPrivacyVisual() {
             { label: "20% Off", sub: "2nd Child" },
           ].map((item) => (
             <div key={item.label} className={heroStatBox()}>
-              <p className="font-inter text-xs font-bold text-[#269B6F]">
+              <p className="font-inter text-xs font-bold text-[#32C991]">
                 {item.label}
               </p>
               <p className="text-[10px] text-[#6B7280]">{item.sub}</p>
@@ -145,7 +145,7 @@ export function HeroPrivacyVisual() {
             className="h-4 w-4 shrink-0 text-[var(--gold)]"
             aria-hidden="true"
           />
-          <p className="text-xs leading-relaxed text-[#269B6F]">
+          <p className="text-xs leading-relaxed text-[#32C991]">
             Your family&apos;s dignity is protected â€” learning stays private,
             respectful, and within Islamic values.
           </p>

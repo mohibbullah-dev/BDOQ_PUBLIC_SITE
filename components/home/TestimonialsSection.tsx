@@ -32,7 +32,7 @@ export function TestimonialsSection({
           <span
             className={cn(
               "mb-4 inline-flex items-center rounded-full border border-[var(--gold)]/35",
-              "bg-[rgba(232,75,58,0.12)] px-4 py-1.5",
+              "bg-[rgba(50,201,145,0.12)] px-4 py-1.5",
               "font-inter text-xs font-semibold uppercase tracking-widest text-[var(--gold-light)]"
             )}
           >
@@ -56,8 +56,8 @@ export function TestimonialsSection({
               href="/free-class"
               className={cn(
                 "inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5",
-                "bg-[linear-gradient(135deg,#E84B3A,#C62828)] font-inter text-sm font-bold text-white",
-                "transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_12px_32px_rgba(232,75,58,0.35)]"
+                "bg-[var(--green-primary)] font-inter text-sm font-bold text-white",
+                "transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_12px_32px_rgba(50,201,145,0.35)]"
               )}
             >
               {tCta("bookFreeClass")}
@@ -67,9 +67,9 @@ export function TestimonialsSection({
             <Link
               href="/reviews"
               className={cn(
-                "inline-flex items-center justify-center gap-2 rounded-full border-2 border-[var(--green-primary)] px-8 py-3.5",
+                "site-btn-hover-overlay inline-flex items-center justify-center gap-2 rounded-full border-2 border-[var(--green-primary)] px-8 py-3.5",
                 "bg-white font-inter text-sm font-semibold text-[var(--green-primary)]",
-                "transition-all duration-300 hover:bg-[var(--green-primary)] hover:text-white"
+                "transition-all duration-300"
               )}
             >
               {tCta("allReviews")}
@@ -82,7 +82,7 @@ export function TestimonialsSection({
               numPeople={300}
               avatarUrls={getTestimonialAvatarUrls()}
               avatarClassName="border-[#32C991] bg-[#E8FAF2]"
-              countClassName="border-[#32C991] bg-[#269B6F] text-white"
+              countClassName="border-[#32C991] bg-[#32C991] text-white"
               className="justify-center"
             />
             <p className="font-inter text-sm text-[var(--text-gray)]">

@@ -56,7 +56,7 @@ export function PricingPageContent({ packages }: { packages: IPackage[] }) {
             </p>
             <Link
               href="/free-class"
-              className="inline-flex items-center justify-center rounded-full bg-gold hover:bg-gold/90 text-white font-bold px-8 py-3.5 text-sm tracking-wide transition-all duration-300 hover:shadow-lg"
+              className="inline-flex items-center justify-center rounded-full bg-primary text-white font-bold px-8 py-3.5 text-sm tracking-wide transition-all duration-300 hover:shadow-lg"
             >
               {tPages("registerFree")}
             </Link>

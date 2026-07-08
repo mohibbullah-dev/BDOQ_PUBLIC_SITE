@@ -36,11 +36,11 @@ export function HeroFreeTrialVisual() {
           {...fadeIn(0)}
           className="mb-4 flex items-center justify-between gap-2"
         >
-          <span className="flex items-center gap-2 font-inter text-sm font-bold uppercase tracking-wide text-[#269B6F]">
+          <span className="flex items-center gap-2 font-inter text-sm font-bold uppercase tracking-wide text-[#32C991]">
             <Gift className="h-5 w-5 text-[var(--gold)]" aria-hidden="true" />
             Free Trial Booking
           </span>
-          <span className="rounded-full bg-[linear-gradient(135deg,#E84B3A,#C62828)] px-3 py-1 text-[11px] font-bold text-white">
+          <span className="rounded-full bg-[var(--green-primary)] px-3 py-1 text-[11px] font-bold text-white">
             100% Free
           </span>
         </motion.div>
@@ -82,7 +82,7 @@ export function HeroFreeTrialVisual() {
         </motion.div>
 
         <motion.div {...fadeIn(0.14)} className={heroPanel("mb-4 space-y-3")}>
-          <p className="font-playfair text-xl font-bold text-[#269B6F]">
+          <p className="font-playfair text-xl font-bold text-[#32C991]">
             Your First Class
             <span className="ml-1 text-[var(--gold)]">Is Free</span>
           </p>
@@ -121,7 +121,7 @@ export function HeroFreeTrialVisual() {
                   className={cn(
                     "text-sm",
                     highlight
-                      ? "font-semibold text-[#269B6F]"
+                      ? "font-semibold text-[#32C991]"
                       : "text-[#6B7280]"
                   )}
                 >
@@ -137,7 +137,7 @@ export function HeroFreeTrialVisual() {
             href="/free-class"
             className={cn(
               "flex w-full items-center justify-center gap-2 rounded-full py-3.5",
-              "bg-[linear-gradient(135deg,#E84B3A,#C62828)] font-inter text-sm font-bold text-white",
+              "bg-[var(--green-primary)] font-inter text-sm font-bold text-white",
               "shadow-lg transition-all duration-300 hover:scale-[1.02]"
             )}
           >

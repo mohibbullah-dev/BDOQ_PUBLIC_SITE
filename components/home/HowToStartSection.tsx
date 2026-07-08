@@ -44,14 +44,7 @@ function StepCard({ step, index }: IStepCardProps) {
           isCenter && "lg:shadow-[0_24px_56px_-20px_rgba(50,201,145,0.32)]"
         )}
       >
-        <span
-          className={cn(
-            "pointer-events-none absolute inset-0 z-[1] bg-[var(--brand-overlay)]",
-            "opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
-            "group-hover:opacity-100"
-          )}
-          aria-hidden="true"
-        />
+        <span className="site-card-hover-overlay z-[1]" aria-hidden="true" />
 
         <div className="relative z-[2] p-3 sm:p-4 sm:pb-0">
           <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[8px]">
@@ -63,14 +56,14 @@ function StepCard({ step, index }: IStepCardProps) {
               sizes="(max-width: 768px) 100vw, 33vw"
             />
             <div
-              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0B5D3B]/50 via-transparent to-transparent opacity-80"
+              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#32C991]/50 via-transparent to-transparent opacity-80"
               aria-hidden="true"
             />
 
             <span
               className={cn(
                 "absolute left-3 top-3 rounded-full px-3 py-1",
-                "bg-white/95 font-inter text-[11px] font-bold uppercase tracking-wider text-[#0B5D3B]",
+                "bg-white/95 font-inter text-[11px] font-bold uppercase tracking-wider text-[#32C991]",
                 "shadow-sm backdrop-blur-sm sm:text-xs"
               )}
             >
@@ -115,7 +108,7 @@ function StepCard({ step, index }: IStepCardProps) {
           </p>
 
           <span
-            className="mt-4 h-0.5 w-0 rounded-full bg-[var(--brand-red)] transition-all duration-500 group-hover:w-10"
+            className="mt-4 h-0.5 w-0 rounded-full bg-[var(--green-primary)] transition-all duration-500 group-hover:w-10"
             aria-hidden="true"
           />
         </div>
@@ -142,7 +135,7 @@ export function HowToStartSection() {
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-[var(--brand-red)]/[0.05] blur-3xl"
+        className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-[var(--green-primary)]/[0.05] blur-3xl"
         aria-hidden="true"
       />
 
@@ -170,8 +163,8 @@ export function HowToStartSection() {
             href="/free-class"
             className={cn(
               "inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5",
-              "bg-[linear-gradient(135deg,#E84B3A,#C62828)] font-inter text-sm font-semibold text-white",
-              "shadow-[0_12px_28px_-8px_rgba(232,75,58,0.45)]",
+              "bg-[var(--green-primary)] font-inter text-sm font-semibold text-white",
+              "shadow-[0_12px_28px_-8px_rgba(50,201,145,0.45)]",
               "transition-all duration-300 hover:scale-[1.02] hover:shadow-brand"
             )}
           >

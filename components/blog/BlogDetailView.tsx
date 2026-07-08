@@ -234,7 +234,7 @@ export function BlogDetailView({
 
                 <div
                   className={cn(
-                    "overflow-hidden rounded-2xl bg-[linear-gradient(135deg,#32C991,#269B6F)] p-5 text-white shadow-lg"
+                    "overflow-hidden rounded-2xl bg-[var(--green-primary)] p-5 text-white shadow-lg"
                   )}
                 >
                   <p className="font-inter text-lg font-semibold">

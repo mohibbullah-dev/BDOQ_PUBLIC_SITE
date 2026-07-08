@@ -58,7 +58,7 @@ function ProfileSection({
         <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#E8FAF2] text-[#32C991]">
           <Icon className="h-5 w-5" aria-hidden="true" />
         </span>
-        <h2 className="font-inter text-xl font-semibold text-[#269B6F]">
+        <h2 className="font-inter text-xl font-semibold text-[#32C991]">
           {title}
         </h2>
       </div>
@@ -122,7 +122,7 @@ export function TeacherDetailView({
                 </Link>
               </li>
               <ChevronRight className="h-4 w-4" aria-hidden="true" />
-              <li className="font-medium text-[#269B6F]">{teacher.name}</li>
+              <li className="font-medium text-[#32C991]">{teacher.name}</li>
             </ol>
           </nav>
         </div>
@@ -143,13 +143,13 @@ export function TeacherDetailView({
                     size={128}
                     className="mx-auto shadow-md"
                   />
-                  <h1 className="mt-5 font-inter text-2xl font-bold text-[#269B6F]">
+                  <h1 className="mt-5 font-inter text-2xl font-bold text-[#32C991]">
                     {teacher.name}
                   </h1>
                   <p className="mt-2 font-inter text-sm font-medium text-[#32C991]">
                     {teacher.role}
                   </p>
-                  <span className="mt-4 inline-flex items-center rounded-full bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-[#269B6F] shadow-sm">
+                  <span className="mt-4 inline-flex items-center rounded-full bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-[#32C991] shadow-sm">
                     {honorific} Â· BDOQ Academy
                   </span>
                 </div>
@@ -213,7 +213,7 @@ export function TeacherDetailView({
                     className={cn(
                       "flex w-full items-center justify-center gap-2 rounded-full px-6 py-3",
                       "bg-[#32C991] font-inter text-sm font-semibold text-white",
-                      "transition-all duration-300 hover:bg-[#269B6F] hover:shadow-lg"
+                      "transition-all duration-300 hover:bg-[#32C991] hover:shadow-lg"
                     )}
                   >
                     Book a Free Trial Class
@@ -261,7 +261,7 @@ export function TeacherDetailView({
                       className="mx-auto h-4 w-4 text-[#32C991]"
                       aria-hidden="true"
                     />
-                    <p className="mt-2 font-inter text-sm font-bold text-[#269B6F]">
+                    <p className="mt-2 font-inter text-sm font-bold text-[#32C991]">
                       {stat.value}
                     </p>
                     <p className="font-inter text-[10px] uppercase tracking-wide text-[#6B7280]">
@@ -353,7 +353,7 @@ export function TeacherDetailView({
               <p className="font-inter text-sm font-semibold uppercase tracking-wider text-[#32C991]">
                 Courses
               </p>
-              <h2 className="font-inter text-2xl font-semibold text-[#269B6F] md:text-3xl">
+              <h2 className="font-inter text-2xl font-semibold text-[#32C991] md:text-3xl">
                 All classes of {honorific}
               </h2>
             </div>
@@ -377,7 +377,7 @@ export function TeacherDetailView({
       {relatedTeachers.length > 0 && (
         <section className="py-12 md:py-16">
           <div className="site-container">
-            <h2 className="mb-8 text-center font-inter text-2xl font-semibold text-[#269B6F]">
+            <h2 className="mb-8 text-center font-inter text-2xl font-semibold text-[#32C991]">
               More {teacher.gender === "female" ? "Female" : "Male"} Teachers
             </h2>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

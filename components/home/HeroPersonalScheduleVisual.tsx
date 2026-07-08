@@ -80,7 +80,7 @@ export function HeroPersonalScheduleVisual() {
           {...fadeIn(0)}
           className="mb-4 flex items-center justify-between gap-2"
         >
-          <span className="font-inter text-sm font-bold uppercase tracking-wide text-[#269B6F]">
+          <span className="font-inter text-sm font-bold uppercase tracking-wide text-[#32C991]">
             Your Personal Plan
           </span>
           <span className={heroBadge()}>1-to-1 Focus</span>
@@ -95,7 +95,7 @@ export function HeroPersonalScheduleVisual() {
         >
           <User className="h-5 w-5 text-[#32C991]" aria-hidden="true" />
           <div>
-            <p className="font-inter text-sm font-semibold text-[#269B6F]">
+            <p className="font-inter text-sm font-semibold text-[#32C991]">
               {hasData ? "Live academy schedule" : "Flexible weekly slots"}
             </p>
             <p className="font-inter text-xs text-[#6B7280]">
@@ -162,7 +162,7 @@ export function HeroPersonalScheduleVisual() {
                 className="mx-auto mb-1 h-4 w-4 text-[#32C991]"
                 aria-hidden="true"
               />
-              <p className="font-inter text-sm font-bold text-[#269B6F]">
+              <p className="font-inter text-sm font-bold text-[#32C991]">
                 {stat.value}
               </p>
               <p className="font-inter text-[10px] text-[#6B7280]">
@@ -180,7 +180,7 @@ export function HeroPersonalScheduleVisual() {
             className="h-4 w-4 shrink-0 text-[#32C991]"
             aria-hidden="true"
           />
-          <p className="font-inter text-xs leading-relaxed text-[#269B6F]">
+          <p className="font-inter text-xs leading-relaxed text-[#32C991]">
             {hasData
               ? "Schedule preview reflects active portal session slots."
               : "Book a free trial to set your personal class schedule."}

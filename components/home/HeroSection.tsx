@@ -93,7 +93,7 @@ export function HeroSection({ stats }: { stats: IStatDisplay[] }) {
                 <p
                   className={cn(
                     "hero-eyebrow mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--gold)]",
-                    "bg-[rgba(232,75,58,0.1)] px-4 py-2",
+                    "bg-[rgba(50,201,145,0.1)] px-4 py-2",
                     "text-[13px] font-semibold uppercase tracking-wider text-[var(--gold-light)]"
                   )}
                 >
@@ -122,7 +122,7 @@ export function HeroSection({ stats }: { stats: IStatDisplay[] }) {
                     href="/free-class"
                     className={cn(
                       "inline-flex items-center justify-center gap-2 rounded-full px-8 py-4",
-                      "bg-[linear-gradient(135deg,#E84B3A,#C62828)] font-inter text-base font-bold text-white",
+                      "bg-[var(--green-primary)] font-inter text-base font-bold text-white",
                       "transition-all duration-300 hover:scale-[1.03] hover:shadow-brand"
                     )}
                   >
@@ -132,9 +132,9 @@ export function HeroSection({ stats }: { stats: IStatDisplay[] }) {
                   <Link
                     href="/about"
                     className={cn(
-                      "inline-flex items-center justify-center rounded-full border-[1.5px] border-[var(--green-primary)]",
+                      "site-btn-hover-overlay inline-flex items-center justify-center rounded-full border-[1.5px] border-[var(--green-primary)]",
                       "bg-transparent px-8 py-4 font-inter text-base font-semibold text-[var(--green-primary)]",
-                      "transition-all duration-300 hover:bg-[var(--green-primary)] hover:text-white"
+                      "transition-all duration-300"
                     )}
                   >
                     {tCta("learnMoreAboutUs")}

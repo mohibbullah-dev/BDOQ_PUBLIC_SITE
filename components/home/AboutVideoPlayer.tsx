@@ -74,7 +74,7 @@ export function AboutVideoPlayer({ compact = false }: IAboutVideoPlayerProps) {
 
         <div
           className={cn(
-            "relative overflow-hidden rounded-2xl bg-[var(--green-dark)]",
+            "relative overflow-hidden rounded-2xl bg-[var(--green-primary)]",
             compact
               ? "shadow-lg ring-1 ring-gray-200/80"
               : "shadow-[0_24px_50px_-24px_rgba(50,201,145,0.35)] ring-1 ring-[var(--green-primary)]/10 sm:rounded-3xl"
@@ -95,7 +95,7 @@ export function AboutVideoPlayer({ compact = false }: IAboutVideoPlayerProps) {
               priority={compact}
             />
             <div
-              className="absolute inset-0 bg-[var(--green-dark)]/30 transition-colors duration-300 group-hover:bg-[var(--green-dark)]/20"
+              className="absolute inset-0 bg-[var(--green-primary)]/30 transition-colors duration-300 group-hover:bg-[var(--green-primary)]/20"
               aria-hidden="true"
             />
 
@@ -103,7 +103,7 @@ export function AboutVideoPlayer({ compact = false }: IAboutVideoPlayerProps) {
               className={cn(
                 "absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center",
                 "rounded-full bg-white text-[var(--green-primary)] ring-4 ring-white/30",
-                "shadow-xl transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--brand-red)] group-hover:text-white group-hover:ring-[var(--brand-red)]/30",
+                "shadow-xl transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--green-primary)] group-hover:text-white group-hover:ring-[var(--green-primary)]/30",
                 compact ? "h-14 w-14" : "h-16 w-16 sm:h-[4.5rem] sm:w-[4.5rem]"
               )}
             >

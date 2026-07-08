@@ -66,7 +66,9 @@ function AvatarChip({
     <div
       className={cn(
         "flex h-10 w-10 shrink-0 items-center justify-center rounded-[8px] font-inter text-xs font-bold text-white shadow-sm ring-2 ring-white",
-        tone === "teacher" ? "bg-[var(--green-dark)]" : "bg-[var(--nav-hover)]"
+        tone === "teacher"
+          ? "bg-[var(--green-dark)]"
+          : "bg-[var(--green-primary)]"
       )}
       title={label}
     >
@@ -286,7 +288,7 @@ function EmptyQueueState({
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute -bottom-12 -left-8 h-32 w-32 rounded-full bg-[#BD4440]/10 blur-3xl"
+        className="pointer-events-none absolute -bottom-12 -left-8 h-32 w-32 rounded-full bg-[var(--green-primary)]/10 blur-3xl"
         aria-hidden="true"
       />
 
@@ -375,7 +377,7 @@ function TeachersSlide({
 }) {
   return (
     <div className="space-y-4">
-      <div className="relative overflow-hidden rounded-[8px] border border-[var(--green-primary)]/15 bg-gradient-to-br from-[var(--green-dark)] via-[#0E6B45] to-[#0B5D3B] px-4 py-5 text-white shadow-md">
+      <div className="relative overflow-hidden rounded-[8px] border border-[var(--green-primary)]/15 bg-gradient-to-br from-[var(--green-dark)] via-[#32C991] to-[#32C991] px-4 py-5 text-white shadow-md">
         <div
           className="pointer-events-none absolute inset-0 opacity-15"
           style={{
@@ -552,7 +554,7 @@ function LiveTrackingPanel({
       aria-roledescription="carousel"
       aria-label={t("panelLabel")}
     >
-      <div className="h-1.5 w-full bg-gradient-to-r from-[var(--green-primary)] via-[#269B6F] to-[var(--nav-hover)]" />
+      <div className="h-1.5 w-full bg-gradient-to-r from-[var(--green-primary)] via-[#32C991] to-[var(--green-primary)]" />
 
       <div className="flex items-center justify-between gap-2 border-b border-gray-100 bg-[#FAFCFA] px-4 py-3 sm:px-5">
         <div className="flex min-w-0 items-center gap-2">
@@ -610,8 +612,8 @@ function LiveTrackingPanel({
               className={cn(
                 "inline-flex flex-1 items-center justify-center gap-1.5 rounded-[8px] px-2.5 py-2.5 font-inter text-xs font-semibold transition-all",
                 active
-                  ? "bg-[#BD4440] text-white shadow-[0_8px_18px_-8px_rgba(189,68,64,0.7)]"
-                  : "bg-gray-50 text-[var(--text-gray)] hover:bg-[var(--nav-hover-soft)] hover:text-[var(--nav-hover)]"
+                  ? "bg-[var(--green-primary)] text-white shadow-[0_8px_18px_-8px_rgba(50,201,145,0.45)]"
+                  : "bg-gray-50 text-[var(--text-gray)] hover:bg-[var(--nav-hover-soft)] hover:text-[var(--green-primary)]"
               )}
               aria-selected={active}
             >
@@ -711,7 +713,7 @@ function LiveTrackingPanel({
           type="button"
           onClick={() => goTo(slideIndex - 1)}
           aria-label="Previous"
-          className="inline-flex h-8 w-8 items-center justify-center rounded-[8px] bg-[#BD4440] text-white shadow-sm transition hover:bg-[#a63c39]"
+          className="inline-flex h-8 w-8 items-center justify-center rounded-[8px] bg-[var(--green-primary)] text-white shadow-sm transition hover:brightness-95"
         >
           <ChevronLeft className="h-4 w-4" aria-hidden="true" />
         </button>
@@ -726,7 +728,7 @@ function LiveTrackingPanel({
               className={cn(
                 "rounded-full transition-all",
                 index === slideIndex
-                  ? "h-2 w-5 bg-[#BD4440]"
+                  ? "h-2 w-5 bg-[var(--green-primary)]"
                   : "h-2 w-2 bg-gray-300 hover:bg-gray-400"
               )}
             />
@@ -737,7 +739,7 @@ function LiveTrackingPanel({
           type="button"
           onClick={() => goTo(slideIndex + 1)}
           aria-label="Next"
-          className="inline-flex h-8 w-8 items-center justify-center rounded-[8px] bg-[#BD4440] text-white shadow-sm transition hover:bg-[#a63c39]"
+          className="inline-flex h-8 w-8 items-center justify-center rounded-[8px] bg-[var(--green-primary)] text-white shadow-sm transition hover:brightness-95"
         >
           <ChevronRight className="h-4 w-4" aria-hidden="true" />
         </button>
@@ -782,7 +784,7 @@ export function LiveAcademySection() {
       />
 
       <div className="site-container relative z-[1]">
-        <ScrollReveal className="mb-10 max-w-3xl md:mb-12">
+        <ScrollReveal className="mb-10 max-w-4xl md:mb-12">
           <p className="font-inter text-xs font-semibold uppercase tracking-widest text-[var(--green-primary)]">
             {t("eyebrow")}
           </p>
@@ -797,8 +799,8 @@ export function LiveAcademySection() {
               href="/free-class"
               className={cn(
                 "inline-flex items-center justify-center gap-2 rounded-[8px] px-6 py-3",
-                "bg-[var(--green-dark)] font-inter text-sm font-semibold text-white",
-                "transition-all duration-300 hover:bg-[#094A2F]"
+                "bg-[var(--green-primary)] font-inter text-sm font-semibold text-white",
+                "transition-all duration-300 hover:shadow-md"
               )}
             >
               {t("primaryCta")}
@@ -809,9 +811,9 @@ export function LiveAcademySection() {
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
-                "inline-flex items-center justify-center gap-2 rounded-[8px] border-2 border-[var(--green-primary)]/25",
+                "site-btn-hover-overlay inline-flex items-center justify-center gap-2 rounded-[8px] border-2 border-[var(--green-primary)]/25",
                 "bg-white px-6 py-3 font-inter text-sm font-semibold text-[var(--green-dark)]",
-                "transition-all duration-300 hover:border-[var(--green-primary)]/40 hover:bg-[var(--green-light)]"
+                "transition-all duration-300 hover:border-[var(--green-primary)]/40"
               )}
             >
               <WhatsappIcon className="h-4 w-4 text-[#25D366]" />

@@ -86,7 +86,7 @@ export function HeroOrbitingVisual() {
       )}
     >
       <div className="relative z-10 flex h-full w-full items-center justify-center">
-        <div className="absolute z-20 flex h-24 w-24 items-center justify-center rounded-full border border-[var(--gold)]/40 bg-[linear-gradient(135deg,#32C991,#269B6F)] shadow-[0_0_40px_rgba(50,201,145,0.45)]">
+        <div className="absolute z-20 flex h-24 w-24 items-center justify-center rounded-full border border-[var(--gold)]/40 bg-[var(--green-primary)] shadow-[0_0_40px_rgba(50,201,145,0.45)]">
           <MosqueIcon className="h-12 w-12 text-[var(--gold)]" />
         </div>
 

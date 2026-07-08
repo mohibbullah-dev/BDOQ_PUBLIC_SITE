@@ -48,7 +48,7 @@ export function TestimonialMedia({
           className={cn(
             "mt-3 flex w-full items-center justify-center gap-2 rounded-xl",
             "border border-[#32C991]/15 bg-[#E8FAF2] px-3 py-2.5",
-            "font-inter text-xs font-semibold text-[#269B6F]",
+            "font-inter text-xs font-semibold text-[#32C991]",
             "transition-colors hover:bg-[#E8FAF2]",
             className
           )}

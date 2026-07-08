@@ -22,10 +22,10 @@ interface IBdoqLogoProps {
 
 function navbarLogoClasses(compact: boolean) {
   if (compact) {
-    return "h-9 w-auto max-w-[132px] sm:h-10 sm:max-w-[148px] lg:h-12 lg:max-w-[200px]";
+    return "h-10 w-auto max-w-[148px] sm:h-11 sm:max-w-[168px] lg:h-12 lg:max-w-[210px]";
   }
 
-  return "h-10 w-auto max-w-[148px] sm:h-11 sm:max-w-[168px] lg:h-14 lg:max-w-[220px]";
+  return "h-11 w-auto max-w-[168px] sm:h-12 sm:max-w-[188px] lg:h-[3.25rem] lg:max-w-[240px]";
 }
 
 export function BdoqLogo({
@@ -58,8 +58,8 @@ export function BdoqLogo({
         sizes={
           isNavbar
             ? compact
-              ? "(max-width: 1024px) 132px, 230px"
-              : "(max-width: 1024px) 148px, 250px"
+              ? "(max-width: 1024px) 148px, 240px"
+              : "(max-width: 1024px) 168px, 260px"
             : size === "xl"
               ? "(max-width: 640px) 360px, 430px"
               : size === "md"

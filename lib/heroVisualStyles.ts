@@ -18,7 +18,7 @@ export function heroPanelSoft(className?: string): string {
 export function heroBadge(className?: string): string {
   return cn(
     "inline-flex items-center rounded-full border border-[#32C991]/25 bg-white px-3 py-1",
-    "font-inter text-[11px] font-bold uppercase tracking-wider text-[#269B6F]",
+    "font-inter text-[11px] font-bold uppercase tracking-wider text-[#32C991]",
     "shadow-sm",
     className
   );

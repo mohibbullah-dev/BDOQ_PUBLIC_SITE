@@ -103,7 +103,7 @@ export function PremiumHeroCarousel({
         className={cn(
           "absolute left-4 top-4 z-20 rounded-full px-3 py-1.5",
           "font-inter text-[11px] font-semibold tracking-wide sm:text-xs",
-          "bg-[#0B5D3B]/90 text-white shadow-md backdrop-blur-sm"
+          "bg-[#32C991]/90 text-white shadow-md backdrop-blur-sm"
         )}
       >
         {slide.badge}
@@ -130,8 +130,8 @@ export function PremiumHeroCarousel({
         aria-label={t("prev")}
         className={cn(
           "absolute left-3 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center",
-          "rounded-[8px] bg-[#BD4440] text-white shadow-md transition hover:bg-[#a63c39]",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#BD4440] focus-visible:ring-offset-2"
+          "rounded-[8px] bg-[var(--green-primary)] text-white shadow-md transition hover:brightness-95",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--green-primary)] focus-visible:ring-offset-2"
         )}
       >
         <ChevronLeft className="h-5 w-5" aria-hidden="true" />
@@ -143,8 +143,8 @@ export function PremiumHeroCarousel({
         aria-label={t("next")}
         className={cn(
           "absolute right-3 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center",
-          "rounded-[8px] bg-[#BD4440] text-white shadow-md transition hover:bg-[#a63c39]",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#BD4440] focus-visible:ring-offset-2"
+          "rounded-[8px] bg-[var(--green-primary)] text-white shadow-md transition hover:brightness-95",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--green-primary)] focus-visible:ring-offset-2"
         )}
       >
         <ChevronRight className="h-5 w-5" aria-hidden="true" />

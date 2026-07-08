@@ -51,7 +51,7 @@ export function ReviewCard({ testimonial, className }: IReviewCardProps) {
           unoptimized={!avatarSrc.includes("res.cloudinary.com")}
         />
         <div className="min-w-0">
-          <p className="font-inter text-sm font-bold text-[#269B6F]">
+          <p className="font-inter text-sm font-bold text-[#32C991]">
             {testimonial.name}
           </p>
           <p className="font-inter text-xs text-[#6B7280]">

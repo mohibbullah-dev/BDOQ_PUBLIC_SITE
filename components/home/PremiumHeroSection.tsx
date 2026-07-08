@@ -67,8 +67,8 @@ export function PremiumHeroSection() {
               <span
                 className={cn(
                   "inline-flex items-center gap-2 rounded-full px-4 py-2",
-                  "bg-[#E8F5EE] font-inter text-[13px] font-semibold text-[#0B5D3B]",
-                  "ring-1 ring-[#0B5D3B]/10"
+                  "bg-[#E8F5EE] font-inter text-[13px] font-semibold text-[#32C991]",
+                  "ring-1 ring-[#32C991]/10"
                 )}
               >
                 <Globe className="h-4 w-4 shrink-0" aria-hidden="true" />
@@ -106,12 +106,12 @@ export function PremiumHeroSection() {
                   key={chip}
                   className={cn(
                     "inline-flex items-center gap-1.5 rounded-full px-3.5 py-2",
-                    "bg-[#E8F5EE] font-inter text-[13px] font-medium text-[#0B5D3B]",
-                    "ring-1 ring-[#0B5D3B]/8 sm:text-sm"
+                    "bg-[#E8F5EE] font-inter text-[13px] font-medium text-[#32C991]",
+                    "ring-1 ring-[#32C991]/8 sm:text-sm"
                   )}
                 >
                   <Check
-                    className="h-3.5 w-3.5 shrink-0 text-[#0B5D3B]"
+                    className="h-3.5 w-3.5 shrink-0 text-[#32C991]"
                     strokeWidth={2.5}
                     aria-hidden="true"
                   />
@@ -128,9 +128,9 @@ export function PremiumHeroSection() {
                 href="/free-class"
                 className={cn(
                   "inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5",
-                  "bg-[#0B5D3B] font-inter text-base font-semibold text-white",
-                  "shadow-[0_10px_28px_rgba(11,93,59,0.28)]",
-                  "transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#094A2F] hover:shadow-[0_14px_36px_rgba(11,93,59,0.32)]"
+                  "bg-[var(--green-primary)] font-inter text-base font-semibold text-white",
+                  "shadow-[0_10px_28px_rgba(50,201,145,0.28)]",
+                  "transition-all duration-300 hover:-translate-y-0.5 hover:brightness-95 hover:shadow-[0_14px_36px_rgba(50,201,145,0.32)]"
                 )}
               >
                 {t("primaryCta")}
@@ -141,9 +141,9 @@ export function PremiumHeroSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
-                  "inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#0B5D3B]/20",
-                  "bg-white px-8 py-3.5 font-inter text-base font-semibold text-[#0B5D3B]",
-                  "transition-all duration-300 hover:-translate-y-0.5 hover:border-[#0B5D3B]/35 hover:bg-[#F8FAF9]"
+                  "inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#32C991]/20",
+                  "bg-white px-8 py-3.5 font-inter text-base font-semibold text-[#32C991]",
+                  "transition-all duration-300 hover:-translate-y-0.5 hover:border-[#32C991]/35 hover:bg-[#F8FAF9]"
                 )}
               >
                 <WhatsappIcon className="h-5 w-5 text-[#25D366]" />

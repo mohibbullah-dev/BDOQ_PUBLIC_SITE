@@ -58,8 +58,8 @@ function LearningPlanCard({ plan, index }: ILearningPlanCardProps) {
         <span
           className={cn(
             "absolute -top-3.5 left-1/2 z-10 -translate-x-1/2 rounded-full px-4 py-1",
-            "bg-[linear-gradient(135deg,#E84B3A,#C62828)] font-inter text-[11px] font-bold uppercase tracking-wider text-white",
-            "shadow-[0_8px_20px_-6px_rgba(232,75,58,0.5)]"
+            "bg-[var(--green-primary)] font-inter text-[11px] font-bold uppercase tracking-wider text-white",
+            "shadow-[0_8px_20px_-6px_rgba(50,201,145,0.5)]"
           )}
         >
           {t("popularBadge")}
@@ -72,7 +72,7 @@ function LearningPlanCard({ plan, index }: ILearningPlanCardProps) {
           "transition-all duration-500",
           isFeatured
             ? [
-                "bg-gradient-to-b from-[var(--green-dark)] via-[#145c38] to-[var(--green-primary)]",
+                "bg-gradient-to-b from-[var(--green-dark)] via-[#32C991] to-[var(--green-primary)]",
                 "text-white shadow-[0_32px_64px_-24px_rgba(13,74,47,0.55)]",
                 "ring-1 ring-white/15",
               ]
@@ -84,6 +84,10 @@ function LearningPlanCard({ plan, index }: ILearningPlanCardProps) {
               ]
         )}
       >
+        {!isFeatured ? (
+          <span className="site-card-hover-overlay z-0" aria-hidden="true" />
+        ) : null}
+
         {!isFeatured && (
           <span
             className="pointer-events-none absolute inset-x-0 top-0 h-1 scale-x-0 bg-gradient-to-r from-transparent via-[var(--green-primary)] to-transparent transition-transform duration-500 group-hover:scale-x-100"
@@ -134,7 +138,7 @@ function LearningPlanCard({ plan, index }: ILearningPlanCardProps) {
                 className={cn(
                   "mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full",
                   isFeatured
-                    ? "bg-white/15 text-[var(--brand-red-light)]"
+                    ? "bg-white/15 text-white"
                     : "bg-[var(--green-primary)]/10 text-[var(--green-primary)]"
                 )}
               >
@@ -155,11 +159,11 @@ function LearningPlanCard({ plan, index }: ILearningPlanCardProps) {
         <Link
           href={href}
           className={cn(
-            "mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5",
+            "site-btn-hover-overlay mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5",
             "font-inter text-sm font-semibold transition-all duration-300",
             isFeatured
-              ? "bg-white text-[var(--green-primary)] hover:bg-[var(--green-light)] hover:shadow-lg"
-              : "bg-[var(--green-primary)] text-white hover:bg-[var(--green-dark)] hover:shadow-md"
+              ? "site-btn-hover-overlay--filled bg-white text-[var(--green-primary)] hover:shadow-lg"
+              : "site-btn-hover-overlay--filled bg-[var(--green-primary)] text-white hover:shadow-md"
           )}
         >
           {t("cta")}

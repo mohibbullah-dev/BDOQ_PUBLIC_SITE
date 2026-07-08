@@ -35,14 +35,7 @@ function QuickNavItemLink({ item, index }: IQuickNavItemLinkProps) {
         href={item.href}
         className="group relative flex h-full flex-col items-center gap-3.5 overflow-hidden px-3 py-6 text-center sm:px-4 sm:py-7"
       >
-        <span
-          className={cn(
-            "pointer-events-none absolute inset-0 z-0 bg-[var(--brand-overlay)]",
-            "opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
-            "group-hover:opacity-100"
-          )}
-          aria-hidden="true"
-        />
+        <span className="site-card-hover-overlay z-0" aria-hidden="true" />
 
         <span
           className={cn(
@@ -109,7 +102,7 @@ function QuickNavItemLink({ item, index }: IQuickNavItemLinkProps) {
           </p>
           <span
             className={cn(
-              "mx-auto mt-2.5 block h-0.5 w-0 rounded-full bg-[var(--brand-red)]",
+              "mx-auto mt-2.5 block h-0.5 w-0 rounded-full bg-[var(--green-primary)]",
               "transition-all duration-500 ease-out group-hover:w-8"
             )}
             aria-hidden="true"
@@ -145,7 +138,7 @@ export function QuickNavSection() {
             aria-hidden="true"
           />
           <div
-            className="pointer-events-none absolute -bottom-20 -left-20 h-52 w-52 rounded-full bg-[var(--brand-red)]/[0.06] blur-3xl"
+            className="pointer-events-none absolute -bottom-20 -left-20 h-52 w-52 rounded-full bg-[var(--green-primary)]/[0.06] blur-3xl"
             aria-hidden="true"
           />
 

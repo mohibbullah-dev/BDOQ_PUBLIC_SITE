@@ -30,7 +30,7 @@ export function AllReviewsView({
               key={stat.label}
               className="rounded-2xl border border-white bg-white px-4 py-5 text-center shadow-sm"
             >
-              <p className="font-inter text-2xl font-bold text-[#269B6F] md:text-3xl">
+              <p className="font-inter text-2xl font-bold text-[#32C991] md:text-3xl">
                 {stat.value}
               </p>
               <p className="mt-1 font-inter text-xs uppercase tracking-wide text-[#6B7280]">
@@ -56,7 +56,7 @@ export function AllReviewsView({
           <div
             className={cn(
               "overflow-hidden rounded-3xl px-6 py-10 text-center text-white md:px-12 md:py-14",
-              "bg-[linear-gradient(135deg,#269B6F,#32C991)]"
+              "bg-[var(--green-primary)]"
             )}
           >
             <h2 className="font-playfair text-2xl font-bold md:text-3xl">

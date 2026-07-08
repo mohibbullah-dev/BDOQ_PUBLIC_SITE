@@ -41,14 +41,7 @@ function FeatureCard({ item, index }: IFeatureCardProps) {
           "hover:shadow-[0_24px_52px_-18px_rgba(50,201,145,0.32)]"
         )}
       >
-        <span
-          className={cn(
-            "pointer-events-none absolute inset-0 z-[1] bg-[var(--brand-overlay)]",
-            "opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
-            "group-hover:opacity-100"
-          )}
-          aria-hidden="true"
-        />
+        <span className="site-card-hover-overlay z-[1]" aria-hidden="true" />
 
         <div className="relative z-[2] p-3 sm:p-4 sm:pb-0">
           <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[8px]">
@@ -60,7 +53,7 @@ function FeatureCard({ item, index }: IFeatureCardProps) {
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
             <div
-              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0B5D3B]/55 via-[#0B5D3B]/10 to-transparent"
+              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#32C991]/55 via-[#32C991]/10 to-transparent"
               aria-hidden="true"
             />
 
@@ -91,7 +84,7 @@ function FeatureCard({ item, index }: IFeatureCardProps) {
             {t("description")}
           </p>
           <span
-            className="mt-4 h-0.5 w-0 rounded-full bg-[var(--brand-red)] transition-all duration-500 group-hover:w-10"
+            className="mt-4 h-0.5 w-0 rounded-full bg-[var(--green-primary)] transition-all duration-500 group-hover:w-10"
             aria-hidden="true"
           />
         </div>

@@ -39,14 +39,7 @@ function TopicCard({ topic, locale, index }: ITopicCardProps) {
         href="/free-class"
         className="group relative flex h-full flex-col items-center gap-3 overflow-hidden px-3 py-5 text-center sm:px-4 sm:py-6"
       >
-        <span
-          className={cn(
-            "pointer-events-none absolute inset-0 z-0 bg-[var(--brand-overlay)]",
-            "opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
-            "group-hover:opacity-100"
-          )}
-          aria-hidden="true"
-        />
+        <span className="site-card-hover-overlay z-0" aria-hidden="true" />
 
         <ArrowUpRight
           className="absolute right-2.5 top-2.5 z-[2] h-3.5 w-3.5 text-[var(--green-primary)] opacity-0 transition-all duration-300 group-hover:opacity-100"
@@ -78,7 +71,7 @@ function TopicCard({ topic, locale, index }: ITopicCardProps) {
         </p>
 
         <span
-          className="relative z-[1] h-0.5 w-0 rounded-full bg-[var(--brand-red)] transition-all duration-500 group-hover:w-6"
+          className="relative z-[1] h-0.5 w-0 rounded-full bg-[var(--green-primary)] transition-all duration-500 group-hover:w-6"
           aria-hidden="true"
         />
       </Link>
@@ -146,7 +139,7 @@ export function TopicsSection() {
             className={cn(
               "inline-flex items-center justify-center rounded-full px-8 py-3.5",
               "bg-[var(--green-primary)] font-inter text-sm font-semibold text-white",
-              "transition-all duration-300 hover:bg-[var(--green-dark)] hover:shadow-md"
+              "transition-all duration-300 hover:brightness-95 hover:shadow-md"
             )}
           >
             {pickLocalized(TOPICS_SECTION.bookTrial, locale)}

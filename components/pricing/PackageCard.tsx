@@ -38,8 +38,8 @@ export function PackageCard({ pkg, index = 0 }: IPackageCardProps) {
         <span
           className={cn(
             "absolute -top-3.5 left-1/2 z-10 -translate-x-1/2 rounded-full px-4 py-1",
-            "bg-[linear-gradient(135deg,#E84B3A,#C62828)] font-inter text-[11px] font-bold uppercase tracking-wider text-white",
-            "shadow-[0_8px_20px_-6px_rgba(232,75,58,0.45)]"
+            "bg-[var(--green-primary)] font-inter text-[11px] font-bold uppercase tracking-wider text-white",
+            "shadow-[0_8px_20px_-6px_rgba(50,201,145,0.45)]"
           )}
         >
           {labels.mostPopular}
@@ -51,7 +51,7 @@ export function PackageCard({ pkg, index = 0 }: IPackageCardProps) {
           "relative flex h-full flex-col overflow-hidden rounded-3xl transition-all duration-500",
           isPopular
             ? [
-                "bg-gradient-to-b from-primary-dark via-[#145c38] to-primary",
+                "bg-gradient-to-b from-primary via-[#32C991] to-primary",
                 "text-white shadow-[0_32px_64px_-24px_rgba(13,74,47,0.5)]",
                 "ring-1 ring-white/15",
               ]
@@ -63,6 +63,10 @@ export function PackageCard({ pkg, index = 0 }: IPackageCardProps) {
               ]
         )}
       >
+        {!isPopular && (
+          <span className="site-card-hover-overlay z-0" aria-hidden="true" />
+        )}
+
         {!isPopular && (
           <span
             className="pointer-events-none absolute inset-x-0 top-0 h-1 scale-x-0 bg-gradient-to-r from-transparent via-primary to-transparent transition-transform duration-500 group-hover:scale-x-100"
@@ -179,8 +183,8 @@ export function PackageCard({ pkg, index = 0 }: IPackageCardProps) {
               "inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5",
               "font-inter text-sm font-semibold transition-all duration-300",
               isPopular
-                ? "bg-white text-primary hover:bg-bg-light hover:shadow-lg"
-                : "bg-primary text-white hover:bg-primary-dark hover:shadow-md"
+                ? "site-btn-hover-overlay site-btn-hover-overlay--filled bg-white text-primary hover:shadow-lg"
+                : "site-btn-hover-overlay site-btn-hover-overlay--filled bg-primary text-white hover:shadow-md"
             )}
           >
             {labels.getStarted(priceFormatted)}
