@@ -30,6 +30,6 @@ export function NavLink({ href, children, className, onClick }: INavLinkProps) {
 }
 
 /** Shared classes for desktop pill triggers (dropdown / more) */
-export function navLinkBase(_isOverlay?: boolean): string {
+export function navLinkBase(): string {
   return "site-nav-item";
 }
