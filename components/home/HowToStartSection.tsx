@@ -36,7 +36,7 @@ function StepCard({ step, index }: IStepCardProps) {
     >
       <div
         className={cn(
-          "relative flex h-full flex-col overflow-hidden rounded-[20px] border border-[var(--green-primary)]/10 bg-white",
+          "relative flex h-full flex-col overflow-hidden rounded-[8px] border border-[var(--green-primary)]/10 bg-white",
           "shadow-[0_20px_48px_-24px_rgba(50,201,145,0.28)]",
           "transition-all duration-500 ease-out",
           "hover:-translate-y-1.5 hover:border-[var(--green-primary)]/20",
@@ -54,7 +54,7 @@ function StepCard({ step, index }: IStepCardProps) {
         />
 
         <div className="relative z-[2] p-3 sm:p-4 sm:pb-0">
-          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[12px]">
+          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[8px]">
             <Image
               src={getHowToStartImagePath(step.step)}
               alt={t("title")}

@@ -56,7 +56,7 @@ function TopicCard({ topic, locale, index }: ITopicCardProps) {
         <div className="relative z-[1] w-full max-w-[104px]">
           <div
             className={cn(
-              "relative aspect-[4/3] w-full overflow-hidden rounded-[12px]",
+              "relative aspect-[4/3] w-full overflow-hidden rounded-[8px]",
               "border border-[var(--green-primary)]/10",
               "shadow-[0_6px_20px_-6px_rgba(50,201,145,0.35)]",
               "transition-all duration-500 ease-out",

@@ -41,7 +41,7 @@ export function HeroVisualFrame({
           "relative overflow-hidden bg-white",
           isSection
             ? "rounded-2xl border border-primary/10 shadow-[0_12px_40px_rgba(50,201,145,0.12)] sm:rounded-3xl"
-            : "rounded-[1.25rem] border border-gray-200/80 shadow-[0_24px_60px_rgba(0,0,0,0.35)] sm:rounded-[1.625rem] sm:shadow-[0_32px_80px_rgba(0,0,0,0.4)]"
+            : "rounded-[8px] border border-gray-200/80 shadow-[0_24px_60px_rgba(0,0,0,0.35)] sm:shadow-[0_32px_80px_rgba(0,0,0,0.4)]"
         )}
       >
         <div

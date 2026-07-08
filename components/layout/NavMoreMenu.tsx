@@ -10,7 +10,6 @@ import type { INavItem } from "@/lib/navigation";
 import { useNavLabel } from "@/lib/i18n/useNavLabel";
 import { isNavItemActive, isNavLinkActive } from "@/lib/navActive";
 import { navLinkBase } from "@/components/layout/NavLink";
-import { useHeaderTheme } from "@/components/layout/HeaderThemeContext";
 import { cn } from "@/lib/cn";
 
 interface INavMoreMenuProps {
@@ -22,7 +21,6 @@ export function NavMoreMenu({ items }: INavMoreMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const label = useNavLabel();
   const tNav = useTranslations("nav");
-  const { isOverlay } = useHeaderTheme();
   const hasActiveChild = items.some((item) => isNavItemActive(item, pathname));
 
   return (
@@ -34,12 +32,9 @@ export function NavMoreMenu({ items }: INavMoreMenuProps) {
       <button
         type="button"
         className={cn(
-          navLinkBase(isOverlay),
-          "inline-flex shrink-0 items-center gap-1 whitespace-nowrap",
-          hasActiveChild &&
-            (isOverlay
-              ? "bg-white/15 font-semibold text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2)]"
-              : "bg-white font-semibold text-[var(--green-primary)] shadow-sm ring-1 ring-[var(--green-primary)]/15")
+          navLinkBase(),
+          "gap-1",
+          (hasActiveChild || isOpen) && "is-active"
         )}
         aria-expanded={isOpen}
         aria-haspopup="true"
@@ -48,7 +43,7 @@ export function NavMoreMenu({ items }: INavMoreMenuProps) {
         {tNav("more")}
         <ChevronDown
           className={cn(
-            "h-4 w-4 transition-transform duration-200",
+            "h-3.5 w-3.5 transition-transform duration-200",
             isOpen && "rotate-180"
           )}
           aria-hidden="true"
@@ -62,35 +57,20 @@ export function NavMoreMenu({ items }: INavMoreMenuProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.98 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute right-0 top-full z-[100] min-w-[220px] pt-2"
+            className="absolute right-0 top-full z-[100] min-w-[232px] pt-2"
           >
-            <div
-              className={cn(
-                "overflow-hidden rounded-2xl py-2 shadow-2xl",
-                isOverlay
-                  ? "border border-white/10 bg-[#269B6F]/95 backdrop-blur-2xl"
-                  : "border border-black/5 bg-white/95 backdrop-blur-xl ring-1 ring-black/5"
-              )}
-            >
+            <div className="overflow-hidden rounded-[8px] border border-[var(--nav-hover)]/15 bg-white py-2 shadow-[0_18px_40px_-12px_rgba(189,68,64,0.28)] ring-1 ring-black/5">
               {items.map((item, index) => {
                 if (item.children) {
                   return (
                     <div key={item.labelKey}>
                       {index > 0 && (
                         <div
-                          className={cn(
-                            "mx-3 my-1.5 border-t",
-                            isOverlay ? "border-white/10" : "border-gray-100"
-                          )}
+                          className="mx-3 my-1.5 border-t border-gray-100"
                           aria-hidden="true"
                         />
                       )}
-                      <p
-                        className={cn(
-                          "px-4 pb-1 pt-2 font-inter text-[10px] font-bold uppercase tracking-wider",
-                          isOverlay ? "text-white/45" : "text-[#9CA3AF]"
-                        )}
-                      >
+                      <p className="px-4 pb-1 pt-2 font-inter text-[10px] font-bold uppercase tracking-wider text-[#9CA3AF]">
                         {label(item.labelKey)}
                       </p>
                       {item.children.map((child) => {
@@ -104,14 +84,10 @@ export function NavMoreMenu({ items }: INavMoreMenuProps) {
                             key={child.href}
                             href={child.href}
                             className={cn(
-                              "block border-l-2 border-transparent px-4 py-2 text-sm font-medium transition-all duration-200",
-                              isOverlay
-                                ? "text-white/85 hover:border-[var(--gold)] hover:bg-white/10 hover:text-white"
-                                : "text-[#374151] hover:border-[var(--gold)] hover:bg-[var(--green-light)]/60 hover:text-[var(--green-primary)]",
+                              "mx-1.5 block rounded-[8px] border-l-2 border-transparent px-3.5 py-2 text-sm font-medium text-[#374151] transition-all duration-200",
+                              "hover:border-[var(--nav-hover)] hover:bg-[var(--nav-hover-soft)] hover:text-[var(--nav-hover)]",
                               childActive &&
-                                (isOverlay
-                                  ? "border-[var(--gold)] bg-white/10 text-white"
-                                  : "border-[var(--gold)] bg-[var(--green-light)]/40 text-[var(--green-primary)]")
+                                "border-[var(--nav-hover)] bg-[var(--nav-hover-soft)] font-semibold text-[var(--nav-hover)]"
                             )}
                             aria-current={childActive ? "page" : undefined}
                           >
@@ -131,24 +107,17 @@ export function NavMoreMenu({ items }: INavMoreMenuProps) {
                   <div key={item.labelKey}>
                     {index > 0 && (
                       <div
-                        className={cn(
-                          "mx-3 my-1.5 border-t",
-                          isOverlay ? "border-white/10" : "border-gray-100"
-                        )}
+                        className="mx-3 my-1.5 border-t border-gray-100"
                         aria-hidden="true"
                       />
                     )}
                     <Link
                       href={item.href ?? "/"}
                       className={cn(
-                        "block border-l-2 border-transparent px-4 py-2.5 text-sm font-medium transition-all duration-200",
-                        isOverlay
-                          ? "text-white/85 hover:border-[var(--gold)] hover:bg-white/10 hover:text-white"
-                          : "text-[#374151] hover:border-[var(--gold)] hover:bg-[var(--green-light)]/60 hover:text-[var(--green-primary)]",
+                        "mx-1.5 block rounded-[8px] border-l-2 border-transparent px-3.5 py-2.5 text-sm font-medium text-[#374151] transition-all duration-200",
+                        "hover:border-[var(--nav-hover)] hover:bg-[var(--nav-hover-soft)] hover:text-[var(--nav-hover)]",
                         linkActive &&
-                          (isOverlay
-                            ? "border-[var(--gold)] bg-white/10 text-white"
-                            : "border-[var(--gold)] bg-[var(--green-light)]/40 text-[var(--green-primary)]")
+                          "border-[var(--nav-hover)] bg-[var(--nav-hover-soft)] font-semibold text-[var(--nav-hover)]"
                       )}
                       aria-current={linkActive ? "page" : undefined}
                     >

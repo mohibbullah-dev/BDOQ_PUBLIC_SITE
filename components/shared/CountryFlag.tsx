@@ -26,7 +26,7 @@ export function CountryFlag({
       alt={`${name} flag`}
       width={dimensions.width}
       height={dimensions.height}
-      className={`${dimensions.className} shrink-0 rounded-[4px] object-cover ring-1 ring-black/10 ${className ?? ""}`}
+      className={`${dimensions.className} shrink-0 rounded-[8px] object-cover ring-1 ring-black/10 ${className ?? ""}`}
       unoptimized
     />
   );

@@ -46,7 +46,7 @@ export function LanguageToggle({
   return (
     <div
       className={cn(
-        "inline-flex items-center rounded-full p-0.5 text-xs font-semibold",
+        "inline-flex items-center rounded-[8px] p-0.5 text-xs font-semibold",
         isDark ? "bg-white/10" : "bg-gray-100",
         isPending && "opacity-70",
         className
@@ -59,7 +59,7 @@ export function LanguageToggle({
         onClick={() => handleSelect("en")}
         aria-pressed={locale === "en"}
         className={cn(
-          "rounded-full px-3 py-1.5 transition-all duration-200",
+          "rounded-[8px] px-3 py-1.5 transition-all duration-200",
           locale === "en"
             ? "bg-[var(--green-primary)] text-white shadow-sm"
             : isDark
@@ -74,7 +74,7 @@ export function LanguageToggle({
         onClick={() => handleSelect("bn")}
         aria-pressed={locale === "bn"}
         className={cn(
-          "rounded-full px-3 py-1.5 transition-all duration-200",
+          "rounded-[8px] px-3 py-1.5 transition-all duration-200",
           locale === "bn"
             ? "bg-[var(--green-primary)] text-white shadow-sm"
             : isDark

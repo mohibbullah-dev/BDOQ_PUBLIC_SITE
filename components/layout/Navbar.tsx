@@ -79,18 +79,11 @@ export function Navbar() {
             </Link>
 
             <nav
-              className="hidden min-w-0 items-center justify-center lg:flex"
+              className="hidden min-w-0 items-center justify-center gap-0.5 lg:flex xl:gap-1"
               aria-label={tA11y("mainNav")}
             >
-              <div
-                className={cn(
-                  "site-nav-pill flex max-w-full items-center justify-center gap-0.5 px-1.5 py-1",
-                  isOverlay ? "site-nav-pill--overlay" : "site-nav-pill--solid"
-                )}
-              >
-                {MAIN_NAV_PRIMARY.map((item) => renderNavItem(item, label))}
-                <NavMoreMenu items={MAIN_NAV_OVERFLOW} />
-              </div>
+              {MAIN_NAV_PRIMARY.map((item) => renderNavItem(item, label))}
+              <NavMoreMenu items={MAIN_NAV_OVERFLOW} />
             </nav>
 
             <div className="hidden shrink-0 items-center justify-end gap-2 lg:flex xl:gap-2.5">
@@ -102,7 +95,7 @@ export function Navbar() {
               <Link
                 href="/login"
                 className={cn(
-                  "inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-full",
+                  "inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-[8px]",
                   "border px-3 py-1.5 text-sm font-semibold transition-all duration-300",
                   "xl:px-4 xl:py-2",
                   isOverlay
@@ -116,7 +109,7 @@ export function Navbar() {
                 variant="gradient"
                 size="sm"
                 className={cn(
-                  "shrink-0 shadow-[0_4px_20px_rgba(50,201,145,0.35)]",
+                  "shrink-0 rounded-[8px] shadow-[0_4px_20px_rgba(50,201,145,0.35)]",
                   isOverlay && "ring-1 ring-white/20"
                 )}
               />
@@ -128,7 +121,7 @@ export function Navbar() {
                 type="button"
                 onClick={toggleMobile}
                 className={cn(
-                  "inline-flex h-11 w-11 items-center justify-center rounded-xl transition-colors",
+                  "inline-flex h-11 w-11 items-center justify-center rounded-[8px] transition-colors",
                   isOverlay
                     ? "text-white hover:bg-white/10 active:bg-white/15"
                     : "text-[#374151] hover:bg-[var(--green-light)] hover:text-[var(--green-primary)]"

@@ -67,7 +67,7 @@ export function AboutVideoPlayer({ compact = false }: IAboutVideoPlayerProps) {
       <div className="relative w-full">
         {!compact && (
           <div
-            className="pointer-events-none absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-[var(--green-primary)]/15 via-transparent to-transparent blur-2xl lg:-inset-4"
+            className="pointer-events-none absolute -inset-3 rounded-[8px] bg-gradient-to-br from-[var(--green-primary)]/15 via-transparent to-transparent blur-2xl lg:-inset-4"
             aria-hidden="true"
           />
         )}

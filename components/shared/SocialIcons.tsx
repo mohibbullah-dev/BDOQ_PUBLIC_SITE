@@ -94,7 +94,7 @@ export function FreeTrialButton({
       href="/free-class"
       onClick={onClick}
       className={cn(
-        "inline-flex items-center justify-center rounded-full font-semibold text-white transition-all duration-300",
+        "inline-flex items-center justify-center rounded-[8px] font-semibold text-white transition-all duration-300",
         variantClasses,
         sizeClasses,
         className

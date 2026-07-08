@@ -1,20 +1,11 @@
-import { apiFetch } from "./api";
+import { FAQ_ITEMS } from "./constants";
 import type { IFAQItem } from "./types";
 
-const FAQ_REVALIDATE = 3600;
-
-interface IApiFaqResponse {
-  success: boolean;
-  data: { items: IFAQItem[] };
-}
-
-export async function getFaqItems(): Promise<IFAQItem[]> {
-  try {
-    const response = await apiFetch<IApiFaqResponse>("/public/faq", {
-      next: { revalidate: FAQ_REVALIDATE },
-    });
-    return response.data?.items ?? [];
-  } catch {
-    return [];
-  }
+/**
+ * Public-site FAQ list (home + about).
+ * Hardcoded for reliability and i18n (`home.faq.items.*`).
+ * CMS `/public/faq` may still exist for admin/portal — this site does not depend on it.
+ */
+export function getFaqItems(): IFAQItem[] {
+  return FAQ_ITEMS;
 }

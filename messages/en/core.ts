@@ -73,6 +73,13 @@ export const coreMessages = {
     otherLinks: "Other Links",
     contactUs: "Contact Us",
     whatsapp: "WhatsApp:",
+    needHelp: "Need Help?",
+    needHelpDesc: "Our team is ready to guide you — call or email any time.",
+    ourOffice: "Our Office",
+    trustTeachers: "Certified Hafiz Teachers",
+    trustSafe: "Safe & Secure Learning",
+    trustFlexible: "Flexible Schedule",
+    trustGlobal: "Students from 10+ Countries",
     copyright: "© 2026 All Rights Reserved. Developed by Opsline",
   },
   academy: {

@@ -26,10 +26,10 @@ import { cn } from "@/lib/cn";
 const FAQ_ICONS: Record<string, LucideIcon> = {
   "faq-1": CalendarClock,
   "faq-2": Clock3,
-  "faq-3": MonitorPlay,
-  "faq-4": Users,
+  "faq-3": Users,
+  "faq-4": ShieldCheck,
   "faq-5": GraduationCap,
-  "faq-6": ShieldCheck,
+  "faq-6": MonitorPlay,
 };
 
 function buildFaqHighlights(count: number) {

@@ -11,19 +11,19 @@ export const PREMIUM_HERO_CAROUSEL_SLIDES: IPremiumHeroCarouselSlideMeta[] = [
   {
     id: "slide-1",
     theme: "light",
-    image: "/images/hero/slide-1.png",
+    image: "/images/hero/slide-1.jpg",
     imageClassName: "object-cover object-[50%_35%]",
   },
   {
     id: "slide-2",
     theme: "light",
-    image: "/images/hero/slide-2.png",
+    image: "/images/hero/slide-2.jpg",
     imageClassName: "object-cover object-center",
   },
   {
     id: "slide-3",
     theme: "light",
-    image: "/images/hero/slide-3.png",
+    image: "/images/hero/slide-3.jpg",
     imageClassName: "object-cover object-[45%_50%]",
   },
 ];

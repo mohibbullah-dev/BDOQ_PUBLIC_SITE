@@ -4,6 +4,10 @@
 
 /* ─── Design tokens ───────────────────────────────────────────── */
 :root {
+  --radius: 8px;
+  --radius-sm: 8px;
+  --radius-md: 8px;
+  --radius-lg: 8px;
   --brand-mint: #adebb3;
   --green-primary: #32c991;
   --green-dark: #269b6f;
@@ -13,6 +17,9 @@
   --brand-red: #e84b3a;
   --brand-red-light: #ffddd6;
   --brand-red-dark: #c62828;
+  --nav-hover: #bd4440;
+  --nav-hover-soft: rgba(189, 68, 64, 0.14);
+  --nav-hover-mid: rgba(189, 68, 64, 0.18);
   /* Legacy aliases — gold is now brand red */
   --gold: var(--brand-red);
   --gold-light: var(--brand-red-light);
@@ -143,7 +150,7 @@
 
   ::-webkit-scrollbar-thumb {
     background: var(--green-primary);
-    border-radius: 4px;
+    border-radius: 8px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
@@ -173,7 +180,7 @@
 
   /* Premium hero carousel — reference frame (wide ~13:8, max 400px tall) */
   .premium-hero-carousel-frame {
-    @apply relative w-full overflow-hidden rounded-[20px] border border-gray-200/75 bg-white shadow-[0_16px_48px_rgba(15,43,74,0.08)] sm:rounded-[22px];
+    @apply relative w-full overflow-hidden rounded-[8px] border border-gray-200/75 bg-white shadow-[0_16px_48px_rgba(15,43,74,0.08)];
     height: clamp(280px, 28vw, 400px);
   }
 
@@ -246,7 +253,9 @@
   }
 
   .site-nav-pill {
-    border-radius: 9999px;
+    border-radius: 8px;
+    gap: 0.25rem;
+    padding: 0.35rem 0.4rem;
     transition:
       background-color 0.4s ease,
       border-color 0.4s ease,
@@ -254,21 +263,74 @@
   }
 
   .site-nav-pill--overlay {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(189, 68, 64, 0.12);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.12),
-      0 8px 32px rgba(0, 0, 0, 0.12);
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      0 8px 28px rgba(15, 23, 42, 0.1);
     backdrop-filter: blur(20px);
   }
 
   .site-nav-pill--solid {
-    background: rgba(255, 255, 255, 0.75);
-    border: 1px solid rgba(50, 201, 145, 0.15);
+    background: #ffffff;
+    border: 1px solid rgba(189, 68, 64, 0.14);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.8),
-      0 2px 12px rgba(50, 201, 145, 0.06);
+      inset 0 1px 0 rgba(255, 255, 255, 1),
+      0 4px 18px rgba(189, 68, 64, 0.08),
+      0 1px 2px rgba(15, 23, 42, 0.04);
     backdrop-filter: blur(12px);
+  }
+
+  .site-nav-item {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+    border-radius: 8px;
+    padding: 0.55rem 1rem;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25;
+    color: #374151;
+    transition:
+      background-color 0.22s ease,
+      color 0.22s ease,
+      box-shadow 0.22s ease,
+      transform 0.22s ease;
+  }
+
+  .site-nav-item:hover {
+    background-color: var(--nav-hover);
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(189, 68, 64, 0.28);
+    transform: translateY(-1px);
+  }
+
+  .site-nav-item:focus-visible {
+    outline: 2px solid var(--nav-hover);
+    outline-offset: 2px;
+  }
+
+  .site-nav-item.is-active {
+    background-color: var(--nav-hover);
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 8px 22px rgba(189, 68, 64, 0.32);
+  }
+
+  .site-nav-item.is-active:hover {
+    background-color: #a63c39;
+    color: #ffffff;
+  }
+
+  @media (min-width: 1280px) {
+    .site-nav-item {
+      padding-left: 1.15rem;
+      padding-right: 1.15rem;
+    }
   }
 
   html[lang="bn"] .site-nav-pill {

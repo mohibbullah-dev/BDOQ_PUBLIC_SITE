@@ -66,7 +66,7 @@ export function SiteSearchTrigger({
         type="button"
         onClick={openSearch}
         className={cn(
-          "inline-flex items-center justify-center rounded-xl transition-colors duration-200",
+          "inline-flex items-center justify-center rounded-[8px] transition-colors duration-200",
           variant === "mobile" || variant === "overlay"
             ? "h-9 w-9 border border-white/20 text-white hover:border-[var(--gold)] hover:bg-white/10 hover:text-[var(--gold)] xl:h-10 xl:w-10"
             : "h-9 w-9 text-[#374151] hover:bg-[var(--green-light)] hover:text-[var(--green-primary)] xl:h-10 xl:w-10",

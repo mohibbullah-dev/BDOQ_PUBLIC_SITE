@@ -73,6 +73,13 @@ export const coreMessages = {
     otherLinks: "অন্যান্য লিংক",
     contactUs: "যোগাযোগ",
     whatsapp: "হোয়াটসঅ্যাপ:",
+    needHelp: "সাহায্য দরকার?",
+    needHelpDesc: "আমাদের টিম প্রস্তুত — যেকোনো সময় কল বা ইমেইল করুন।",
+    ourOffice: "আমাদের অফিস",
+    trustTeachers: "সার্টিফাইড হাফেজ শিক্ষক",
+    trustSafe: "নিরাপদ ও সুরক্ষিত শিক্ষা",
+    trustFlexible: "নমনীয় সময়সূচি",
+    trustGlobal: "১০+ দেশের শিক্ষার্থী",
     copyright: "© ২০২৬ সর্বস্বত্ব সংরক্ষিত। ডেভেলপড বাই Opsline",
   },
   academy: {

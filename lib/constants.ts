@@ -643,37 +643,37 @@ export const FAQ_ITEMS: IFAQItem[] = [
     id: "faq-1",
     question: "How do I book a free trial class?",
     answer:
-      "Visit our Free Trial Class page, fill in your name, contact details, subject interest, and preferred time. Our team will contact you via WhatsApp or email to confirm your schedule and assign a suitable teacher for your first session.",
+      "Visit our Free Trial Class page, fill in your details, subject interest, and preferred time. Our team will contact you via WhatsApp or email to confirm your schedule.",
   },
   {
     id: "faq-2",
     question: "When is BDOQ's class time?",
     answer:
-      "BDOQ Academy offers flexible class times to suit students in Bangladesh and worldwide. You can choose morning, afternoon, or evening slots based on your timezone. Classes are scheduled according to your availability during registration.",
+      "BDOQ Academy offers flexible class times for students in Bangladesh and worldwide. You can choose morning, afternoon, or evening slots based on your timezone.",
   },
   {
     id: "faq-3",
-    question: "What platform do you use for online classes?",
+    question: "Are classes one-to-one or group?",
     answer:
-      "We conduct live classes through reliable video conferencing platforms with screen sharing and audio clarity optimized for Quran teaching. Your teacher will share the meeting link before each session, and technical support is available if needed.",
+      "Our primary system is one teacher for one student. We also offer planned batch classes for students who prefer group learning.",
   },
   {
     id: "faq-4",
-    question: "What age group can students enroll in the course?",
+    question: "Do you have female teachers for women?",
     answer:
-      "Students of all ages can enroll — from young children starting Noorani Qaida to adults learning Tajweed or Hifz. We match each student with an appropriate teacher and learning plan based on age, level, and goals.",
+      "Yes. We have qualified female Hafiz and scholars for sisters and children, ensuring privacy and comfort.",
   },
   {
     id: "faq-5",
-    question: "How are teachers selected for students?",
+    question: "What courses do you offer?",
     answer:
-      "BDOQ Academy assigns teachers based on the student's gender, course type, language preference, and schedule. All teachers are experienced Hafiz or qualified scholars who undergo evaluation to maintain our international teaching standards.",
+      "Noorani Qaida, Tajweed, Hifz, Najera, and free learning options — for children, men, and women with separate classes.",
   },
   {
     id: "faq-6",
-    question: "Is there a system for girls to learn the Holy Quran?",
+    question: "How do I pay fees?",
     answer:
-      "Yes. BDOQ Academy provides a fully separate education system for women and girls with qualified female teachers. This ensures privacy, comfort, and focused learning for sisters of all ages in a safe online environment.",
+      "Monthly packages can be paid via bKash, bank transfer, or international methods. Contact us for payment details in your country.",
   },
 ];
 

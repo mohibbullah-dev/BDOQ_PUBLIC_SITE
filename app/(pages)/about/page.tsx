@@ -36,11 +36,11 @@ export const metadata: Metadata = {
 };
 
 export default async function AboutPage() {
-  const [messages, testimonials, faqItems] = await Promise.all([
+  const [messages, testimonials] = await Promise.all([
     getMessages(),
     getTestimonials(),
-    getFaqItems(),
   ]);
+  const faqItems = getFaqItems();
   const clientMessages = getAboutClientMessages(
     messages as Record<string, unknown>
   );

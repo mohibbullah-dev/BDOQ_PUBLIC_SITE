@@ -12,7 +12,7 @@ import { usePremiumHeroCarouselSlides } from "@/lib/i18n/usePremiumHeroCarouselS
 import { WHATSAPP_URL } from "@/lib/constants";
 import { cn } from "@/lib/cn";
 
-const HERO_BG = "/images/hero/islamic-hero-bg.png";
+const HERO_BG = "/images/hero/islamic-hero-bg.jpg";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -42,7 +42,7 @@ export function PremiumHeroSection() {
       )}
       aria-label="Welcome to BD Online Quran Academy"
     >
-      {/* Full-bleed Islamic illustration background */}
+      {/* Full-bleed Islamic illustration — soft opacity, never solid 100% */}
       <div
         className="pointer-events-none absolute inset-0 z-0"
         aria-hidden="true"
@@ -52,12 +52,11 @@ export function PremiumHeroSection() {
           alt=""
           fill
           priority
-          className="object-cover object-[center_bottom] sm:object-center"
+          className="object-cover object-[center_bottom] opacity-[0.65] sm:object-center"
           sizes="100vw"
         />
-        {/* Soft wash — keeps left copy crisp without hiding art */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#F7FBF8]/92 via-[#F7FBF8]/55 to-[#F7FBF8]/25 lg:from-[#F7FBF8]/88 lg:via-[#F7FBF8]/40 lg:to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#F3F8F4]/50 via-transparent to-[#F7FBF8]/30" />
+        {/* Very light wash — art stays strong, copy stays readable */}
+        <div className="absolute inset-0 bg-[#F3F8F4]/20 lg:bg-[#F3F8F4]/10" />
       </div>
 
       <div className="site-container relative z-[1] flex min-h-0 flex-1 flex-col">

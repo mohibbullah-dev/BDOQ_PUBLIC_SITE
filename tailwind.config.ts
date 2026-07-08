@@ -7,6 +7,17 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    borderRadius: {
+      none: "0px",
+      sm: "8px",
+      DEFAULT: "8px",
+      md: "8px",
+      lg: "8px",
+      xl: "8px",
+      "2xl": "8px",
+      "3xl": "8px",
+      full: "8px",
+    },
     extend: {
       colors: {
         primary: {

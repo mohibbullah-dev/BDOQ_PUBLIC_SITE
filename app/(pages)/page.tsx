@@ -36,6 +36,14 @@ const HowToStartSection = dynamic(
   { loading: () => <SectionSkeleton /> }
 );
 
+const LiveAcademySection = dynamic(
+  () =>
+    import("@/components/home/LiveAcademySection").then((m) => ({
+      default: m.LiveAcademySection,
+    })),
+  { loading: () => <SectionSkeleton /> }
+);
+
 const WhyChooseUsSection = dynamic(
   () =>
     import("@/components/home/WhyChooseUsSection").then((m) => ({
@@ -115,11 +123,11 @@ export default async function HomePage() {
   const homeMessages = getHomeClientMessages(
     messages as Record<string, unknown>
   );
-  const [featuredTeachers, testimonials, faqItems] = await Promise.all([
+  const [featuredTeachers, testimonials] = await Promise.all([
     getFeaturedTeachers(),
     getTestimonials(),
-    getFaqItems(),
   ]);
+  const faqItems = getFaqItems();
 
   return (
     <NextIntlClientProvider locale={locale} messages={homeMessages}>
@@ -130,6 +138,7 @@ export default async function HomePage() {
       <TopicsSection />
       <LearningPlansSection />
       <HowToStartSection />
+      <LiveAcademySection />
       <WhyChooseUsSection />
       <TeachersPreviewSection teachers={featuredTeachers} />
       <TestimonialsSection testimonials={testimonials} />
