@@ -10,7 +10,6 @@ const SHELL_STRIP_KEYS = [
   "forms",
   "pages",
   "content",
-  "welcome",
 ] as const;
 
 function pickKeys(messages: MessageTree, keys: readonly string[]): MessageTree {

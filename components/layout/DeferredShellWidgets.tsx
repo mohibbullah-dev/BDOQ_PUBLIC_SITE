@@ -18,11 +18,20 @@ const ScrollToTop = dynamic(
   { ssr: false }
 );
 
+const WelcomeModal = dynamic(
+  () =>
+    import("@/components/home/WelcomeModal").then((m) => ({
+      default: m.WelcomeModal,
+    })),
+  { ssr: false }
+);
+
 export function DeferredShellWidgets() {
   return (
     <>
       <WhatsAppButton />
       <ScrollToTop />
+      <WelcomeModal />
     </>
   );
 }

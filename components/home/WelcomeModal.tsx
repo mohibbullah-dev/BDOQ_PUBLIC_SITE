@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CheckCircle2, X } from "lucide-react";
@@ -9,25 +10,63 @@ import { BdoqLogo } from "@/components/brand/BdoqLogo";
 import { dismissWelcome, shouldShowWelcomeModal } from "@/lib/welcomeStorage";
 import { cn } from "@/lib/cn";
 
-const SHOW_DELAY_MS = 2500;
+const SCROLL_TRIGGER_RATIO = 0.8;
 
 const benefitKeys = ["oneToOne", "global", "freeTrial"] as const;
 
+function getHomeScrollProgress(): number {
+  const doc = document.documentElement;
+  const maxScroll = doc.scrollHeight - doc.clientHeight;
+  if (maxScroll <= 0) return 0;
+  return window.scrollY / maxScroll;
+}
+
 export function WelcomeModal() {
   const t = useTranslations("welcome");
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [dontShowAgain, setDontShowAgain] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
+  const hasOpenedRef = useRef(false);
+  const isFirstPathEffectRef = useRef(true);
+  const previousPathRef = useRef<string | null>(null);
+
+  const tryOpen = useCallback((): void => {
+    if (hasOpenedRef.current) return;
+    if (!shouldShowWelcomeModal()) return;
+    hasOpenedRef.current = true;
+    setIsOpen(true);
+  }, []);
 
   useEffect(() => {
+    if (pathname !== "/") return;
     if (!shouldShowWelcomeModal()) return;
 
-    const timer = window.setTimeout(() => {
-      if (shouldShowWelcomeModal()) setIsOpen(true);
-    }, SHOW_DELAY_MS);
+    const handleScroll = (): void => {
+      if (getHomeScrollProgress() >= SCROLL_TRIGGER_RATIO) {
+        tryOpen();
+      }
+    };
 
-    return () => window.clearTimeout(timer);
-  }, []);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [pathname, tryOpen]);
+
+  useEffect(() => {
+    const previousPath = previousPathRef.current;
+    previousPathRef.current = pathname;
+
+    if (isFirstPathEffectRef.current) {
+      isFirstPathEffectRef.current = false;
+      return;
+    }
+
+    if (previousPath === "/" && pathname !== "/") {
+      tryOpen();
+    }
+  }, [pathname, tryOpen]);
 
   useEffect(() => {
     if (!isOpen) return;

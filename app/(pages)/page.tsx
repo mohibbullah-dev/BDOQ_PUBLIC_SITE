@@ -76,14 +76,6 @@ const FAQSection = dynamic(
   { loading: () => <SectionSkeleton /> }
 );
 
-const WelcomeModal = dynamic(
-  () =>
-    import("@/components/home/WelcomeModal").then((m) => ({
-      default: m.WelcomeModal,
-    })),
-  { ssr: false }
-);
-
 export const metadata: Metadata = {
   title: "Home",
   description: ACADEMY_INFO.tagline,
@@ -131,7 +123,6 @@ export default async function HomePage() {
 
   return (
     <NextIntlClientProvider locale={locale} messages={homeMessages}>
-      <WelcomeModal />
       <HomeHeroGroup />
       <QuickNavSection />
       <AboutSection />
