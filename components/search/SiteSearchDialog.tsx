@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  ArrowRight,
   BookOpen,
+  ChevronRight,
   FileText,
   LayoutGrid,
   Newspaper,
@@ -13,7 +13,14 @@ import {
   UserRound,
   X,
 } from "lucide-react";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import { useLocale } from "next-intl";
 import {
   buildSearchIndex,
@@ -44,20 +51,124 @@ const PLACEHOLDERS = {
 
 const HINTS = {
   en: {
-    empty: "Type to search across BDOQ Academy",
+    empty: "Type at least 2 characters to search courses, teachers, and more.",
+    pages: "Pages",
+    results: "Results",
     noResults: "No matches found. Try another keyword.",
     navigate: "↑↓ navigate",
     open: "↵ open",
     close: "esc close",
   },
   bn: {
-    empty: "BDOQ Academy-তে খুঁজতে লিখুন",
+    empty: "কোর্স, শিক্ষক ও আরও খুঁজতে কমপক্ষে ২ অক্ষর লিখুন।",
+    pages: "পেজ",
+    results: "ফলাফল",
     noResults: "কিছু পাওয়া যায়নি। অন্য কীওয়ার্ড চেষ্টা করুন।",
     navigate: "↑↓ নেভিগেট",
     open: "↵ খুলুন",
     close: "esc বন্ধ",
   },
 } as const;
+
+const SOFT_BORDER = "border-[rgb(220_235_228/0.7)]";
+const SOFT_SHADOW =
+  "shadow-[0_0_0_1px_rgb(210_232_220/0.28),0_2px_8px_rgb(180_220_200/0.1)]";
+
+function SearchListSection({
+  title,
+  children,
+}: {
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <section className="mb-3 last:mb-0">
+      <p className="mb-1.5 px-2 font-inter text-[10px] font-semibold uppercase tracking-[0.16em] text-text-gray">
+        {title}
+      </p>
+      <ul
+        className={cn(
+          "overflow-hidden rounded border bg-white/90",
+          SOFT_BORDER,
+          SOFT_SHADOW
+        )}
+      >
+        {children}
+      </ul>
+    </section>
+  );
+}
+
+function SearchListRow({
+  href,
+  index,
+  icon,
+  title,
+  subtitle,
+  meta,
+  active,
+  onNavigate,
+  onHover,
+}: {
+  href: string;
+  index: number;
+  icon: ReactNode;
+  title: string;
+  subtitle?: string;
+  meta?: string;
+  active: boolean;
+  onNavigate: () => void;
+  onHover: () => void;
+}) {
+  return (
+    <li className="border-b border-[rgb(220_235_228/0.55)] last:border-b-0">
+      <Link
+        href={href}
+        data-search-index={index}
+        onClick={(event) => {
+          event.preventDefault();
+          onNavigate();
+        }}
+        onMouseEnter={onHover}
+        className={cn(
+          "group flex w-full items-center gap-3 px-3 py-2.5 text-left transition",
+          active ? "bg-primary/10" : "hover:bg-[#f6fcf9]"
+        )}
+      >
+        <span
+          className={cn(
+            "flex size-9 shrink-0 items-center justify-center rounded bg-primary/10 text-primary ring-1 ring-primary/15 transition",
+            active && "bg-[#D4A853]/15 text-[#B8923F] ring-[#D4A853]/25"
+          )}
+        >
+          {icon}
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block truncate font-inter text-sm font-semibold text-primary-dark">
+            {title}
+          </span>
+          {subtitle ? (
+            <span className="mt-0.5 block truncate font-inter text-xs text-text-gray">
+              {subtitle}
+            </span>
+          ) : null}
+        </span>
+        {meta ? (
+          <span className="shrink-0 rounded bg-[#f6fcf9] px-2 py-0.5 font-inter text-[10px] font-semibold uppercase tracking-wide text-text-gray">
+            {meta}
+          </span>
+        ) : null}
+        <ChevronRight
+          className={cn(
+            "size-4 shrink-0 text-text-gray/40 transition group-hover:translate-x-0.5 group-hover:text-[#D4A853]",
+            active && "translate-x-0.5 text-[#D4A853]"
+          )}
+          aria-hidden
+        />
+      </Link>
+    </li>
+  );
+}
 
 export function SiteSearchDialog({ isOpen, onClose }: ISiteSearchDialogProps) {
   const router = useRouter();
@@ -93,7 +204,15 @@ export function SiteSearchDialog({ isOpen, onClose }: ISiteSearchDialogProps) {
     };
   }, [isOpen]);
 
+  const defaultPages = useMemo(
+    () => index.filter((item) => item.category === "page").slice(0, 6),
+    [index]
+  );
+
   const results = useMemo(() => searchSite(query, index, 10), [index, query]);
+  const trimmed = query.trim();
+  const showingPages = trimmed.length === 0;
+  const listItems = showingPages ? defaultPages : results;
 
   const resetState = useCallback((): void => {
     setQuery("");
@@ -127,7 +246,7 @@ export function SiteSearchDialog({ isOpen, onClose }: ISiteSearchDialogProps) {
 
   useEffect(() => {
     setActiveIndex(0);
-  }, [query]);
+  }, [query, showingPages]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -139,11 +258,13 @@ export function SiteSearchDialog({ isOpen, onClose }: ISiteSearchDialogProps) {
         return;
       }
 
-      if (results.length === 0) return;
+      if (listItems.length === 0) return;
 
       if (event.key === "ArrowDown") {
         event.preventDefault();
-        setActiveIndex((current) => Math.min(current + 1, results.length - 1));
+        setActiveIndex((current) =>
+          Math.min(current + 1, listItems.length - 1)
+        );
       }
 
       if (event.key === "ArrowUp") {
@@ -153,14 +274,14 @@ export function SiteSearchDialog({ isOpen, onClose }: ISiteSearchDialogProps) {
 
       if (event.key === "Enter") {
         event.preventDefault();
-        const selected = results[activeIndex];
+        const selected = listItems[activeIndex];
         if (selected) navigateTo(selected);
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activeIndex, handleClose, isOpen, navigateTo, results]);
+  }, [activeIndex, handleClose, isOpen, listItems, navigateTo]);
 
   useEffect(() => {
     const activeElement = listRef.current?.querySelector<HTMLElement>(
@@ -184,7 +305,7 @@ export function SiteSearchDialog({ isOpen, onClose }: ISiteSearchDialogProps) {
         >
           <motion.button
             type="button"
-            className="absolute inset-0 bg-[#32C991]/55 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             aria-label="Close search"
             onClick={handleClose}
             initial={{ opacity: 0 }}
@@ -193,17 +314,25 @@ export function SiteSearchDialog({ isOpen, onClose }: ISiteSearchDialogProps) {
           />
 
           <motion.div
-            className="relative z-10 w-full max-w-2xl overflow-hidden rounded-2xl border border-white/20 bg-white shadow-2xl"
+            className={cn(
+              "relative z-10 w-full max-w-lg overflow-hidden rounded border bg-[#fcfefd]",
+              SOFT_BORDER,
+              SOFT_SHADOW
+            )}
             initial={{ opacity: 0, y: -12, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.98 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="flex items-center gap-3 border-b border-gray-100 px-4 py-3">
-              <Search
-                className="h-5 w-5 shrink-0 text-primary"
-                aria-hidden="true"
-              />
+            <div
+              className={cn(
+                "flex items-center gap-2 border-b px-4 py-3",
+                SOFT_BORDER
+              )}
+            >
+              <span className="flex size-8 shrink-0 items-center justify-center rounded bg-primary/10 text-primary">
+                <Search className="size-4" aria-hidden />
+              </span>
               <input
                 ref={inputRef}
                 type="search"
@@ -216,90 +345,83 @@ export function SiteSearchDialog({ isOpen, onClose }: ISiteSearchDialogProps) {
               <button
                 type="button"
                 onClick={handleClose}
-                className="inline-flex h-8 w-8 items-center justify-center rounded-full text-text-gray transition-colors hover:bg-gray-100 hover:text-primary-dark"
+                className="rounded p-1.5 text-text-gray transition hover:bg-[#f6fcf9] hover:text-primary-dark"
                 aria-label="Close search"
               >
-                <X className="h-4 w-4" aria-hidden="true" />
+                <X className="size-4" aria-hidden />
               </button>
             </div>
 
             <div
               ref={listRef}
-              className="max-h-[min(52vh,420px)] overflow-y-auto p-2"
+              className="max-h-[min(60vh,420px)] overflow-y-auto p-3"
             >
-              {query.trim().length === 0 && (
-                <p className="px-3 py-8 text-center font-inter text-sm text-text-gray">
-                  {hints.empty}
-                </p>
-              )}
+              {showingPages ? (
+                <SearchListSection title={hints.pages}>
+                  {defaultPages.map((result, itemIndex) => {
+                    const Icon = CATEGORY_ICONS[result.category];
+                    return (
+                      <SearchListRow
+                        key={result.id}
+                        href={result.href}
+                        index={itemIndex}
+                        icon={<Icon className="size-4" aria-hidden />}
+                        title={result.title}
+                        subtitle={result.href}
+                        active={itemIndex === activeIndex}
+                        onNavigate={() => navigateTo(result)}
+                        onHover={() => setActiveIndex(itemIndex)}
+                      />
+                    );
+                  })}
+                </SearchListSection>
+              ) : null}
 
-              {query.trim().length > 0 && results.length === 0 && (
-                <p className="px-3 py-8 text-center font-inter text-sm text-text-gray">
+              {!showingPages && results.length === 0 ? (
+                <p className="px-2 py-4 text-center font-inter text-sm text-text-gray">
                   {hints.noResults}
                 </p>
-              )}
+              ) : null}
 
-              {results.map((result, index) => {
-                const Icon = CATEGORY_ICONS[result.category];
-                const isActive = index === activeIndex;
+              {!showingPages && results.length > 0 ? (
+                <SearchListSection title={hints.results}>
+                  {results.map((result, itemIndex) => {
+                    const Icon = CATEGORY_ICONS[result.category];
+                    return (
+                      <SearchListRow
+                        key={result.id}
+                        href={result.href}
+                        index={itemIndex}
+                        icon={<Icon className="size-4" aria-hidden />}
+                        title={result.title}
+                        subtitle={result.description}
+                        meta={SEARCH_CATEGORY_LABELS[result.category]}
+                        active={itemIndex === activeIndex}
+                        onNavigate={() => navigateTo(result)}
+                        onHover={() => setActiveIndex(itemIndex)}
+                      />
+                    );
+                  })}
+                </SearchListSection>
+              ) : null}
 
-                return (
-                  <Link
-                    key={result.id}
-                    href={result.href}
-                    data-search-index={index}
-                    onClick={(event) => {
-                      event.preventDefault();
-                      navigateTo(result);
-                    }}
-                    onMouseEnter={() => setActiveIndex(index)}
-                    className={cn(
-                      "flex items-start gap-3 rounded-xl px-3 py-3 transition-colors",
-                      isActive ? "bg-primary/10" : "hover:bg-gray-50"
-                    )}
-                  >
-                    <span
-                      className={cn(
-                        "mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl",
-                        isActive
-                          ? "bg-primary text-white"
-                          : "bg-bg-light text-primary"
-                      )}
-                    >
-                      <Icon className="h-4 w-4" aria-hidden="true" />
-                    </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="flex flex-wrap items-center gap-2">
-                        <span className="font-inter text-sm font-semibold text-primary-dark">
-                          {result.title}
-                        </span>
-                        <span className="rounded-full bg-bg-light px-2 py-0.5 font-inter text-[10px] font-semibold uppercase tracking-wide text-primary">
-                          {SEARCH_CATEGORY_LABELS[result.category]}
-                        </span>
-                      </span>
-                      <span className="mt-0.5 block font-inter text-xs leading-relaxed text-text-gray line-clamp-2">
-                        {result.description}
-                      </span>
-                    </span>
-                    <ArrowRight
-                      className={cn(
-                        "mt-2 h-4 w-4 shrink-0 transition-transform",
-                        isActive
-                          ? "translate-x-0.5 text-primary"
-                          : "text-gray-300"
-                      )}
-                      aria-hidden="true"
-                    />
-                  </Link>
-                );
-              })}
+              {showingPages ? (
+                <p className="px-2 pt-1 font-inter text-sm text-text-gray">
+                  {hints.empty}
+                </p>
+              ) : null}
             </div>
 
-            <div className="flex flex-wrap items-center justify-between gap-2 border-t border-gray-100 bg-bg-light/60 px-4 py-2.5">
+            <div
+              className={cn(
+                "flex flex-wrap items-center justify-between gap-2 border-t bg-[#f6fcf9]/80 px-4 py-2.5",
+                SOFT_BORDER
+              )}
+            >
               <span className="hidden font-inter text-[11px] text-text-gray sm:inline">
                 {hints.navigate} · {hints.open} · {hints.close}
               </span>
-              <kbd className="ml-auto hidden rounded-md border border-gray-200 bg-white px-2 py-0.5 font-mono text-[10px] text-text-gray sm:inline">
+              <kbd className="ml-auto hidden rounded border border-[rgb(220_235_228/0.8)] bg-white px-2 py-0.5 font-mono text-[10px] text-text-gray sm:inline">
                 Ctrl K
               </kbd>
             </div>

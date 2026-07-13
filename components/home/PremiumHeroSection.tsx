@@ -38,7 +38,7 @@ export function PremiumHeroSection() {
   return (
     <section
       className={cn(
-        "home-hero-section relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-[#F3F8F4] text-[#111827]"
+        "home-hero-section relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-gradient-to-br from-[#E8FAF2] via-[#F3F8F4] to-white text-[#111827]"
       )}
       aria-label="Welcome to BD Online Quran Academy"
     >

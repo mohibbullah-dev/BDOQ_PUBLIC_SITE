@@ -155,7 +155,7 @@ function SessionCard({
     >
       {isLive ? (
         <span
-          className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-emerald-400 to-emerald-600"
+          className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-[#32C991] via-[#269B6F] to-[#0D9488]"
           aria-hidden="true"
         />
       ) : null}

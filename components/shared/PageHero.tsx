@@ -34,7 +34,7 @@ export function PageHero({
   return (
     <section
       className={cn(
-        "relative overflow-hidden border-b border-primary/10 bg-bg-light py-14 md:py-20",
+        "page-hero relative overflow-hidden border-b border-primary/10 bg-bg-light py-14 md:py-20",
         className
       )}
     >

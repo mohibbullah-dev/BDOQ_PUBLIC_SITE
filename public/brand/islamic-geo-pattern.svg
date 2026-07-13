@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <pattern id="girih" width="60" height="60" patternUnits="userSpaceOnUse">
+      <!-- 8-point star lattice (Islamic girih) -->
+      <path
+        d="M30 2 L34 22 L54 18 L38 30 L54 42 L34 38 L30 58 L26 38 L6 42 L22 30 L6 18 L26 22 Z"
+        stroke="#D4A853"
+        stroke-width="1.1"
+        fill="none"
+        opacity="0.9"
+      />
+      <path
+        d="M30 10 L48 30 L30 50 L12 30 Z"
+        stroke="#D4A853"
+        stroke-width="0.85"
+        fill="none"
+        opacity="0.55"
+      />
+      <circle cx="30" cy="30" r="3.2" stroke="#D4A853" stroke-width="0.8" fill="none" opacity="0.7" />
+      <path d="M0 30 H60 M30 0 V60" stroke="#D4A853" stroke-width="0.45" opacity="0.35" />
+    </pattern>
+  </defs>
+  <rect width="120" height="120" fill="url(#girih)" />
+</svg>

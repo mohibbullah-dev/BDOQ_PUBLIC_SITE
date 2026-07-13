@@ -191,9 +191,15 @@
     background-size: 60px 60px;
   }
 
-  /* Inner page title hero — solid light bg; shape via IslamicShapeBackdrop */
+  /* Inner page title hero — soft brand linear gradient */
   .page-hero-bg {
-    background-color: var(--green-light);
+    background-color: transparent;
+    background-image: linear-gradient(
+      160deg,
+      #d8f5e8 0%,
+      #e8faf2 42%,
+      #f7fcf9 100%
+    );
   }
 
   /* ─── Site header (modern glass + overlay) ─────────────────── */
@@ -219,12 +225,24 @@
   }
 
   .site-topbar--overlay {
-    background: var(--green-primary);
+    background-color: var(--green-primary);
+    background-image: linear-gradient(
+      90deg,
+      #269b6f 0%,
+      #32c991 45%,
+      #0d9488 100%
+    );
     backdrop-filter: blur(12px);
   }
 
   .site-topbar--solid {
-    background: var(--green-primary);
+    background-color: var(--green-primary);
+    background-image: linear-gradient(
+      90deg,
+      #269b6f 0%,
+      #32c991 45%,
+      #0d9488 100%
+    );
   }
 
   .site-navbar {
@@ -316,6 +334,12 @@
 
   .site-nav-item.is-active {
     background-color: var(--nav-hover);
+    background-image: linear-gradient(
+      135deg,
+      #32c991 0%,
+      #269b6f 55%,
+      #0d9488 100%
+    );
     color: #ffffff;
     font-weight: 600;
     box-shadow: 0 8px 22px rgba(50, 201, 145, 0.32);
@@ -380,6 +404,12 @@
     justify-content: center;
     border-radius: 8px;
     background-color: var(--green-primary);
+    background-image: linear-gradient(
+      135deg,
+      #32c991 0%,
+      #269b6f 55%,
+      #0d9488 100%
+    );
     color: #ffffff;
     font-weight: 600;
     position: relative;
@@ -595,8 +625,9 @@
   .gradient-text {
     background: linear-gradient(
       135deg,
-      var(--green-primary),
-      var(--green-primary)
+      #32c991 0%,
+      #269b6f 45%,
+      #0d9488 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
@@ -690,4 +721,299 @@
 .scroll-reveal--visible {
   opacity: 1;
   transform: translate(0);
+}
+
+/* --- Site-wide: brand LINEAR gradients (same as home, every public page) --- */
+body.site-page-body {
+  background-color: #ffffff;
+  background-image: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f0fbf6 40%,
+    #ffffff 100%
+  );
+}
+
+.site-page-surface {
+  --site-scroll: 0;
+  --wash-mint: 1;
+  --wash-cream: 0;
+  --wash-teal: 0;
+  --wash-gold: 0;
+  --brand-grad: linear-gradient(135deg, #32c991 0%, #269b6f 52%, #0d9488 100%);
+  --brand-grad-dark: linear-gradient(135deg, #269b6f 0%, #0d9488 55%, #0a4d3c 100%);
+  --brand-grad-soft: linear-gradient(145deg, #e8faf2 0%, #ffffff 48%, #f0fbf6 100%);
+  --brand-grad-mint: linear-gradient(160deg, #d8f5e8 0%, #e8faf2 42%, #f7fcf9 100%);
+  --brand-grad-warm: linear-gradient(155deg, #fdf6e3 0%, #ffffff 50%, #f0fbf6 100%);
+  --brand-grad-teal: linear-gradient(150deg, #e6f8f5 0%, #ffffff 46%, #e8faf2 100%);
+  --brand-grad-gold: linear-gradient(140deg, #f8f1de 0%, #ffffff 45%, #eef9f4 100%);
+  --site-card-bg: #fcfefd;
+  --site-card-border: rgb(220 235 228 / 0.72);
+  --site-card-shadow:
+    0 0 0 1px rgb(210 232 220 / 0.3),
+    0 2px 10px rgb(180 220 200 / 0.12);
+  position: relative;
+  isolation: isolate;
+  min-height: 40vh;
+  background-color: #ffffff;
+  background-image: linear-gradient(
+    165deg,
+    #ffffff 0%,
+    #f0fbf6 35%,
+    #ffffff 70%,
+    #f7fcf9 100%
+  );
+}
+
+.site-page-surface__content {
+  position: relative;
+  z-index: 1;
+}
+
+.site-atmosphere {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.site-atmosphere__base {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #ffffff 0%, #f7fcf9 50%, #ffffff 100%);
+}
+
+.site-atmosphere__band {
+  position: absolute;
+  inset: -8%;
+  opacity: 0;
+  will-change: opacity;
+}
+
+.site-atmosphere__band--mint {
+  opacity: var(--wash-mint);
+  background: linear-gradient(
+    155deg,
+    #d9f5e9 0%,
+    #ffffff 38%,
+    #e8faf2 72%,
+    #ffffff 100%
+  );
+}
+
+.site-atmosphere__band--cream {
+  opacity: var(--wash-cream);
+  background: linear-gradient(
+    165deg,
+    #fdf6e3 0%,
+    #ffffff 36%,
+    #f0fbf6 68%,
+    #fffdf8 100%
+  );
+}
+
+.site-atmosphere__band--teal {
+  opacity: var(--wash-teal);
+  background: linear-gradient(
+    170deg,
+    #d5f4f0 0%,
+    #ffffff 34%,
+    #e6f8f5 70%,
+    #ffffff 100%
+  );
+}
+
+.site-atmosphere__band--gold {
+  opacity: var(--wash-gold);
+  background: linear-gradient(
+    160deg,
+    #f8efd5 0%,
+    #ffffff 34%,
+    #eef9f4 66%,
+    #fffaf0 100%
+  );
+}
+
+.site-atmosphere__pattern {
+  position: absolute;
+  inset: 0;
+  background-image: url("/brand/islamic-geo-pattern.svg");
+  background-size: 100px 100px;
+  background-repeat: repeat;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+}
+
+.site-atmosphere__edge {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: min(18vh, 9rem);
+}
+
+.site-atmosphere__edge--top {
+  top: 0;
+  background: linear-gradient(180deg, #ffffff 0%, transparent 100%);
+}
+
+.site-atmosphere__edge--bottom {
+  bottom: 0;
+  background: linear-gradient(0deg, #ffffff 0%, transparent 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-atmosphere__band {
+    transition: none;
+  }
+}
+
+/* Section fills → linear gradients */
+.site-page-surface section.bg-bg-light,
+.site-page-surface .bg-bg-light,
+.site-page-surface .page-hero-bg {
+  background-color: transparent !important;
+  background-image: var(--brand-grad-mint) !important;
+}
+
+.site-page-surface section.bg-white {
+  background-color: transparent !important;
+  background-image: var(--brand-grad-soft) !important;
+}
+
+.site-page-surface__content > section:nth-child(odd):not(.home-hero-section):not(.page-hero):not([class*="bg-primary-dark"]):not([class*="bg-teal"]) {
+  background-color: transparent !important;
+  background-image: var(--brand-grad-soft) !important;
+}
+
+.site-page-surface__content > section:nth-child(even):not(.home-hero-section):not(.page-hero):not([class*="bg-primary-dark"]):not([class*="bg-teal"]) {
+  background-color: transparent !important;
+  background-image: var(--brand-grad-warm) !important;
+}
+
+.site-page-surface__content > section:nth-child(3n):not(.home-hero-section):not(.page-hero):not([class*="bg-primary-dark"]) {
+  background-image: var(--brand-grad-teal) !important;
+}
+
+.site-page-surface__content > section + section {
+  box-shadow: inset 0 1px 0 0 rgb(50 201 145 / 0.08);
+}
+
+.site-page-surface .home-hero-section,
+.site-page-surface .page-hero {
+  background-color: transparent !important;
+  background-image: linear-gradient(
+    165deg,
+    #e8faf2 0%,
+    #f3f8f4 40%,
+    #ffffff 78%,
+    #f0fbf6 100%
+  ) !important;
+  box-shadow: none !important;
+}
+
+/* Soft mint / panel solids → gradients */
+.site-page-surface [class^="bg-[#E8FAF2]"],
+.site-page-surface [class*=" bg-[#E8FAF2]"],
+.site-page-surface [class^="bg-[#E8F5EE]"],
+.site-page-surface [class*=" bg-[#E8F5EE]"],
+.site-page-surface [class^="bg-[#E8F5EF]"],
+.site-page-surface [class*=" bg-[#E8F5EF]"],
+.site-page-surface [class^="bg-[#FAFCFA]"],
+.site-page-surface [class*=" bg-[#FAFCFA]"],
+.site-page-surface [class^="bg-[#F7FBF8]"],
+.site-page-surface [class*=" bg-[#F7FBF8]"],
+.site-page-surface [class^="bg-[#F3F8F4]"],
+.site-page-surface [class*=" bg-[#F3F8F4]"],
+.site-page-surface [class^="bg-[#F4FBF8]"],
+.site-page-surface [class*=" bg-[#F4FBF8]"],
+.site-page-surface [class^="bg-[#F8FAF9]"],
+.site-page-surface [class*=" bg-[#F8FAF9]"],
+.site-page-surface [class^="bg-[#F9FAFB]"],
+.site-page-surface [class*=" bg-[#F9FAFB]"] {
+  background-color: transparent !important;
+  background-image: var(--brand-grad-mint) !important;
+}
+
+/* Dark brand panels → deep green linear gradient */
+.site-page-surface [class^="bg-primary-dark"],
+.site-page-surface [class*=" bg-primary-dark"],
+.site-page-surface [class^="bg-[var(--green-dark)]"],
+.site-page-surface [class*=" bg-[var(--green-dark)]"] {
+  background-color: transparent !important;
+  background-image: var(--brand-grad-dark) !important;
+}
+
+/* Brand primary solids → green→teal linear gradient (exclude primary-dark / opacity) */
+.site-page-surface [class^="bg-[#32C991]"]:not([class^="bg-[#32C991]/"]),
+.site-page-surface [class*=" bg-[#32C991]"]:not([class*=" bg-[#32C991]/"]),
+.site-page-surface [class^="bg-[#32c991]"]:not([class^="bg-[#32c991]/"]),
+.site-page-surface [class*=" bg-[#32c991]"]:not([class*=" bg-[#32c991]/"]),
+.site-page-surface [class^="bg-[var(--green-primary)]"]:not([class*="/"]),
+.site-page-surface [class*=" bg-[var(--green-primary)]"]:not([class*="/"]),
+.site-page-surface [class^="bg-primary"]:not([class^="bg-primary/"]):not([class^="bg-primary-"]),
+.site-page-surface [class*=" bg-primary"]:not([class*=" bg-primary/"]):not([class*=" bg-primary-"]),
+.site-page-surface [class^="bg-emerald-"],
+.site-page-surface [class*=" bg-emerald-"] {
+  background-color: transparent !important;
+  background-image: var(--brand-grad) !important;
+}
+
+/* Soft primary washes */
+.site-page-surface [class^="bg-primary/"],
+.site-page-surface [class*=" bg-primary/"],
+.site-page-surface [class^="bg-[#32C991]/"],
+.site-page-surface [class*=" bg-[#32C991]/"],
+.site-page-surface [class^="bg-[var(--green-primary)]/"],
+.site-page-surface [class*=" bg-[var(--green-primary)]/"],
+.site-page-surface [class^="bg-teal-accent/"],
+.site-page-surface [class*=" bg-teal-accent/"] {
+  background-color: transparent !important;
+  background-image: linear-gradient(
+    135deg,
+    rgb(50 201 145 / 0.16) 0%,
+    rgb(13 148 136 / 0.1) 100%
+  ) !important;
+}
+
+.site-page-surface .site-card-hover-overlay {
+  background-color: transparent !important;
+  background-image: var(--brand-grad) !important;
+}
+
+/* Card surfaces */
+.site-page-surface :is(div, article, li, aside).bg-white.shadow-sm,
+.site-page-surface :is(div, article, li, aside).bg-white.shadow-md,
+.site-page-surface :is(div, article, li, aside).bg-white.shadow-lg,
+.site-page-surface :is(div, article, li, aside).bg-white.shadow-xl,
+.site-page-surface :is(div, article, li, aside).bg-white.border,
+.site-page-surface :is(div, article, li, aside).bg-white.border-gray-100,
+.site-page-surface :is(div, article, li, aside)[class*="bg-white/"][class*="border"],
+.site-page-surface :is(div, article, li, aside)[class*="bg-white/"][class*="shadow-"] {
+  background-color: transparent;
+  background-image: linear-gradient(
+    145deg,
+    #fcfefd 0%,
+    #ffffff 45%,
+    #f7fcf9 100%
+  );
+  border-color: var(--site-card-border);
+  box-shadow: var(--site-card-shadow);
+}
+
+.site-page-surface :is(div, article, li, aside).bg-white[class*="shadow-["],
+.site-page-surface :is(div, article, li, aside)[class*="bg-white/"][class*="shadow-["] {
+  background-color: transparent;
+  background-image: linear-gradient(
+    145deg,
+    #fcfefd 0%,
+    #ffffff 45%,
+    #f7fcf9 100%
+  );
+  box-shadow: var(--site-card-shadow);
+}
+
+.site-page-surface :is(div, article, li, aside).border-gray-100,
+.site-page-surface :is(div, article, li, aside).border-white\/50 {
+  border-color: var(--site-card-border);
 }

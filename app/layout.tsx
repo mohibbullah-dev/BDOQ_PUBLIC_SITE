@@ -18,6 +18,7 @@ import { PageTransition } from "@/components/layout/PageTransition";
 import { TopProgressBar } from "@/components/layout/TopProgressBar";
 import { SkipToMainLink } from "@/components/layout/SkipToMainLink";
 import { DeferredShellWidgets } from "@/components/layout/DeferredShellWidgets";
+import { SitePageSurface } from "@/components/layout/SitePageSurface";
 import { SITE_URL } from "@/lib/constants";
 import { getClientShellMessages } from "@/lib/i18n/clientShellMessages";
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
@@ -163,7 +164,9 @@ export default async function RootLayout({
             </HeaderThemeProvider>
           </SiteHeader>
           <main id="main-content">
-            <PageTransition>{children}</PageTransition>
+            <SitePageSurface>
+              <PageTransition>{children}</PageTransition>
+            </SitePageSurface>
           </main>
           <Footer />
           <DeferredShellWidgets />

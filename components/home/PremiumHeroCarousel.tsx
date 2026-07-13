@@ -32,7 +32,7 @@ function PhotoSlide({
   priority?: boolean;
 }) {
   return (
-    <div className="absolute inset-0 overflow-hidden bg-[#E8F5EF]">
+    <div className="absolute inset-0 overflow-hidden bg-gradient-to-br from-[#E8F5EF] via-white to-[#F0FBF6]">
       <Image
         src={slide.image}
         alt={slide.imageAlt}

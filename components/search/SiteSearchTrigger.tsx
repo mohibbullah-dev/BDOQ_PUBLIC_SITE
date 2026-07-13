@@ -66,15 +66,23 @@ export function SiteSearchTrigger({
         type="button"
         onClick={openSearch}
         className={cn(
-          "inline-flex items-center justify-center rounded-[8px] transition-colors duration-200",
+          "inline-flex items-center justify-center rounded transition-colors duration-200",
           variant === "mobile" || variant === "overlay"
-            ? "h-9 w-9 border border-white/20 text-white hover:border-[var(--gold)] hover:bg-white/10 hover:text-[var(--gold)] xl:h-10 xl:w-10"
-            : "h-9 w-9 text-[#374151] hover:bg-[var(--green-light)] hover:text-[var(--green-primary)] xl:h-10 xl:w-10",
+            ? "h-9 w-9 border border-white/20 text-white hover:border-[#D4A853] hover:bg-white/10 hover:text-[#D4A853] xl:h-10 xl:w-10"
+            : "h-9 gap-2 border border-[rgb(220_235_228/0.7)] bg-[#fcfefd] px-3 text-[#374151] shadow-[0_0_0_1px_rgb(210_232_220/0.28),0_2px_8px_rgb(180_220_200/0.1)] hover:text-primary xl:h-10",
           className
         )}
         aria-label={t("open")}
       >
-        <Search className="h-5 w-5" aria-hidden="true" />
+        <Search className="h-5 w-5 shrink-0" aria-hidden="true" />
+        {variant === "desktop" ? (
+          <>
+            <span className="hidden text-sm lg:inline">Search…</span>
+            <kbd className="hidden rounded bg-[#f6fcf9] px-1.5 py-0.5 font-mono text-[10px] text-text-gray xl:inline">
+              Ctrl K
+            </kbd>
+          </>
+        ) : null}
       </button>
 
       {isOpen && <SiteSearchDialog isOpen={isOpen} onClose={closeSearch} />}
