@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 120" fill="none" aria-hidden="true">
+  <!-- Hanging Islamic lantern (fanous) -->
+  <path d="M24 2v10" stroke="#D4A853" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="24" cy="14" r="2.2" fill="#D4A853"/>
+  <path d="M16 22c0-4 3.5-6 8-6s8 2 8 6v4H16v-4z" fill="#D4A853" opacity="0.9"/>
+  <path d="M14 26h20l3 10H11l3-10z" fill="#E8C97A"/>
+  <path d="M12 36h24c2 0 4 2 4 5v28c0 8-6 14-16 18-10-4-16-10-16-18V41c0-3 2-5 4-5z" fill="#FDF6E3" stroke="#D4A853" stroke-width="1.2"/>
+  <path d="M18 44h12M18 52h12M18 60h12" stroke="#D4A853" stroke-width="1" opacity="0.55"/>
+  <circle cx="24" cy="54" r="4" fill="none" stroke="#32C991" stroke-width="1.2" opacity="0.7"/>
+  <path d="M20 87c1.5 4 3.5 7 4 10 0.5-3 2.5-6 4-10" stroke="#D4A853" stroke-width="1.2" fill="none"/>
+</svg>

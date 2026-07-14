@@ -8,6 +8,7 @@ import { PageHero } from "@/components/shared/PageHero";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { YouTubeEmbed } from "@/components/shared/YouTubeEmbed";
 import { GradientPlaceholder } from "@/components/shared/GradientPlaceholder";
+import { VideoPlayIcon } from "@/components/shared/VideoPlayIcon";
 import { cn } from "@/lib/cn";
 
 function VideoThumbnail({
@@ -24,18 +25,21 @@ function VideoThumbnail({
       type="button"
       onClick={onClick}
       className={cn(
-        "w-full text-left rounded-xl overflow-hidden border-2 transition-all",
+        "group w-full overflow-hidden rounded-xl border-2 text-left transition-all",
         isActive
           ? "border-primary shadow-md"
           : "border-transparent hover:border-primary/30"
       )}
     >
-      <GradientPlaceholder
-        gradient="from-primary-dark to-teal"
-        className="h-24 rounded-none"
-        label={video.title}
-      />
-      <p className="font-inter text-sm font-medium text-primary-dark p-3 line-clamp-2">
+      <div className="relative">
+        <GradientPlaceholder
+          gradient="from-primary-dark to-teal"
+          className="h-24 rounded-none"
+          label={video.title}
+        />
+        <VideoPlayIcon size="sm" />
+      </div>
+      <p className="line-clamp-2 p-3 font-inter text-sm font-medium text-primary-dark">
         {video.title}
       </p>
     </button>

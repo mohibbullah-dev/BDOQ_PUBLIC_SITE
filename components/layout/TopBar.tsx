@@ -2,35 +2,26 @@
 
 import { Star } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { SocialIconRow } from "@/components/shared/SocialIcons";
 import { ACADEMY_INFO, SOCIAL_LINKS } from "@/lib/constants";
 import { TOPBAR_SOCIAL_ORDER } from "@/lib/navigation";
-import { getSocialIcon, orderSocialLinks } from "@/lib/social";
+import { orderSocialLinks } from "@/lib/social";
 import { cn } from "@/lib/cn";
 
 function TopBarSocialIcons() {
   const links = orderSocialLinks(SOCIAL_LINKS, TOPBAR_SOCIAL_ORDER);
 
   return (
-    <div className="flex items-center gap-1.5">
-      {links.map((link) => {
-        const Icon = getSocialIcon(link.icon);
-        return (
-          <a
-            key={link.icon}
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={link.name}
-            className={cn(
-              "flex h-7 w-7 items-center justify-center rounded-full transition-all duration-300",
-              "border border-white/25 text-white hover:border-white hover:bg-white/15 hover:text-white"
-            )}
-          >
-            <Icon className="h-3.5 w-3.5" aria-hidden="true" />
-          </a>
-        );
-      })}
-    </div>
+    <SocialIconRow
+      links={links}
+      size="sm"
+      className="gap-1.5"
+      tooltipPlacement="bottom"
+      iconClassName={cn(
+        "flex h-7 w-7 items-center justify-center rounded-[8px] transition-all duration-300",
+        "border border-white/25 text-white hover:border-white hover:bg-white/15 hover:text-white"
+      )}
+    />
   );
 }
 

@@ -3,31 +3,29 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 import {
+  Award,
   BookOpen,
-  CalendarClock,
-  ChevronRight,
-  Globe2,
+  Clock3,
   GraduationCap,
   Headset,
-  Link2,
   Mail,
   MapPin,
   Phone,
-  ShieldCheck,
 } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { BdoqLogo } from "@/components/brand/BdoqLogo";
-import { WhatsappIcon } from "@/components/shared/SocialBrandIcons";
-import { getCourses } from "@/lib/courses";
+import { SocialIconRow } from "@/components/shared/SocialIcons";
+import { FooterDarkBand } from "@/components/layout/footer/FooterDarkBand";
+import { FooterFeatureBar } from "@/components/layout/footer/FooterFeatureBar";
+import { FooterNavColumns } from "@/components/layout/footer/FooterNavColumns";
 import {
   ACADEMY_INFO,
   COURSES,
   SOCIAL_LINKS,
-  WHATSAPP_URL,
 } from "@/lib/constants";
-import { FOOTER_OTHER_LINKS, FOOTER_SOCIAL_ORDER } from "@/lib/navigation";
+import { getCourses } from "@/lib/courses";
+import { FOOTER_SOCIAL_ORDER } from "@/lib/navigation";
 import { orderSocialLinks } from "@/lib/social";
-import { SocialIconRow } from "@/components/shared/SocialIcons";
 import { cn } from "@/lib/cn";
 
 const FOOTER_BG = "/images/islamic-footer-bg.jpg";
@@ -40,9 +38,15 @@ function ColumnHeading({
   children: ReactNode;
 }) {
   return (
-    <h3 className="mb-4 flex items-center gap-2.5 font-inter text-base font-semibold text-[var(--green-dark)]">
-      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] bg-[var(--green-light)] text-[var(--green-primary)]">
-        <Icon className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+    <h3 className="mb-4 flex items-center gap-2.5 font-inter text-sm font-bold uppercase tracking-wide text-[var(--green-dark)] md:text-base">
+      <span
+        className={cn(
+          "flex size-8 shrink-0 items-center justify-center rounded-[8px]",
+          "bg-[linear-gradient(135deg,#E8FAF2_0%,#ffffff_55%,#F0FBF6_100%)]",
+          "text-[var(--green-primary)] ring-1 ring-[var(--green-primary)]/15"
+        )}
+      >
+        <Icon className="size-4" strokeWidth={2} aria-hidden="true" />
       </span>
       {children}
     </h3>
@@ -52,128 +56,164 @@ function ColumnHeading({
 export async function Footer() {
   const tFooter = await getTranslations("footer");
   const tNav = await getTranslations("nav");
-  const tAcademy = await getTranslations("academy");
+  const tCta = await getTranslations("cta");
   const tCourses = await getTranslations("courses");
 
   const apiCourses = await getCourses();
   const popularCourses =
-    apiCourses.length > 0 ? apiCourses.slice(0, 6) : COURSES.slice(0, 6);
+    apiCourses.length > 0 ? apiCourses.slice(0, 5) : COURSES.slice(0, 5);
   const socialLinks = orderSocialLinks(SOCIAL_LINKS, FOOTER_SOCIAL_ORDER);
-  const missionLines = tAcademy("mission")
-    .split(". ")
-    .slice(0, 2)
-    .map((line) => (line.endsWith(".") ? line : `${line}.`))
-    .join(" ");
 
-  const trustItems = [
-    { icon: GraduationCap, labelKey: "trustTeachers" as const },
-    { icon: ShieldCheck, labelKey: "trustSafe" as const },
-    { icon: CalendarClock, labelKey: "trustFlexible" as const },
-    { icon: Globe2, labelKey: "trustGlobal" as const },
+  const navColumns = [
+    {
+      id: "explore",
+      label: tFooter("explore"),
+      icon: "compass" as const,
+      links: [
+        { href: "/about", label: tNav("about") },
+        { href: "/free-class", label: tCta("freeTrialClass") },
+        { href: "/teachers", label: tNav("teachers") },
+        { href: "/pricing", label: tNav("pricing") },
+        { href: "/contact", label: tNav("contact") },
+      ],
+    },
+    {
+      id: "courses",
+      label: tFooter("courses"),
+      icon: "bookOpen" as const,
+      links: popularCourses.map((course) => ({
+        href: `/courses/${course.slug}`,
+        label: tCourses(course.slug),
+      })),
+    },
+    {
+      id: "resources",
+      label: tFooter("resources"),
+      icon: "fileText" as const,
+      links: [
+        { href: "/blog", label: tNav("blog") },
+        { href: "/resources/ebooks", label: tNav("ebooks") },
+        { href: "/resources/audio", label: tNav("audio") },
+        { href: "/resources/videos", label: tNav("videos") },
+        { href: "/gallery", label: tNav("gallery") },
+      ],
+    },
+  ];
+
+  const features = [
+    {
+      icon: GraduationCap,
+      title: tFooter("trustTeachers"),
+      desc: tFooter("trustTeachersDesc"),
+    },
+    {
+      icon: BookOpen,
+      title: tFooter("trustFlexible"),
+      desc: tFooter("trustFlexibleDesc"),
+    },
+    {
+      icon: Award,
+      title: tFooter("trustCertified"),
+      desc: tFooter("trustCertifiedDesc"),
+    },
+    {
+      icon: Headset,
+      title: tFooter("trustSupport"),
+      desc: tFooter("trustSupportDesc"),
+    },
   ];
 
   return (
-    <footer className="relative overflow-hidden bg-[#F3F8F4] text-[var(--text-dark)]">
-      {/* Islamic illustration background — effective but readable */}
+    <footer className="relative overflow-hidden bg-[#F7F9F6] text-[var(--text-dark)]">
       <div
-        className="pointer-events-none absolute inset-0 z-0"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[min(72%,520px)]"
         aria-hidden="true"
       >
         <Image
           src={FOOTER_BG}
           alt=""
           fill
-          className="object-cover object-[center_bottom] opacity-[0.55] sm:object-center sm:opacity-[0.6]"
+          className="object-cover object-[center_bottom] opacity-[0.35] sm:opacity-40"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F7FBF8]/75 via-[#F3F8F4]/55 to-[#F3F8F4]/85" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,#F7F9F6_0%,rgb(247_249_246/0.75)_42%,#F7F9F6_100%)]" />
+        <Image
+          src="/brand/footer-arch.svg"
+          alt=""
+          width={320}
+          height={180}
+          className="absolute -left-6 bottom-8 w-[min(42vw,280px)] opacity-90"
+        />
+        <div
+          className="absolute inset-y-0 right-0 w-[min(46vw,360px)] opacity-[0.07]"
+          style={{
+            backgroundImage: 'url("/brand/islamic-geo-pattern.svg")',
+            backgroundSize: "72px 72px",
+          }}
+        />
+        <Image
+          src="/brand/footer-lantern.svg"
+          alt=""
+          width={40}
+          height={100}
+          className="absolute right-10 top-6 hidden w-9 opacity-80 lg:block"
+        />
+        <Image
+          src="/brand/footer-lantern.svg"
+          alt=""
+          width={48}
+          height={120}
+          className="absolute right-24 top-2 hidden w-11 opacity-70 lg:block"
+        />
+        <Image
+          src="/brand/footer-lantern.svg"
+          alt=""
+          width={36}
+          height={90}
+          className="absolute right-40 top-10 hidden w-8 opacity-55 xl:block"
+        />
       </div>
 
-      {/* Top — brand + link columns */}
-      <div className="site-container relative z-[1] py-12 md:py-16">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 xl:gap-10">
-          <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="group mb-5 inline-block">
+      <div className="site-container relative z-[1] pb-8 pt-12 md:pb-10 md:pt-16">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+          <div className="sm:col-span-2 lg:col-span-3">
+            <Link href="/" className="footer-brand group mb-4 inline-block">
               <BdoqLogo
                 size="xl"
-                className="transition-opacity duration-300 group-hover:opacity-90"
+                className="transition-transform duration-300 group-hover:scale-[1.02]"
               />
             </Link>
-            <p className="mb-2 font-inter text-sm font-semibold text-[var(--green-dark)]">
-              {tAcademy("tagline")}
-            </p>
             <p className="mb-5 max-w-sm font-inter text-sm leading-relaxed text-[var(--text-gray)]">
-              {missionLines}
+              {tFooter("aboutBlurb")}
             </p>
             <SocialIconRow
               links={socialLinks}
               className="flex-wrap gap-2.5"
               iconClassName={cn(
-                "site-btn-hover-overlay flex h-9 w-9 items-center justify-center rounded-[8px]",
-                "border border-[var(--green-primary)]/20 bg-white/95 text-[var(--green-dark)] shadow-sm",
-                "transition-all duration-300 hover:border-[var(--green-primary)]"
+                "footer-social-icon flex size-9 items-center justify-center rounded-[8px]",
+                "border border-[var(--green-primary)]/20 bg-white/95 text-[var(--green-dark)] shadow-sm"
               )}
             />
           </div>
 
-          <div>
-            <ColumnHeading icon={BookOpen}>
-              {tFooter("popularCourses")}
-            </ColumnHeading>
-            <ul className="space-y-2.5">
-              {popularCourses.map((course) => (
-                <li key={course.slug}>
-                  <Link
-                    href={`/courses/${course.slug}`}
-                    className="group inline-flex items-start gap-1.5 font-inter text-sm text-[var(--text-gray)] transition-colors hover:text-[var(--green-primary)]"
-                  >
-                    <ChevronRight
-                      className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[var(--green-primary)] opacity-80 transition-transform group-hover:translate-x-0.5"
-                      aria-hidden="true"
-                    />
-                    <span>{tCourses(course.slug)}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <FooterNavColumns columns={navColumns} />
 
-          <div>
-            <ColumnHeading icon={Link2}>{tFooter("otherLinks")}</ColumnHeading>
-            <ul className="space-y-2.5">
-              {FOOTER_OTHER_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="group inline-flex items-center gap-1.5 font-inter text-sm text-[var(--text-gray)] transition-colors hover:text-[var(--green-primary)]"
-                  >
-                    <ChevronRight
-                      className="h-3.5 w-3.5 shrink-0 text-[var(--green-primary)] opacity-80 transition-transform group-hover:translate-x-0.5"
-                      aria-hidden="true"
-                    />
-                    {tNav(link.labelKey)}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
+          <div className="lg:col-span-3">
             <ColumnHeading icon={Phone}>{tFooter("contactUs")}</ColumnHeading>
             <ul className="space-y-3">
               <li className="flex items-start gap-2.5 font-inter text-sm text-[var(--text-gray)]">
-                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-[8px] bg-[var(--green-light)] text-[var(--green-primary)]">
-                  <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
+                <span className="footer-contact-icon">
+                  <MapPin className="size-3.5" aria-hidden="true" />
                 </span>
-                <span className="pt-1">{ACADEMY_INFO.address}</span>
+                <span className="pt-0.5">{ACADEMY_INFO.address}</span>
               </li>
               <li>
                 <a
                   href={`mailto:${ACADEMY_INFO.email}`}
-                  className="flex items-center gap-2.5 font-inter text-sm text-[var(--text-gray)] transition-colors hover:text-[var(--green-primary)]"
+                  className="footer-contact-link"
                 >
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[8px] bg-[var(--green-light)] text-[var(--green-primary)]">
-                    <Mail className="h-3.5 w-3.5" aria-hidden="true" />
+                  <span className="footer-contact-icon">
+                    <Mail className="size-3.5" aria-hidden="true" />
                   </span>
                   <span>{ACADEMY_INFO.email}</span>
                 </a>
@@ -181,148 +221,28 @@ export async function Footer() {
               <li>
                 <a
                   href={`tel:${ACADEMY_INFO.footerMobile.replace(/\s/g, "")}`}
-                  className="flex items-center gap-2.5 font-inter text-sm text-[var(--text-gray)] transition-colors hover:text-[var(--green-primary)]"
+                  className="footer-contact-link"
                 >
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[8px] bg-[var(--green-light)] text-[var(--green-primary)]">
-                    <Phone className="h-3.5 w-3.5" aria-hidden="true" />
+                  <span className="footer-contact-icon">
+                    <Phone className="size-3.5" aria-hidden="true" />
                   </span>
                   <span>{ACADEMY_INFO.footerMobile}</span>
                 </a>
               </li>
-              <li>
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 font-inter text-sm text-[var(--text-gray)] transition-colors hover:text-[var(--green-primary)]"
-                >
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[8px] bg-[var(--green-light)] text-[#25D366]">
-                    <WhatsappIcon className="h-3.5 w-3.5" />
-                  </span>
-                  <span>
-                    {tFooter("whatsapp")} {ACADEMY_INFO.whatsapp}
-                  </span>
-                </a>
+              <li className="flex items-start gap-2.5 font-inter text-sm text-[var(--text-gray)]">
+                <span className="footer-contact-icon">
+                  <Clock3 className="size-3.5" aria-hidden="true" />
+                </span>
+                <span className="pt-0.5">{tFooter("officeHours")}</span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Trust ribbon */}
-        <div
-          className={cn(
-            "mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-[8px] border border-[var(--green-primary)]/15 bg-[var(--green-primary)]/10",
-            "sm:grid-cols-2 lg:grid-cols-4",
-            "shadow-[0_10px_32px_-14px_rgba(50,201,145,0.28)]"
-          )}
-        >
-          {trustItems.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.labelKey}
-                className="flex items-center gap-3 bg-white/95 px-5 py-4 backdrop-blur-sm"
-              >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[8px] bg-[var(--green-light)] text-[var(--green-primary)]">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <p className="font-inter text-sm font-semibold leading-snug text-[var(--green-dark)]">
-                  {tFooter(item.labelKey)}
-                </p>
-              </div>
-            );
-          })}
-        </div>
+        <FooterFeatureBar features={features} />
       </div>
 
-      {/* Dark band — help + office */}
-      <div className="relative z-[1] bg-[var(--teal)] text-white">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.1]"
-          style={{
-            backgroundImage: "var(--islamic-pattern)",
-            backgroundSize: "60px 60px",
-          }}
-          aria-hidden="true"
-        />
-        <div className="site-container relative z-[1] grid gap-8 py-10 sm:grid-cols-2 lg:gap-12">
-          <div className="flex gap-4">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[8px] bg-white/15">
-              <Headset className="h-6 w-6" aria-hidden="true" />
-            </span>
-            <div>
-              <h3 className="font-inter text-lg font-semibold">
-                {tFooter("needHelp")}
-              </h3>
-              <p className="mt-1 max-w-sm font-inter text-sm text-white/80">
-                {tFooter("needHelpDesc")}
-              </p>
-              <a
-                href={`tel:${ACADEMY_INFO.contactBD.replace(/\s/g, "")}`}
-                className="mt-3 inline-flex items-center gap-2 font-inter text-xl font-bold tracking-tight transition-colors hover:text-white/90"
-              >
-                <Phone className="h-5 w-5 opacity-80" aria-hidden="true" />
-                {ACADEMY_INFO.contactBD}
-              </a>
-              <a
-                href={`mailto:${ACADEMY_INFO.email}`}
-                className="mt-2 flex items-center gap-2 font-inter text-sm text-white/85 transition-colors hover:text-white"
-              >
-                <Mail className="h-4 w-4 opacity-80" aria-hidden="true" />
-                {ACADEMY_INFO.email}
-              </a>
-            </div>
-          </div>
-
-          <div className="flex gap-4">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[8px] bg-white/15">
-              <MapPin className="h-6 w-6" aria-hidden="true" />
-            </span>
-            <div>
-              <h3 className="font-inter text-lg font-semibold">
-                {tFooter("ourOffice")}
-              </h3>
-              <p className="mt-2 flex items-start gap-2 font-inter text-sm leading-relaxed text-white/85">
-                <MapPin
-                  className="mt-0.5 h-4 w-4 shrink-0 opacity-80"
-                  aria-hidden="true"
-                />
-                {ACADEMY_INFO.address}
-              </p>
-              <p className="mt-2 flex items-center gap-2 font-inter text-sm text-white/75">
-                <Phone className="h-4 w-4 opacity-80" aria-hidden="true" />
-                EG: {ACADEMY_INFO.contactEG}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Copyright */}
-      <div className="relative z-[1] bg-[#0A6B62] text-white/85">
-        <div className="site-container flex flex-col items-center justify-between gap-3 py-4 sm:flex-row">
-          <p className="text-center font-inter text-xs sm:text-left sm:text-sm">
-            {tFooter("copyright")}
-          </p>
-          <div className="flex items-center gap-3 font-inter text-xs sm:text-sm">
-            <Link
-              href="/privacy-policy"
-              className="transition-colors hover:text-white"
-            >
-              {tNav("privacyPolicy")}
-            </Link>
-            <span className="text-white/40" aria-hidden="true">
-              |
-            </span>
-            <Link
-              href="/terms-of-use"
-              className="transition-colors hover:text-white"
-            >
-              {tNav("termsOfUse")}
-            </Link>
-          </div>
-        </div>
-      </div>
+      <FooterDarkBand />
     </footer>
   );
 }

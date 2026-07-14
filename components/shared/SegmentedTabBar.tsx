@@ -55,7 +55,7 @@ export function SegmentedTabBar<T extends string>({
   return (
     <div
       className={cn(
-        "mx-auto w-full rounded-2xl border border-gray-100/80 bg-white/90 p-1.5 shadow-lg shadow-primary/5 backdrop-blur-sm",
+        "mx-auto w-full rounded-[8px] border border-gray-100/80 bg-white/90 p-1.5 shadow-lg shadow-primary/5 backdrop-blur-sm",
         maxWidthClass,
         className
       )}
@@ -84,7 +84,7 @@ export function SegmentedTabBar<T extends string>({
               id={`${panelIdPrefix}-tab-${tab.id}`}
               onClick={() => onChange(tab.id)}
               className={cn(
-                "relative flex items-center justify-center rounded-xl transition-colors duration-200",
+                "relative flex items-center justify-center rounded-[8px] transition-colors duration-200",
                 isCompact
                   ? "min-h-[44px] gap-1.5 px-2.5 py-2 text-xs font-semibold sm:px-3"
                   : "min-h-[52px] flex-col gap-0.5 px-2 py-2.5 text-sm font-semibold sm:min-h-[56px] sm:flex-row sm:gap-2 sm:px-3",
@@ -97,7 +97,7 @@ export function SegmentedTabBar<T extends string>({
               {isActive && (
                 <motion.span
                   layoutId={layoutId}
-                  className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary to-primary-dark shadow-md"
+                  className="absolute inset-0 rounded-[8px] bg-gradient-to-br from-primary to-primary-dark shadow-md"
                   transition={{ type: "spring", stiffness: 380, damping: 32 }}
                   aria-hidden="true"
                 />
@@ -115,7 +115,7 @@ export function SegmentedTabBar<T extends string>({
                 {showCount ? (
                   <span
                     className={cn(
-                      "rounded-full px-2 py-0.5 text-[11px] font-bold tabular-nums",
+                      "rounded-[8px] px-2 py-0.5 text-[11px] font-bold tabular-nums",
                       isActive
                         ? "bg-white/20 text-white"
                         : "bg-bg-light text-primary"

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 160" fill="none" aria-hidden="true">
+  <!-- Soft mosque arch watermark for light footer panel -->
+  <g fill="#32C991" opacity="0.08">
+    <path d="M40 160V70c0-28 24-50 56-50h8c32 0 56 22 56 50v90H40Z"/>
+    <path d="M88 20c0-14 16-20 20-20s20 6 20 20"/>
+    <rect x="20" y="60" width="14" height="100"/>
+    <rect x="16" y="52" width="22" height="10"/>
+    <path d="M27 36l4 16h-8l4-16Z"/>
+    <rect x="166" y="60" width="14" height="100"/>
+    <rect x="162" y="52" width="22" height="10"/>
+    <path d="M173 36l4 16h-8l4-16Z"/>
+    <path d="M200 160V80c0-18 14-32 32-32h8c18 0 32 14 32 32v80h-72Z"/>
+  </g>
+</svg>

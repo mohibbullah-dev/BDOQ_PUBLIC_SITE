@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 88" fill="none" aria-hidden="true">
+  <!-- Soft mosque skyline watermark  gold -->
+  <g fill="#D4A853" opacity="0.55">
+    <!-- left minaret -->
+    <rect x="18" y="28" width="8" height="52" rx="1" />
+    <rect x="14" y="22" width="16" height="8" rx="1" />
+    <path d="M22 8 L24 22 H20 Z" />
+    <!-- left dome cluster -->
+    <path d="M40 80 V52 C40 40 52 34 64 34 C76 34 88 40 88 52 V80 Z" />
+    <path d="M52 34 C52 22 64 14 64 14 C64 14 76 22 76 34 Z" />
+    <!-- center dome -->
+    <path d="M100 80 V46 C100 28 124 16 160 16 C196 16 220 28 220 46 V80 Z" />
+    <path d="M136 16 C136 4 160 0 160 0 C160 0 184 4 184 16 Z" />
+    <circle cx="160" cy="4" r="2.5" />
+    <!-- right dome -->
+    <path d="M232 80 V52 C232 40 244 34 256 34 C268 34 280 40 280 52 V80 Z" />
+    <path d="M244 34 C244 22 256 14 256 14 C256 14 268 22 268 34 Z" />
+    <!-- right minaret -->
+    <rect x="294" y="28" width="8" height="52" rx="1" />
+    <rect x="290" y="22" width="16" height="8" rx="1" />
+    <path d="M298 8 L300 22 H296 Z" />
+    <!-- base -->
+    <rect x="0" y="78" width="320" height="10" opacity="0.35" />
+  </g>
+</svg>

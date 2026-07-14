@@ -46,21 +46,29 @@ export function TestimonialMedia({
           type="button"
           onClick={() => setVideoOpen(true)}
           className={cn(
-            "mt-3 flex w-full items-center justify-center gap-2 rounded-xl",
+            "group relative mt-3 flex w-full items-center justify-center gap-2 rounded-xl",
             "border border-[#32C991]/15 bg-[#E8FAF2] px-3 py-2.5",
             "font-inter text-xs font-semibold text-[#32C991]",
             "transition-colors hover:bg-[#E8FAF2]",
             className
           )}
         >
-          <Play className="h-4 w-4 fill-current" aria-hidden="true" />
+          <span className="relative inline-flex size-6 shrink-0 items-center justify-center">
+            <span
+              className="absolute inset-0 rounded-full bg-[var(--green-primary)] animate-ping opacity-30"
+              aria-hidden="true"
+            />
+            <span className="relative flex size-6 items-center justify-center rounded-full bg-white text-[var(--green-primary)] shadow-sm ring-1 ring-[var(--green-primary)]/20">
+              <Play className="ml-px size-3 fill-current" aria-hidden="true" />
+            </span>
+          </span>
           Watch video review
         </button>
         <VideoPlayerModal
           isOpen={videoOpen}
           onClose={() => setVideoOpen(false)}
           videoId={testimonial.youtubeId}
-          title={`${testimonial.name} â€” video review`}
+          title={`${testimonial.name} — video review`}
         />
       </>
     );

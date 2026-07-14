@@ -1,14 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Play } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useEffect } from "react";
-import { FEATURED_VIDEO } from "@/lib/constants";
-import { API_BASE } from "@/lib/constants";
+import { FEATURED_VIDEO, API_BASE } from "@/lib/constants";
 import { formatStatValue } from "@/lib/stats";
 import { VideoPlayerModal } from "@/components/shared/VideoPlayerModal";
+import { VideoPlayIcon } from "@/components/shared/VideoPlayIcon";
 import { cn } from "@/lib/cn";
 
 interface IAboutVideoPlayerProps {
@@ -102,22 +100,7 @@ export function AboutVideoPlayer({ compact = false }: IAboutVideoPlayerProps) {
               aria-hidden="true"
             />
 
-            <span
-              className={cn(
-                "absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center",
-                "rounded-full bg-white text-[var(--green-primary)] ring-4 ring-white/30",
-                "shadow-xl transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--green-primary)] group-hover:text-white group-hover:ring-[var(--green-primary)]/30",
-                compact ? "h-14 w-14" : "h-16 w-16 sm:h-[4.5rem] sm:w-[4.5rem]"
-              )}
-            >
-              <Play
-                className={cn("ml-0.5", compact ? "h-6 w-6" : "h-7 w-7")}
-                fill="currentColor"
-                aria-hidden="true"
-              />
-            </span>
-
-            {/* Keep the preview clean: only play button overlay */}
+            <VideoPlayIcon size={compact ? "md" : "lg"} />
           </button>
         </div>
 

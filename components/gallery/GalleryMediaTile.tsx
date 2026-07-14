@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { ImageIcon, Mic, Play, Video } from "lucide-react";
+import { ImageIcon, Mic, Video } from "lucide-react";
 import type { GalleryMediaType, IGalleryItem } from "@/lib/types";
 import { isCloudinaryUrl } from "@/lib/cloudinary";
 import { resolveGalleryMediaType } from "@/lib/galleryTabs";
 import { GradientPlaceholder } from "@/components/shared/GradientPlaceholder";
+import { VideoPlayIcon } from "@/components/shared/VideoPlayIcon";
 import { cn } from "@/lib/cn";
 
 interface IGalleryMediaTileProps {
@@ -68,12 +69,7 @@ export function GalleryMediaTile({
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
           <div className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors group-hover:bg-black/30">
-            <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/95 text-primary shadow-xl transition-transform duration-300 group-hover:scale-110">
-              <Play
-                className="ml-1 h-6 w-6 fill-primary text-primary"
-                aria-hidden
-              />
-            </span>
+            <VideoPlayIcon size="md" />
           </div>
         </>
       );
@@ -88,12 +84,7 @@ export function GalleryMediaTile({
             aria-hidden
           />
           <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-            <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/95 text-primary shadow-xl transition-transform duration-300 group-hover:scale-110">
-              <Play
-                className="ml-1 h-6 w-6 fill-primary text-primary"
-                aria-hidden
-              />
-            </span>
+            <VideoPlayIcon size="md" />
           </div>
         </>
       );
