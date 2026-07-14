@@ -96,6 +96,8 @@ export const coreMessages = {
     newsletterPlaceholder: "আপনার ইমেইল লিখুন",
     newsletterSubmit: "সাবস্ক্রাইব",
     newsletterHint: "কুরআন টিপস ও ক্লাস আপডেট — স্প্যাম নয়।",
+    newsletterSuccess: "সফলভাবে সাবস্ক্রাইব হয়েছে। জাযাকাল্লাহু খাইরান।",
+    newsletterError: "সাবস্ক্রাইব করা যায়নি। আবার চেষ্টা করুন।",
     downloadApp: "আমাদের অ্যাপ ডাউনলোড করুন",
     googlePlay: "Google Play-এ পান",
     appStore: "App Store থেকে ডাউনলোড",

@@ -96,6 +96,8 @@ export const coreMessages = {
     newsletterPlaceholder: "Enter your email",
     newsletterSubmit: "Subscribe",
     newsletterHint: "Quran tips & class updates — no spam.",
+    newsletterSuccess: "Subscribed successfully. JazakAllahu khairan.",
+    newsletterError: "Could not subscribe. Please try again.",
     downloadApp: "Download Our App",
     googlePlay: "Get it on Google Play",
     appStore: "Download on the App Store",
