@@ -215,7 +215,11 @@ export function WelcomeModal() {
                     className="flex items-start gap-2.5 rounded border border-[rgb(220_235_228/0.65)] bg-white/80 px-2.5 py-2 sm:gap-3 sm:px-3 sm:py-2.5"
                   >
                     <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded bg-[linear-gradient(135deg,rgb(50_201_145/0.14)_0%,rgb(13_148_136/0.1)_100%)] text-primary ring-1 ring-primary/20 sm:size-6">
-                      <Check className="size-3 sm:size-3.5" strokeWidth={2.5} aria-hidden />
+                      <Check
+                        className="size-3 sm:size-3.5"
+                        strokeWidth={2.5}
+                        aria-hidden
+                      />
                     </span>
                     <span className="font-inter text-[11px] leading-snug text-text-dark sm:text-sm">
                       {t(`benefits.${key}`)}

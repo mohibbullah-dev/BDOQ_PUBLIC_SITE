@@ -18,11 +18,7 @@ import { SocialIconRow } from "@/components/shared/SocialIcons";
 import { FooterDarkBand } from "@/components/layout/footer/FooterDarkBand";
 import { FooterFeatureBar } from "@/components/layout/footer/FooterFeatureBar";
 import { FooterNavColumns } from "@/components/layout/footer/FooterNavColumns";
-import {
-  ACADEMY_INFO,
-  COURSES,
-  SOCIAL_LINKS,
-} from "@/lib/constants";
+import { ACADEMY_INFO, COURSES, SOCIAL_LINKS } from "@/lib/constants";
 import { getCourses } from "@/lib/courses";
 import { FOOTER_SOCIAL_ORDER } from "@/lib/navigation";
 import { orderSocialLinks } from "@/lib/social";

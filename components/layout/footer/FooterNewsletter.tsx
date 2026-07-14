@@ -24,16 +24,19 @@ export function FooterNewsletter() {
     setFeedback("");
 
     try {
-      const response = await fetch(`${API_BASE}/public/newsletter-subscribers`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: trimmed,
-          locale: locale === "bn" ? "bn" : "en",
-          source: "footer",
-        }),
-        cache: "no-store",
-      });
+      const response = await fetch(
+        `${API_BASE}/public/newsletter-subscribers`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: trimmed,
+            locale: locale === "bn" ? "bn" : "en",
+            source: "footer",
+          }),
+          cache: "no-store",
+        }
+      );
 
       const payload = (await response.json().catch(() => null)) as {
         success?: boolean;
