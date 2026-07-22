@@ -15,7 +15,7 @@ export function FormSectionDivider({
         <div className="w-full border-t border-gold/25" />
       </div>
       <div className="relative flex justify-center">
-        <span className="bg-white px-4 font-inter text-xs font-bold uppercase tracking-[0.14em] text-primary-dark">
+        <span className="bg-white px-4 font-body text-xs font-bold uppercase tracking-[0.14em] text-primary-dark">
           {title}
         </span>
       </div>

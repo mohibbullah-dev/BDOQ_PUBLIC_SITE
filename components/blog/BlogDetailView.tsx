@@ -56,7 +56,7 @@ export function BlogDetailView({
         <IslamicShapeBackdrop overlay="page" />
         <div className="site-container relative z-[1] pb-12 pt-8 md:pb-16 md:pt-10">
           <nav aria-label="Breadcrumb" className="mb-6">
-            <ol className="flex flex-wrap items-center gap-1.5 font-inter text-sm text-[var(--text-gray)]">
+            <ol className="flex flex-wrap items-center gap-1.5 font-body text-sm text-[var(--text-gray)]">
               <li>
                 <Link
                   href="/"
@@ -91,7 +91,7 @@ export function BlogDetailView({
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-[var(--green-primary)]/20 bg-white px-3 py-1 font-inter text-xs font-semibold uppercase tracking-wide text-[var(--green-dark)]"
+                    className="rounded-full border border-[var(--green-primary)]/20 bg-white px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-[var(--green-dark)]"
                   >
                     {tag}
                   </span>
@@ -102,11 +102,11 @@ export function BlogDetailView({
                 {post.title}
               </h1>
 
-              <p className="mt-4 max-w-2xl font-inter text-base leading-relaxed text-[var(--text-gray)] md:text-lg">
+              <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[var(--text-gray)] md:text-lg">
                 {post.excerpt}
               </p>
 
-              <div className="mt-6 flex flex-wrap items-center gap-4 font-inter text-sm text-[var(--text-gray)]">
+              <div className="mt-6 flex flex-wrap items-center gap-4 font-body text-sm text-[var(--text-gray)]">
                 <span className="inline-flex items-center gap-2 rounded-full border border-[var(--green-primary)]/15 bg-white px-3 py-1.5">
                   <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[var(--gold)] text-xs font-bold text-white">
                     {authorInitials}
@@ -140,7 +140,7 @@ export function BlogDetailView({
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full bg-bg-light px-3 py-1 font-inter text-xs font-medium text-primary"
+                    className="rounded-full bg-bg-light px-3 py-1 font-body text-xs font-medium text-primary"
                   >
                     {tag}
                   </span>
@@ -152,13 +152,13 @@ export function BlogDetailView({
                   {prevPost ? (
                     <Link
                       href={`/blog/${prevPost.slug}`}
-                      className="group rounded-2xl border border-gray-100 bg-bg-light/40 p-5 transition-all hover:border-primary/30 hover:shadow-md"
+                      className="site-card group rounded-2xl border border-gray-200 bg-bg-light/40 p-5 transition-shadow duration-200 hover:shadow-md"
                     >
-                      <p className="mb-2 flex items-center gap-1 font-inter text-xs font-semibold uppercase tracking-wider text-text-gray">
+                      <p className="mb-2 flex items-center gap-1 font-body text-xs font-semibold uppercase tracking-wider text-text-gray">
                         <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
                         {t("previous")}
                       </p>
-                      <p className="line-clamp-2 font-inter text-sm font-semibold text-primary-dark group-hover:text-primary">
+                      <p className="line-clamp-2 font-body text-sm font-semibold text-primary-dark group-hover:text-primary">
                         {prevPost.title}
                       </p>
                     </Link>
@@ -168,16 +168,16 @@ export function BlogDetailView({
                   {nextPost ? (
                     <Link
                       href={`/blog/${nextPost.slug}`}
-                      className="group rounded-2xl border border-gray-100 bg-bg-light/40 p-5 text-right transition-all hover:border-primary/30 hover:shadow-md sm:ml-auto"
+                      className="site-card group rounded-2xl border border-gray-200 bg-bg-light/40 p-5 text-right transition-shadow duration-200 hover:shadow-md sm:ml-auto"
                     >
-                      <p className="mb-2 flex items-center justify-end gap-1 font-inter text-xs font-semibold uppercase tracking-wider text-text-gray">
+                      <p className="mb-2 flex items-center justify-end gap-1 font-body text-xs font-semibold uppercase tracking-wider text-text-gray">
                         {t("next")}
                         <ArrowRight
                           className="h-3.5 w-3.5"
                           aria-hidden="true"
                         />
                       </p>
-                      <p className="line-clamp-2 font-inter text-sm font-semibold text-primary-dark group-hover:text-primary">
+                      <p className="line-clamp-2 font-body text-sm font-semibold text-primary-dark group-hover:text-primary">
                         {nextPost.title}
                       </p>
                     </Link>
@@ -202,22 +202,22 @@ export function BlogDetailView({
                       {authorInitials}
                     </span>
                     <div>
-                      <p className="font-inter text-sm font-semibold text-primary-dark">
+                      <p className="font-body text-sm font-semibold text-primary-dark">
                         {post.author}
                       </p>
-                      <p className="font-inter text-xs text-text-gray">
+                      <p className="font-body text-xs text-text-gray">
                         {t("contributor")}
                       </p>
                     </div>
                   </div>
-                  <p className="font-inter text-sm leading-relaxed text-text-gray">
+                  <p className="font-body text-sm leading-relaxed text-text-gray">
                     {t("contributorBio")}
                   </p>
                 </div>
 
                 {relatedPosts.length > 0 && (
                   <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
-                    <h2 className="mb-4 flex items-center gap-2 font-inter text-lg font-semibold text-primary-dark">
+                    <h2 className="mb-4 flex items-center gap-2 font-body text-lg font-semibold text-primary-dark">
                       <BookOpen
                         className="h-5 w-5 text-primary"
                         aria-hidden="true"
@@ -237,15 +237,15 @@ export function BlogDetailView({
                     "overflow-hidden rounded-2xl bg-[var(--green-primary)] p-5 text-white shadow-lg"
                   )}
                 >
-                  <p className="font-inter text-lg font-semibold">
+                  <p className="font-body text-lg font-semibold">
                     {t("startLearning")}
                   </p>
-                  <p className="mt-2 font-inter text-sm leading-relaxed text-white/80">
+                  <p className="mt-2 font-body text-sm leading-relaxed text-white/80">
                     {t("startLearningDesc")}
                   </p>
                   <Link
                     href="/free-class"
-                    className="mt-4 inline-flex min-h-[44px] items-center justify-center rounded-full bg-white px-5 py-2.5 font-inter text-sm font-semibold text-primary transition-colors hover:bg-[#E8FAF2]"
+                    className="mt-4 inline-flex min-h-[44px] items-center justify-center rounded-full bg-white px-5 py-2.5 font-body text-sm font-semibold text-primary transition-colors hover:bg-[#E8FAF2]"
                   >
                     {tCta("freeTrialClass")}
                   </Link>

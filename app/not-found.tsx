@@ -14,7 +14,7 @@ export default function NotFound() {
         <h1 className="font-amiri text-2xl md:text-3xl font-bold text-primary-dark mb-4">
           Page not found
         </h1>
-        <p className="font-inter text-text-gray leading-relaxed mb-8">
+        <p className="font-body text-text-gray leading-relaxed mb-8">
           The page you are looking for does not exist or may have been moved.
           Return to BD Online Quran Academy home to continue your Quran learning
           journey.

@@ -2,11 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import type { ISocialLink } from "@/lib/types";
 import { getSocialIcon } from "@/lib/social";
+import { SiteCta } from "@/components/shared/SiteCta";
 import { cn } from "@/lib/cn";
 
 type TooltipPlacement = "top" | "bottom";
@@ -87,7 +87,7 @@ export function SocialIconLink({
                   role="tooltip"
                   className={cn(
                     "pointer-events-none fixed z-[9999] whitespace-nowrap rounded-[8px] px-2.5 py-1",
-                    "bg-[var(--text-dark)] font-inter text-[11px] font-medium text-white",
+                    "bg-[var(--text-dark)] font-body text-[11px] font-medium text-white",
                     "shadow-[0_8px_20px_-10px_rgba(26,26,46,0.55)]"
                   )}
                   style={{ left: tooltipLeft, top: tooltipTop }}
@@ -185,32 +185,23 @@ interface IFreeTrialButtonProps {
   fullLabel?: boolean;
 }
 
+/** Nav free-trial CTA — wraps SiteCta for one brand system */
 export function FreeTrialButton({
   className,
   size = "md",
-  variant = "solid",
   onClick,
   fullLabel = false,
 }: IFreeTrialButtonProps) {
   const t = useTranslations("cta");
-  const sizeClasses =
-    size === "sm"
-      ? "px-4 py-2 text-sm xl:px-6 xl:py-2.5"
-      : "px-6 py-2.5 text-sm";
-
-  const variantClasses =
-    variant === "gradient"
-      ? "bg-[linear-gradient(135deg,#32C991,#0D9488)] hover:shadow-lg hover:-translate-y-0.5"
-      : "bg-primary hover:shadow-lg";
 
   return (
-    <Link
+    <SiteCta
       href="/free-class"
+      variant="primary"
+      size={size}
       onClick={onClick}
       className={cn(
-        "inline-flex items-center justify-center rounded-[8px] font-semibold text-white transition-all duration-300",
-        variantClasses,
-        sizeClasses,
+        size === "sm" && "px-4 py-2 text-sm xl:px-6 xl:py-2.5",
         className
       )}
     >
@@ -222,6 +213,6 @@ export function FreeTrialButton({
           <span className="hidden xl:inline">{t("freeTrialClass")}</span>
         </>
       )}
-    </Link>
+    </SiteCta>
   );
 }

@@ -73,7 +73,7 @@ export function ContactForm() {
 
   return (
     <FormCard>
-      <p className="mb-1 font-inter text-xs font-bold uppercase tracking-[0.16em] text-primary">
+      <p className="mb-1 font-body text-xs font-bold uppercase tracking-[0.16em] text-primary">
         {t("formEyebrow")}
       </p>
       <h2 className="mb-6 font-amiri text-2xl font-bold text-primary-dark md:text-3xl">

@@ -28,7 +28,7 @@ export function AudioPageContent({ data }: IAudioPageContentProps) {
           <div className="grid lg:grid-cols-2 gap-8 items-start">
             <ScrollReveal direction="left">
               <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-md max-h-[480px] overflow-y-auto">
-                <h2 className="font-inter text-lg font-semibold text-primary-dark mb-4">
+                <h2 className="font-body text-lg font-semibold text-primary-dark mb-4">
                   Surah Al-Fatiha — Verses
                 </h2>
                 <ol className="space-y-4">
@@ -37,7 +37,7 @@ export function AudioPageContent({ data }: IAudioPageContentProps) {
                       key={verse.id}
                       className="border-b border-gray-100 pb-4 last:border-0"
                     >
-                      <p className="font-inter text-xs text-primary font-medium mb-1">
+                      <p className="font-body text-xs text-primary font-medium mb-1">
                         Verse {index + 1}
                       </p>
                       <p
@@ -46,7 +46,7 @@ export function AudioPageContent({ data }: IAudioPageContentProps) {
                       >
                         {verse.arabic}
                       </p>
-                      <p className="font-inter text-sm text-text-gray leading-relaxed">
+                      <p className="font-body text-sm text-text-gray leading-relaxed">
                         {verse.translation}
                       </p>
                     </li>

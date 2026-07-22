@@ -100,7 +100,7 @@ export function Navbar() {
                   "xl:px-4 xl:py-2",
                   isOverlay
                     ? "border-white/35 text-white hover:border-white hover:bg-white/10"
-                    : "site-btn-hover-overlay border-[var(--green-primary)] text-[var(--green-primary)]"
+                    : "border-[var(--green-primary)] bg-white text-[var(--green-primary)] hover:bg-[var(--green-primary)] hover:text-white"
                 )}
               >
                 {tNav("login")}
@@ -109,7 +109,7 @@ export function Navbar() {
                 variant="gradient"
                 size="sm"
                 className={cn(
-                  "shrink-0 rounded-[8px] shadow-[0_4px_20px_rgba(50,201,145,0.35)]",
+                  "shrink-0",
                   isOverlay && "ring-1 ring-white/20"
                 )}
               />

@@ -16,13 +16,14 @@ const config: Config = {
       xl: "8px",
       "2xl": "8px",
       "3xl": "8px",
-      full: "8px",
+      /* Pills / CTAs — keep true full radius */
+      full: "9999px",
     },
     extend: {
       colors: {
         primary: {
           DEFAULT: "#32C991",
-          dark: "#32C991",
+          dark: "#269B6F",
           mint: "#ADEBB3",
         },
         teal: {
@@ -32,10 +33,15 @@ const config: Config = {
         brand: {
           DEFAULT: "#32C991",
           light: "#E8FAF2",
-          dark: "#32C991",
+          dark: "#269B6F",
         },
-        gold: "#32C991",
-        "gold-light": "#E8FAF2",
+        "brand-red": {
+          DEFAULT: "#CD443F",
+          light: "#FBEAE9",
+          dark: "#A83530",
+        },
+        gold: "#D4A853",
+        "gold-light": "#F8F1DE",
         "bg-light": "#E8FAF2",
         cream: "#FDF6E3",
         dark: "#0A1628",
@@ -44,13 +50,15 @@ const config: Config = {
         border: "#E5E7EB",
       },
       fontFamily: {
-        inter: ["var(--font-inter)", "sans-serif"],
-        amiri: ["var(--font-amiri)", "serif"],
-        playfair: ["var(--font-playfair)", "serif"],
+        /* Plus Jakarta Sans — body/UI (font-body kept as legacy alias) */
+        body: ["var(--font-body)", "system-ui", "sans-serif"],
+        inter: ["var(--font-body)", "system-ui", "sans-serif"],
+        amiri: ["var(--font-amiri)", "Georgia", "serif"],
+        playfair: ["var(--font-playfair)", "Georgia", "serif"],
         bengali: ["var(--font-bengali)", "sans-serif"],
         "bengali-display": ["var(--font-bengali-display)", "serif"],
-        display: ["var(--font-playfair)", "serif"],
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        display: ["var(--font-playfair)", "Georgia", "serif"],
+        sans: ["var(--font-body)", "system-ui", "sans-serif"],
       },
       keyframes: {
         fadeIn: {

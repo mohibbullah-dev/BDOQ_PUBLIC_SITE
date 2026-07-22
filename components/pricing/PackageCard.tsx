@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, Crown } from "lucide-react";
 import type { IPackage } from "@/lib/types";
@@ -8,6 +7,7 @@ import {
   useLocalizedPackage,
   usePricingLabels,
 } from "@/lib/i18n/useLocalizedPackage";
+import { SiteCta } from "@/components/shared/SiteCta";
 import { cn } from "@/lib/cn";
 
 export interface IPackageCardProps {
@@ -38,8 +38,8 @@ export function PackageCard({ pkg, index = 0 }: IPackageCardProps) {
         <span
           className={cn(
             "absolute -top-3.5 left-1/2 z-10 -translate-x-1/2 rounded-full px-4 py-1",
-            "bg-[var(--green-primary)] font-inter text-[11px] font-bold uppercase tracking-wider text-white",
-            "shadow-[0_8px_20px_-6px_rgba(50,201,145,0.45)]"
+            "bg-[linear-gradient(135deg,#CD443F,#A83530)] font-body text-[11px] font-bold uppercase tracking-wider text-white",
+            "shadow-[0_8px_20px_-6px_rgba(205,68,63,0.45)]"
           )}
         >
           {labels.mostPopular}
@@ -51,42 +51,22 @@ export function PackageCard({ pkg, index = 0 }: IPackageCardProps) {
           "relative flex h-full flex-col overflow-hidden rounded-3xl transition-all duration-500",
           isPopular
             ? [
-                "bg-gradient-to-b from-primary via-[#32C991] to-primary",
-                "text-white shadow-[0_32px_64px_-24px_rgba(13,74,47,0.5)]",
-                "ring-1 ring-white/15",
+                "bg-[linear-gradient(160deg,#32C991_0%,#269B6F_50%,#CD443F_100%)]",
+                "text-white shadow-md",
               ]
             : [
-                "border border-gray-100 bg-white text-text-dark",
-                "shadow-[0_16px_40px_-20px_rgba(50,201,145,0.15)]",
-                "hover:-translate-y-2 hover:border-primary/25",
-                "hover:shadow-[0_28px_56px_-20px_rgba(50,201,145,0.22)]",
+                "site-card border border-gray-200 bg-white text-text-dark",
+                "transition-shadow duration-200 hover:shadow-md",
               ]
         )}
       >
-        {!isPopular && (
-          <span className="site-card-hover-overlay z-0" aria-hidden="true" />
-        )}
-
-        {!isPopular && (
-          <span
-            className="pointer-events-none absolute inset-x-0 top-0 h-1 scale-x-0 bg-gradient-to-r from-transparent via-primary to-transparent transition-transform duration-500 group-hover:scale-x-100"
-            aria-hidden="true"
-          />
-        )}
-
-        {isPopular && (
-          <div
-            className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-white/[0.07] blur-2xl"
-            aria-hidden="true"
-          />
-        )}
 
         <div className="relative px-6 pb-2 pt-7 md:px-7 md:pt-8">
           <div className="flex items-start justify-between gap-3">
             <div>
               <p
                 className={cn(
-                  "font-inter text-xs font-semibold uppercase tracking-widest",
+                  "font-body text-xs font-semibold uppercase tracking-widest",
                   isPopular ? "text-teal/90" : "text-primary"
                 )}
               >
@@ -126,7 +106,7 @@ export function PackageCard({ pkg, index = 0 }: IPackageCardProps) {
           >
             <p
               className={cn(
-                "font-inter text-3xl font-bold tracking-tight md:text-[2rem]",
+                "font-body text-3xl font-bold tracking-tight md:text-[2rem]",
                 isPopular ? "text-white" : "text-primary-dark"
               )}
             >
@@ -142,7 +122,7 @@ export function PackageCard({ pkg, index = 0 }: IPackageCardProps) {
             </p>
             <p
               className={cn(
-                "mt-1 font-inter text-sm",
+                "mt-1 font-body text-sm",
                 isPopular ? "text-white/70" : "text-text-gray"
               )}
             >
@@ -166,7 +146,7 @@ export function PackageCard({ pkg, index = 0 }: IPackageCardProps) {
               </span>
               <span
                 className={cn(
-                  "font-inter text-sm leading-snug",
+                  "font-body text-sm leading-snug",
                   isPopular ? "text-white/90" : "text-text-gray"
                 )}
               >
@@ -177,19 +157,19 @@ export function PackageCard({ pkg, index = 0 }: IPackageCardProps) {
         </ul>
 
         <div className="relative p-6 pt-5 md:p-7 md:pt-6">
-          <Link
+          <SiteCta
             href="/student-admission"
+            variant={isPopular ? "secondary" : "primary"}
+            size="sm"
             className={cn(
-              "inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5",
-              "font-inter text-sm font-semibold transition-all duration-300",
-              isPopular
-                ? "site-btn-hover-overlay site-btn-hover-overlay--filled bg-white text-primary hover:shadow-lg"
-                : "site-btn-hover-overlay site-btn-hover-overlay--filled bg-primary text-white hover:shadow-md"
+              "w-full",
+              isPopular &&
+                "border-white/40 bg-white text-primary hover:bg-bg-light hover:text-primary"
             )}
           >
             {labels.getStarted(priceFormatted)}
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
+          </SiteCta>
         </div>
       </div>
     </motion.article>

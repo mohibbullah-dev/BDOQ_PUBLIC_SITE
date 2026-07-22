@@ -73,7 +73,7 @@ export function EbookDetailView({
         <div className="site-container">
           <Link
             href="/resources/ebooks"
-            className="mb-8 inline-flex items-center gap-2 font-inter text-sm font-medium text-text-gray transition-colors hover:text-primary"
+            className="mb-8 inline-flex items-center gap-2 font-body text-sm font-medium text-text-gray transition-colors hover:text-primary"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             {tDetail("backToAll")}
@@ -87,25 +87,25 @@ export function EbookDetailView({
                 label={tDetail("coverAlt", { title: displayTitle })}
               />
               <div className="mt-4 space-y-2 rounded-2xl border border-gray-100 bg-bg-light p-4">
-                <p className="font-inter text-sm text-text-gray">
+                <p className="font-body text-sm text-text-gray">
                   <span className="font-semibold text-primary-dark">
                     {tDetail("author")}:
                   </span>{" "}
                   {book.author}
                 </p>
-                <p className="font-inter text-sm text-text-gray">
+                <p className="font-body text-sm text-text-gray">
                   <span className="font-semibold text-primary-dark">
                     {tDetail("pagesLabel")}:
                   </span>{" "}
                   {book.pageCount}
                 </p>
-                <p className="font-inter text-sm text-text-gray">
+                <p className="font-body text-sm text-text-gray">
                   <span className="font-semibold text-primary-dark">
                     {tDetail("size")}:
                   </span>{" "}
                   {book.fileSize}
                 </p>
-                <p className="font-inter text-sm text-text-gray">
+                <p className="font-body text-sm text-text-gray">
                   <span className="font-semibold text-primary-dark">
                     {tDetail("language")}:
                   </span>{" "}
@@ -115,13 +115,13 @@ export function EbookDetailView({
             </ScrollReveal>
 
             <ScrollReveal delay={0.1}>
-              <span className="inline-block rounded-full bg-bg-light px-3 py-1 font-inter text-xs font-medium text-primary">
+              <span className="inline-block rounded-full bg-bg-light px-3 py-1 font-body text-xs font-medium text-primary">
                 {categoryLabel}
               </span>
               <h1 className="mt-3 font-playfair text-3xl font-bold text-primary-dark md:text-4xl">
                 {displayTitle}
               </h1>
-              <p className="mt-4 max-w-2xl font-inter text-base leading-relaxed text-text-gray">
+              <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-text-gray">
                 {displayDescription}
               </p>
 
@@ -131,7 +131,7 @@ export function EbookDetailView({
                   onClick={() => triggerEbookDownload(book)}
                   className={cn(
                     "inline-flex min-h-[48px] items-center gap-2 rounded-full bg-primary px-6 py-3",
-                    "font-inter text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+                    "font-body text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
                   )}
                 >
                   <Download className="h-4 w-4" aria-hidden="true" />
@@ -142,7 +142,7 @@ export function EbookDetailView({
                   onClick={() => setViewerBook(book)}
                   className={cn(
                     "inline-flex min-h-[48px] items-center gap-2 rounded-full border-2 border-primary px-6 py-3",
-                    "font-inter text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
+                    "font-body text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
                   )}
                 >
                   <BookOpen className="h-4 w-4" aria-hidden="true" />
@@ -154,7 +154,7 @@ export function EbookDetailView({
                   rel="noopener noreferrer"
                   className={cn(
                     "inline-flex min-h-[48px] items-center gap-2 rounded-full border-2 border-gray-200 px-6 py-3",
-                    "font-inter text-sm font-semibold text-text-dark transition-colors hover:border-primary hover:text-primary"
+                    "font-body text-sm font-semibold text-text-dark transition-colors hover:border-primary hover:text-primary"
                   )}
                 >
                   <Share2 className="h-4 w-4" aria-hidden="true" />
@@ -164,14 +164,14 @@ export function EbookDetailView({
 
               <div className="mt-8 overflow-hidden rounded-2xl border border-gray-200 bg-[#F3F4F6] shadow-md">
                 <div className="flex items-center justify-between border-b border-gray-200 bg-white px-4 py-3">
-                  <p className="font-inter text-sm font-semibold text-primary-dark">
+                  <p className="font-body text-sm font-semibold text-primary-dark">
                     {tDetail("readOnline")}
                   </p>
                   <a
                     href={pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 font-inter text-xs font-medium text-primary hover:underline"
+                    className="inline-flex items-center gap-1 font-body text-xs font-medium text-primary hover:underline"
                   >
                     {tDetail("openNewTab")}
                     <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
@@ -184,7 +184,7 @@ export function EbookDetailView({
                         className="h-8 w-8 animate-spin text-primary"
                         aria-hidden="true"
                       />
-                      <p className="font-inter text-sm text-text-gray">
+                      <p className="font-body text-sm text-text-gray">
                         {tReader("loading")}
                       </p>
                     </div>
@@ -205,7 +205,7 @@ export function EbookDetailView({
       {related.length > 0 && (
         <section className="border-t border-gray-100 bg-bg-light py-12 md:py-16">
           <div className="site-container">
-            <h2 className="mb-8 font-inter text-2xl font-semibold text-primary-dark">
+            <h2 className="mb-8 font-body text-2xl font-semibold text-primary-dark">
               {tDetail("moreInCategory")}
             </h2>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

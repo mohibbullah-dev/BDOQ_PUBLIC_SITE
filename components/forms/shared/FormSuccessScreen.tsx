@@ -29,7 +29,7 @@ export function FormSuccessScreen({
       <h2 className="font-amiri text-2xl font-bold text-primary-dark md:text-3xl">
         {title}
       </h2>
-      <p className="mx-auto mt-3 max-w-md font-inter text-sm leading-relaxed text-text-gray md:text-base">
+      <p className="mx-auto mt-3 max-w-md font-body text-sm leading-relaxed text-text-gray md:text-base">
         {body}
       </p>
       {children && (

@@ -33,24 +33,13 @@ function QuickNavItemLink({ item, index }: IQuickNavItemLinkProps) {
     >
       <Link
         href={item.href}
-        className="group relative flex h-full flex-col items-center gap-3.5 overflow-hidden px-3 py-6 text-center sm:px-4 sm:py-7"
+        className="site-card group relative flex h-full flex-col items-center gap-3.5 overflow-hidden px-3 py-6 text-center sm:px-4 sm:py-7"
       >
-        <span className="site-card-hover-overlay z-0" aria-hidden="true" />
-
-        <span
-          className={cn(
-            "pointer-events-none absolute inset-x-0 top-0 z-[1] h-px scale-x-0 bg-gradient-to-r",
-            "from-transparent via-[var(--green-primary)]/40 to-transparent",
-            "transition-transform duration-500 ease-out group-hover:scale-x-100"
-          )}
-          aria-hidden="true"
-        />
-
         <ArrowUpRight
           className={cn(
-            "absolute right-3 top-3 z-[2] h-4 w-4 text-[var(--green-primary)]",
+            "absolute right-3 top-3 z-[3] h-4 w-4 text-primary",
             "translate-x-1 -translate-y-1 opacity-0",
-            "transition-all duration-300 ease-out",
+            "transition-all duration-200 ease-out",
             "group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"
           )}
           aria-hidden="true"
@@ -86,7 +75,7 @@ function QuickNavItemLink({ item, index }: IQuickNavItemLinkProps) {
         <div className="relative z-[1] transition-transform duration-500 ease-out group-hover:-translate-y-0.5">
           <p
             className={cn(
-              "font-inter text-sm font-semibold text-[var(--text-dark)]",
+              "font-body text-sm font-semibold text-[var(--text-dark)]",
               "transition-colors duration-300 group-hover:text-[var(--green-primary)]"
             )}
           >
@@ -94,7 +83,7 @@ function QuickNavItemLink({ item, index }: IQuickNavItemLinkProps) {
           </p>
           <p
             className={cn(
-              "mt-1 font-inter text-xs leading-snug text-[var(--text-gray)]",
+              "mt-1 font-body text-xs leading-snug text-[var(--text-gray)]",
               "transition-all duration-300 group-hover:text-[var(--text-dark)]/70"
             )}
           >
@@ -116,33 +105,21 @@ function QuickNavItemLink({ item, index }: IQuickNavItemLinkProps) {
 export function QuickNavSection() {
   return (
     <section
-      className="relative z-20 -mt-10 bg-white pb-10 pt-2 sm:-mt-14 sm:pb-12 md:-mt-16"
+      className="relative z-20 bg-white py-10 md:py-12"
       aria-label="Quick navigation"
     >
       <div className="site-container">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6, ease: revealEase }}
+          transition={{ duration: 0.5, ease: revealEase }}
           className={cn(
-            "relative overflow-hidden rounded-3xl",
-            "border border-[var(--green-primary)]/10",
-            "bg-gradient-to-b from-white via-white to-[var(--green-light)]/30",
-            "shadow-[0_28px_64px_-24px_rgba(50,201,145,0.28)]",
-            "ring-1 ring-black/[0.04]"
+            "relative overflow-hidden rounded-2xl",
+            "border border-gray-200/80 bg-white"
           )}
         >
-          <div
-            className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[var(--green-primary)]/[0.07] blur-3xl"
-            aria-hidden="true"
-          />
-          <div
-            className="pointer-events-none absolute -bottom-20 -left-20 h-52 w-52 rounded-full bg-[var(--green-primary)]/[0.06] blur-3xl"
-            aria-hidden="true"
-          />
-
-          <div className="relative grid grid-cols-2 gap-px bg-gray-200/50 sm:grid-cols-4">
+          <div className="relative grid grid-cols-2 gap-px bg-gray-100 sm:grid-cols-4">
             {QUICK_NAV_ITEMS.map((item, index) => (
               <QuickNavItemLink key={item.id} item={item} index={index} />
             ))}

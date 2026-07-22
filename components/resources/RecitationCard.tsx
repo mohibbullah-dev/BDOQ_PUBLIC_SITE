@@ -7,19 +7,19 @@ interface IRecitationCardProps {
 
 export function RecitationCard({ recitation }: IRecitationCardProps) {
   return (
-    <article className="bg-white rounded-2xl border border-gray-100 p-5 shadow-md hover:shadow-lg transition-shadow">
+    <article className="site-card rounded-2xl border border-gray-200 bg-white p-5 transition-shadow duration-200 hover:shadow-md">
       <div className="flex items-start gap-4">
         <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-bg-light text-primary">
           <Headphones className="h-5 w-5" aria-hidden="true" />
         </div>
         <div className="flex-1 min-w-0">
-          <h3 className="font-inter text-base font-semibold text-primary-dark">
+          <h3 className="font-body text-base font-semibold text-primary-dark">
             {recitation.surahName}
           </h3>
-          <p className="font-inter text-sm text-text-gray mt-1">
+          <p className="font-body text-sm text-text-gray mt-1">
             {recitation.paraInfo}
           </p>
-          <p className="font-inter text-xs text-text-gray mt-1">
+          <p className="font-body text-xs text-text-gray mt-1">
             {recitation.duration}
           </p>
           <div className="mt-4">

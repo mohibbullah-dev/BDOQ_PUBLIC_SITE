@@ -52,19 +52,19 @@ export default async function StudentAdmissionPage() {
           <div className="mt-10 grid gap-3 sm:grid-cols-3">
             <Link
               href="#student-admission-form"
-              className="rounded-2xl border border-primary/15 bg-white px-4 py-4 text-center font-inter text-sm font-semibold text-primary-dark shadow-sm"
+              className="rounded-2xl border border-primary/15 bg-white px-4 py-4 text-center font-body text-sm font-semibold text-primary-dark shadow-sm"
             >
               Fill out the form above to apply
             </Link>
             <Link
               href="/free-class"
-              className="rounded-2xl bg-primary px-4 py-4 text-center font-inter text-sm font-semibold text-white shadow-sm"
+              className="rounded-2xl bg-primary px-4 py-4 text-center font-body text-sm font-semibold text-white shadow-sm"
             >
               Register for free classes
             </Link>
             <Link
               href="/login"
-              className="rounded-2xl border border-primary bg-white px-4 py-4 text-center font-inter text-sm font-semibold text-primary shadow-sm"
+              className="rounded-2xl border border-primary bg-white px-4 py-4 text-center font-body text-sm font-semibold text-primary shadow-sm"
             >
               Create student account
             </Link>

@@ -101,17 +101,17 @@ export function TeacherStepReview() {
 
   return (
     <div className="space-y-5">
-      <p className="font-inter text-sm leading-relaxed text-text-gray">
+      <p className="font-body text-sm leading-relaxed text-text-gray">
         {t("review.intro")}
       </p>
 
       <FormReviewPanel items={reviewItems} />
 
       <section className="rounded-2xl border border-gray-100 bg-bg-light/50 p-5">
-        <h3 className="mb-3 font-inter text-sm font-semibold text-primary-dark">
+        <h3 className="mb-3 font-body text-sm font-semibold text-primary-dark">
           {t("rulesHeading")}
         </h3>
-        <ul className="list-disc space-y-2 pl-5 font-inter text-sm text-text-gray">
+        <ul className="list-disc space-y-2 pl-5 font-body text-sm text-text-gray">
           {TEACHER_RULE_KEYS.map((key) => (
             <li key={key}>{tRules(key)}</li>
           ))}
@@ -126,7 +126,7 @@ export function TeacherStepReview() {
           className="mt-1"
           {...register("rulesAccepted")}
         />
-        <span className="font-inter text-sm leading-relaxed text-text-dark">
+        <span className="font-body text-sm leading-relaxed text-text-dark">
           {t("rulesAccept")}
         </span>
       </label>

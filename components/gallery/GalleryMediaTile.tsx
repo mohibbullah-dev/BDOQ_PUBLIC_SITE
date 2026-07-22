@@ -101,7 +101,7 @@ export function GalleryMediaTile({
           <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/15 backdrop-blur-sm">
             <Mic className="h-8 w-8 opacity-95" aria-hidden />
           </div>
-          <span className="mt-3 font-inter text-xs font-semibold uppercase tracking-widest opacity-90">
+          <span className="mt-3 font-body text-xs font-semibold uppercase tracking-widest opacity-90">
             {mediaLabel}
           </span>
         </div>
@@ -120,8 +120,8 @@ export function GalleryMediaTile({
   return (
     <div
       className={cn(
-        "group relative overflow-hidden rounded-2xl bg-white ring-1 ring-gray-100",
-        "shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-primary/20",
+        "site-card group relative overflow-hidden rounded-2xl bg-white ring-1 ring-gray-200",
+        "transition-shadow duration-200 hover:shadow-md",
         className
       )}
     >
@@ -129,7 +129,7 @@ export function GalleryMediaTile({
         {renderMedia()}
         <span
           className={cn(
-            "absolute left-3 top-3 z-[2] inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide shadow-sm",
+            "absolute left-3 top-3 z-[3] inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide shadow-sm",
             badge.className
           )}
         >
@@ -137,10 +137,10 @@ export function GalleryMediaTile({
           {mediaLabel}
         </span>
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] bg-gradient-to-t from-black/70 via-black/25 to-transparent p-4 pt-12 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] bg-gradient-to-t from-black/70 via-black/25 to-transparent p-4 pt-12 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
           aria-hidden
         >
-          <p className="font-inter text-sm font-semibold text-white line-clamp-2">
+          <p className="font-body text-sm font-semibold text-white line-clamp-2">
             {title}
           </p>
         </div>

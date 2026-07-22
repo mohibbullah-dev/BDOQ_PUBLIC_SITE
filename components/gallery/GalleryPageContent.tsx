@@ -101,10 +101,10 @@ export function GalleryPageContent({ items }: { items: IGalleryItem[] }) {
                 <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                   <EmptyIcon className="h-8 w-8" aria-hidden />
                 </div>
-                <p className="mt-5 font-inter text-base font-semibold text-primary-dark">
+                <p className="mt-5 font-body text-base font-semibold text-primary-dark">
                   {t(`empty.${activeTab}.title`)}
                 </p>
-                <p className="mt-2 font-inter text-sm text-text-gray leading-relaxed">
+                <p className="mt-2 font-body text-sm text-text-gray leading-relaxed">
                   {t(`empty.${activeTab}.description`)}
                 </p>
               </motion.div>
@@ -137,11 +137,11 @@ export function GalleryPageContent({ items }: { items: IGalleryItem[] }) {
                           className="w-full"
                         />
                         <div className="px-1 pt-3">
-                          <p className="font-inter text-sm font-semibold text-primary-dark line-clamp-1">
+                          <p className="font-body text-sm font-semibold text-primary-dark line-clamp-1">
                             {title}
                           </p>
                           {item.description && (
-                            <p className="font-inter text-xs text-text-gray mt-1 line-clamp-2 leading-relaxed">
+                            <p className="font-body text-xs text-text-gray mt-1 line-clamp-2 leading-relaxed">
                               {item.description}
                             </p>
                           )}

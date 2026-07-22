@@ -1,91 +1,86 @@
 "use client";
 
 import Image from "next/image";
-import { Globe2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { GLOBAL_COUNTRIES } from "@/lib/constants";
 import type { ICountryPresence } from "@/lib/types";
+import { DualRowMarquee } from "@/components/shared/DualRowMarquee";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
+import { SectionHeader } from "@/components/shared/SectionHeader";
 import { cn } from "@/lib/cn";
 
-interface ICountryPresenceCardProps {
-  country: ICountryPresence;
-  index: number;
+function FlagMarqueeCard({ country }: { country: ICountryPresence }) {
+  return (
+    <article
+      className={cn(
+        "site-card flex w-[148px] shrink-0 flex-col items-center gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-5 sm:w-[168px]",
+        "transition-shadow duration-200 hover:shadow-md"
+      )}
+    >
+      <div className="relative h-11 w-[4.25rem] overflow-hidden rounded-lg ring-1 ring-black/10 sm:h-12 sm:w-[4.75rem]">
+        <Image
+          src={`https://flagcdn.com/w320/${country.code}.png`}
+          alt={`${country.name} flag`}
+          fill
+          className="object-cover"
+          sizes="76px"
+          quality={90}
+        />
+      </div>
+      <div className="min-w-0 text-center">
+        <h3 className="font-body text-sm font-semibold leading-snug text-primary-dark">
+          {country.name}
+        </h3>
+        <p className="mt-1 font-body text-[10px] font-bold uppercase tracking-[0.2em] text-primary/65">
+          {country.code}
+        </p>
+      </div>
+    </article>
+  );
 }
 
-function CountryPresenceCard({ country, index }: ICountryPresenceCardProps) {
-  return (
-    <ScrollReveal delay={index * 0.04}>
-      <article
-        className={cn(
-          "group relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-4 sm:p-5",
-          "shadow-sm transition-all duration-300",
-          "hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl"
-        )}
-      >
-        <div
-          className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-primary/[0.06] transition-transform duration-500 group-hover:scale-125"
-          aria-hidden="true"
-        />
-        <span className="site-card-hover-overlay z-0" aria-hidden="true" />
-
-        <div className="relative z-[1] flex flex-col items-center gap-3 text-center">
-          <div className="relative h-11 w-[4.25rem] overflow-hidden rounded-lg shadow-md ring-1 ring-black/10 transition-transform duration-300 group-hover:scale-105 sm:h-12 sm:w-[4.75rem]">
-            <Image
-              src={`https://flagcdn.com/w320/${country.code}.png`}
-              alt={`${country.name} flag`}
-              fill
-              className="object-cover"
-              sizes="(max-width: 640px) 68px, 76px"
-              quality={90}
-            />
-          </div>
-
-          <div className="min-w-0">
-            <h3 className="font-inter text-sm font-semibold leading-snug text-primary-dark sm:text-[0.9375rem]">
-              {country.name}
-            </h3>
-            <p className="mt-1 font-inter text-[10px] font-bold uppercase tracking-[0.2em] text-primary/65">
-              {country.code}
-            </p>
-          </div>
-        </div>
-      </article>
-    </ScrollReveal>
-  );
+function splitCountries(
+  countries: ICountryPresence[]
+): [ICountryPresence[], ICountryPresence[]] {
+  const rowOne = countries.filter((_, index) => index % 2 === 0);
+  const rowTwo = countries.filter((_, index) => index % 2 === 1);
+  return [rowOne, rowTwo];
 }
 
 export function GlobalPresenceSection() {
   const t = useTranslations("home.globalPresence");
+  const [rowOne, rowTwo] = splitCountries(GLOBAL_COUNTRIES);
 
   return (
-    <section className="relative overflow-hidden bg-bg-light py-16 md:py-24">
+    <section className="relative overflow-hidden bg-bg-light py-16 md:py-20">
       <div className="site-container relative">
-        <ScrollReveal className="mb-12 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/80 px-4 py-1.5 font-inter text-xs font-bold uppercase tracking-widest text-primary shadow-sm backdrop-blur-sm">
-            <Globe2 className="h-3.5 w-3.5" aria-hidden="true" />
-            {t("eyebrow")}
-          </div>
-          <h2 className="font-amiri text-3xl font-bold text-primary-dark md:text-4xl">
-            {t("title")}
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl font-inter text-base text-text-gray md:text-lg">
-            {t("subtitle")}
-          </p>
+        <ScrollReveal className="mb-10 text-center md:mb-12">
+          <SectionHeader
+            eyebrow={t("eyebrow")}
+            title={t("title")}
+            subtitle={t("subtitle")}
+            centered
+          />
         </ScrollReveal>
+      </div>
 
-        <div className="mb-12 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5">
-          {GLOBAL_COUNTRIES.map((country, index) => (
-            <CountryPresenceCard
-              key={country.code}
-              country={country}
-              index={index}
-            />
+      <div className="mb-10 md:mb-12">
+        <DualRowMarquee
+          rowOneDuration={100}
+          rowTwoDuration={120}
+          gapClassName="gap-3 sm:gap-4"
+          rowOne={rowOne.map((country) => (
+            <FlagMarqueeCard key={`r1-${country.code}`} country={country} />
           ))}
-        </div>
+          rowTwo={rowTwo.map((country) => (
+            <FlagMarqueeCard key={`r2-${country.code}`} country={country} />
+          ))}
+        />
+      </div>
 
-        <ScrollReveal delay={0.15}>
-          <p className="mx-auto max-w-3xl text-center font-inter text-base leading-relaxed text-text-gray md:text-lg">
+      <div className="site-container relative">
+        <ScrollReveal delay={0.1}>
+          <p className="mx-auto max-w-3xl text-center font-body text-base leading-relaxed text-text-gray md:text-lg">
             {t("countriesLine")}
           </p>
         </ScrollReveal>

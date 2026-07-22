@@ -11,7 +11,7 @@ export function ClassSystemSection() {
   return (
     <section className="py-12 md:py-16 bg-bg-light">
       <div className="site-container text-center">
-        <h2 className="font-inter text-xl font-semibold text-primary-dark mb-6">
+        <h2 className="font-body text-xl font-semibold text-primary-dark mb-6">
           {t("classSystemTitle")}
         </h2>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -23,14 +23,14 @@ export function ClassSystemSection() {
           </Link>
           <Link
             href="/about#our-promise"
-            className="site-btn-hover-overlay inline-flex items-center justify-center rounded-full border-2 border-primary text-primary font-semibold px-8 py-3 transition-all duration-300"
+            className="inline-flex items-center justify-center rounded-full border-2 border-primary bg-white px-8 py-3 font-semibold text-primary transition-colors duration-200 hover:bg-primary hover:text-white"
           >
             {t("ourPromise")}
           </Link>
         </div>
         <p
           id="our-promise"
-          className="font-inter text-sm text-text-gray max-w-2xl mx-auto mt-8 leading-relaxed"
+          className="font-body text-sm text-text-gray max-w-2xl mx-auto mt-8 leading-relaxed"
         >
           {t("promiseText")}
         </p>

@@ -31,7 +31,7 @@ export function FormAlert({ type, message, className }: IFormAlertProps) {
       ) : (
         <XCircle className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
       )}
-      <p className="font-inter text-sm leading-relaxed">{message}</p>
+      <p className="font-body text-sm leading-relaxed">{message}</p>
     </div>
   );
 }

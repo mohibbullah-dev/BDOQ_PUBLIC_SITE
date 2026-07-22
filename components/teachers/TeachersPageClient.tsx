@@ -134,11 +134,11 @@ export function TeachersPageClient({ tabs }: { tabs: ITeacherGenderTab[] }) {
         <div className="mb-8 text-center md:mb-10">
           <h2
             id="all-teachers-heading"
-            className="font-inter text-2xl font-semibold text-primary-dark md:text-3xl"
+            className="font-body text-2xl font-semibold text-primary-dark md:text-3xl"
           >
             All Our Teachers
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl font-inter text-base text-text-gray">
+          <p className="mx-auto mt-3 max-w-2xl font-body text-base text-text-gray">
             Male and female instructors — separate, respectful learning paths
             with certified Hafiz teachers from Bangladesh and abroad.
           </p>
@@ -161,7 +161,7 @@ export function TeachersPageClient({ tabs }: { tabs: ITeacherGenderTab[] }) {
         </div>
 
         <div className="mb-8 flex justify-center">
-          <p className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white px-4 py-2 font-inter text-sm text-text-gray shadow-sm">
+          <p className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white px-4 py-2 font-body text-sm text-text-gray shadow-sm">
             <ShieldCheck className="h-4 w-4 text-primary" aria-hidden="true" />
             {currentTab.subtitle}
             {searchQuery.trim() && (

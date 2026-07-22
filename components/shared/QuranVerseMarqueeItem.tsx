@@ -31,13 +31,13 @@ export function QuranVerseMarqueeItem({ item }: IQuranVerseMarqueeItemProps) {
 
       <MarqueeSeparator />
 
-      <span className="max-w-[28rem] shrink-0 font-inter text-sm font-medium leading-snug text-[var(--text-dark)] xl:text-[15px]">
+      <span className="max-w-[28rem] shrink-0 font-body text-sm font-medium leading-snug text-[var(--text-dark)] xl:text-[15px]">
         {item.translation}
       </span>
 
       <MarqueeSeparator />
 
-      <span className="inline-flex shrink-0 items-center rounded-[8px] border border-[var(--green-primary)]/25 bg-[var(--green-light)] px-2.5 py-1 font-inter text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--green-primary)] xl:text-xs">
+      <span className="inline-flex shrink-0 items-center rounded-[8px] border border-[var(--green-primary)]/25 bg-[var(--green-light)] px-2.5 py-1 font-body text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--green-primary)] xl:text-xs">
         {item.reference}
       </span>
     </span>

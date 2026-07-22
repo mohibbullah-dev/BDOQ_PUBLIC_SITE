@@ -44,7 +44,7 @@ function ColumnHeading({
   children: string;
 }) {
   return (
-    <h3 className="mb-4 flex items-center gap-2.5 font-inter text-sm font-bold uppercase tracking-wide text-[var(--green-dark)] md:text-base">
+    <h3 className="mb-4 flex items-center gap-2.5 font-body text-sm font-bold uppercase tracking-wide text-[var(--green-dark)] md:text-base">
       <span
         className={cn(
           "flex size-8 shrink-0 items-center justify-center rounded-[8px]",
@@ -85,7 +85,7 @@ function FooterLinkRow({
             className={cn(
               "pointer-events-none absolute -top-8 left-2 z-20",
               "whitespace-nowrap rounded-[8px] px-2.5 py-1",
-              "bg-[var(--text-dark)] font-inter text-[11px] font-medium text-white",
+              "bg-[var(--text-dark)] font-body text-[11px] font-medium text-white",
               "shadow-[0_8px_20px_-10px_rgba(26,26,46,0.55)]"
             )}
             initial={{ opacity: 0, y: 6, scale: 0.94 }}

@@ -166,7 +166,7 @@ export function StudentStepReview() {
 
   return (
     <div className="space-y-5">
-      <p className="font-inter text-sm leading-relaxed text-text-gray">
+      <p className="font-body text-sm leading-relaxed text-text-gray">
         {t("review.intro")}
       </p>
 
@@ -180,7 +180,7 @@ export function StudentStepReview() {
           className="mt-1"
           {...register("termsAccepted")}
         />
-        <span className="font-inter text-sm leading-relaxed text-text-dark">
+        <span className="font-body text-sm leading-relaxed text-text-dark">
           {t("terms")}
         </span>
       </label>

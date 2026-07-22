@@ -63,11 +63,11 @@ export async function getPublicStatsDisplay(): Promise<IStatDisplay[]> {
   } catch {
     const years = getAcademyYearsExperience();
     return [
-      { value: "0", labelKey: "hours" },
+      { value: "4,000+", labelKey: "hours" },
       { value: formatStatValue(years), labelKey: "years" },
-      { value: "0", labelKey: "teachers" },
-      { value: "0", labelKey: "students" },
-      { value: "0", labelKey: "popularTeachers" },
+      { value: "10+", labelKey: "teachers" },
+      { value: "300+", labelKey: "students" },
+      { value: "10+", labelKey: "popularTeachers" },
     ];
   }
 }

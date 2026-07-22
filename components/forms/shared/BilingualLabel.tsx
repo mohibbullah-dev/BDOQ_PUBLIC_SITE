@@ -27,7 +27,7 @@ export function BilingualLabel({
   return (
     <div className={cn("mb-2", className)}>
       <label htmlFor={htmlFor} className="block">
-        <span className="font-inter text-sm font-semibold text-primary-dark">
+        <span className="font-body text-sm font-semibold text-primary-dark">
           {text}
           {required && (
             <span className="ml-0.5 text-primary" aria-hidden="true">
@@ -37,7 +37,7 @@ export function BilingualLabel({
         </span>
       </label>
       {hint && (
-        <p className="mt-0.5 font-inter text-xs text-text-gray">{hint}</p>
+        <p className="mt-0.5 font-body text-xs text-text-gray">{hint}</p>
       )}
     </div>
   );

@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useTranslations } from "next-intl";
 import type { ICourse } from "@/lib/types";
 import { useLocalizedCourse } from "@/lib/i18n/useLocalizedCourse";
+import { SiteCta } from "@/components/shared/SiteCta";
 import { cn } from "@/lib/cn";
 
 export type CourseCardVariantType = "default" | "featured";
@@ -34,16 +34,15 @@ export function CourseCard({ course, variant = "default" }: ICourseCardProps) {
   return (
     <article
       className={cn(
-        "group relative flex flex-col h-full rounded-2xl bg-white border overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl",
+        "site-card group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-white transition-shadow duration-200 hover:shadow-md",
         isFeatured
-          ? "border-gold shadow-lg ring-2 ring-gold/30"
-          : "border-gray-100 shadow-md"
+          ? "border-primary/30 shadow-sm ring-1 ring-primary/20"
+          : "border-gray-200"
       )}
     >
-      <span className="site-card-hover-overlay z-[1]" aria-hidden="true" />
       <div
         className={cn(
-          "relative z-[2] flex items-center justify-center bg-gradient-to-br min-h-[140px]",
+          "relative z-[1] flex min-h-[140px] items-center justify-center bg-gradient-to-br",
           getCourseGradient(course.slug)
         )}
       >
@@ -52,24 +51,26 @@ export function CourseCard({ course, variant = "default" }: ICourseCardProps) {
         </span>
       </div>
 
-      <div className="relative z-[2] flex flex-col flex-1 p-6">
+      <div className="relative z-[1] flex flex-1 flex-col p-6">
         {localized.target && (
           <span className="inline-block self-start rounded-full bg-bg-light px-2.5 py-0.5 text-xs font-medium text-primary mb-3">
             {localized.target}
           </span>
         )}
-        <h3 className="font-inter text-lg font-bold text-primary-dark mb-2">
+        <h3 className="mb-2 font-playfair text-lg font-bold tracking-tight text-primary-dark">
           {localized.title}
         </h3>
-        <p className="font-inter text-sm text-text-gray leading-relaxed flex-1 mb-5">
+        <p className="mb-5 flex-1 font-body text-sm leading-relaxed text-text-gray">
           {localized.description}
         </p>
-        <Link
+        <SiteCta
           href={`/courses/${course.slug}`}
-          className="site-btn-hover-overlay site-btn-hover-overlay--filled relative z-[2] inline-flex items-center justify-center rounded-full bg-primary text-white font-semibold px-6 py-2.5 text-sm transition-all duration-300"
+          variant="primary"
+          size="sm"
+          className="w-full"
         >
           {tCta("enrollNow")}
-        </Link>
+        </SiteCta>
       </div>
     </article>
   );

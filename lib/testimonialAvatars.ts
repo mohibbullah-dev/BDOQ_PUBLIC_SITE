@@ -1,54 +1,46 @@
 import type { ITestimonial } from "@/lib/types";
-import { defaultTeacherAvatarUrl } from "@/lib/avatarCatalog";
 import { isCloudinaryUrl } from "@/lib/cloudinary";
 
 export const TESTIMONIAL_AVATAR_COUNT = 5;
 
-const STACK_GENDERS: Array<"male" | "female"> = [
-  "female",
-  "male",
-  "female",
-  "male",
-  "male",
-];
+/** Generic profile when reviewer did not upload an image */
+export const DEFAULT_PROFILE_AVATAR = "/images/avatars/default-profile.svg";
 
-function inferTestimonialGender(testimonial: ITestimonial): "male" | "female" {
-  const femaleTokens = [
-    "rahima",
-    "fatima",
-    "nusrat",
-    "ayesha",
-    "maryam",
-    "khadija",
-    "wardah",
-  ];
-  const name = testimonial.name.toLowerCase();
-  return femaleTokens.some((token) => name.includes(token)) ? "female" : "male";
-}
-
-function hasRealAvatar(image?: string): boolean {
+/** True only when the reviewer uploaded a real photo */
+export function hasTestimonialUploadedImage(image?: string): boolean {
   const value = image?.trim() ?? "";
-  return value.length > 0 && isCloudinaryUrl(value);
+  if (!value) return false;
+  // Uploaded review photos live on Cloudinary (or absolute CDN URLs)
+  if (isCloudinaryUrl(value)) return true;
+  if (/^https?:\/\//i.test(value) && !value.includes("/teachers/")) {
+    return true;
+  }
+  return false;
 }
 
 export function getTestimonialAvatarUrls(): {
   imageUrl: string;
   profileUrl: string;
 }[] {
-  return STACK_GENDERS.map((gender) => ({
-    imageUrl: defaultTeacherAvatarUrl(gender),
-    profileUrl: "/teachers",
+  return Array.from({ length: TESTIMONIAL_AVATAR_COUNT }, () => ({
+    imageUrl: DEFAULT_PROFILE_AVATAR,
+    profileUrl: "/reviews",
   }));
 }
 
-export function getTestimonialAvatar(
-  testimonial: ITestimonial,
-  index = 0
-): string {
-  if (hasRealAvatar(testimonial.image)) {
+/**
+ * Uploaded review image, or null → UI should show default profile avatar.
+ * Never falls back to teacher illustrations.
+ */
+export function getTestimonialAvatar(testimonial: ITestimonial): string | null {
+  if (hasTestimonialUploadedImage(testimonial.image)) {
     return testimonial.image!.trim();
   }
+  return null;
+}
 
-  void index;
-  return defaultTeacherAvatarUrl(inferTestimonialGender(testimonial));
+export function resolveTestimonialAvatarSrc(
+  testimonial: ITestimonial
+): string {
+  return getTestimonialAvatar(testimonial) ?? DEFAULT_PROFILE_AVATAR;
 }

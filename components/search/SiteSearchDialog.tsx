@@ -83,7 +83,7 @@ function SearchListSection({
 }) {
   return (
     <section className="mb-3 last:mb-0">
-      <p className="mb-1.5 px-2 font-inter text-[10px] font-semibold uppercase tracking-[0.16em] text-text-gray">
+      <p className="mb-1.5 px-2 font-body text-[10px] font-semibold uppercase tracking-[0.16em] text-text-gray">
         {title}
       </p>
       <ul
@@ -144,17 +144,17 @@ function SearchListRow({
           {icon}
         </span>
         <span className="min-w-0 flex-1">
-          <span className="block truncate font-inter text-sm font-semibold text-primary-dark">
+          <span className="block truncate font-body text-sm font-semibold text-primary-dark">
             {title}
           </span>
           {subtitle ? (
-            <span className="mt-0.5 block truncate font-inter text-xs text-text-gray">
+            <span className="mt-0.5 block truncate font-body text-xs text-text-gray">
               {subtitle}
             </span>
           ) : null}
         </span>
         {meta ? (
-          <span className="shrink-0 rounded bg-[#f6fcf9] px-2 py-0.5 font-inter text-[10px] font-semibold uppercase tracking-wide text-text-gray">
+          <span className="shrink-0 rounded bg-[#f6fcf9] px-2 py-0.5 font-body text-[10px] font-semibold uppercase tracking-wide text-text-gray">
             {meta}
           </span>
         ) : null}
@@ -340,7 +340,7 @@ export function SiteSearchDialog({ isOpen, onClose }: ISiteSearchDialogProps) {
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder={placeholder}
                 aria-label="Search site"
-                className="flex-1 bg-transparent font-inter text-base text-primary-dark placeholder:text-text-gray/80 focus:outline-none"
+                className="flex-1 bg-transparent font-body text-base text-primary-dark placeholder:text-text-gray/80 focus:outline-none"
               />
               <button
                 type="button"
@@ -378,7 +378,7 @@ export function SiteSearchDialog({ isOpen, onClose }: ISiteSearchDialogProps) {
               ) : null}
 
               {!showingPages && results.length === 0 ? (
-                <p className="px-2 py-4 text-center font-inter text-sm text-text-gray">
+                <p className="px-2 py-4 text-center font-body text-sm text-text-gray">
                   {hints.noResults}
                 </p>
               ) : null}
@@ -406,7 +406,7 @@ export function SiteSearchDialog({ isOpen, onClose }: ISiteSearchDialogProps) {
               ) : null}
 
               {showingPages ? (
-                <p className="px-2 pt-1 font-inter text-sm text-text-gray">
+                <p className="px-2 pt-1 font-body text-sm text-text-gray">
                   {hints.empty}
                 </p>
               ) : null}
@@ -418,7 +418,7 @@ export function SiteSearchDialog({ isOpen, onClose }: ISiteSearchDialogProps) {
                 SOFT_BORDER
               )}
             >
-              <span className="hidden font-inter text-[11px] text-text-gray sm:inline">
+              <span className="hidden font-body text-[11px] text-text-gray sm:inline">
                 {hints.navigate} · {hints.open} · {hints.close}
               </span>
               <kbd className="ml-auto hidden rounded border border-[rgb(220_235_228/0.8)] bg-white px-2 py-0.5 font-mono text-[10px] text-text-gray sm:inline">

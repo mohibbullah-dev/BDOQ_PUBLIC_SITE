@@ -175,15 +175,15 @@ export function GalleryLightbox({
           onClick={(e) => e.stopPropagation()}
         >
           {renderMedia()}
-          <p className="font-inter text-center text-white mt-4 text-lg">
+          <p className="font-body text-center text-white mt-4 text-lg">
             {title}
           </p>
           {item.description && (
-            <p className="font-inter text-center text-white/70 mt-2 text-sm max-w-2xl mx-auto">
+            <p className="font-body text-center text-white/70 mt-2 text-sm max-w-2xl mx-auto">
               {item.description}
             </p>
           )}
-          <p className="font-inter text-center text-white/60 text-sm mt-1">
+          <p className="font-body text-center text-white/60 text-sm mt-1">
             {t("of", { current: activeIndex + 1, total: items.length })}
           </p>
         </motion.div>

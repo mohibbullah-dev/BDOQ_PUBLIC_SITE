@@ -126,7 +126,7 @@ export function LanguageToggle({
             <FlagChip code={item.flag} name={item.name} active={active} />
             <span
               className={cn(
-                "font-inter text-[10px] font-bold uppercase tracking-wide",
+                "font-body text-[10px] font-bold uppercase tracking-wide",
                 active ? "text-white" : undefined
               )}
             >

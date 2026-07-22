@@ -157,7 +157,7 @@ export function WelcomeModal() {
             </div>
 
             <div
-              className="h-1 w-full bg-gradient-to-r from-[#32C991] via-[#D4A853] to-[#0D9488]"
+              className="h-1 w-full bg-gradient-to-r from-[#32C991] to-[#CD443F]"
               aria-hidden="true"
             />
 
@@ -195,7 +195,7 @@ export function WelcomeModal() {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.16, duration: 0.35 }}
-                  className="mx-auto mt-1.5 max-w-[20rem] font-inter text-xs leading-relaxed text-text-gray sm:mt-2 sm:text-sm"
+                  className="mx-auto mt-1.5 max-w-[20rem] font-body text-xs leading-relaxed text-text-gray sm:mt-2 sm:text-sm"
                 >
                   {t("subtitle")}
                 </motion.p>
@@ -221,7 +221,7 @@ export function WelcomeModal() {
                         aria-hidden
                       />
                     </span>
-                    <span className="font-inter text-[11px] leading-snug text-text-dark sm:text-sm">
+                    <span className="font-body text-[11px] leading-snug text-text-dark sm:text-sm">
                       {t(`benefits.${key}`)}
                     </span>
                   </motion.li>
@@ -240,7 +240,7 @@ export function WelcomeModal() {
                   className={cn(
                     "flex min-h-[42px] w-full items-center justify-center rounded sm:min-h-[44px]",
                     "bg-[linear-gradient(145deg,#32C991_0%,#269B6F_55%,#0D9488_100%)]",
-                    "font-inter text-xs font-semibold text-white sm:text-sm",
+                    "font-body text-xs font-semibold text-white sm:text-sm",
                     "shadow-[0_6px_16px_-6px_rgb(38_155_111/0.45)]",
                     "transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_22px_-8px_rgb(38_155_111/0.5)]",
                     "active:translate-y-0 active:scale-[0.99]"
@@ -253,7 +253,7 @@ export function WelcomeModal() {
                   onClick={() => close(false)}
                   className={cn(
                     "flex min-h-[40px] w-full items-center justify-center rounded sm:min-h-[42px]",
-                    "border border-primary/80 bg-white/90 font-inter text-xs font-semibold text-primary sm:text-sm",
+                    "border border-primary/80 bg-white/90 font-body text-xs font-semibold text-primary sm:text-sm",
                     "transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white",
                     "active:scale-[0.99]"
                   )}
@@ -263,7 +263,7 @@ export function WelcomeModal() {
                 <button
                   type="button"
                   onClick={() => close(false)}
-                  className="w-full py-1.5 font-inter text-xs font-medium text-text-gray transition-colors hover:text-primary sm:text-sm"
+                  className="w-full py-1.5 font-body text-xs font-medium text-text-gray transition-colors hover:text-primary sm:text-sm"
                 >
                   {t("dismiss")}
                 </button>
@@ -276,7 +276,7 @@ export function WelcomeModal() {
                   onChange={(event) => setDontShowAgain(event.target.checked)}
                   className="size-3.5 rounded border-gray-300 text-primary focus:ring-primary/30 sm:size-4"
                 />
-                <span className="font-inter text-[10px] text-text-gray sm:text-xs">
+                <span className="font-body text-[10px] text-text-gray sm:text-xs">
                   {t("dontShowAgain")}
                 </span>
               </label>

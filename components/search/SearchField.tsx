@@ -46,7 +46,7 @@ export function SearchField({
         autoFocus={autoFocus}
         aria-label={ariaLabel}
         className={cn(
-          "w-full rounded-xl border border-gray-200 bg-white py-3 pl-11 pr-11 font-inter text-sm text-primary-dark",
+          "w-full rounded-xl border border-gray-200 bg-white py-3 pl-11 pr-11 font-body text-sm text-primary-dark",
           "placeholder:text-text-gray/80 shadow-sm transition-all duration-200",
           "focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20",
           inputClassName

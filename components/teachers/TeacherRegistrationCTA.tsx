@@ -8,7 +8,7 @@ export function TeacherRegistrationCTA() {
           <h2 className="font-amiri text-2xl md:text-3xl font-bold mb-4">
             Are you a Teacher?
           </h2>
-          <p className="font-inter text-sm text-white/85 mb-8 leading-relaxed">
+          <p className="font-body text-sm text-white/85 mb-8 leading-relaxed">
             Join BD Online Quran Academy and share your knowledge with students
             worldwide. We welcome experienced Hafiz, scholars, and qualified
             Quran teachers from Bangladesh and abroad.

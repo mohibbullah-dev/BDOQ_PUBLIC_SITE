@@ -10,7 +10,7 @@ export default function BlogArticleError({ reset }: IBlogArticleErrorProps) {
       <h2 className="font-amiri text-2xl font-bold text-primary-dark mb-3">
         Unable to load article
       </h2>
-      <p className="font-inter text-text-gray mb-6 max-w-md mx-auto">
+      <p className="font-body text-text-gray mb-6 max-w-md mx-auto">
         This article could not be loaded. Please try again or return to the blog
         list.
       </p>

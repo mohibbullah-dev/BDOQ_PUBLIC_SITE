@@ -67,9 +67,9 @@ export function FeaturedAudioPlayer({ src, title }: IFeaturedAudioPlayerProps) {
       <audio ref={audioRef} src={src} preload="metadata" />
       <div className="flex items-center gap-3 mb-4">
         <Volume2 className="h-5 w-5 text-teal-accent" aria-hidden="true" />
-        <p className="font-inter text-sm text-white/80">Now playing</p>
+        <p className="font-body text-sm text-white/80">Now playing</p>
       </div>
-      <p className="mb-6 font-inter text-2xl font-bold leading-snug text-white">
+      <p className="mb-6 font-body text-2xl font-bold leading-snug text-white">
         {title}
       </p>
 
@@ -86,7 +86,7 @@ export function FeaturedAudioPlayer({ src, title }: IFeaturedAudioPlayerProps) {
             background: `linear-gradient(to right, #2DD4BF ${progress}%, rgba(255,255,255,0.2) ${progress}%)`,
           }}
         />
-        <div className="flex items-center justify-between font-inter text-xs text-white/70">
+        <div className="flex items-center justify-between font-body text-xs text-white/70">
           <span>{formatTime(currentTime)}</span>
           <span>{formatTime(duration)}</span>
         </div>

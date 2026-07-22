@@ -47,7 +47,7 @@ export function SingleSelectChips<T extends string>({
               onClick={() => onChange(option.value)}
               aria-pressed={selected}
               className={cn(
-                "group relative min-h-[56px] rounded-2xl border px-4 py-3.5 text-left font-inter transition-all duration-200",
+                "group relative min-h-[56px] rounded-2xl border px-4 py-3.5 text-left font-body transition-all duration-200",
                 selected
                   ? "border-primary bg-primary/10 shadow-md shadow-primary/10 ring-1 ring-primary/20"
                   : "border-gray-200/90 bg-white shadow-sm hover:border-primary/35 hover:shadow-md"
@@ -77,7 +77,7 @@ export function SingleSelectChips<T extends string>({
       </div>
       {error && (
         <p
-          className="mt-2 font-inter text-xs font-medium text-red-600"
+          className="mt-2 font-body text-xs font-medium text-red-600"
           role="alert"
         >
           {error}

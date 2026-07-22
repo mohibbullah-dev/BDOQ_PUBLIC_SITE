@@ -5,20 +5,15 @@ import { getLocale, getMessages } from "next-intl/server";
 import { ACADEMY_INFO, SITE_URL } from "@/lib/constants";
 import { getHomeClientMessages } from "@/lib/i18n/clientShellMessages";
 import { getFaqItems } from "@/lib/faq";
+import { getPublicStatsDisplay } from "@/lib/stats";
 import { getFeaturedTeachers } from "@/lib/teachers";
 import { getTestimonials } from "@/lib/testimonials";
 import { HomeHeroGroup } from "@/components/home/HomeHeroGroup";
+import { QuranVerseMarquee } from "@/components/layout/QuranVerseMarquee";
+import { StatsSection } from "@/components/home/StatsSection";
 import { QuickNavSection } from "@/components/home/QuickNavSection";
 import { AboutSection } from "@/components/home/AboutSection";
 import { SectionSkeleton } from "@/components/shared/SectionSkeleton";
-
-const TopicsSection = dynamic(
-  () =>
-    import("@/components/home/TopicsSection").then((m) => ({
-      default: m.TopicsSection,
-    })),
-  { loading: () => <SectionSkeleton /> }
-);
 
 const LearningPlansSection = dynamic(
   () =>
@@ -36,18 +31,18 @@ const HowToStartSection = dynamic(
   { loading: () => <SectionSkeleton /> }
 );
 
-const LiveAcademySection = dynamic(
-  () =>
-    import("@/components/home/LiveAcademySection").then((m) => ({
-      default: m.LiveAcademySection,
-    })),
-  { loading: () => <SectionSkeleton /> }
-);
-
 const WhyChooseUsSection = dynamic(
   () =>
     import("@/components/home/WhyChooseUsSection").then((m) => ({
       default: m.WhyChooseUsSection,
+    })),
+  { loading: () => <SectionSkeleton /> }
+);
+
+const GlobalPresenceSection = dynamic(
+  () =>
+    import("@/components/home/GlobalPresenceSection").then((m) => ({
+      default: m.GlobalPresenceSection,
     })),
   { loading: () => <SectionSkeleton /> }
 );
@@ -97,12 +92,20 @@ export const metadata: Metadata = {
     siteName: ACADEMY_INFO.name,
     locale: "en_US",
     type: "website",
-    images: ["/og-images/home.jpg"],
+    images: [
+      {
+        url: "/og-images/home.jpg",
+        width: 1200,
+        height: 630,
+        alt: "BD Online Quran Academy",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "BD Online Quran Academy",
     description: ACADEMY_INFO.tagline,
+    images: ["/og-images/home.jpg"],
   },
   alternates: {
     canonical: SITE_URL,
@@ -115,22 +118,24 @@ export default async function HomePage() {
   const homeMessages = getHomeClientMessages(
     messages as Record<string, unknown>
   );
-  const [featuredTeachers, testimonials] = await Promise.all([
+  const [featuredTeachers, testimonials, stats] = await Promise.all([
     getFeaturedTeachers(),
     getTestimonials(),
+    getPublicStatsDisplay(),
   ]);
   const faqItems = getFaqItems();
 
   return (
     <NextIntlClientProvider locale={locale} messages={homeMessages}>
       <HomeHeroGroup />
+      <QuranVerseMarquee />
+      <StatsSection stats={stats} />
       <QuickNavSection />
       <AboutSection />
-      <TopicsSection />
       <LearningPlansSection />
       <HowToStartSection />
-      <LiveAcademySection />
       <WhyChooseUsSection />
+      <GlobalPresenceSection />
       <TeachersPreviewSection teachers={featuredTeachers} />
       <TestimonialsSection testimonials={testimonials} />
       <FAQSection items={faqItems} />

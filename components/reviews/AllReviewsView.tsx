@@ -30,10 +30,10 @@ export function AllReviewsView({
               key={stat.label}
               className="rounded-2xl border border-white bg-white px-4 py-5 text-center shadow-sm"
             >
-              <p className="font-inter text-2xl font-bold text-[#32C991] md:text-3xl">
+              <p className="font-body text-2xl font-bold text-[#32C991] md:text-3xl">
                 {stat.value}
               </p>
-              <p className="mt-1 font-inter text-xs uppercase tracking-wide text-[#6B7280]">
+              <p className="mt-1 font-body text-xs uppercase tracking-wide text-[#6B7280]">
                 {stat.label}
               </p>
             </div>
@@ -62,12 +62,12 @@ export function AllReviewsView({
             <h2 className="font-playfair text-2xl font-bold md:text-3xl">
               {t("readyTitle")}
             </h2>
-            <p className="mx-auto mt-4 max-w-xl font-inter text-base text-white/85">
+            <p className="mx-auto mt-4 max-w-xl font-body text-base text-white/85">
               {t("readyDesc")}
             </p>
             <Link
               href="/free-class"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-8 py-3 font-inter text-sm font-semibold text-primary-dark transition-all hover:bg-bg-light"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-8 py-3 font-body text-sm font-semibold text-primary-dark transition-all hover:bg-bg-light"
             >
               {t("bookTrial")}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />

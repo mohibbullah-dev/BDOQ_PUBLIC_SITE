@@ -59,7 +59,7 @@ export function PrayerTimeWidget() {
       <div className="flex items-center justify-between gap-2 mb-2">
         <div className="flex items-center gap-1.5">
           <Clock className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
-          <span className="font-inter text-xs font-semibold text-primary-dark">
+          <span className="font-body text-xs font-semibold text-primary-dark">
             Dhaka Prayer
           </span>
         </div>
@@ -87,7 +87,7 @@ export function PrayerTimeWidget() {
       )}
 
       {state === "error" && (
-        <p className="font-inter text-xs text-red-600" aria-live="polite">
+        <p className="font-body text-xs text-red-600" aria-live="polite">
           Unable to load prayer times.
         </p>
       )}
@@ -100,7 +100,7 @@ export function PrayerTimeWidget() {
           {PRAYER_LABELS.map(({ key, label }) => (
             <li
               key={key}
-              className="flex items-center justify-between font-inter text-xs"
+              className="flex items-center justify-between font-body text-xs"
             >
               <span className="text-text-gray">{label}</span>
               <span className="font-medium text-primary-dark">

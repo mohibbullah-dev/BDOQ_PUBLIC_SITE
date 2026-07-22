@@ -70,7 +70,7 @@ export function NavMoreMenu({ items }: INavMoreMenuProps) {
                           aria-hidden="true"
                         />
                       )}
-                      <p className="px-4 pb-1 pt-2 font-inter text-[10px] font-bold uppercase tracking-wider text-[#9CA3AF]">
+                      <p className="px-4 pb-1 pt-2 font-body text-[10px] font-bold uppercase tracking-wider text-[#9CA3AF]">
                         {label(item.labelKey)}
                       </p>
                       {item.children.map((child) => {

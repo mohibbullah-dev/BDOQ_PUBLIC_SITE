@@ -58,7 +58,7 @@ export function FooterNewsletter() {
 
   return (
     <div>
-      <h3 className="font-inter text-base font-semibold text-white">
+      <h3 className="font-body text-base font-semibold text-white">
         {t("newsletterTitle")}
       </h3>
       <form
@@ -83,7 +83,7 @@ export function FooterNewsletter() {
           }}
           placeholder={t("newsletterPlaceholder")}
           className={cn(
-            "min-w-0 flex-1 bg-transparent px-3 py-2.5 font-inter text-sm text-white",
+            "min-w-0 flex-1 bg-transparent px-3 py-2.5 font-body text-sm text-white",
             "placeholder:text-white/45 outline-none disabled:opacity-60"
           )}
         />
@@ -112,14 +112,14 @@ export function FooterNewsletter() {
         <p
           role="status"
           className={cn(
-            "mt-2 font-inter text-xs",
+            "mt-2 font-body text-xs",
             submitState === "error" ? "text-red-200" : "text-emerald-200"
           )}
         >
           {feedback}
         </p>
       ) : (
-        <p className="mt-2 font-inter text-xs text-white/50">
+        <p className="mt-2 font-body text-xs text-white/50">
           {t("newsletterHint")}
         </p>
       )}

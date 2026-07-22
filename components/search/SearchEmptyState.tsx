@@ -33,10 +33,10 @@ export function SearchEmptyState({
       <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
         <SearchX className="h-8 w-8 text-primary" aria-hidden="true" />
       </div>
-      <h3 className="mb-2 font-inter text-xl font-semibold text-primary-dark">
+      <h3 className="mb-2 font-body text-xl font-semibold text-primary-dark">
         {resolvedTitle}
       </h3>
-      <p className="mb-6 max-w-md font-inter text-sm leading-relaxed text-text-gray">
+      <p className="mb-6 max-w-md font-body text-sm leading-relaxed text-text-gray">
         {description ?? defaultDescription}
       </p>
       <Link

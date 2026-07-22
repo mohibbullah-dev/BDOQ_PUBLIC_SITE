@@ -58,7 +58,7 @@ function ProfileSection({
         <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#E8FAF2] text-[#32C991]">
           <Icon className="h-5 w-5" aria-hidden="true" />
         </span>
-        <h2 className="font-inter text-xl font-semibold text-[#32C991]">
+        <h2 className="font-body text-xl font-semibold text-[#32C991]">
           {title}
         </h2>
       </div>
@@ -73,7 +73,7 @@ function BulletList({ items }: { items: string[] }) {
       {items.map((item) => (
         <li
           key={item}
-          className="flex items-start gap-3 font-inter text-sm leading-relaxed text-[#1A1A2E]/85 md:text-base"
+          className="flex items-start gap-3 font-body text-sm leading-relaxed text-[#1A1A2E]/85 md:text-base"
         >
           <span
             className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#32C991]"
@@ -102,7 +102,7 @@ export function TeacherDetailView({
       <section className="border-b border-[#32C991]/10 bg-white">
         <div className="site-container py-6">
           <nav aria-label="Breadcrumb">
-            <ol className="flex flex-wrap items-center gap-2 font-inter text-sm text-[#6B7280]">
+            <ol className="flex flex-wrap items-center gap-2 font-body text-sm text-[#6B7280]">
               <li>
                 <Link
                   href="/"
@@ -143,10 +143,10 @@ export function TeacherDetailView({
                     size={128}
                     className="mx-auto shadow-md"
                   />
-                  <h1 className="mt-5 font-inter text-2xl font-bold text-[#32C991]">
+                  <h1 className="mt-5 font-body text-2xl font-bold text-[#32C991]">
                     {teacher.name}
                   </h1>
-                  <p className="mt-2 font-inter text-sm font-medium text-[#32C991]">
+                  <p className="mt-2 font-body text-sm font-medium text-[#32C991]">
                     {teacher.role}
                   </p>
                   <span className="mt-4 inline-flex items-center rounded-full bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-[#32C991] shadow-sm">
@@ -161,10 +161,10 @@ export function TeacherDetailView({
                       aria-hidden="true"
                     />
                     <div>
-                      <p className="font-inter text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
+                      <p className="font-body text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
                         Location
                       </p>
-                      <p className="font-inter text-sm font-medium text-[#1A1A2E]">
+                      <p className="font-body text-sm font-medium text-[#1A1A2E]">
                         {getTeacherLocation(teacher)}
                       </p>
                     </div>
@@ -176,12 +176,12 @@ export function TeacherDetailView({
                       aria-hidden="true"
                     />
                     <div>
-                      <p className="font-inter text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
+                      <p className="font-body text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
                         Email
                       </p>
                       <a
                         href={`mailto:${getTeacherContactEmail()}`}
-                        className="font-inter text-sm font-medium text-[#32C991] hover:underline"
+                        className="font-body text-sm font-medium text-[#32C991] hover:underline"
                       >
                         {getTeacherContactEmail()}
                       </a>
@@ -194,12 +194,12 @@ export function TeacherDetailView({
                       aria-hidden="true"
                     />
                     <div>
-                      <p className="font-inter text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
+                      <p className="font-body text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
                         Phone
                       </p>
                       <a
                         href={`tel:${getTeacherContactPhone()}`}
-                        className="font-inter text-sm font-medium text-[#32C991] hover:underline"
+                        className="font-body text-sm font-medium text-[#32C991] hover:underline"
                       >
                         {getTeacherContactPhone()}
                       </a>
@@ -212,7 +212,7 @@ export function TeacherDetailView({
                     href="/free-class"
                     className={cn(
                       "flex w-full items-center justify-center gap-2 rounded-full px-6 py-3",
-                      "bg-[#32C991] font-inter text-sm font-semibold text-white",
+                      "bg-[#32C991] font-body text-sm font-semibold text-white",
                       "transition-all duration-300 hover:bg-[#32C991] hover:shadow-lg"
                     )}
                   >
@@ -225,7 +225,7 @@ export function TeacherDetailView({
                     rel="noopener noreferrer"
                     className={cn(
                       "flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#32C991]",
-                      "px-6 py-3 font-inter text-sm font-semibold text-[#32C991]",
+                      "px-6 py-3 font-body text-sm font-semibold text-[#32C991]",
                       "transition-all duration-300 hover:bg-[#32C991] hover:text-white"
                     )}
                   >
@@ -261,10 +261,10 @@ export function TeacherDetailView({
                       className="mx-auto h-4 w-4 text-[#32C991]"
                       aria-hidden="true"
                     />
-                    <p className="mt-2 font-inter text-sm font-bold text-[#32C991]">
+                    <p className="mt-2 font-body text-sm font-bold text-[#32C991]">
                       {stat.value}
                     </p>
-                    <p className="font-inter text-[10px] uppercase tracking-wide text-[#6B7280]">
+                    <p className="font-body text-[10px] uppercase tracking-wide text-[#6B7280]">
                       {stat.label}
                     </p>
                   </div>
@@ -277,7 +277,7 @@ export function TeacherDetailView({
                 title={getTeacherAboutTitle(teacher)}
                 icon={Sparkles}
               >
-                <p className="font-inter text-base leading-relaxed text-[#1A1A2E]/85">
+                <p className="font-body text-base leading-relaxed text-[#1A1A2E]/85">
                   {getTeacherAbout(teacher)}
                 </p>
               </ProfileSection>
@@ -290,10 +290,10 @@ export function TeacherDetailView({
                         key={item.label}
                         className="rounded-2xl bg-[#E8FAF2] px-4 py-4"
                       >
-                        <dt className="font-inter text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
+                        <dt className="font-body text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
                           {item.label}
                         </dt>
-                        <dd className="mt-1 font-inter text-sm font-medium text-[#1A1A2E]">
+                        <dd className="mt-1 font-body text-sm font-medium text-[#1A1A2E]">
                           {item.value}
                         </dd>
                       </div>
@@ -308,14 +308,14 @@ export function TeacherDetailView({
               >
                 <div className="space-y-8">
                   <div>
-                    <h3 className="mb-3 font-inter text-sm font-semibold uppercase tracking-wide text-[#32C991]">
+                    <h3 className="mb-3 font-body text-sm font-semibold uppercase tracking-wide text-[#32C991]">
                       Educational Qualification
                     </h3>
                     <BulletList items={getTeacherQualifications(teacher)} />
                   </div>
 
                   <div>
-                    <h3 className="mb-3 font-inter text-sm font-semibold uppercase tracking-wide text-[#32C991]">
+                    <h3 className="mb-3 font-body text-sm font-semibold uppercase tracking-wide text-[#32C991]">
                       Special Skills
                     </h3>
                     <BulletList items={getTeacherSkills(teacher)} />
@@ -323,18 +323,18 @@ export function TeacherDetailView({
 
                   <div className="grid gap-4 md:grid-cols-2">
                     <div className="rounded-2xl bg-[#E8FAF2] px-5 py-4">
-                      <h3 className="font-inter text-sm font-semibold uppercase tracking-wide text-[#32C991]">
+                      <h3 className="font-body text-sm font-semibold uppercase tracking-wide text-[#32C991]">
                         Experience
                       </h3>
-                      <p className="mt-2 font-inter text-sm leading-relaxed text-[#1A1A2E]/85">
+                      <p className="mt-2 font-body text-sm leading-relaxed text-[#1A1A2E]/85">
                         {getTeacherExperience(teacher)}
                       </p>
                     </div>
                     <div className="rounded-2xl bg-[#E8FAF2] px-5 py-4">
-                      <h3 className="font-inter text-sm font-semibold uppercase tracking-wide text-[#32C991]">
+                      <h3 className="font-body text-sm font-semibold uppercase tracking-wide text-[#32C991]">
                         Language Skills
                       </h3>
-                      <p className="mt-2 font-inter text-sm leading-relaxed text-[#1A1A2E]/85">
+                      <p className="mt-2 font-body text-sm leading-relaxed text-[#1A1A2E]/85">
                         {languages.join(", ")}
                       </p>
                     </div>
@@ -350,16 +350,16 @@ export function TeacherDetailView({
         <div className="site-container">
           <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="font-inter text-sm font-semibold uppercase tracking-wider text-[#32C991]">
+              <p className="font-body text-sm font-semibold uppercase tracking-wider text-[#32C991]">
                 Courses
               </p>
-              <h2 className="font-inter text-2xl font-semibold text-[#32C991] md:text-3xl">
+              <h2 className="font-body text-2xl font-semibold text-[#32C991] md:text-3xl">
                 All classes of {honorific}
               </h2>
             </div>
             <Link
               href="/courses"
-              className="inline-flex items-center gap-2 font-inter text-sm font-semibold text-[#32C991] hover:underline"
+              className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#32C991] hover:underline"
             >
               Browse all courses
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -377,7 +377,7 @@ export function TeacherDetailView({
       {relatedTeachers.length > 0 && (
         <section className="py-12 md:py-16">
           <div className="site-container">
-            <h2 className="mb-8 text-center font-inter text-2xl font-semibold text-[#32C991]">
+            <h2 className="mb-8 text-center font-body text-2xl font-semibold text-[#32C991]">
               More {teacher.gender === "female" ? "Female" : "Male"} Teachers
             </h2>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -401,13 +401,13 @@ export function TeacherDetailView({
             <h2 className="font-playfair text-3xl font-bold text-[var(--green-dark)] md:text-4xl">
               Learn with {teacher.name.split(" ").slice(-1)[0]}
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl font-inter text-base leading-relaxed text-[var(--text-gray)]">
+            <p className="mx-auto mt-4 max-w-2xl font-body text-base leading-relaxed text-[var(--text-gray)]">
               Book a free trial class and experience one-to-one Quran learning
               with a qualified BDOQ Academy {honorific.toLowerCase()}.
             </p>
             <Link
               href="/free-class"
-              className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[var(--green-primary)] px-8 py-3 font-inter text-sm font-bold text-white transition-all duration-300 hover:scale-[1.03] hover:shadow-lg"
+              className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[var(--green-primary)] px-8 py-3 font-body text-sm font-bold text-white transition-all duration-300 hover:scale-[1.03] hover:shadow-lg"
             >
               Start Free Trial
               <ArrowRight className="h-4 w-4" aria-hidden="true" />

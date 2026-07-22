@@ -88,7 +88,7 @@ export function SegmentedTabBar<T extends string>({
                 isCompact
                   ? "min-h-[44px] gap-1.5 px-2.5 py-2 text-xs font-semibold sm:px-3"
                   : "min-h-[52px] flex-col gap-0.5 px-2 py-2.5 text-sm font-semibold sm:min-h-[56px] sm:flex-row sm:gap-2 sm:px-3",
-                "font-inter",
+                "font-body",
                 isActive ? "text-white" : "text-text-gray hover:text-primary",
                 useWrap &&
                   "min-w-[calc(50%-0.375rem)] flex-1 sm:min-w-[9rem] sm:flex-none"

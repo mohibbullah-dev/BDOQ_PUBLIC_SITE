@@ -45,7 +45,7 @@ export function BlogShareBar({ post, className }: IBlogShareBarProps) {
 
   return (
     <div className={cn("space-y-3", className)}>
-      <p className="font-inter text-xs font-bold uppercase tracking-wider text-text-gray">
+      <p className="font-body text-xs font-bold uppercase tracking-wider text-text-gray">
         {t("shareArticle")}
       </p>
       <div className="flex flex-wrap gap-2">
@@ -70,7 +70,7 @@ export function BlogShareBar({ post, className }: IBlogShareBarProps) {
           aria-label={copied ? t("linkCopied") : t("copyLink")}
           className={cn(
             "inline-flex h-10 min-w-10 items-center justify-center gap-1.5 rounded-full border px-3",
-            "font-inter text-xs font-semibold transition-all duration-200",
+            "font-body text-xs font-semibold transition-all duration-200",
             copied
               ? "border-primary bg-[#E8FAF2] text-primary"
               : "border-gray-200 text-text-gray hover:border-primary hover:bg-[#E8FAF2] hover:text-primary"
@@ -84,7 +84,7 @@ export function BlogShareBar({ post, className }: IBlogShareBarProps) {
           {copied ? t("copied") : t("copy")}
         </button>
       </div>
-      <p className="flex items-start gap-2 font-inter text-xs leading-relaxed text-text-gray">
+      <p className="flex items-start gap-2 font-body text-xs leading-relaxed text-text-gray">
         <Link2 className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
         <span className="break-all">{shareUrl}</span>
       </p>

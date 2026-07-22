@@ -11,6 +11,8 @@ export interface IPremiumHeroCarouselSlide extends IPremiumHeroCarouselSlideMeta
   title: string;
   subtitle: string;
   imageAlt: string;
+  primaryCta: string;
+  secondaryCta: string;
 }
 
 export function usePremiumHeroCarouselSlides(): IPremiumHeroCarouselSlide[] {
@@ -22,5 +24,7 @@ export function usePremiumHeroCarouselSlides(): IPremiumHeroCarouselSlide[] {
     title: t(`${meta.id}.title`),
     subtitle: t(`${meta.id}.subtitle`),
     imageAlt: t(`${meta.id}.imageAlt`),
+    primaryCta: t(`${meta.id}.primaryCta`),
+    secondaryCta: t(`${meta.id}.secondaryCta`),
   }));
 }

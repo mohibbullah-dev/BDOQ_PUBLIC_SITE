@@ -21,7 +21,7 @@ export function CourseWhyBdoq() {
                   className="h-5 w-5 text-primary shrink-0 mt-0.5"
                   aria-hidden="true"
                 />
-                <span className="font-inter text-sm text-text-dark leading-relaxed">
+                <span className="font-body text-sm text-text-dark leading-relaxed">
                   {item}
                 </span>
               </li>

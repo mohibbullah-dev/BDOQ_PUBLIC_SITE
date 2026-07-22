@@ -33,7 +33,7 @@ export function FileDropzone({
     <div>
       <label
         htmlFor={id}
-        className="mb-1.5 block font-inter text-sm font-medium text-text-dark"
+        className="mb-1.5 block font-body text-sm font-medium text-text-dark"
       >
         {label}
       </label>
@@ -57,10 +57,10 @@ export function FileDropzone({
         )}
       >
         <Upload className="mb-2 h-8 w-8 text-primary" aria-hidden="true" />
-        <p className="text-center font-inter text-sm text-text-dark">
+        <p className="text-center font-body text-sm text-text-dark">
           {value ? value.name : t("prompt")}
         </p>
-        <p className="mt-1 font-inter text-xs text-text-gray">{accept}</p>
+        <p className="mt-1 font-body text-xs text-text-gray">{accept}</p>
       </div>
       <input
         ref={inputRef}

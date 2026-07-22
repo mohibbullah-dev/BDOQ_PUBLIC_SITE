@@ -15,7 +15,7 @@ export function HeaderSpacer() {
 
   return (
     <div
-      className="w-full shrink-0 min-h-[68px] md:min-h-[104px] lg:min-h-[172px]"
+      className="w-full shrink-0 min-h-[68px] md:min-h-[104px]"
       aria-hidden="true"
     />
   );

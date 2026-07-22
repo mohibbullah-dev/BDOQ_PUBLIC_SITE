@@ -21,7 +21,7 @@ export function CourseHero({ course }: ICourseHeroProps) {
 
       <div className="site-container relative py-16 md:py-20">
         <nav aria-label="Breadcrumb" className="mb-6">
-          <ol className="flex flex-wrap items-center gap-1.5 font-inter text-sm text-white/70">
+          <ol className="flex flex-wrap items-center gap-1.5 font-body text-sm text-white/70">
             <li>
               <Link href="/" className="hover:text-white transition-colors">
                 {t("home")}
@@ -59,7 +59,7 @@ export function CourseHero({ course }: ICourseHeroProps) {
         <h1 className="font-amiri text-3xl md:text-5xl font-bold mb-4 max-w-3xl">
           {course.title}
         </h1>
-        <p className="font-inter text-base md:text-lg text-white/85 max-w-2xl leading-relaxed">
+        <p className="font-body text-base md:text-lg text-white/85 max-w-2xl leading-relaxed">
           {course.description}
         </p>
       </div>

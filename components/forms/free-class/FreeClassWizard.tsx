@@ -147,13 +147,13 @@ export function FreeClassWizard({
       <div className={className}>
         {showTitle && (
           <div className="mb-8 text-center">
-            <p className="mb-2 font-inter text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+            <p className="mb-2 font-body text-xs font-semibold uppercase tracking-[0.16em] text-primary">
               {tPage("eyebrow")}
             </p>
             <h1 className="mb-2 font-amiri text-2xl font-bold text-primary-dark md:text-3xl">
               {tPage("title")}
             </h1>
-            <p className="font-inter text-sm text-text-gray">
+            <p className="font-body text-sm text-text-gray">
               {tPage("subtitle")}
             </p>
           </div>

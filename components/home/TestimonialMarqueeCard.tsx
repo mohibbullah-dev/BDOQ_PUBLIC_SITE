@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { Star } from "lucide-react";
 import type { ITestimonial } from "@/lib/types";
+import { ReviewAvatar } from "@/components/shared/ReviewAvatar";
 import { cn } from "@/lib/cn";
 
 interface ITestimonialMarqueeCardProps {
@@ -8,25 +8,20 @@ interface ITestimonialMarqueeCardProps {
   className?: string;
 }
 
-import { getTestimonialAvatar } from "@/lib/testimonialAvatars";
-
 export function TestimonialMarqueeCard({
   testimonial,
   className,
 }: ITestimonialMarqueeCardProps) {
-  const avatarSrc = getTestimonialAvatar(testimonial);
-
   return (
     <figure
       className={cn(
-        "relative w-[340px] shrink-0 overflow-hidden rounded-2xl border border-white/20",
-        "bg-white/95 p-6 shadow-[0_20px_50px_rgba(10,22,40,0.18)] backdrop-blur-sm",
-        "transition-transform duration-300 hover:-translate-y-1",
+        "site-card relative flex w-[300px] shrink-0 flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-5 sm:w-[340px] sm:p-6",
+        "transition-shadow duration-200 hover:shadow-md",
         className
       )}
     >
       <div
-        className="mb-4 flex items-center gap-1"
+        className="mb-3 flex items-center gap-1"
         aria-label={`${testimonial.rating} out of 5 stars`}
       >
         {Array.from({ length: testimonial.rating }, (_, index) => (
@@ -38,24 +33,17 @@ export function TestimonialMarqueeCard({
         ))}
       </div>
 
-      <blockquote className="font-playfair text-[15px] italic leading-relaxed text-[#1A1A2E]/90">
+      <blockquote className="line-clamp-4 flex-1 font-playfair text-[15px] italic leading-relaxed text-text-dark/90">
         &ldquo;{testimonial.content}&rdquo;
       </blockquote>
 
-      <figcaption className="mt-5 flex items-center gap-3 border-t border-[#32C991]/10 pt-4">
-        <Image
-          src={avatarSrc}
-          alt={testimonial.name}
-          width={48}
-          height={48}
-          className="h-12 w-12 rounded-full border-2 border-[#32C991]/15 object-cover"
-          unoptimized={avatarSrc.includes("res.cloudinary.com") === false}
-        />
+      <figcaption className="mt-5 flex items-center gap-3 border-t border-primary/10 pt-4">
+        <ReviewAvatar testimonial={testimonial} size={44} />
         <div className="min-w-0 text-left">
-          <p className="truncate font-inter text-sm font-bold text-[#32C991]">
+          <p className="truncate font-body text-sm font-bold text-primary-dark">
             {testimonial.name}
           </p>
-          <p className="truncate font-inter text-xs text-[#6B7280]">
+          <p className="truncate font-body text-xs text-text-gray">
             {testimonial.location}
           </p>
         </div>

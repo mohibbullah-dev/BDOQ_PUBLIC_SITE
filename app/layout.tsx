@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import {
-  Inter,
+  Plus_Jakarta_Sans,
   Amiri,
   Playfair_Display,
   Hind_Siliguri,
@@ -10,7 +10,6 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { TopBar } from "@/components/layout/TopBar";
 import { Navbar } from "@/components/layout/Navbar";
-import { QuranVerseMarquee } from "@/components/layout/QuranVerseMarquee";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { HeaderThemeProvider } from "@/components/layout/HeaderThemeContext";
 import { Footer } from "@/components/layout/Footer";
@@ -33,9 +32,9 @@ const playfair = Playfair_Display({
   adjustFontFallback: true,
 });
 
-const inter = Inter({
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-body",
   display: "swap",
   preload: true,
   adjustFontFallback: true,
@@ -117,34 +116,11 @@ export default async function RootLayout({
     messages as Record<string, unknown>
   );
 
-  // #region agent log
-  fetch("http://127.0.0.1:7416/ingest/ebf5acf2-f99a-40e3-88a0-a4b533c78c2b", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-Debug-Session-Id": "1c0f9f",
-    },
-    body: JSON.stringify({
-      sessionId: "1c0f9f",
-      runId: "post-fix",
-      hypothesisId: "A",
-      location: "app/layout.tsx:RootLayout",
-      message: "getLocale in root layout",
-      data: {
-        locale,
-        hasLocale: Boolean(locale),
-        passesLocaleToProvider: true,
-      },
-      timestamp: Date.now(),
-    }),
-  }).catch(() => {});
-  // #endregion
-
   return (
     <html lang={locale}>
       <body
         className={cn(
-          inter.variable,
+          plusJakarta.variable,
           amiri.variable,
           playfair.variable,
           hindSiliguri.variable,
@@ -160,7 +136,6 @@ export default async function RootLayout({
             <HeaderThemeProvider>
               <TopBar />
               <Navbar />
-              <QuranVerseMarquee />
             </HeaderThemeProvider>
           </SiteHeader>
           <main id="main-content">

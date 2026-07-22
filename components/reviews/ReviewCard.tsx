@@ -1,6 +1,7 @@
-import Image from "next/image";
 import { Star } from "lucide-react";
 import type { ITestimonial } from "@/lib/types";
+import { ReviewAvatar } from "@/components/shared/ReviewAvatar";
+import { TestimonialMedia } from "@/components/shared/TestimonialMedia";
 import { cn } from "@/lib/cn";
 
 interface IReviewCardProps {
@@ -8,17 +9,12 @@ interface IReviewCardProps {
   className?: string;
 }
 
-import { getTestimonialAvatar } from "@/lib/testimonialAvatars";
-import { TestimonialMedia } from "@/components/shared/TestimonialMedia";
-
 export function ReviewCard({ testimonial, className }: IReviewCardProps) {
-  const avatarSrc = getTestimonialAvatar(testimonial);
-
   return (
     <article
       className={cn(
-        "flex h-full flex-col rounded-2xl border border-gray-100 bg-white p-6",
-        "shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl",
+        "site-card flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6",
+        "transition-shadow duration-200 hover:shadow-md",
         className
       )}
     >
@@ -35,29 +31,20 @@ export function ReviewCard({ testimonial, className }: IReviewCardProps) {
         ))}
       </div>
 
-      <blockquote className="flex-1 font-playfair text-base italic leading-relaxed text-[#1A1A2E]/90">
+      <blockquote className="flex-1 font-playfair text-base italic leading-relaxed text-text-dark/90">
         &ldquo;{testimonial.content}&rdquo;
       </blockquote>
 
       <TestimonialMedia testimonial={testimonial} />
 
-      <div className="mt-6 flex items-center gap-3 border-t border-[#32C991]/10 pt-5">
-        <Image
-          src={avatarSrc}
-          alt={testimonial.name}
-          width={48}
-          height={48}
-          className="h-12 w-12 rounded-full border-2 border-[#32C991]/15 object-cover"
-          unoptimized={!avatarSrc.includes("res.cloudinary.com")}
-        />
+      <div className="mt-6 flex items-center gap-3 border-t border-primary/10 pt-5">
+        <ReviewAvatar testimonial={testimonial} size={48} />
         <div className="min-w-0">
-          <p className="font-inter text-sm font-bold text-[#32C991]">
+          <p className="font-body text-sm font-bold text-primary-dark">
             {testimonial.name}
           </p>
-          <p className="font-inter text-xs text-[#6B7280]">
-            {testimonial.role}
-          </p>
-          <p className="font-inter text-xs font-medium text-[#32C991]">
+          <p className="font-body text-xs text-text-gray">{testimonial.role}</p>
+          <p className="font-body text-xs font-medium text-primary">
             {testimonial.location}
           </p>
         </div>

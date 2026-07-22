@@ -30,7 +30,7 @@ export function AboutPageVideoSection() {
 
         <ScrollReveal delay={0.1} className="mt-10 md:mt-12">
           <AboutVideoPlayer />
-          <p className="mt-6 text-center font-inter text-sm text-[var(--text-gray)]">
+          <p className="mt-6 text-center font-body text-sm text-[var(--text-gray)]">
             {tContent("featuredVideoTitle")} — {tContent("featuredVideoDesc")}
           </p>
         </ScrollReveal>

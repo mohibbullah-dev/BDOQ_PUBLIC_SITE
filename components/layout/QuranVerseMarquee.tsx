@@ -27,12 +27,12 @@ export function QuranVerseMarquee() {
 
   return (
     <div
-      className="group/marquee site-marquee relative hidden overflow-hidden lg:block"
+      className="group/marquee site-marquee relative overflow-hidden"
       role="region"
       aria-label={MARQUEE_ARIA[locale]}
     >
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 z-20 h-0.5 bg-gradient-to-r from-transparent via-[var(--green-primary)] to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 z-20 h-0.5 [background-image:linear-gradient(90deg,transparent_0%,var(--green-primary)_35%,var(--brand-red)_65%,transparent_100%)]"
         aria-hidden="true"
       />
 

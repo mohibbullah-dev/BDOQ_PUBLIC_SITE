@@ -25,15 +25,15 @@ export function CourseBenefits({ benefits }: ICourseBenefitsProps) {
             return (
               <div
                 key={benefit.id}
-                className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm hover:shadow-md transition-shadow"
+                className="site-card rounded-2xl border border-gray-200 bg-white p-6 transition-shadow duration-200 hover:shadow-md"
               >
                 <div className="mb-4 inline-flex rounded-xl bg-bg-light p-3">
                   <Icon className="h-6 w-6 text-primary" aria-hidden="true" />
                 </div>
-                <h3 className="font-inter text-base font-bold text-primary-dark mb-2">
+                <h3 className="mb-2 font-playfair text-base font-bold tracking-tight text-primary-dark">
                   {benefit.title}
                 </h3>
-                <p className="font-inter text-sm text-text-gray leading-relaxed">
+                <p className="font-body text-sm leading-relaxed text-text-gray">
                   {benefit.description}
                 </p>
               </div>

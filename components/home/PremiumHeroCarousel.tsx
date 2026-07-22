@@ -99,16 +99,6 @@ export function PremiumHeroCarousel({
       aria-roledescription="carousel"
       aria-label={t("aria")}
     >
-      <span
-        className={cn(
-          "absolute left-4 top-4 z-20 rounded-full px-3 py-1.5",
-          "font-inter text-[11px] font-semibold tracking-wide sm:text-xs",
-          "bg-[#32C991]/90 text-white shadow-md backdrop-blur-sm"
-        )}
-      >
-        {slide.badge}
-      </span>
-
       <div className="absolute inset-0 overflow-hidden rounded-[inherit]">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -21,6 +20,8 @@ import { useTranslations } from "next-intl";
 import { ACADEMY_INFO } from "@/lib/constants";
 import type { IFAQItem } from "@/lib/types";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
+import { SectionHeader } from "@/components/shared/SectionHeader";
+import { SiteCta } from "@/components/shared/SiteCta";
 import { cn } from "@/lib/cn";
 
 const FAQ_ICONS: Record<string, LucideIcon> = {
@@ -91,10 +92,10 @@ function FAQAccordionItem({
         </span>
 
         <span className="min-w-0 flex-1 pt-0.5">
-          <span className="mb-1 block font-inter text-[11px] font-bold uppercase tracking-widest text-[#6B7280]">
+          <span className="mb-1 block font-body text-[11px] font-bold uppercase tracking-widest text-[#6B7280]">
             Question {String(index + 1).padStart(2, "0")}
           </span>
-          <span className="font-inter text-base font-semibold leading-snug text-[#32C991] md:text-[17px]">
+          <span className="font-body text-base font-semibold leading-snug text-[#32C991] md:text-[17px]">
             {t("q")}
           </span>
         </span>
@@ -131,7 +132,7 @@ function FAQAccordionItem({
             className="overflow-hidden"
           >
             <div className="border-t border-[#32C991]/10 px-5 pb-5 pt-4 md:px-6 md:pb-6 md:pl-[5.25rem]">
-              <p className="font-inter text-sm leading-relaxed text-[#1A1A2E]/80 md:text-[15px]">
+              <p className="font-body text-sm leading-relaxed text-[#1A1A2E]/80 md:text-[15px]">
                 {t("a")}
               </p>
             </div>
@@ -156,31 +157,16 @@ export function FAQSection({ items = [] }: { items?: IFAQItem[] }) {
   const whatsappUrl = `https://wa.me/${ACADEMY_INFO.whatsapp.replace(/\D/g, "")}`;
 
   return (
-    <section className="relative overflow-hidden bg-bg-light py-16 md:py-24">
+    <section className="relative overflow-hidden bg-bg-light py-16 md:py-20">
       <div className="site-container relative">
         <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-14 xl:gap-16">
           <ScrollReveal direction="left">
             <div className="lg:sticky lg:top-28">
-              <span
-                className={cn(
-                  "mb-4 inline-flex items-center gap-2 rounded-full border border-[#32C991]/20",
-                  "bg-white px-4 py-1.5 font-inter text-xs font-semibold uppercase tracking-widest text-[#32C991]"
-                )}
-              >
-                <HelpCircle className="h-3.5 w-3.5" aria-hidden="true" />
-                {t("eyebrow")}
-              </span>
-
-              <h2 className="font-playfair text-3xl font-bold leading-tight text-[#32C991] md:text-4xl lg:text-[2.75rem]">
-                {t("title")}
-                <span className="mt-1 block text-[#32C991]">
-                  {t("titleAccent")}
-                </span>
-              </h2>
-
-              <p className="mt-5 max-w-md font-inter text-base leading-relaxed text-[#6B7280]">
-                {t("intro")}
-              </p>
+              <SectionHeader
+                eyebrow={t("eyebrow")}
+                title={`${t("title")} ${t("titleAccent")}`}
+                subtitle={t("intro")}
+              />
 
               <div className="mt-8 grid grid-cols-3 gap-3">
                 {faqHighlights.map((item) => (
@@ -188,10 +174,10 @@ export function FAQSection({ items = [] }: { items?: IFAQItem[] }) {
                     key={item.labelKey}
                     className="rounded-2xl border border-white/80 bg-white/90 px-3 py-4 text-center shadow-sm"
                   >
-                    <p className="font-inter text-xl font-bold text-[#32C991]">
+                    <p className="font-playfair text-xl font-bold text-primary-dark">
                       {item.value}
                     </p>
-                    <p className="mt-1 font-inter text-[10px] uppercase tracking-wide text-[#6B7280]">
+                    <p className="mt-1 font-body text-[10px] uppercase tracking-wide text-[#6B7280]">
                       {tHighlights(item.labelKey)}
                     </p>
                   </div>
@@ -199,31 +185,20 @@ export function FAQSection({ items = [] }: { items?: IFAQItem[] }) {
               </div>
 
               <div className="mt-8 space-y-3">
-                <Link
-                  href="/free-class"
-                  className={cn(
-                    "inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5",
-                    "bg-[#32C991] font-inter text-sm font-semibold text-white",
-                    "transition-all duration-300 hover:bg-[#32C991] hover:shadow-lg"
-                  )}
-                >
+                <SiteCta href="/free-class" variant="primary" className="w-full">
                   {tCta("bookFreeTrial")}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
+                </SiteCta>
 
-                <a
+                <SiteCta
                   href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cn(
-                    "inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#32C991]",
-                    "bg-white px-6 py-3.5 font-inter text-sm font-semibold text-[#32C991]",
-                    "transition-all duration-300 hover:bg-[#32C991] hover:text-white"
-                  )}
+                  external
+                  variant="secondary"
+                  className="w-full"
                 >
                   <MessageCircle className="h-4 w-4" aria-hidden="true" />
                   {tCta("askWhatsapp")}
-                </a>
+                </SiteCta>
               </div>
             </div>
           </ScrollReveal>
@@ -247,20 +222,17 @@ export function FAQSection({ items = [] }: { items?: IFAQItem[] }) {
               )}
             >
               <div>
-                <p className="font-inter text-sm font-semibold uppercase tracking-wider text-[var(--text-gray)]">
+                <p className="font-body text-sm font-semibold uppercase tracking-wider text-[var(--text-gray)]">
                   {t("stillHaveQuestions")}
                 </p>
-                <p className="mt-1 font-inter text-base font-medium text-[var(--green-dark)]">
+                <p className="mt-1 font-body text-base font-medium text-[var(--green-dark)]">
                   {t("stillHaveQuestionsDesc")}
                 </p>
               </div>
-              <Link
-                href="/contact"
-                className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[var(--green-primary)] px-6 py-3 font-inter text-sm font-bold text-white transition-transform duration-300 hover:scale-[1.03]"
-              >
+              <SiteCta href="/contact" size="sm" className="shrink-0">
                 {tCta("contactUs")}
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
+              </SiteCta>
             </div>
           </ScrollReveal>
         </div>

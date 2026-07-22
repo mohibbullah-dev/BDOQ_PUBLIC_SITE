@@ -121,7 +121,7 @@ export const PhoneInput = forwardRef<HTMLInputElement, IPhoneInputProps>(
             id={`${id}-dial-code`}
             value={dialCode}
             onChange={(event) => handleDialCodeChange(event.target.value)}
-            className="h-full min-h-[44px] max-w-[118px] cursor-pointer appearance-none bg-transparent py-2.5 pl-3 pr-7 font-inter text-sm text-text-dark focus:outline-none"
+            className="h-full min-h-[44px] max-w-[118px] cursor-pointer appearance-none bg-transparent py-2.5 pl-3 pr-7 font-body text-sm text-text-dark focus:outline-none"
             aria-label={t("selectCountryCode")}
           >
             {PHONE_DIAL_CODES.map((entry) => (
@@ -150,7 +150,7 @@ export const PhoneInput = forwardRef<HTMLInputElement, IPhoneInputProps>(
           onChange={(event) => handleLocalChange(event.target.value)}
           onBlur={onBlur}
           className={cn(
-            "flex-1 min-h-[44px] border-0 px-4 py-2.5 font-inter text-sm focus:outline-none focus:ring-0",
+            "flex-1 min-h-[44px] border-0 px-4 py-2.5 font-body text-sm focus:outline-none focus:ring-0",
             className
           )}
           {...props}

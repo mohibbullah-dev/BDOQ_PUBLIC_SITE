@@ -70,10 +70,10 @@ export default async function ContactPage() {
                 key={item.label}
                 className="rounded-2xl border border-white bg-white/90 px-5 py-4 text-center shadow-sm backdrop-blur-sm"
               >
-                <p className="font-inter text-xs font-semibold uppercase tracking-wide text-text-gray">
+                <p className="font-body text-xs font-semibold uppercase tracking-wide text-text-gray">
                   {item.label}
                 </p>
-                <p className="mt-1 font-inter text-sm font-semibold text-primary-dark">
+                <p className="mt-1 font-body text-sm font-semibold text-primary-dark">
                   {item.value}
                 </p>
               </div>

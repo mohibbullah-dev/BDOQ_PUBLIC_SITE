@@ -85,14 +85,14 @@ export function VideoPlayerModal({
                     />
                   </div>
                   <div className="min-w-0">
-                    <p className="font-inter text-[10px] font-bold uppercase tracking-[0.2em] text-white/70 sm:text-xs">
+                    <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-white/70 sm:text-xs">
                       {ACADEMY_INFO.shortName} · Academy Video
                     </p>
-                    <p className="mt-1 font-inter text-xl font-bold leading-snug text-white sm:text-2xl">
+                    <p className="mt-1 font-body text-xl font-bold leading-snug text-white sm:text-2xl">
                       {title}
                     </p>
                     {description && (
-                      <p className="mt-2 line-clamp-2 font-inter text-sm leading-relaxed text-white/80">
+                      <p className="mt-2 line-clamp-2 font-body text-sm leading-relaxed text-white/80">
                         {description}
                       </p>
                     )}
@@ -123,7 +123,7 @@ export function VideoPlayerModal({
             </div>
 
             <div className="flex flex-wrap items-center justify-between gap-3 border-t border-gray-100 bg-white px-4 py-4 sm:px-6">
-              <p className="font-inter text-xs text-text-gray sm:text-sm">
+              <p className="font-body text-xs text-text-gray sm:text-sm">
                 Press{" "}
                 <kbd className="rounded border border-gray-200 bg-gray-50 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-primary-dark">
                   Esc
@@ -138,7 +138,7 @@ export function VideoPlayerModal({
                   rel="noopener noreferrer"
                   className={cn(
                     "inline-flex min-h-[40px] items-center gap-1.5 rounded-full border-2 border-gray-200 px-4 py-2",
-                    "font-inter text-sm font-semibold text-text-dark transition-colors hover:border-primary hover:text-primary"
+                    "font-body text-sm font-semibold text-text-dark transition-colors hover:border-primary hover:text-primary"
                   )}
                 >
                   <ExternalLink className="h-4 w-4" aria-hidden="true" />
@@ -149,7 +149,7 @@ export function VideoPlayerModal({
                   onClick={onClose}
                   className={cn(
                     "inline-flex min-h-[40px] items-center gap-1.5 rounded-full bg-primary px-5 py-2",
-                    "font-inter text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+                    "font-body text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
                   )}
                 >
                   Book free trial class

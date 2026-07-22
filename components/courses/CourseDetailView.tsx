@@ -54,7 +54,7 @@ export function CourseDetailView({
             <h2 className="font-amiri text-2xl md:text-3xl font-bold text-primary-dark mb-3 text-center">
               {tUi("trialForm.title")}
             </h2>
-            <p className="font-inter text-sm text-text-gray text-center mb-8">
+            <p className="font-body text-sm text-text-gray text-center mb-8">
               {tUi("trialForm.description")}
             </p>
             <FreeClassForm

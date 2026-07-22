@@ -35,7 +35,7 @@ function MobileNavSection({ item, onClose, label }: IMobileNavSectionProps) {
         onClick={onClose}
         className={cn(
           "flex min-h-[48px] items-center rounded-xl px-4 py-3",
-          "font-inter text-base font-semibold text-white",
+          "font-body text-base font-semibold text-white",
           "transition-colors active:bg-white/10"
         )}
       >
@@ -51,7 +51,7 @@ function MobileNavSection({ item, onClose, label }: IMobileNavSectionProps) {
         onClick={() => setExpanded((current) => !current)}
         className={cn(
           "flex min-h-[48px] w-full items-center justify-between gap-3 px-4 py-3",
-          "font-inter text-left text-base font-semibold text-white",
+          "font-body text-left text-base font-semibold text-white",
           "transition-colors active:bg-white/10"
         )}
         aria-expanded={expanded}
@@ -83,7 +83,7 @@ function MobileNavSection({ item, onClose, label }: IMobileNavSectionProps) {
                     onClick={onClose}
                     className={cn(
                       "flex min-h-[44px] items-center rounded-lg px-3 py-2.5",
-                      "font-inter text-sm font-medium text-white/85",
+                      "font-body text-sm font-medium text-white/85",
                       "transition-colors active:bg-white/10 active:text-white"
                     )}
                   >
@@ -187,7 +187,7 @@ export function MobileNav({ items, isOpen, onClose }: IMobileNavProps) {
               >
                 <div className="flex items-center gap-3">
                   <SiteSearchTrigger variant="mobile" onOpen={onClose} />
-                  <span className="font-inter text-sm text-white/80">
+                  <span className="font-body text-sm text-white/80">
                     {tSearch("mobile")}
                   </span>
                 </div>
@@ -199,7 +199,7 @@ export function MobileNav({ items, isOpen, onClose }: IMobileNavProps) {
                     onClick={onClose}
                     className={cn(
                       "inline-flex min-h-[44px] flex-1 items-center justify-center rounded-full",
-                      "border border-white/30 px-5 py-2.5 font-inter text-sm font-semibold text-white",
+                      "border border-white/30 px-5 py-2.5 font-body text-sm font-semibold text-white",
                       "transition-colors active:bg-white/10"
                     )}
                   >

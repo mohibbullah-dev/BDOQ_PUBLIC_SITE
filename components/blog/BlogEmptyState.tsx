@@ -15,7 +15,7 @@ export function BlogEmptyState() {
       <h2 className="font-amiri text-2xl font-bold text-primary-dark mb-3">
         {t("emptyPostsTitle")}
       </h2>
-      <p className="font-inter text-text-gray max-w-md mx-auto leading-relaxed mb-6">
+      <p className="font-body text-text-gray max-w-md mx-auto leading-relaxed mb-6">
         {t("emptyPostsDesc")}
       </p>
       <Link

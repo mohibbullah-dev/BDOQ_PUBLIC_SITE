@@ -111,10 +111,10 @@ export function AboutVideoPlayer({ compact = false }: IAboutVideoPlayerProps) {
                 key={stat.label}
                 className="rounded-xl border border-gray-100 bg-white px-4 py-2.5 text-center shadow-sm"
               >
-                <p className="font-inter text-base font-bold text-[var(--green-primary)]">
+                <p className="font-body text-base font-bold text-[var(--green-primary)]">
                   {stat.value}
                 </p>
-                <p className="font-inter text-[11px] text-[var(--text-gray)]">
+                <p className="font-body text-[11px] text-[var(--text-gray)]">
                   {stat.label}
                 </p>
               </div>

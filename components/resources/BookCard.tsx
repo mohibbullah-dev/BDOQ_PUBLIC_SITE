@@ -20,10 +20,9 @@ export function BookCard({ book, onView, onDownload }: IBookCardProps) {
   const categoryKey = EBOOK_CATEGORY_KEYS[book.category] ?? book.category;
 
   return (
-    <article className="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-      <span className="site-card-hover-overlay z-0" aria-hidden="true" />
+    <article className="site-card group relative overflow-hidden rounded-2xl border border-gray-200 bg-white transition-shadow duration-200 hover:shadow-md">
       {book.featured ? (
-        <span className="absolute right-3 top-3 z-10 inline-flex items-center gap-1 rounded-full bg-gold px-2.5 py-1 font-inter text-[10px] font-bold uppercase tracking-wide text-primary-dark shadow-sm">
+        <span className="absolute right-3 top-3 z-10 inline-flex items-center gap-1 rounded-full bg-[linear-gradient(135deg,#32C991,#CD443F)] px-2.5 py-1 font-body text-[10px] font-bold uppercase tracking-wide text-white shadow-sm">
           <Star className="size-3 fill-current" aria-hidden="true" />
           {t("featuredBadge")}
         </span>
@@ -36,18 +35,18 @@ export function BookCard({ book, onView, onDownload }: IBookCardProps) {
         />
       </Link>
       <div className="relative z-[1] space-y-3 p-5">
-        <span className="inline-block rounded-full bg-bg-light px-3 py-1 font-inter text-xs font-medium text-primary">
+        <span className="inline-block rounded-full bg-bg-light px-3 py-1 font-body text-xs font-medium text-primary">
           {t(`categories.${categoryKey}`)}
         </span>
         <Link href={`/resources/ebooks/${book.slug}`}>
-          <h3 className="line-clamp-2 font-inter text-lg font-semibold text-primary-dark transition-colors hover:text-primary">
+          <h3 className="line-clamp-2 font-body text-lg font-semibold text-primary-dark transition-colors hover:text-primary">
             {tItem("title")}
           </h3>
         </Link>
-        <p className="line-clamp-3 font-inter text-sm leading-relaxed text-text-gray">
+        <p className="line-clamp-3 font-body text-sm leading-relaxed text-text-gray">
           {tItem("description")}
         </p>
-        <p className="font-inter text-xs text-text-gray">
+        <p className="font-body text-xs text-text-gray">
           {book.pageCount} {t("pages")} · {book.fileSize}
         </p>
         <div className="flex flex-wrap gap-2 pt-2">
@@ -56,7 +55,7 @@ export function BookCard({ book, onView, onDownload }: IBookCardProps) {
             onClick={() => onDownload(book)}
             className={cn(
               "inline-flex min-h-[44px] items-center gap-2 rounded-full bg-primary px-5 py-2",
-              "font-inter text-sm font-semibold text-white transition-colors"
+              "font-body text-sm font-semibold text-white transition-colors"
             )}
           >
             <Download className="h-4 w-4" aria-hidden="true" />
@@ -66,8 +65,9 @@ export function BookCard({ book, onView, onDownload }: IBookCardProps) {
             type="button"
             onClick={() => onView(book)}
             className={cn(
-              "inline-flex min-h-[44px] items-center gap-2 rounded-full border-2 border-primary px-5 py-2",
-              "font-inter text-sm font-semibold text-primary transition-colors"
+              "inline-flex min-h-[44px] items-center gap-2 rounded-full border-2 border-primary bg-white px-5 py-2",
+              "font-body text-sm font-semibold text-primary transition-colors",
+              "hover:bg-primary hover:text-white"
             )}
           >
             <Eye className="h-4 w-4" aria-hidden="true" />

@@ -63,10 +63,10 @@ export function CourseStatsBar() {
         <div className="grid grid-cols-3 gap-6 text-center">
           {stats.map((stat) => (
             <div key={stat.label}>
-              <p className="font-inter text-2xl md:text-4xl font-bold mb-1">
+              <p className="font-body text-2xl md:text-4xl font-bold mb-1">
                 {stat.value}
               </p>
-              <p className="font-inter text-sm text-white/80">{stat.label}</p>
+              <p className="font-body text-sm text-white/80">{stat.label}</p>
             </div>
           ))}
         </div>

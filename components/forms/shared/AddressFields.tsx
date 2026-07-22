@@ -55,7 +55,7 @@ export function AddressFields<T extends Record<string, unknown>>({
   return (
     <div className="space-y-4">
       {sectionTitle && (
-        <h3 className="font-inter text-sm font-semibold text-primary-dark">
+        <h3 className="font-body text-sm font-semibold text-primary-dark">
           {sectionTitle}
         </h3>
       )}

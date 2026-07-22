@@ -97,17 +97,17 @@ export function LoginPageContent() {
                 <BdoqLogo size="sm" priority />
               </div>
 
-              <p className="mt-8 font-inter text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
+              <p className="mt-8 font-body text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
                 {t("eyebrow")}
               </p>
               <h1 className="mt-3 font-playfair text-3xl font-bold leading-tight text-white xl:text-4xl">
                 {t("panelTitle")}
               </h1>
-              <p className="mt-4 max-w-md font-inter text-sm leading-relaxed text-white/85">
+              <p className="mt-4 max-w-md font-body text-sm leading-relaxed text-white/85">
                 {t("panelSubtitle")}
               </p>
 
-              <span className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 font-inter text-xs font-semibold text-white backdrop-blur-sm">
+              <span className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 font-body text-xs font-semibold text-white backdrop-blur-sm">
                 <ShieldCheck className="h-4 w-4" aria-hidden="true" />
                 {t("secureBadge")}
               </span>
@@ -128,10 +128,10 @@ export function LoginPageContent() {
                         />
                       </span>
                       <div>
-                        <p className="font-inter text-sm font-semibold text-white">
+                        <p className="font-body text-sm font-semibold text-white">
                           {item.title}
                         </p>
-                        <p className="mt-1 font-inter text-xs leading-relaxed text-white/80">
+                        <p className="mt-1 font-body text-xs leading-relaxed text-white/80">
                           {item.description}
                         </p>
                       </div>
@@ -156,13 +156,13 @@ export function LoginPageContent() {
 
             <div className={cn(formSectionInnerClass, "relative z-[1]")}>
               <div className="mb-8 lg:hidden">
-                <p className="font-inter text-xs font-semibold uppercase tracking-widest text-[var(--green-primary)]">
+                <p className="font-body text-xs font-semibold uppercase tracking-widest text-[var(--green-primary)]">
                   {t("eyebrow")}
                 </p>
                 <h1 className="mt-2 font-playfair text-3xl font-bold text-[var(--green-dark)]">
                   {t("title")}
                 </h1>
-                <p className="mt-3 font-inter text-sm leading-relaxed text-[var(--text-gray)]">
+                <p className="mt-3 font-body text-sm leading-relaxed text-[var(--text-gray)]">
                   {t("subtitle")}
                 </p>
               </div>
@@ -171,7 +171,7 @@ export function LoginPageContent() {
                 <h2 className="font-playfair text-2xl font-bold text-[var(--green-dark)] md:text-[1.75rem]">
                   {t("title")}
                 </h2>
-                <p className="mt-2 font-inter text-sm leading-relaxed text-[var(--text-gray)]">
+                <p className="mt-2 font-body text-sm leading-relaxed text-[var(--text-gray)]">
                   {t("subtitle")}
                 </p>
               </div>
@@ -241,13 +241,13 @@ export function LoginPageContent() {
                       onChange={(e) => setRememberMe(e.target.checked)}
                       className="rounded border-gray-300 text-primary focus:ring-primary"
                     />
-                    <span className="font-inter text-sm text-text-dark">
+                    <span className="font-body text-sm text-text-dark">
                       {t("remember")}
                     </span>
                   </label>
                   <a
                     href={`${PORTAL_BASE_URL}/forgot-password`}
-                    className="font-inter text-sm font-semibold text-primary transition-colors hover:text-primary-dark"
+                    className="font-body text-sm font-semibold text-primary transition-colors hover:text-primary-dark"
                   >
                     {t("forgot")}
                   </a>
@@ -257,7 +257,7 @@ export function LoginPageContent() {
                   type="submit"
                   className={cn(
                     "site-btn-hover-overlay site-btn-hover-overlay--filled w-full min-h-[48px] rounded-full bg-primary",
-                    "font-inter text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:shadow-xl"
+                    "font-body text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:shadow-xl"
                   )}
                 >
                   {t("signIn")}
@@ -265,7 +265,7 @@ export function LoginPageContent() {
               </form>
 
               <div className="mt-8 space-y-4 border-t border-gray-100 pt-6">
-                <p className="text-center font-inter text-sm text-text-gray">
+                <p className="text-center font-body text-sm text-text-gray">
                   {t("noAccount")}{" "}
                   <Link
                     href="/student-admission"
@@ -275,7 +275,7 @@ export function LoginPageContent() {
                   </Link>
                 </p>
 
-                <p className="text-center font-inter text-sm text-text-gray">
+                <p className="text-center font-body text-sm text-text-gray">
                   <Link
                     href="/teacher-registration"
                     className="font-semibold text-primary transition-colors hover:text-primary-dark"
@@ -287,7 +287,7 @@ export function LoginPageContent() {
                 <button
                   type="button"
                   onClick={() => router.push("/")}
-                  className="mx-auto flex min-h-[44px] items-center justify-center gap-2 font-inter text-sm text-text-gray transition-colors hover:text-primary"
+                  className="mx-auto flex min-h-[44px] items-center justify-center gap-2 font-body text-sm text-text-gray transition-colors hover:text-primary"
                 >
                   <ArrowLeft className="h-4 w-4" aria-hidden="true" />
                   {t("backToSite").replace("← ", "")}

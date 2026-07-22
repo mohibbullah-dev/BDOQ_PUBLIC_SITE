@@ -28,25 +28,32 @@ export function SectionHeader({
             centered && "justify-center"
           )}
         >
-          <span className="h-px w-8 bg-primary shrink-0" aria-hidden="true" />
+          <span
+            className="h-px w-8 shrink-0 bg-gradient-to-r from-primary to-brand-red"
+            aria-hidden="true"
+          />
           <p
             className={cn(
-              "section-eyebrow font-inter font-bold uppercase tracking-widest text-primary",
+              "section-eyebrow uppercase text-brand-red",
               isPage ? "text-sm" : "text-xs"
             )}
           >
             {eyebrow}
           </p>
-          <span className="h-px w-8 bg-primary shrink-0" aria-hidden="true" />
+          <span
+            className="h-px w-8 shrink-0 bg-gradient-to-l from-primary to-brand-red"
+            aria-hidden="true"
+          />
         </div>
       )}
 
       <TitleTag
         className={cn(
-          "font-playfair font-bold text-primary-dark mb-4",
+          "font-playfair font-bold tracking-tight text-primary-dark",
+          subtitle ? "mb-4" : "mb-0",
           isPage
-            ? "text-4xl leading-tight md:text-5xl lg:text-[3.25rem]"
-            : "text-3xl md:text-4xl"
+            ? "text-4xl leading-[1.12] md:text-5xl lg:text-[3.25rem]"
+            : "text-3xl leading-[1.15] md:text-4xl"
         )}
       >
         {title}
@@ -55,8 +62,9 @@ export function SectionHeader({
       {subtitle && (
         <p
           className={cn(
-            "font-inter text-text-gray leading-relaxed",
-            isPage ? "text-base md:text-lg" : "text-base"
+            "font-body text-text-gray leading-relaxed",
+            isPage ? "text-base md:text-lg" : "text-base",
+            centered && "mx-auto max-w-2xl"
           )}
         >
           {subtitle}

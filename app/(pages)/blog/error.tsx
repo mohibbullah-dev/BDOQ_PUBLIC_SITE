@@ -11,7 +11,7 @@ export default function BlogError({ reset }: IBlogErrorProps) {
       <h2 className="font-amiri text-2xl font-bold text-primary-dark mb-3">
         Unable to load blog
       </h2>
-      <p className="font-inter text-text-gray mb-6 max-w-md mx-auto">
+      <p className="font-body text-text-gray mb-6 max-w-md mx-auto">
         Something went wrong while loading the blog. Please try again.
       </p>
       <button

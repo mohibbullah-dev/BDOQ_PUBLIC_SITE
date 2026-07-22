@@ -8,6 +8,7 @@ import {
   VISION_POINT_ICONS,
 } from "@/lib/missionVisionIcons";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
+import { SectionHeader } from "@/components/shared/SectionHeader";
 import { cn } from "@/lib/cn";
 
 const revealEase = [0.22, 1, 0.36, 1] as const;
@@ -33,30 +34,25 @@ function PointCard({ point, index, Icon, accent }: IPointCardProps) {
     >
       <div
         className={cn(
-          "relative flex h-full items-start gap-3 overflow-hidden rounded-xl border bg-white p-4",
-          "transition-all duration-500 ease-out",
-          "hover:-translate-y-0.5 hover:shadow-[0_16px_36px_-18px_rgba(50,201,145,0.28)]",
-          isMission
-            ? "border-[var(--green-primary)]/10 hover:border-[var(--green-primary)]/22"
-            : "border-[var(--green-primary)]/12 hover:border-[var(--green-primary)]/25"
+          "site-card relative flex h-full items-start gap-3 overflow-hidden rounded-xl border bg-white p-4",
+          "transition-shadow duration-200 hover:shadow-md",
+          isMission ? "border-gray-200" : "border-gray-200"
         )}
       >
-        <span className="site-card-hover-overlay z-0" aria-hidden="true" />
-
         <span
           className={cn(
-            "relative z-[2] flex h-11 w-11 shrink-0 items-center justify-center rounded-xl",
-            "shadow-sm ring-1 transition-transform duration-500 group-hover:scale-105",
+            "relative z-[1] flex h-11 w-11 shrink-0 items-center justify-center rounded-xl",
+            "ring-1",
             isMission
-              ? "bg-[var(--green-light)] text-[var(--green-primary)] ring-[var(--green-primary)]/15"
-              : "bg-[#E8FAF2] text-[var(--green-dark)] ring-[var(--green-primary)]/20"
+              ? "bg-bg-light text-primary ring-primary/15"
+              : "bg-bg-light text-primary-dark ring-primary/20"
           )}
         >
           <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
         </span>
 
-        <div className="relative z-[2] min-w-0 flex-1 pt-0.5">
-          <p className="font-inter text-sm leading-relaxed text-[var(--text-gray)]">
+        <div className="relative z-[1] min-w-0 flex-1 pt-0.5">
+          <p className="font-body text-sm leading-relaxed text-[var(--text-gray)]">
             {point}
           </p>
           <span
@@ -143,7 +139,7 @@ function PillarPanel({
             <h2 className="font-playfair text-2xl font-bold text-white md:text-[1.65rem]">
               {title}
             </h2>
-            <p className="mt-2 font-inter text-sm leading-relaxed text-white/85">
+            <p className="mt-2 font-body text-sm leading-relaxed text-white/85">
               {subtitle}
             </p>
           </div>
@@ -195,16 +191,13 @@ export function MissionVisionSection() {
       />
 
       <div className="site-container relative z-[1]">
-        <ScrollReveal className="mx-auto mb-10 max-w-2xl text-center md:mb-12">
-          <p className="font-inter text-xs font-semibold uppercase tracking-widest text-[var(--green-primary)]">
-            {t("purposeEyebrow")}
-          </p>
-          <h2 className="mt-3 font-playfair text-2xl font-bold text-[var(--green-dark)] md:text-3xl lg:text-4xl">
-            {t("purposeTitle")}
-          </h2>
-          <p className="mt-4 font-inter text-base leading-relaxed text-[var(--text-gray)]">
-            {t("purposeSubtitle")}
-          </p>
+        <ScrollReveal className="mb-10 md:mb-12">
+          <SectionHeader
+            eyebrow={t("purposeEyebrow")}
+            title={t("purposeTitle")}
+            subtitle={t("purposeSubtitle")}
+            centered
+          />
         </ScrollReveal>
 
         <div className="grid items-stretch gap-6 lg:grid-cols-2 lg:gap-8">

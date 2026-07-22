@@ -32,13 +32,13 @@ export function PricingPageContent({ packages }: { packages: IPackage[] }) {
       <section className="py-12 md:py-16 bg-bg-light">
         <div className="site-container text-center">
           <div className="mx-auto max-w-3xl">
-            <h2 className="font-inter text-xl font-semibold text-primary-dark mb-4">
+            <h2 className="font-body text-xl font-semibold text-primary-dark mb-4">
               {tPages("familyDiscount")}
             </h2>
-            <p className="font-inter text-sm text-text-gray leading-relaxed mb-4">
+            <p className="font-body text-sm text-text-gray leading-relaxed mb-4">
               {t("familyIntro")}
             </p>
-            <p className="font-inter text-sm font-medium text-primary leading-relaxed">
+            <p className="font-body text-sm font-medium text-primary leading-relaxed">
               {t("familyDetail")}
             </p>
           </div>
@@ -51,7 +51,7 @@ export function PricingPageContent({ packages }: { packages: IPackage[] }) {
             <h2 className="font-amiri text-2xl md:text-3xl font-bold mb-3">
               {tPages("cantDecide")}
             </h2>
-            <p className="font-inter text-base text-white/85 mb-8">
+            <p className="font-body text-base text-white/85 mb-8">
               {tPages("cantDecideDesc")}
             </p>
             <Link

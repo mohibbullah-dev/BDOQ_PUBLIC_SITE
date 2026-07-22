@@ -1,6 +1,6 @@
-import Link from "next/link";
 import type { ITeacher } from "@/lib/types";
 import { TeacherAvatar } from "@/components/shared/TeacherAvatar";
+import { SiteCta } from "@/components/shared/SiteCta";
 
 export interface ITeacherCardProps {
   teacher: ITeacher;
@@ -14,9 +14,8 @@ export function TeacherCard({
   avatarVariant,
 }: ITeacherCardProps) {
   return (
-    <article className="group relative flex flex-col h-full rounded-2xl bg-white border border-gray-100 p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center overflow-hidden">
-      <span className="site-card-hover-overlay z-0" aria-hidden="true" />
-      <div className="relative z-[1] flex justify-center mb-4">
+    <article className="site-card group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 text-center transition-shadow duration-200 hover:shadow-md">
+      <div className="relative z-[1] mb-4 flex justify-center">
         <TeacherAvatar
           teacher={teacher}
           avatarVariant={avatarVariant}
@@ -24,23 +23,25 @@ export function TeacherCard({
         />
       </div>
 
-      <h3 className="font-inter text-base font-bold text-primary-dark mb-1">
+      <h3 className="mb-1 font-playfair text-base font-bold text-primary-dark">
         {teacher.name}
       </h3>
-      <p className="font-inter text-sm text-text-gray mb-1">{teacher.role}</p>
+      <p className="mb-1 font-body text-sm text-text-gray">{teacher.role}</p>
       {teacher.country && (
-        <p className="font-inter text-xs font-medium text-primary mb-5">
+        <p className="mb-5 font-body text-xs font-medium text-primary">
           {teacher.country}
         </p>
       )}
 
       {showDetailsLink && (
-        <Link
+        <SiteCta
           href={`/teachers/${teacher.slug}`}
-          className="site-btn-hover-overlay relative z-[1] mt-auto inline-flex items-center justify-center rounded-full border-2 border-primary text-primary hover:text-white font-semibold px-5 py-2 text-sm transition-all duration-300"
+          variant="secondary"
+          size="sm"
+          className="mt-auto w-full"
         >
           See details
-        </Link>
+        </SiteCta>
       )}
     </article>
   );

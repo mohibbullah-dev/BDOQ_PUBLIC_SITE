@@ -58,7 +58,7 @@ export function StudentStepAddress() {
         )}
       >
         <input type="checkbox" {...register("sameAsCurrentAddress")} />
-        <span className="font-inter text-sm text-text-dark">
+        <span className="font-body text-sm text-text-dark">
           {t("sameAddress")}
         </span>
       </label>

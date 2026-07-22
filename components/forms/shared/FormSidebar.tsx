@@ -52,11 +52,11 @@ export function FormSidebar({
         <h2 className="mt-5 font-amiri text-xl font-bold text-primary-dark md:text-2xl">
           {t("title")}
         </h2>
-        <p className="mt-2 font-inter text-sm leading-relaxed text-text-gray">
+        <p className="mt-2 font-body text-sm leading-relaxed text-text-gray">
           {t("subtitle")}
         </p>
 
-        <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/80 px-3 py-1.5 font-inter text-xs font-semibold text-primary">
+        <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/80 px-3 py-1.5 font-body text-xs font-semibold text-primary">
           <Clock3 className="h-3.5 w-3.5" aria-hidden="true" />
           {t("estimate")}
         </div>
@@ -97,7 +97,7 @@ export function FormSidebar({
                   </span>
                   <span
                     className={cn(
-                      "font-inter text-sm font-medium leading-snug",
+                      "font-body text-sm font-medium leading-snug",
                       isActive ? "text-primary-dark" : "text-text-gray"
                     )}
                   >
@@ -120,7 +120,7 @@ export function FormSidebar({
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                   <Icon className="h-4 w-4" aria-hidden="true" />
                 </span>
-                <span className="font-inter text-sm font-medium text-primary-dark">
+                <span className="font-body text-sm font-medium text-primary-dark">
                   {t(key)}
                 </span>
               </li>
@@ -129,24 +129,24 @@ export function FormSidebar({
         </ul>
 
         <div className="mt-8 rounded-xl border border-primary/10 bg-white/80 p-4">
-          <p className="font-inter text-xs font-bold uppercase tracking-wider text-text-gray">
+          <p className="font-body text-xs font-bold uppercase tracking-wider text-text-gray">
             {tCommon("helpTitle")}
           </p>
-          <p className="mt-1 font-inter text-sm text-text-gray">
+          <p className="mt-1 font-body text-sm text-text-gray">
             {tCommon("helpBody")}
           </p>
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 inline-flex items-center gap-2 font-inter text-sm font-semibold text-primary transition-colors hover:text-primary-dark"
+            className="mt-3 inline-flex items-center gap-2 font-body text-sm font-semibold text-primary transition-colors hover:text-primary-dark"
           >
             <MessageCircle className="h-4 w-4" aria-hidden="true" />
             WhatsApp
           </a>
         </div>
 
-        <p className="mt-6 text-center font-inter text-[11px] text-text-gray/80">
+        <p className="mt-6 text-center font-body text-[11px] text-text-gray/80">
           {ACADEMY_INFO.shortName} · {tCommon("tagline")}
         </p>
       </div>

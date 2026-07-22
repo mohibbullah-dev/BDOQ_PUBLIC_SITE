@@ -18,7 +18,7 @@ export function BlogRelatedCard({ post }: IBlogRelatedCardProps) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group flex gap-3 rounded-xl border border-gray-100 bg-white p-3 transition-all duration-200 hover:border-primary/25 hover:shadow-md"
+      className="site-card group flex gap-3 rounded-xl border border-gray-200 bg-white p-3 transition-shadow duration-200 hover:shadow-md"
     >
       <GradientPlaceholder
         gradient={getBlogImageGradient(post.image)}
@@ -26,10 +26,10 @@ export function BlogRelatedCard({ post }: IBlogRelatedCardProps) {
         label={post.title}
       />
       <div className="min-w-0 flex-1">
-        <p className="line-clamp-2 font-inter text-sm font-semibold text-primary-dark transition-colors group-hover:text-primary">
+        <p className="line-clamp-2 font-body text-sm font-semibold text-primary-dark transition-colors group-hover:text-primary">
           {post.title}
         </p>
-        <p className="mt-1 flex items-center gap-1 font-inter text-[11px] text-text-gray">
+        <p className="mt-1 flex items-center gap-1 font-body text-[11px] text-text-gray">
           <Calendar className="h-3 w-3" aria-hidden="true" />
           {formatBlogDate(post.publishedAt, locale)}
         </p>

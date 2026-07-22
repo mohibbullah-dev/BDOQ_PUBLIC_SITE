@@ -43,7 +43,7 @@ export function CourseModulesAccordion({
                   className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left hover:bg-bg-light/50 transition-colors"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-inter text-sm font-semibold text-primary-dark">
+                  <span className="font-body text-sm font-semibold text-primary-dark">
                     {module.title}
                   </span>
                   <span
@@ -76,7 +76,7 @@ export function CourseModulesAccordion({
                         {module.topics.map((topic) => (
                           <li
                             key={topic}
-                            className="font-inter text-sm text-text-gray flex items-center gap-2"
+                            className="font-body text-sm text-text-gray flex items-center gap-2"
                           >
                             <span className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
                             {topic}

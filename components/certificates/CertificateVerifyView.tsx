@@ -35,7 +35,7 @@ export function CertificateVerifyView({
                 <ShieldCheck className="h-6 w-6" aria-hidden="true" />
               </span>
               <div>
-                <p className="font-inter text-sm font-semibold uppercase tracking-wide text-emerald-700">
+                <p className="font-body text-sm font-semibold uppercase tracking-wide text-emerald-700">
                   Verified Certificate
                 </p>
                 <h1 className="font-playfair text-2xl font-bold text-primary-dark md:text-3xl">
@@ -46,51 +46,51 @@ export function CertificateVerifyView({
 
             <dl className="space-y-4">
               <div className="rounded-2xl bg-bg-light px-4 py-3">
-                <dt className="font-inter text-xs uppercase tracking-wide text-text-gray">
+                <dt className="font-body text-xs uppercase tracking-wide text-text-gray">
                   Certificate ID
                 </dt>
-                <dd className="mt-1 font-inter text-base font-semibold text-primary-dark">
+                <dd className="mt-1 font-body text-base font-semibold text-primary-dark">
                   {certificate.certificateId}
                 </dd>
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="rounded-2xl border border-gray-100 px-4 py-3">
-                  <dt className="flex items-center gap-2 font-inter text-xs uppercase tracking-wide text-text-gray">
+                  <dt className="flex items-center gap-2 font-body text-xs uppercase tracking-wide text-text-gray">
                     <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
                     Student
                   </dt>
-                  <dd className="mt-1 font-inter text-base font-semibold text-primary-dark">
+                  <dd className="mt-1 font-body text-base font-semibold text-primary-dark">
                     {certificate.studentName}
                   </dd>
                 </div>
 
                 <div className="rounded-2xl border border-gray-100 px-4 py-3">
-                  <dt className="flex items-center gap-2 font-inter text-xs uppercase tracking-wide text-text-gray">
+                  <dt className="flex items-center gap-2 font-body text-xs uppercase tracking-wide text-text-gray">
                     <Award className="h-3.5 w-3.5" aria-hidden="true" />
                     Course
                   </dt>
-                  <dd className="mt-1 font-inter text-base font-semibold text-primary-dark">
+                  <dd className="mt-1 font-body text-base font-semibold text-primary-dark">
                     {certificate.courseName}
                   </dd>
                 </div>
 
                 <div className="rounded-2xl border border-gray-100 px-4 py-3">
-                  <dt className="flex items-center gap-2 font-inter text-xs uppercase tracking-wide text-text-gray">
+                  <dt className="flex items-center gap-2 font-body text-xs uppercase tracking-wide text-text-gray">
                     <Calendar className="h-3.5 w-3.5" aria-hidden="true" />
                     Issue date
                   </dt>
-                  <dd className="mt-1 font-inter text-base font-semibold text-primary-dark">
+                  <dd className="mt-1 font-body text-base font-semibold text-primary-dark">
                     {formatDate(certificate.issueDate)}
                   </dd>
                 </div>
 
                 {certificate.grade ? (
                   <div className="rounded-2xl border border-gray-100 px-4 py-3">
-                    <dt className="font-inter text-xs uppercase tracking-wide text-text-gray">
+                    <dt className="font-body text-xs uppercase tracking-wide text-text-gray">
                       Grade
                     </dt>
-                    <dd className="mt-1 font-inter text-base font-semibold text-primary-dark">
+                    <dd className="mt-1 font-body text-base font-semibold text-primary-dark">
                       {certificate.grade}
                     </dd>
                   </div>
@@ -98,13 +98,13 @@ export function CertificateVerifyView({
               </div>
 
               {certificate.performanceTextEn ? (
-                <p className="rounded-2xl border border-primary/10 bg-primary/5 px-4 py-3 font-inter text-sm leading-relaxed text-primary-dark">
+                <p className="rounded-2xl border border-primary/10 bg-primary/5 px-4 py-3 font-body text-sm leading-relaxed text-primary-dark">
                   {certificate.performanceTextEn}
                 </p>
               ) : null}
 
               {certificate.showExcellentBadge ? (
-                <p className="inline-flex items-center gap-2 rounded-full bg-gold/15 px-4 py-2 font-inter text-sm font-semibold text-primary-dark">
+                <p className="inline-flex items-center gap-2 rounded-full bg-gold/15 px-4 py-2 font-body text-sm font-semibold text-primary-dark">
                   <Award className="h-4 w-4 text-gold" aria-hidden="true" />
                   Excellent Performance
                 </p>
@@ -114,13 +114,13 @@ export function CertificateVerifyView({
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/"
-                className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 font-inter text-sm font-semibold text-white transition hover:bg-primary-dark"
+                className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 font-body text-sm font-semibold text-white transition hover:bg-primary-dark"
               >
                 Back to home
               </Link>
               <Link
                 href="/courses"
-                className="inline-flex items-center justify-center rounded-full border-2 border-primary px-6 py-3 font-inter text-sm font-semibold text-primary transition hover:bg-primary hover:text-white"
+                className="inline-flex items-center justify-center rounded-full border-2 border-primary px-6 py-3 font-body text-sm font-semibold text-primary transition hover:bg-primary hover:text-white"
               >
                 Explore courses
               </Link>

@@ -23,7 +23,7 @@ export function TestimonialMedia({
   if (mediaType === "audio" && testimonial.mediaUrl) {
     return (
       <div className={cn("mt-3", className)}>
-        <div className="mb-2 flex items-center gap-1.5 font-inter text-[11px] font-semibold uppercase tracking-wide text-[#32C991]">
+        <div className="mb-2 flex items-center gap-1.5 font-body text-[11px] font-semibold uppercase tracking-wide text-[#32C991]">
           <Mic className="h-3.5 w-3.5" aria-hidden="true" />
           Audio review
         </div>
@@ -48,7 +48,7 @@ export function TestimonialMedia({
           className={cn(
             "group relative mt-3 flex w-full items-center justify-center gap-2 rounded-xl",
             "border border-[#32C991]/15 bg-[#E8FAF2] px-3 py-2.5",
-            "font-inter text-xs font-semibold text-[#32C991]",
+            "font-body text-xs font-semibold text-[#32C991]",
             "transition-colors hover:bg-[#E8FAF2]",
             className
           )}

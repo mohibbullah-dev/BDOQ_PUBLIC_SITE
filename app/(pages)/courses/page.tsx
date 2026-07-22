@@ -42,7 +42,7 @@ export default async function CoursesPage() {
     <ClientMessagesProvider messages={clientMessages}>
       <Suspense
         fallback={
-          <div className="py-24 text-center font-inter text-text-gray">
+          <div className="py-24 text-center font-body text-text-gray">
             Loading courses...
           </div>
         }

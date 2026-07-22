@@ -17,10 +17,10 @@ export function CoursesEmptyState({ categoryLabel }: ICoursesEmptyStateProps) {
       <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
         <BookOpen className="h-10 w-10 text-primary" aria-hidden="true" />
       </div>
-      <h3 className="font-inter text-xl font-semibold text-primary-dark mb-3">
+      <h3 className="font-body text-xl font-semibold text-primary-dark mb-3">
         {t("title")}
       </h3>
-      <p className="font-inter text-sm text-text-gray max-w-md mb-6 leading-relaxed">
+      <p className="font-body text-sm text-text-gray max-w-md mb-6 leading-relaxed">
         {t("description", { category: categoryLabel })}
       </p>
       <Link

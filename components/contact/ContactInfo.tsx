@@ -33,10 +33,10 @@ function ContactRow({
         <Icon className="h-5 w-5" aria-hidden="true" />
       </div>
       <div className="min-w-0">
-        <p className="mb-1 font-inter text-xs font-semibold uppercase tracking-wide text-text-gray">
+        <p className="mb-1 font-body text-xs font-semibold uppercase tracking-wide text-text-gray">
           {label}
         </p>
-        <div className="font-inter text-sm leading-relaxed text-text-dark">
+        <div className="font-body text-sm leading-relaxed text-text-dark">
           {children}
         </div>
       </div>
@@ -54,7 +54,7 @@ export function ContactInfo() {
         <h2 className="font-amiri text-2xl font-bold text-primary-dark">
           {t("getInTouch")}
         </h2>
-        <p className="mt-2 font-inter text-sm leading-relaxed text-text-gray">
+        <p className="mt-2 font-body text-sm leading-relaxed text-text-gray">
           {t("getInTouchDesc")}
         </p>
 
@@ -65,7 +65,7 @@ export function ContactInfo() {
             rel="noopener noreferrer"
             className={cn(
               "inline-flex min-h-[40px] items-center gap-2 rounded-full bg-primary px-4 py-2",
-              "font-inter text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+              "font-body text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
             )}
           >
             <MessageCircle className="h-4 w-4" aria-hidden="true" />
@@ -75,7 +75,7 @@ export function ContactInfo() {
             href={`mailto:${ACADEMY_INFO.email}`}
             className={cn(
               "inline-flex min-h-[40px] items-center gap-2 rounded-full border-2 border-primary/20 px-4 py-2",
-              "font-inter text-sm font-semibold text-primary transition-colors hover:border-primary hover:bg-primary/5"
+              "font-body text-sm font-semibold text-primary transition-colors hover:border-primary hover:bg-primary/5"
             )}
           >
             <Mail className="h-4 w-4" aria-hidden="true" />
@@ -83,7 +83,7 @@ export function ContactInfo() {
           </Link>
         </div>
 
-        <p className="mt-4 inline-flex items-center gap-2 font-inter text-xs text-text-gray">
+        <p className="mt-4 inline-flex items-center gap-2 font-body text-xs text-text-gray">
           <Clock3 className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
           {t("flexibleTimes")}
         </p>
@@ -136,7 +136,7 @@ export function ContactInfo() {
       </div>
 
       <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
-        <p className="mb-3 font-inter text-xs font-semibold uppercase tracking-wide text-text-gray">
+        <p className="mb-3 font-body text-xs font-semibold uppercase tracking-wide text-text-gray">
           {t("followUs")}
         </p>
         <div className="flex flex-wrap items-center gap-3">

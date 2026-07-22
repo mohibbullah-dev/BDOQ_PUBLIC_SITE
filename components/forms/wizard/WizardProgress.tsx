@@ -27,10 +27,10 @@ export function WizardProgress({
   return (
     <div className="mb-8">
       <div className="mb-3 flex items-center justify-between gap-3">
-        <p className="font-inter text-sm font-semibold text-primary-dark">
+        <p className="font-body text-sm font-semibold text-primary-dark">
           {t("stepOf", { current: currentStep + 1, total: steps.length })}
         </p>
-        <p className="rounded-full bg-primary/10 px-2.5 py-0.5 font-inter text-xs font-semibold text-primary">
+        <p className="rounded-full bg-primary/10 px-2.5 py-0.5 font-body text-xs font-semibold text-primary">
           {t("percentComplete", { percent: Math.round(progress) })}
         </p>
       </div>
@@ -69,7 +69,7 @@ export function WizardProgress({
               >
                 <p
                   className={cn(
-                    "font-inter text-[10px] font-bold uppercase tracking-wider",
+                    "font-body text-[10px] font-bold uppercase tracking-wider",
                     isActive ? "text-primary" : "text-text-gray"
                   )}
                 >

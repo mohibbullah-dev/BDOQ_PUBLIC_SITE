@@ -47,7 +47,7 @@ export function BlogTableOfContents({ headings }: IBlogTableOfContentsProps) {
 
   return (
     <nav aria-label="Table of contents">
-      <p className="mb-3 font-inter text-xs font-bold uppercase tracking-wider text-text-gray">
+      <p className="mb-3 font-body text-xs font-bold uppercase tracking-wider text-text-gray">
         {t("onThisPage")}
       </p>
       <ul className="space-y-1 border-l-2 border-[#E8FAF2] pl-3">
@@ -59,7 +59,7 @@ export function BlogTableOfContents({ headings }: IBlogTableOfContentsProps) {
               <a
                 href={`#${heading.id}`}
                 className={cn(
-                  "block py-1.5 font-inter text-sm leading-snug transition-colors duration-200",
+                  "block py-1.5 font-body text-sm leading-snug transition-colors duration-200",
                   isActive
                     ? "font-semibold text-primary"
                     : "text-text-gray hover:text-primary"

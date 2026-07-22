@@ -25,10 +25,10 @@ function VideoThumbnail({
       type="button"
       onClick={onClick}
       className={cn(
-        "group w-full overflow-hidden rounded-xl border-2 text-left transition-all",
+        "site-card group w-full overflow-hidden rounded-xl border-2 text-left transition-shadow duration-200",
         isActive
           ? "border-primary shadow-md"
-          : "border-transparent hover:border-primary/30"
+          : "border-gray-200 hover:shadow-md"
       )}
     >
       <div className="relative">
@@ -39,7 +39,7 @@ function VideoThumbnail({
         />
         <VideoPlayIcon size="sm" />
       </div>
-      <p className="line-clamp-2 p-3 font-inter text-sm font-medium text-primary-dark">
+      <p className="line-clamp-2 p-3 font-body text-sm font-medium text-primary-dark">
         {video.title}
       </p>
     </button>
@@ -71,7 +71,7 @@ export function VideosPageContent({ data }: IVideosPageContentProps) {
             lazy={false}
             startSeconds={data.featured.startSeconds}
           />
-          <p className="font-inter text-sm text-text-gray text-center mt-4">
+          <p className="font-body text-sm text-text-gray text-center mt-4">
             {data.featured.description}
           </p>
         </ScrollReveal>
@@ -87,9 +87,9 @@ export function VideosPageContent({ data }: IVideosPageContentProps) {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {data.gallery.map((video, index) => (
               <ScrollReveal key={video.id} delay={index * 0.05}>
-                <div className="bg-white rounded-2xl border border-gray-100 shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+                <div className="site-card overflow-hidden rounded-2xl border border-gray-200 bg-white transition-shadow duration-200 hover:shadow-md">
                   <YouTubeEmbed videoId={video.youtubeId} title={video.title} />
-                  <p className="font-inter text-sm font-semibold text-primary-dark p-4">
+                  <p className="font-body text-sm font-semibold text-primary-dark p-4">
                     {video.title}
                   </p>
                 </div>
@@ -126,7 +126,7 @@ export function VideosPageContent({ data }: IVideosPageContentProps) {
                 videoId={activePlaylistVideo.youtubeId}
                 title={activePlaylistVideo.title}
               />
-              <p className="font-inter text-lg font-semibold text-primary-dark mt-4">
+              <p className="font-body text-lg font-semibold text-primary-dark mt-4">
                 {activePlaylistVideo.title}
               </p>
             </ScrollReveal>

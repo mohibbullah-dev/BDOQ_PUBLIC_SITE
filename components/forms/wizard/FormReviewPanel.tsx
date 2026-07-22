@@ -21,10 +21,10 @@ export function FormReviewPanel({ items }: IFormReviewPanelProps) {
           key={item.label}
           className="grid gap-1 border-b border-gray-100 pb-3 last:border-0 last:pb-0 sm:grid-cols-[180px_1fr]"
         >
-          <dt className="font-inter text-xs font-semibold uppercase tracking-wide text-text-gray">
+          <dt className="font-body text-xs font-semibold uppercase tracking-wide text-text-gray">
             {item.label}
           </dt>
-          <dd className="font-inter text-sm text-primary-dark">
+          <dd className="font-body text-sm text-primary-dark">
             {item.value || t("emptyValue")}
           </dd>
         </div>

@@ -38,7 +38,7 @@ export function MultiSelectChips<T extends string>({
               onClick={() => toggle(option.value)}
               aria-pressed={selected}
               className={cn(
-                "min-h-[44px] rounded-full border px-4 py-2 font-inter text-xs font-medium transition-all duration-200 sm:text-sm",
+                "min-h-[44px] rounded-full border px-4 py-2 font-body text-xs font-medium transition-all duration-200 sm:text-sm",
                 selected
                   ? "border-primary bg-primary text-white"
                   : "border-gray-200 bg-white text-text-dark hover:border-primary/40"

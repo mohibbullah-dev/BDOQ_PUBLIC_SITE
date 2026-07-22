@@ -167,7 +167,7 @@ export function FreeStepBooking() {
       </div>
 
       <div>
-        <p className="mb-3 font-inter text-sm font-medium text-primary-dark">
+        <p className="mb-3 font-body text-sm font-medium text-primary-dark">
           {tCommon("quickReview")}
         </p>
         <FormReviewPanel items={reviewItems} />

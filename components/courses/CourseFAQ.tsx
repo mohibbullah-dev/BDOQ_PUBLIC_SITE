@@ -41,7 +41,7 @@ export function CourseFAQ({ faqs }: ICourseFAQProps) {
                     className="flex w-full items-start justify-between gap-4 py-5 text-left"
                     aria-expanded={isOpen}
                   >
-                    <span className="font-inter text-sm font-semibold text-primary-dark pr-4">
+                    <span className="font-body text-sm font-semibold text-primary-dark pr-4">
                       {item.question}
                     </span>
                     <span
@@ -70,7 +70,7 @@ export function CourseFAQ({ faqs }: ICourseFAQProps) {
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <p className="font-inter text-sm text-text-gray leading-relaxed pb-5 pr-12">
+                        <p className="font-body text-sm text-text-gray leading-relaxed pb-5 pr-12">
                           {item.answer}
                         </p>
                       </motion.div>

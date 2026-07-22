@@ -16,11 +16,11 @@ export function CoursePricingBanner({
   const isFree = startingPriceBdt === 0;
 
   return (
-    <section className="py-12 md:py-16 bg-gradient-to-r from-primary-dark via-primary to-gold/90 text-white">
+    <section className="py-12 md:py-16 bg-gradient-to-r from-primary-dark via-primary to-brand-red/90 text-white">
       <div className="site-container">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           <div>
-            <p className="font-inter text-sm uppercase tracking-widest text-white/80 mb-2">
+            <p className="font-body text-sm uppercase tracking-widest text-white/80 mb-2">
               {t("recommendedLabel", { package: recommendedPackage })}
             </p>
             <h2 className="font-amiri text-2xl md:text-3xl font-bold">
@@ -30,7 +30,7 @@ export function CoursePricingBanner({
                     price: startingPriceBdt.toLocaleString("en-BD"),
                   })}
             </h2>
-            <p className="font-inter text-sm text-white/85 mt-2 max-w-xl">
+            <p className="font-body text-sm text-white/85 mt-2 max-w-xl">
               {t("description")}
             </p>
           </div>

@@ -8,7 +8,7 @@ function renderHeading(text: string): ReactNode {
   return (
     <h2
       id={id}
-      className="scroll-mt-28 font-inter text-xl font-semibold text-primary-dark md:text-2xl"
+      className="scroll-mt-28 font-body text-xl font-semibold text-primary-dark md:text-2xl"
     >
       <span
         className="mr-2 inline-block h-6 w-1 rounded-full bg-[var(--gold)] align-middle"
@@ -35,7 +35,7 @@ function renderContent(content: string): ReactNode {
         <div key={index} className="space-y-4">
           {renderHeading(headingText)}
           {rest.length > 0 && (
-            <p className="font-inter text-base leading-[1.85] text-[#1A1A2E]/90 md:text-[17px]">
+            <p className="font-body text-base leading-[1.85] text-[#1A1A2E]/90 md:text-[17px]">
               {rest.join("\n")}
             </p>
           )}
@@ -48,7 +48,7 @@ function renderContent(content: string): ReactNode {
       return (
         <div key={index} className="space-y-4">
           {intro && (
-            <p className="font-inter text-base leading-[1.85] text-[#1A1A2E]/90 md:text-[17px]">
+            <p className="font-body text-base leading-[1.85] text-[#1A1A2E]/90 md:text-[17px]">
               {intro}
             </p>
           )}
@@ -56,7 +56,7 @@ function renderContent(content: string): ReactNode {
             {items.map((item) => (
               <li
                 key={item}
-                className="flex items-start gap-3 font-inter text-base leading-relaxed text-[#1A1A2E]/90"
+                className="flex items-start gap-3 font-body text-base leading-relaxed text-[#1A1A2E]/90"
               >
                 <span
                   className="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary"
@@ -74,7 +74,7 @@ function renderContent(content: string): ReactNode {
       <p
         key={index}
         className={cn(
-          "font-inter leading-[1.85] text-[#1A1A2E]/90 md:text-[17px]",
+          "font-body leading-[1.85] text-[#1A1A2E]/90 md:text-[17px]",
           isFirstParagraph && "text-lg text-primary-dark/90 md:text-xl"
         )}
       >

@@ -1,42 +1,50 @@
 export const homeMessages = {
   premiumHero: {
-    badge: "Join 300+ Students on the Quran Learning Journey",
-    titleLine1: "Learn the Quran Online",
-    titleLine2: "With Trusted Hafiz Teachers",
-    description:
-      "One-to-one live classes for kids and adults — Noorani Qaida, Tajweed, and Hifz from home.",
-    chips: ["One-to-One Live Classes", "Flexible Schedule"],
     featuresAria: "Key features",
-    primaryCta: "Start Free Trial",
-    secondaryCta: "Chat on WhatsApp",
     carousel: {
-      aria: "Course highlights",
+      aria: "Hero highlights",
       prev: "Previous slide",
       next: "Next slide",
       slides: {
         "slide-1": {
-          badge: "Guidance & Confidence",
-          title: "Read the Quran with Guidance, Confidence, and Heart.",
+          badge: "Trusted Global Online Quran Academy",
+          title:
+            "Learn the Quran Online with Qualified Teachers for Kids & Adults",
           subtitle:
-            "From your first letter to fluent recitation, our certified teachers help you build strong Tajweed skills and a lifelong connection with the Quran.",
+            "Live one-to-one and small group classes worldwide — Noorani Qaida, Tajweed, Hifz, and Islamic Studies with flexible scheduling.",
           imageAlt:
-            "Young student reading the Quran with Tajweed guidance and reflection",
+            "Learn the Quran online with qualified male and female teachers for kids and adults worldwide",
+          primaryCta: "Book a Free Trial Class",
+          secondaryCta: "Explore Our Courses",
         },
         "slide-2": {
-          badge: "Lifelong Connection",
-          title: "Build a Lifelong Connection with the Quran.",
+          badge: "Qualified Male & Female Quran Teachers",
+          title: "Learn with Caring, Qualified & Experienced Teachers",
           subtitle:
-            "Learn Quran Reading, Tajweed, Hifz, and Islamic Studies through a structured curriculum and personalized guidance from certified Hafiz teachers—designed for children, adults, and families worldwide.",
+            "Personalized guidance for every age and level — with separate male and female teachers who support you step by step.",
           imageAlt:
-            "Student in a live one-to-one online Quran class with a certified teacher",
+            "Learn with caring, qualified and experienced Quran teachers",
+          primaryCta: "Meet Our Teachers",
+          secondaryCta: "Book a Free Trial Class",
         },
         "slide-3": {
-          badge: "Every Step Counts",
-          title: "Every Quran Lesson. Every Step. Every Achievement.",
+          badge: "Comprehensive Quran & Islamic Courses",
+          title: "One Academy for All Your Quran Learning Needs",
           subtitle:
-            "From Noorani Qaida to Tajweed, Hifz, and Islamic Studies, we help learners grow with confidence through expert one-to-one guidance.",
+            "From Noorani Qaida to Tajweed, Hifz, Islamic Studies, and Arabic — a complete pathway for kids and adults.",
+          imageAlt: "One academy for all your Quran learning needs",
+          primaryCta: "Explore Our Courses",
+          secondaryCta: "View Learning Path",
+        },
+        "slide-4": {
+          badge: "Simple Admission & Learning Journey",
+          title: "Start Your Quran Journey in a Few Simple Steps",
+          subtitle:
+            "Book a free trial, meet your teacher, complete admission, and begin regular classes through our Student Portal.",
           imageAlt:
-            "Quran, rehal, and study materials representing structured Quran learning",
+            "Start your Quran learning journey in just a few simple steps",
+          primaryCta: "Book a Free Trial Class",
+          secondaryCta: "How It Works",
         },
       },
     },
@@ -302,6 +310,7 @@ export const homeMessages = {
     countriesLine: "20+ countries · HQ in Gopalganj, Bangladesh",
   },
   teachers: {
+    eyebrow: "Our mentors",
     title: "Our respected teachers and mentors",
     subtitle:
       "Learn from qualified Hafiz and scholars — male and female instructors dedicated to your progress.",

@@ -41,10 +41,10 @@ export function FooterFeatureBar({ features }: IFooterFeatureBarProps) {
               <Icon className="size-5" aria-hidden="true" />
             </span>
             <div className="min-w-0">
-              <p className="font-inter text-sm font-bold text-[var(--green-dark)]">
+              <p className="font-body text-sm font-bold text-[var(--green-dark)]">
                 {item.title}
               </p>
-              <p className="mt-0.5 font-inter text-xs text-[var(--text-gray)]">
+              <p className="mt-0.5 font-body text-xs text-[var(--text-gray)]">
                 {item.desc}
               </p>
             </div>

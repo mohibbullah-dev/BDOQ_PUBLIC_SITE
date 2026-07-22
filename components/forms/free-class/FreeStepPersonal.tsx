@@ -22,7 +22,7 @@ export function FreeStepPersonal() {
 
   return (
     <div className="space-y-5">
-      <p className="rounded-xl border border-primary/15 bg-bg-light/60 px-4 py-3 font-inter text-sm leading-relaxed text-text-gray">
+      <p className="rounded-xl border border-primary/15 bg-bg-light/60 px-4 py-3 font-body text-sm leading-relaxed text-text-gray">
         {t("infoBanner")}
       </p>
 

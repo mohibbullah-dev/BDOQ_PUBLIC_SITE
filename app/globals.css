@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Design tokens ───────────────────────────────────────────── */
+/* ─── Design tokens ─────────────────────────────────────────────
+   Logo source of truth (BDOQ Academy mark):
+   - Brand red  #CD443F  → "BDOQ" / arch accent
+   - Brand green #32C991 → "ACADEMY" / pillars
+   Pair red + green (logo combo). Do not replace red with green.
+   ─────────────────────────────────────────────────────────────── */
 :root {
   --radius: 8px;
   --radius-sm: 8px;
@@ -10,24 +15,33 @@
   --radius-lg: 8px;
   --brand-mint: #adebb3;
   --green-primary: #32c991;
-  --green-dark: #32c991;
+  --green-dark: #269b6f;
   --green-light: #e8faf2;
   --brand-overlay: rgba(50, 201, 145, 0.12);
   --card-hover-overlay: #32c991;
   --teal: #0d9488;
-  --brand-red: #32c991;
-  --brand-red-light: #e8faf2;
-  --brand-red-dark: #32c991;
+  /* Logo red — equal brand partner with green */
+  --brand-red: #cd443f;
+  --brand-red-light: #fbeae9;
+  --brand-red-dark: #a83530;
   --nav-hover: #32c991;
   --nav-hover-soft: rgba(50, 201, 145, 0.14);
   --nav-hover-mid: rgba(50, 201, 145, 0.18);
-  --gold: var(--green-primary);
-  --gold-light: var(--green-light);
+  /* Soft gold — decorative only (not a logo brand color) */
+  --gold: #d4a853;
+  --gold-light: #f8f1de;
   --dark: #0a1628;
   --cream: #fdf6e3;
   --white: #ffffff;
   --text-dark: #111827;
   --text-gray: #6b7280;
+  /* Logo pair gradients */
+  --brand-pair: linear-gradient(135deg, #32c991 0%, #cd443f 100%);
+  --brand-pair-soft: linear-gradient(
+    135deg,
+    rgba(50, 201, 145, 0.14) 0%,
+    rgba(205, 68, 63, 0.12) 100%
+  );
 
   /* 8-point Islamic star — 60px tile, 4% white (dark surfaces) */
   --islamic-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath fill='rgba(255,255,255,0.04)' d='M30 0 L36.5 23.5 L60 30 L36.5 36.5 L30 60 L23.5 36.5 L0 30 L23.5 23.5 Z'/%3E%3Ccircle cx='30' cy='30' r='3' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E");
@@ -45,7 +59,7 @@
   }
 
   body {
-    font-family: var(--font-inter), system-ui, sans-serif;
+    font-family: var(--font-body), system-ui, sans-serif;
     font-size: 16px;
     line-height: 1.7;
     color: var(--text-dark);
@@ -65,7 +79,23 @@
     font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
     font-weight: 700;
     line-height: 1.15;
+    letter-spacing: -0.02em;
     color: var(--green-dark);
+  }
+
+  /* Card titles → display serif (overrides utility font-body on headings) */
+  .site-card h2,
+  .site-card h3,
+  article h2,
+  article h3 {
+    font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
+    letter-spacing: -0.02em;
+  }
+
+  .section-eyebrow {
+    font-family: var(--font-amiri), Georgia, serif;
+    font-weight: 700;
+    letter-spacing: 0.14em;
   }
 
   h1 {
@@ -125,13 +155,24 @@
     line-height: 1.28;
   }
 
-  html[lang="bn"] .font-inter,
+  html[lang="bn"] .font-body,
   html[lang="bn"] .font-sans {
     font-family: var(--font-bengali), system-ui, sans-serif;
   }
 
-  html[lang="bn"] .font-playfair {
+  html[lang="bn"] .font-playfair,
+  html[lang="bn"] .site-card h2,
+  html[lang="bn"] .site-card h3,
+  html[lang="bn"] article h2,
+  html[lang="bn"] article h3 {
     font-family: var(--font-bengali-display), var(--font-bengali), serif;
+    letter-spacing: 0;
+  }
+
+  html[lang="bn"] .section-eyebrow,
+  html[lang="bn"] .font-amiri {
+    font-family: var(--font-bengali-display), var(--font-bengali), serif;
+    letter-spacing: 0.06em;
   }
 
   ::selection {
@@ -165,12 +206,12 @@
   }
 
   .container {
-    @apply mx-auto w-full max-w-[1500px] px-4 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 
   /* Site-wide content width — headers, sections, all pages */
   .site-container {
-    @apply mx-auto w-full max-w-[1500px] px-4 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 
   /* @deprecated — use .site-container */
@@ -178,10 +219,10 @@
     @apply site-container;
   }
 
-  /* Premium hero carousel — reference frame (wide ~13:8, max 400px tall) */
+  /* Premium hero carousel — quiet frame */
   .premium-hero-carousel-frame {
-    @apply relative w-full overflow-hidden rounded-[8px] border border-gray-200/75 bg-white shadow-[0_16px_48px_rgba(15,43,74,0.08)];
-    height: clamp(280px, 28vw, 400px);
+    @apply relative w-full overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-sm;
+    height: clamp(220px, 32vw, 360px);
   }
 
   .islamic-pattern-bg {
@@ -218,31 +259,27 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(50, 201, 145, 0.55) 50%,
+      rgba(50, 201, 145, 0.55) 38%,
+      rgba(205, 68, 63, 0.5) 62%,
       transparent 100%
     );
     pointer-events: none;
   }
 
-  .site-topbar--overlay {
-    background-color: var(--green-primary);
-    background-image: linear-gradient(
-      90deg,
-      #269b6f 0%,
-      #32c991 45%,
-      #0d9488 100%
-    );
-    backdrop-filter: blur(12px);
-  }
-
+  .site-topbar--overlay,
   .site-topbar--solid {
     background-color: var(--green-primary);
     background-image: linear-gradient(
       90deg,
       #269b6f 0%,
-      #32c991 45%,
-      #0d9488 100%
+      #32c991 70%,
+      #cd443f 100%
     );
+    backdrop-filter: blur(12px);
+  }
+
+  .site-topbar--solid {
+    backdrop-filter: none;
   }
 
   .site-navbar {
@@ -308,7 +345,7 @@
     white-space: nowrap;
     border-radius: 8px;
     padding: 0.55rem 1rem;
-    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.25;
@@ -334,15 +371,10 @@
 
   .site-nav-item.is-active {
     background-color: var(--nav-hover);
-    background-image: linear-gradient(
-      135deg,
-      #32c991 0%,
-      #269b6f 55%,
-      #0d9488 100%
-    );
+    background-image: var(--brand-pair);
     color: #ffffff;
     font-weight: 600;
-    box-shadow: 0 8px 22px rgba(50, 201, 145, 0.32);
+    box-shadow: 0 8px 22px rgba(50, 201, 145, 0.28);
   }
 
   .site-nav-item.is-active:hover {
@@ -350,18 +382,67 @@
     color: #ffffff;
   }
 
+  /*
+   * Card hover overlay (client request) — CSS-only ::after
+   * Brand green→red pair, no extra DOM, GPU-friendly opacity fade
+   */
+  .site-card {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  /* Overlay behind content so labels/buttons stay readable */
+  .site-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-image: linear-gradient(
+      135deg,
+      #269b6f 0%,
+      #1f7a58 45%,
+      #a83530 100%
+    );
+    opacity: 0;
+    transition: opacity 0.22s ease;
+    pointer-events: none;
+    z-index: 0;
+    will-change: opacity;
+  }
+
+  .site-card:hover::after,
+  .site-card:focus-within::after {
+    opacity: 0.22;
+  }
+
+  .site-card > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Legacy span overlay — same brand look (keep for older markup) */
   .site-card-hover-overlay {
     pointer-events: none;
     position: absolute;
     inset: 0;
-    background-color: var(--card-hover-overlay);
+    border-radius: inherit;
+    background-color: transparent;
+    background-image: linear-gradient(
+      135deg,
+      #269b6f 0%,
+      #1f7a58 45%,
+      #a83530 100%
+    );
     opacity: 0;
-    transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.22s ease;
+    z-index: 0;
+    will-change: opacity;
   }
 
   .group:hover .site-card-hover-overlay,
   .group:focus-within .site-card-hover-overlay {
-    opacity: 0.2;
+    opacity: 0.22;
   }
 
   .site-btn-hover-overlay {
@@ -370,32 +451,71 @@
     isolation: isolate;
   }
 
-  .site-btn-hover-overlay::after {
+  /* Outline buttons: solid fill on hover (never green text on green wash) */
+  .site-btn-hover-overlay:not(.site-btn-hover-overlay--filled):hover,
+  .site-btn-hover-overlay:not(.site-btn-hover-overlay--filled):focus-visible {
+    background-color: #32c991 !important;
+    color: #ffffff !important;
+    border-color: #32c991 !important;
+  }
+
+  /* Filled buttons: soft lighten — pseudo stays under content */
+  .site-btn-hover-overlay--filled::after {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background-color: #32c991;
+    background-color: #ffffff;
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
     z-index: 0;
   }
 
-  .site-btn-hover-overlay:hover::after,
-  .site-btn-hover-overlay:focus-visible::after {
-    opacity: 0.18;
-  }
-
   .site-btn-hover-overlay--filled:hover::after,
   .site-btn-hover-overlay--filled:focus-visible::after {
-    background-color: #ffffff;
     opacity: 0.14;
   }
 
-  .site-btn-hover-overlay > * {
+  .site-btn-hover-overlay--filled > * {
     position: relative;
     z-index: 1;
+  }
+
+  /* Unified CTAs — use SiteCta or these classes */
+  .site-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-weight: 600;
+    transition:
+      filter 0.3s ease,
+      border-color 0.3s ease,
+      background-color 0.3s ease;
+  }
+
+  .site-cta--primary {
+    background-color: var(--green-primary);
+    background-image: var(--brand-pair);
+    color: #ffffff;
+  }
+
+  .site-cta--primary:hover {
+    filter: brightness(0.95);
+  }
+
+  .site-cta--secondary {
+    border: 2px solid rgba(50, 201, 145, 0.3);
+    background-color: #ffffff;
+    color: var(--green-primary);
+  }
+
+  .site-cta--secondary:hover {
+    border-color: rgba(50, 201, 145, 0.5);
+    background-color: rgba(232, 250, 242, 0.6);
   }
 
   .site-btn-primary {
@@ -404,12 +524,7 @@
     justify-content: center;
     border-radius: 8px;
     background-color: var(--green-primary);
-    background-image: linear-gradient(
-      135deg,
-      #32c991 0%,
-      #269b6f 55%,
-      #0d9488 100%
-    );
+    background-image: var(--brand-pair);
     color: #ffffff;
     font-weight: 600;
     position: relative;
@@ -598,41 +713,57 @@
   }
 
   .home-hero-section {
-    min-height: 100svh;
-    padding-top: calc(68px + env(safe-area-inset-top, 0px));
+    min-height: auto;
+    padding-top: calc(72px + env(safe-area-inset-top, 0px));
+    padding-bottom: 2.5rem;
   }
 
   @media (min-width: 768px) {
     .home-hero-section {
-      padding-top: calc(104px + env(safe-area-inset-top, 0px));
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .home-hero-section {
-      padding-top: calc(172px + env(safe-area-inset-top, 0px));
+      min-height: min(88svh, 820px);
+      padding-top: calc(108px + env(safe-area-inset-top, 0px));
+      padding-bottom: 3rem;
     }
   }
 }
 
 /* ─── Utilities ───────────────────────────────────────────────── */
 @layer utilities {
-  .gold-text,
   .brand-text {
     color: var(--green-primary);
   }
 
+  .gold-text {
+    color: var(--gold);
+  }
+
+  /* Logo wordmark pairing — green (ACADEMY) → red (BDOQ) */
   .gradient-text {
+    background: var(--brand-pair);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .gradient-text-warm {
     background: linear-gradient(
-      135deg,
-      #32c991 0%,
-      #269b6f 45%,
-      #0d9488 100%
+      120deg,
+      var(--brand-red) 0%,
+      var(--gold) 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
+  }
+
+  .brand-red-text {
+    color: var(--brand-red);
+  }
+
+  .bg-brand-pair {
+    background-image: var(--brand-pair);
   }
 
   .text-balance {
@@ -726,43 +857,31 @@
 /* --- Site-wide: brand LINEAR gradients (same as home, every public page) --- */
 body.site-page-body {
   background-color: #ffffff;
-  background-image: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    #f0fbf6 40%,
-    #ffffff 100%
-  );
 }
 
 .site-page-surface {
   --site-scroll: 0;
-  --wash-mint: 1;
+  --wash-mint: 0.35;
   --wash-cream: 0;
   --wash-teal: 0;
   --wash-gold: 0;
-  --brand-grad: linear-gradient(135deg, #32c991 0%, #269b6f 52%, #0d9488 100%);
-  --brand-grad-dark: linear-gradient(135deg, #269b6f 0%, #0d9488 55%, #0a4d3c 100%);
-  --brand-grad-soft: linear-gradient(145deg, #e8faf2 0%, #ffffff 48%, #f0fbf6 100%);
-  --brand-grad-mint: linear-gradient(160deg, #d8f5e8 0%, #e8faf2 42%, #f7fcf9 100%);
-  --brand-grad-warm: linear-gradient(155deg, #fdf6e3 0%, #ffffff 50%, #f0fbf6 100%);
-  --brand-grad-teal: linear-gradient(150deg, #e6f8f5 0%, #ffffff 46%, #e8faf2 100%);
-  --brand-grad-gold: linear-gradient(140deg, #f8f1de 0%, #ffffff 45%, #eef9f4 100%);
-  --site-card-bg: #fcfefd;
-  --site-card-border: rgb(220 235 228 / 0.72);
-  --site-card-shadow:
-    0 0 0 1px rgb(210 232 220 / 0.3),
-    0 2px 10px rgb(180 220 200 / 0.12);
+  /* Logo pair for intentional brand CTAs / dark panels only */
+  --brand-grad: var(--brand-pair);
+  --brand-grad-dark: linear-gradient(135deg, #269b6f 0%, #0a4d3c 55%, #a83530 100%);
+  --brand-grad-soft: #ffffff;
+  --brand-grad-mint: #f0fbf6;
+  --brand-grad-warm: #ffffff;
+  --brand-grad-teal: #ffffff;
+  --brand-grad-gold: #fffdf8;
+  --brand-grad-red: linear-gradient(135deg, #cd443f 0%, #a83530 100%);
+  --brand-grad-rose: #fdf6f5;
+  --site-card-bg: #ffffff;
+  --site-card-border: rgb(229 231 235 / 0.95);
+  --site-card-shadow: 0 1px 2px rgb(15 23 42 / 0.04);
   position: relative;
   isolation: isolate;
   min-height: 40vh;
   background-color: #ffffff;
-  background-image: linear-gradient(
-    165deg,
-    #ffffff 0%,
-    #f0fbf6 35%,
-    #ffffff 70%,
-    #f7fcf9 100%
-  );
 }
 
 .site-page-surface__content {
@@ -868,83 +987,34 @@ body.site-page-body {
   }
 }
 
-/* Section fills → linear gradients */
+/* Clean surfaces — no forced rainbow section washes */
 .site-page-surface section.bg-bg-light,
 .site-page-surface .bg-bg-light,
 .site-page-surface .page-hero-bg {
-  background-color: transparent !important;
-  background-image: var(--brand-grad-mint) !important;
+  background-color: #f0fbf6 !important;
+  background-image: none !important;
 }
 
 .site-page-surface section.bg-white {
-  background-color: transparent !important;
-  background-image: var(--brand-grad-soft) !important;
-}
-
-.site-page-surface__content > section:nth-child(odd):not(.home-hero-section):not(.page-hero):not([class*="bg-primary-dark"]):not([class*="bg-teal"]) {
-  background-color: transparent !important;
-  background-image: var(--brand-grad-soft) !important;
-}
-
-.site-page-surface__content > section:nth-child(even):not(.home-hero-section):not(.page-hero):not([class*="bg-primary-dark"]):not([class*="bg-teal"]) {
-  background-color: transparent !important;
-  background-image: var(--brand-grad-warm) !important;
-}
-
-.site-page-surface__content > section:nth-child(3n):not(.home-hero-section):not(.page-hero):not([class*="bg-primary-dark"]) {
-  background-image: var(--brand-grad-teal) !important;
-}
-
-.site-page-surface__content > section + section {
-  box-shadow: inset 0 1px 0 0 rgb(50 201 145 / 0.08);
+  background-color: #ffffff !important;
+  background-image: none !important;
 }
 
 .site-page-surface .home-hero-section,
 .site-page-surface .page-hero {
-  background-color: transparent !important;
-  background-image: linear-gradient(
-    165deg,
-    #e8faf2 0%,
-    #f3f8f4 40%,
-    #ffffff 78%,
-    #f0fbf6 100%
-  ) !important;
+  background-color: #f7fcf9 !important;
+  background-image: none !important;
   box-shadow: none !important;
 }
 
-/* Soft mint / panel solids → gradients */
-.site-page-surface [class^="bg-[#E8FAF2]"],
-.site-page-surface [class*=" bg-[#E8FAF2]"],
-.site-page-surface [class^="bg-[#E8F5EE]"],
-.site-page-surface [class*=" bg-[#E8F5EE]"],
-.site-page-surface [class^="bg-[#E8F5EF]"],
-.site-page-surface [class*=" bg-[#E8F5EF]"],
-.site-page-surface [class^="bg-[#FAFCFA]"],
-.site-page-surface [class*=" bg-[#FAFCFA]"],
-.site-page-surface [class^="bg-[#F7FBF8]"],
-.site-page-surface [class*=" bg-[#F7FBF8]"],
-.site-page-surface [class^="bg-[#F3F8F4]"],
-.site-page-surface [class*=" bg-[#F3F8F4]"],
-.site-page-surface [class^="bg-[#F4FBF8]"],
-.site-page-surface [class*=" bg-[#F4FBF8]"],
-.site-page-surface [class^="bg-[#F8FAF9]"],
-.site-page-surface [class*=" bg-[#F8FAF9]"],
-.site-page-surface [class^="bg-[#F9FAFB]"],
-.site-page-surface [class*=" bg-[#F9FAFB]"] {
-  background-color: transparent !important;
-  background-image: var(--brand-grad-mint) !important;
-}
-
-/* Dark brand panels → deep green linear gradient */
+/* Dark brand panels keep logo-pair depth */
 .site-page-surface [class^="bg-primary-dark"],
-.site-page-surface [class*=" bg-primary-dark"],
-.site-page-surface [class^="bg-[var(--green-dark)]"],
-.site-page-surface [class*=" bg-[var(--green-dark)]"] {
+.site-page-surface [class*=" bg-primary-dark"] {
   background-color: transparent !important;
   background-image: var(--brand-grad-dark) !important;
 }
 
-/* Brand primary solids → green→teal linear gradient (exclude primary-dark / opacity) */
+/* Solid primary CTAs → logo green→red pair */
 .site-page-surface [class^="bg-[#32C991]"]:not([class^="bg-[#32C991]/"]),
 .site-page-surface [class*=" bg-[#32C991]"]:not([class*=" bg-[#32C991]/"]),
 .site-page-surface [class^="bg-[#32c991]"]:not([class^="bg-[#32c991]/"]),
@@ -952,28 +1022,9 @@ body.site-page-body {
 .site-page-surface [class^="bg-[var(--green-primary)]"]:not([class*="/"]),
 .site-page-surface [class*=" bg-[var(--green-primary)]"]:not([class*="/"]),
 .site-page-surface [class^="bg-primary"]:not([class^="bg-primary/"]):not([class^="bg-primary-"]),
-.site-page-surface [class*=" bg-primary"]:not([class*=" bg-primary/"]):not([class*=" bg-primary-"]),
-.site-page-surface [class^="bg-emerald-"],
-.site-page-surface [class*=" bg-emerald-"] {
+.site-page-surface [class*=" bg-primary"]:not([class*=" bg-primary/"]):not([class*=" bg-primary-"]) {
   background-color: transparent !important;
   background-image: var(--brand-grad) !important;
-}
-
-/* Soft primary washes */
-.site-page-surface [class^="bg-primary/"],
-.site-page-surface [class*=" bg-primary/"],
-.site-page-surface [class^="bg-[#32C991]/"],
-.site-page-surface [class*=" bg-[#32C991]/"],
-.site-page-surface [class^="bg-[var(--green-primary)]/"],
-.site-page-surface [class*=" bg-[var(--green-primary)]/"],
-.site-page-surface [class^="bg-teal-accent/"],
-.site-page-surface [class*=" bg-teal-accent/"] {
-  background-color: transparent !important;
-  background-image: linear-gradient(
-    135deg,
-    rgb(50 201 145 / 0.16) 0%,
-    rgb(13 148 136 / 0.1) 100%
-  ) !important;
 }
 
 .site-page-surface .site-card-hover-overlay {
@@ -981,49 +1032,12 @@ body.site-page-body {
   background-image: var(--brand-grad) !important;
 }
 
-/* Card surfaces */
-.site-page-surface :is(div, article, li, aside).bg-white.shadow-sm,
-.site-page-surface :is(div, article, li, aside).bg-white.shadow-md,
-.site-page-surface :is(div, article, li, aside).bg-white.shadow-lg,
-.site-page-surface :is(div, article, li, aside).bg-white.shadow-xl,
-.site-page-surface :is(div, article, li, aside).bg-white.border,
-.site-page-surface :is(div, article, li, aside).bg-white.border-gray-100,
-.site-page-surface :is(div, article, li, aside)[class*="bg-white/"][class*="border"],
-.site-page-surface :is(div, article, li, aside)[class*="bg-white/"][class*="shadow-"] {
-  background-color: transparent;
-  background-image: linear-gradient(
-    145deg,
-    #fcfefd 0%,
-    #ffffff 45%,
-    #f7fcf9 100%
-  );
-  border-color: var(--site-card-border);
-  box-shadow: var(--site-card-shadow);
-}
-
-.site-page-surface :is(div, article, li, aside).bg-white[class*="shadow-["],
-.site-page-surface :is(div, article, li, aside)[class*="bg-white/"][class*="shadow-["] {
-  background-color: transparent;
-  background-image: linear-gradient(
-    145deg,
-    #fcfefd 0%,
-    #ffffff 45%,
-    #f7fcf9 100%
-  );
-  box-shadow: var(--site-card-shadow);
-}
-
-.site-page-surface :is(div, article, li, aside).border-gray-100,
-.site-page-surface :is(div, article, li, aside).border-white\/50 {
-  border-color: var(--site-card-border);
-}
-
 /* --- Footer: smart link / social hover transitions --- */
 .footer-link {
   display: inline-flex;
   align-items: flex-start;
   gap: 0.375rem;
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   font-size: 0.875rem;
   line-height: 1.45;
   color: var(--text-gray);
@@ -1096,7 +1110,7 @@ body.site-page-body {
   display: flex;
   align-items: center;
   gap: 0.625rem;
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   font-size: 0.875rem;
   color: var(--text-gray);
   transition: color 0.3s ease;
