@@ -83,7 +83,8 @@ export const pagesMessages = {
   login: {
     eyebrow: "BDOQ Academy পোর্টাল",
     title: "আসসালামু আলাইকুম, স্বাগতম!",
-    subtitle: "শিক্ষার্থী বা শিক্ষক ড্যাশবোর্ডে প্রবেশ করুন",
+    subtitle:
+      "নিরাপদে সাইন ইন করতে My Academy পোর্টালে যান — সেখান থেকে আপনার ড্যাশবোর্ড খুলবে",
     panelTitle: "আপনার লার্নিং পোর্টাল",
     panelSubtitle:
       "ক্লাস, উপস্থিতি, অগ্রগতি ও সময়সূচি—সবকিছু একটি নিরাপদ BDOQ প্ল্যাটফর্ম থেকে পরিচালনা করুন।",
@@ -108,7 +109,7 @@ export const pagesMessages = {
     passwordPlaceholder: "পাসওয়ার্ড লিখুন",
     remember: "লগইন রাখুন",
     forgot: "পাসওয়ার্ড ভুলে গেছেন?",
-    signIn: "সাইন ইন",
+    signIn: "পোর্টালে যান",
     noAccount: "অ্যাকাউন্ট নেই?",
     register: "এখনই রেজিস্টার করুন",
     teacherApply: "শিক্ষক হিসেবে আবেদন করুন",

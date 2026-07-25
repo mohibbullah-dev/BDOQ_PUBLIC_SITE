@@ -50,6 +50,15 @@ interface IFAQAccordionItemProps {
   onToggle: () => void;
 }
 
+const STATIC_FAQ_IDS = new Set([
+  "faq-1",
+  "faq-2",
+  "faq-3",
+  "faq-4",
+  "faq-5",
+  "faq-6",
+]);
+
 function FAQAccordionItem({
   item,
   index,
@@ -57,7 +66,10 @@ function FAQAccordionItem({
   onToggle,
 }: IFAQAccordionItemProps) {
   const Icon = FAQ_ICONS[item.id] ?? HelpCircle;
-  const t = useTranslations(`home.faq.items.${item.id}`);
+  const tStatic = useTranslations("home.faq.items");
+  const useI18n = STATIC_FAQ_IDS.has(item.id);
+  const question = useI18n ? tStatic(`${item.id}.q`) : item.question;
+  const answer = useI18n ? tStatic(`${item.id}.a`) : item.answer;
   const questionNo = String(index + 1).padStart(2, "0");
 
   return (
@@ -111,7 +123,7 @@ function FAQAccordionItem({
               isOpen ? "text-white" : "text-primary-dark"
             )}
           >
-            {t("q")}
+            {question}
           </span>
         </span>
 
@@ -146,7 +158,7 @@ function FAQAccordionItem({
           >
             <div className="bg-[#F3FAF6] px-4 py-4 sm:px-5 sm:py-5">
               <p className="font-body text-sm leading-relaxed text-text-gray sm:text-[15px]">
-                {t("a")}
+                {answer}
               </p>
             </div>
           </motion.div>

@@ -6,7 +6,7 @@ import type { FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Eye, EyeOff, Lock, Mail } from "lucide-react";
+import { ArrowLeft, Mail } from "lucide-react";
 import { useTranslations } from "next-intl";
 import {
   formInputClass,
@@ -25,15 +25,15 @@ export function LoginPageContent() {
   const t = useTranslations("pages.login");
   const router = useRouter();
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
+    // Auth happens on the portal (JWT). Public site only handoffs email.
     const portalUrl = new URL(PORTAL_LOGIN_URL);
-    if (email) portalUrl.searchParams.set("email", email);
+    if (email.trim()) portalUrl.searchParams.set("email", email.trim());
     if (rememberMe) portalUrl.searchParams.set("remember", "1");
-    window.location.href = portalUrl.toString();
+    window.location.assign(portalUrl.toString());
   };
 
   return (
@@ -54,7 +54,7 @@ export function LoginPageContent() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.55, ease: revealEase }}
-            className="relative hidden min-h-[640px] overflow-hidden rounded-3xl border border-[var(--green-primary)]/15 bg-[var(--green-dark)] lg:block"
+            className="relative hidden min-h-[560px] overflow-hidden rounded-3xl border border-[var(--green-primary)]/15 bg-[var(--green-dark)] lg:block"
           >
             <Image
               src={AUTH_PROMO_IMAGE}
@@ -119,41 +119,6 @@ export function LoginPageContent() {
                       autoComplete="username"
                       placeholder={t("emailPlaceholder")}
                     />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="login-password" className={formLabelClass}>
-                    {t("password")}
-                  </label>
-                  <div className="relative">
-                    <Lock
-                      className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--text-gray)]"
-                      aria-hidden="true"
-                    />
-                    <input
-                      id="login-password"
-                      type={showPassword ? "text" : "password"}
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      className={cn(formInputClass, "pl-11 pr-12")}
-                      autoComplete="current-password"
-                      placeholder={t("passwordPlaceholder")}
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword((prev) => !prev)}
-                      className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg text-[var(--text-gray)] transition-colors hover:bg-[var(--green-light)] hover:text-[var(--green-primary)]"
-                      aria-label={
-                        showPassword ? t("hidePassword") : t("showPassword")
-                      }
-                    >
-                      {showPassword ? (
-                        <EyeOff className="h-4 w-4" aria-hidden="true" />
-                      ) : (
-                        <Eye className="h-4 w-4" aria-hidden="true" />
-                      )}
-                    </button>
                   </div>
                 </div>
 

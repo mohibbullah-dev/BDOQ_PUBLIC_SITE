@@ -1,4 +1,6 @@
 import { apiFetch } from "./api";
+import { COURSES } from "./constants";
+import { getCourseDetail } from "./courseDetails";
 import type {
   CourseCategoryType,
   CourseGenderType,
@@ -34,13 +36,35 @@ function mapApiCourse(api: IApiCourse): ICourse & { detail: ICourseDetail } {
     gender: api.gender as CourseGenderType | undefined,
     detail: {
       ...api.detail,
-      faqs: api.detail.faqs.map((faq) => ({
+      faqs: (api.detail?.faqs ?? []).map((faq) => ({
         id: faq.id,
         question: faq.question,
         answer: faq.answer,
       })) as IFAQItem[],
     },
   };
+}
+
+function getStaticCourses(options?: {
+  category?: CourseCategoryType;
+  gender?: CourseGenderType;
+}): Array<ICourse & { detail: ICourseDetail }> {
+  return COURSES.filter((course) => {
+    if (options?.category && course.category !== options.category) {
+      return false;
+    }
+    if (
+      options?.category === "private" &&
+      options.gender &&
+      course.gender !== options.gender
+    ) {
+      return false;
+    }
+    return true;
+  }).map((course) => ({
+    ...course,
+    detail: getCourseDetail(course.slug),
+  }));
 }
 
 export type CourseFilterType = CourseCategoryType;
@@ -80,9 +104,10 @@ export async function getCourses(options?: {
       { next: { revalidate: COURSES_REVALIDATE } }
     );
 
-    return (response.data?.courses ?? []).map(mapApiCourse);
+    const apiCourses = (response.data?.courses ?? []).map(mapApiCourse);
+    return apiCourses.length > 0 ? apiCourses : getStaticCourses(options);
   } catch {
-    return [];
+    return getStaticCourses(options);
   }
 }
 
@@ -94,10 +119,14 @@ export async function getCourseBySlug(
       `/public/courses/${encodeURIComponent(slug)}`,
       { next: { revalidate: COURSES_REVALIDATE } }
     );
-    return response.data ? mapApiCourse(response.data) : null;
+    if (response.data) return mapApiCourse(response.data);
   } catch {
-    return null;
+    // fall through to static catalog
   }
+
+  return (
+    getStaticCourses().find((course) => course.slug === slug) ?? null
+  );
 }
 
 export async function getCourseSlugs(): Promise<string[]> {
@@ -172,12 +201,5 @@ export function getCourseDetailFromCourse(
   course: ICourse & { detail?: ICourseDetail }
 ): ICourseDetail {
   if (course.detail) return course.detail;
-  return {
-    benefits: [],
-    modules: [],
-    audience: [],
-    faqs: [],
-    startingPriceBdt: 0,
-    recommendedPackage: "Basic",
-  };
+  return getCourseDetail(course.slug);
 }

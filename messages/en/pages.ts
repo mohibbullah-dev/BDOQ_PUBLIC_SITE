@@ -84,7 +84,8 @@ export const pagesMessages = {
   login: {
     eyebrow: "BDOQ Academy Portal",
     title: "Hi, Welcome back!",
-    subtitle: "Sign in to access your student or teacher dashboard",
+    subtitle:
+      "Continue to the My Academy portal to sign in securely and open your dashboard",
     panelTitle: "Your learning portal",
     panelSubtitle:
       "Manage classes, attendance, progress, and schedules from one secure BDOQ platform.",
@@ -109,7 +110,7 @@ export const pagesMessages = {
     passwordPlaceholder: "Enter your password",
     remember: "Keep me signed in",
     forgot: "Forgot Password?",
-    signIn: "Sign In",
+    signIn: "Continue to Portal",
     noAccount: "Don't have an account?",
     register: "Register Now",
     teacherApply: "Apply as a teacher",

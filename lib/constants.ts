@@ -29,7 +29,8 @@ export const API_BASE =
 
 export const ACADEMY_FOUNDED_YEAR = 2019;
 
-export const SITE_URL = "https://bdonlinequranacademy.com";
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://bdonlinequranacademy.com";
 
 export function getAcademyYearsExperience(): number {
   return Math.max(1, new Date().getFullYear() - ACADEMY_FOUNDED_YEAR);

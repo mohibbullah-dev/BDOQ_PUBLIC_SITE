@@ -11,7 +11,7 @@ import {
   Users,
   Video,
 } from "lucide-react";
-import type { IGalleryItem } from "@/lib/types";
+import type { GalleryAlbumType, IGalleryItem } from "@/lib/types";
 
 export type GalleryCollectionIconType =
   | "camera"
@@ -128,7 +128,28 @@ export function getCollectionItems(
   allItems: IGalleryItem[]
 ): IGalleryItem[] {
   const byId = new Map(allItems.map((item) => [item.id, item]));
-  return collection.itemIds
+  const byFixedIds = collection.itemIds
     .map((id) => byId.get(id))
     .filter((item): item is IGalleryItem => Boolean(item));
+
+  if (byFixedIds.length > 0) return byFixedIds;
+
+  // CMS gallery IDs often differ from static g1…g12 — bucket by album order.
+  const albumBuckets: Record<string, GalleryAlbumType[]> = {
+    "online-class": ["gallery-01"],
+    "noorani-qaida": ["gallery-01"],
+    hifz: ["gallery-02"],
+    events: ["gallery-03"],
+    recitation: ["gallery-02"],
+    "teacher-training": ["gallery-03"],
+    "student-activities": ["gallery-01", "gallery-02"],
+    certificates: ["gallery-03"],
+    community: ["gallery-02", "gallery-03"],
+    international: ["gallery-01", "gallery-03"],
+  };
+
+  const albums = albumBuckets[collection.id] ?? [];
+  if (albums.length === 0) return [];
+
+  return allItems.filter((item) => albums.includes(item.album));
 }
