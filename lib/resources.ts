@@ -1,7 +1,11 @@
 import type { LocaleType } from "@/i18n/routing";
 import { apiFetch } from "./api";
 import {
+  EBOOKS,
+  FEATURED_AUDIO_SRC,
   FEATURED_VIDEO,
+  OTHER_RECITATIONS,
+  SURAH_FATIHA_VERSES,
   VIDEO_GALLERY_ITEMS,
   VIDEO_PLAYLIST,
 } from "./constants";
@@ -145,9 +149,10 @@ async function fetchResources(
 export async function getEbooks(locale: LocaleType = "en"): Promise<IEbook[]> {
   try {
     const items = await fetchResources("ebook", locale);
+    if (items.length === 0) return sortByFeaturedThenOrder(EBOOKS);
     return sortByFeaturedThenOrder(items.map(mapApiEbook));
   } catch {
-    return [];
+    return sortByFeaturedThenOrder(EBOOKS);
   }
 }
 
@@ -162,35 +167,51 @@ export async function getEbookBySlug(
 export interface IAudioPageData {
   featuredSrc: string;
   featuredTitle: string;
+  featuredArabic?: string;
   verses: IAudioVerse[];
   recitations: IAudioRecitation[];
 }
 
+const AUDIO_FALLBACK: IAudioPageData = {
+  featuredSrc: FEATURED_AUDIO_SRC,
+  featuredTitle: "Surah Al-Fatiha – The Opening",
+  featuredArabic: "الفاتحة",
+  verses: SURAH_FATIHA_VERSES,
+  recitations: OTHER_RECITATIONS,
+};
+
 export async function getAudioPageData(
   locale: LocaleType = "en"
 ): Promise<IAudioPageData> {
-  const items = await fetchResources("audio", locale);
-  const featured = pickFeaturedAudio(items);
-  const featuredId = featured?.id;
-  const verseSet = items.find((i) => i.section === "verses");
-  const recitations = items
-    .filter((i) => i.section === "recitation" && i.id !== featuredId)
-    .map(mapApiRecitation);
+  try {
+    const items = await fetchResources("audio", locale);
+    if (items.length === 0) return AUDIO_FALLBACK;
 
-  const verses: IAudioVerse[] = verseSet?.verses?.length
-    ? verseSet.verses.map((v, idx) => ({
-        id: `v${idx + 1}`,
-        arabic: v.arabic,
-        translation: v.translation,
-      }))
-    : [];
+    const featured = pickFeaturedAudio(items);
+    const featuredId = featured?.id;
+    const verseSet = items.find((i) => i.section === "verses");
+    const recitations = items
+      .filter((i) => i.section === "recitation" && i.id !== featuredId)
+      .map(mapApiRecitation);
 
-  return {
-    featuredSrc: featured?.audioUrl ?? "",
-    featuredTitle: featured?.title ?? "Featured Recitation",
-    verses,
-    recitations,
-  };
+    const verses: IAudioVerse[] = verseSet?.verses?.length
+      ? verseSet.verses.map((v, idx) => ({
+          id: `v${idx + 1}`,
+          arabic: v.arabic,
+          translation: v.translation,
+        }))
+      : SURAH_FATIHA_VERSES;
+
+    return {
+      featuredSrc: featured?.audioUrl ?? FEATURED_AUDIO_SRC,
+      featuredTitle: featured?.title ?? AUDIO_FALLBACK.featuredTitle,
+      featuredArabic: AUDIO_FALLBACK.featuredArabic,
+      verses,
+      recitations: recitations.length > 0 ? recitations : OTHER_RECITATIONS,
+    };
+  } catch {
+    return AUDIO_FALLBACK;
+  }
 }
 
 export interface IVideoPageData {

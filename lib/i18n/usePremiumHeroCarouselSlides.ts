@@ -9,6 +9,7 @@ import {
 export interface IPremiumHeroCarouselSlide extends IPremiumHeroCarouselSlideMeta {
   badge: string;
   title: string;
+  titleHighlight?: string;
   subtitle: string;
   imageAlt: string;
   primaryCta: string;
@@ -18,13 +19,21 @@ export interface IPremiumHeroCarouselSlide extends IPremiumHeroCarouselSlideMeta
 export function usePremiumHeroCarouselSlides(): IPremiumHeroCarouselSlide[] {
   const t = useTranslations("home.premiumHero.carousel.slides");
 
-  return PREMIUM_HERO_CAROUSEL_SLIDES.map((meta) => ({
-    ...meta,
-    badge: t(`${meta.id}.badge`),
-    title: t(`${meta.id}.title`),
-    subtitle: t(`${meta.id}.subtitle`),
-    imageAlt: t(`${meta.id}.imageAlt`),
-    primaryCta: t(`${meta.id}.primaryCta`),
-    secondaryCta: t(`${meta.id}.secondaryCta`),
-  }));
+  return PREMIUM_HERO_CAROUSEL_SLIDES.map((meta) => {
+    const highlightKey = `${meta.id}.titleHighlight` as const;
+    const titleHighlight = t.has(highlightKey)
+      ? t(highlightKey)
+      : undefined;
+
+    return {
+      ...meta,
+      badge: t(`${meta.id}.badge`),
+      title: t(`${meta.id}.title`),
+      titleHighlight,
+      subtitle: t(`${meta.id}.subtitle`),
+      imageAlt: t(`${meta.id}.imageAlt`),
+      primaryCta: t(`${meta.id}.primaryCta`),
+      secondaryCta: t(`${meta.id}.secondaryCta`),
+    };
+  });
 }

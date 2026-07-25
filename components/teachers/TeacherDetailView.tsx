@@ -53,7 +53,7 @@ function ProfileSection({
   children: ReactNode;
 }) {
   return (
-    <section className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:p-8">
+    <section className="site-card rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:p-8">
       <div className="mb-5 flex items-center gap-3">
         <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#E8FAF2] text-[#32C991]">
           <Icon className="h-5 w-5" aria-hidden="true" />
@@ -255,7 +255,7 @@ export function TeacherDetailView({
                 ].map((stat) => (
                   <div
                     key={stat.label}
-                    className="rounded-2xl border border-white bg-white p-3 text-center shadow-sm"
+                    className="site-card rounded-2xl border border-white bg-white p-3 text-center shadow-sm"
                   >
                     <stat.icon
                       className="mx-auto h-4 w-4 text-[#32C991]"

@@ -5,7 +5,7 @@ import { Controller, useFormContext } from "react-hook-form";
 import { BilingualLabel } from "@/components/forms/shared/BilingualLabel";
 import { FileDropzone } from "@/components/forms/shared/FileDropzone";
 import { MultiSelectChips } from "@/components/forms/shared/MultiSelectChips";
-import { SingleSelectChips } from "@/components/forms/shared/SingleSelectChips";
+import { FormSelect } from "@/components/forms/shared/FormSelect";
 import {
   formErrorClass,
   formTextareaClass,
@@ -102,8 +102,8 @@ export function TeacherStepDocuments() {
           name="internetType"
           control={control}
           render={({ field }) => (
-            <SingleSelectChips
-              columns={3}
+            <FormSelect
+              id="internetType"
               value={field.value ?? ""}
               onChange={field.onChange}
               error={errors.internetType?.message}

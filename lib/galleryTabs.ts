@@ -1,8 +1,9 @@
 import type { GalleryMediaType, IGalleryItem } from "@/lib/types";
 
-export type GalleryTabType = "gallery" | "image" | "video" | "audio";
+export type GalleryTabType = "all" | "gallery" | "image" | "video" | "audio";
 
 export const GALLERY_TAB_ORDER: GalleryTabType[] = [
+  "all",
   "video",
   "audio",
   "gallery",
@@ -17,7 +18,7 @@ export function filterGalleryByTab(
   items: IGalleryItem[],
   tab: GalleryTabType
 ): IGalleryItem[] {
-  if (tab === "gallery") return items;
+  if (tab === "all" || tab === "gallery") return items;
 
   const target: GalleryMediaType = tab === "image" ? "photo" : tab;
 
@@ -29,4 +30,9 @@ export function countGalleryByTab(
   tab: GalleryTabType
 ): number {
   return filterGalleryByTab(items, tab).length;
+}
+
+/** Collection grid for All / Gallery tabs; media tiles for type filters */
+export function showsCollectionGrid(tab: GalleryTabType): boolean {
+  return tab === "all" || tab === "gallery";
 }

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import { SITE_URL } from "@/lib/constants";
 import { ClientMessagesProvider } from "@/components/i18n/ClientMessagesProvider";
 import { getFormClientMessages } from "@/lib/i18n/clientShellMessages";
-import { LocalizedPageHero } from "@/components/shared/LocalizedPageHero";
+import { RegistrationPageHero } from "@/components/forms/shared/RegistrationPageHero";
 import { StudentAdmissionWizard } from "@/components/forms/student-admission/StudentAdmissionWizard";
 
 export const metadata: Metadata = {
@@ -30,7 +30,10 @@ export const metadata: Metadata = {
 };
 
 export default async function StudentAdmissionPage() {
-  const messages = await getMessages();
+  const [messages, t] = await Promise.all([
+    getMessages(),
+    getTranslations("pages.studentAdmission"),
+  ]);
   const clientMessages = getFormClientMessages(
     messages as Record<string, unknown>,
     "studentAdmission"
@@ -38,11 +41,11 @@ export default async function StudentAdmissionPage() {
 
   return (
     <>
-      <LocalizedPageHero pageKey="studentAdmission" centered />
+      <RegistrationPageHero pageKey="studentAdmission" />
 
       <section
         id="student-admission-form"
-        className="py-12 md:py-16 bg-bg-light"
+        className="bg-[#F7FBF8] py-10 md:py-14"
       >
         <div className="site-container">
           <ClientMessagesProvider messages={clientMessages}>
@@ -54,19 +57,19 @@ export default async function StudentAdmissionPage() {
               href="#student-admission-form"
               className="rounded-2xl border border-primary/15 bg-white px-4 py-4 text-center font-body text-sm font-semibold text-primary-dark shadow-sm"
             >
-              Fill out the form above to apply
+              {t("ctaApply")}
             </Link>
             <Link
               href="/free-class"
               className="rounded-2xl bg-primary px-4 py-4 text-center font-body text-sm font-semibold text-white shadow-sm"
             >
-              Register for free classes
+              {t("ctaFree")}
             </Link>
             <Link
               href="/login"
               className="rounded-2xl border border-primary bg-white px-4 py-4 text-center font-body text-sm font-semibold text-primary shadow-sm"
             >
-              Create student account
+              {t("ctaAccount")}
             </Link>
           </div>
         </div>

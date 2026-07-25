@@ -2,8 +2,12 @@
 
 import { useTranslations } from "next-intl";
 import { useCallback, useState } from "react";
-import { Check, Copy, Link2, Share2 } from "lucide-react";
-import { FacebookIcon } from "@/components/shared/SocialBrandIcons";
+import { Check, Link2 } from "lucide-react";
+import {
+  FacebookIcon,
+  WhatsappIcon,
+  XIcon,
+} from "@/components/shared/SocialBrandIcons";
 import type { IBlogPost } from "@/lib/types";
 import { SITE_URL } from "@/lib/constants";
 import { cn } from "@/lib/cn";
@@ -11,9 +15,14 @@ import { cn } from "@/lib/cn";
 interface IBlogShareBarProps {
   post: IBlogPost;
   className?: string;
+  variant?: "sidebar" | "inline";
 }
 
-export function BlogShareBar({ post, className }: IBlogShareBarProps) {
+export function BlogShareBar({
+  post,
+  className,
+  variant = "inline",
+}: IBlogShareBarProps) {
   const t = useTranslations("content.blog");
   const [copied, setCopied] = useState(false);
   const shareUrl = `${SITE_URL}/blog/${post.slug}`;
@@ -37,15 +46,33 @@ export function BlogShareBar({ post, className }: IBlogShareBarProps) {
       icon: FacebookIcon,
     },
     {
+      label: "X",
+      href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+      icon: XIcon,
+    },
+    {
       label: "WhatsApp",
       href: `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`,
-      icon: Share2,
+      icon: WhatsappIcon,
     },
   ] as const;
 
   return (
-    <div className={cn("space-y-3", className)}>
-      <p className="font-body text-xs font-bold uppercase tracking-wider text-text-gray">
+    <div
+      className={cn(
+        variant === "inline"
+          ? "flex flex-wrap items-center gap-3"
+          : "space-y-3",
+        className
+      )}
+    >
+      <p
+        className={cn(
+          "font-body text-sm font-semibold text-primary-dark",
+          variant === "sidebar" &&
+            "text-xs font-bold uppercase tracking-wider text-text-gray"
+        )}
+      >
         {t("shareArticle")}
       </p>
       <div className="flex flex-wrap gap-2">
@@ -58,7 +85,7 @@ export function BlogShareBar({ post, className }: IBlogShareBarProps) {
             aria-label={`Share on ${label}`}
             className={cn(
               "inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-200",
-              "text-text-gray transition-all duration-200 hover:border-primary hover:bg-[#E8FAF2] hover:text-primary"
+              "text-text-gray transition-all duration-200 hover:border-primary hover:bg-bg-light hover:text-primary"
             )}
           >
             <Icon className="h-4 w-4" aria-hidden="true" />
@@ -69,25 +96,20 @@ export function BlogShareBar({ post, className }: IBlogShareBarProps) {
           onClick={handleCopy}
           aria-label={copied ? t("linkCopied") : t("copyLink")}
           className={cn(
-            "inline-flex h-10 min-w-10 items-center justify-center gap-1.5 rounded-full border px-3",
-            "font-body text-xs font-semibold transition-all duration-200",
+            "inline-flex h-10 w-10 items-center justify-center rounded-full border",
+            "transition-all duration-200",
             copied
-              ? "border-primary bg-[#E8FAF2] text-primary"
-              : "border-gray-200 text-text-gray hover:border-primary hover:bg-[#E8FAF2] hover:text-primary"
+              ? "border-primary bg-bg-light text-primary"
+              : "border-gray-200 text-text-gray hover:border-primary hover:bg-bg-light hover:text-primary"
           )}
         >
           {copied ? (
             <Check className="h-4 w-4" aria-hidden="true" />
           ) : (
-            <Copy className="h-4 w-4" aria-hidden="true" />
+            <Link2 className="h-4 w-4" aria-hidden="true" />
           )}
-          {copied ? t("copied") : t("copy")}
         </button>
       </div>
-      <p className="flex items-start gap-2 font-body text-xs leading-relaxed text-text-gray">
-        <Link2 className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-        <span className="break-all">{shareUrl}</span>
-      </p>
     </div>
   );
 }

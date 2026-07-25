@@ -47,19 +47,29 @@ export function BlogTableOfContents({ headings }: IBlogTableOfContentsProps) {
 
   return (
     <nav aria-label="Table of contents">
-      <p className="mb-3 font-body text-xs font-bold uppercase tracking-wider text-text-gray">
+      <p className="mb-4 font-playfair text-lg font-bold text-primary-dark">
         {t("onThisPage")}
       </p>
-      <ul className="space-y-1 border-l-2 border-[#E8FAF2] pl-3">
-        {headings.map((heading) => {
+      <ol className="relative space-y-0 border-l border-dashed border-primary/30 pl-0">
+        {headings.map((heading, index) => {
           const isActive = activeId === heading.id;
 
           return (
-            <li key={heading.id}>
+            <li key={heading.id} className="relative pl-10">
+              <span
+                className={cn(
+                  "absolute left-0 top-1.5 flex h-7 w-7 -translate-x-1/2 items-center justify-center rounded-full font-body text-[11px] font-bold",
+                  isActive
+                    ? "bg-primary text-white"
+                    : "bg-bg-light text-primary ring-1 ring-primary/20"
+                )}
+              >
+                {String(index + 1).padStart(2, "0")}
+              </span>
               <a
                 href={`#${heading.id}`}
                 className={cn(
-                  "block py-1.5 font-body text-sm leading-snug transition-colors duration-200",
+                  "block py-2 font-body text-sm leading-snug transition-colors duration-200",
                   isActive
                     ? "font-semibold text-primary"
                     : "text-text-gray hover:text-primary"
@@ -70,7 +80,7 @@ export function BlogTableOfContents({ headings }: IBlogTableOfContentsProps) {
             </li>
           );
         })}
-      </ul>
+      </ol>
     </nav>
   );
 }

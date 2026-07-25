@@ -5,12 +5,9 @@ import { getLocale, getMessages } from "next-intl/server";
 import { ACADEMY_INFO, SITE_URL } from "@/lib/constants";
 import { getHomeClientMessages } from "@/lib/i18n/clientShellMessages";
 import { getFaqItems } from "@/lib/faq";
-import { getPublicStatsDisplay } from "@/lib/stats";
 import { getFeaturedTeachers } from "@/lib/teachers";
 import { getTestimonials } from "@/lib/testimonials";
 import { HomeHeroGroup } from "@/components/home/HomeHeroGroup";
-import { QuranVerseMarquee } from "@/components/layout/QuranVerseMarquee";
-import { StatsSection } from "@/components/home/StatsSection";
 import { QuickNavSection } from "@/components/home/QuickNavSection";
 import { AboutSection } from "@/components/home/AboutSection";
 import { SectionSkeleton } from "@/components/shared/SectionSkeleton";
@@ -118,18 +115,15 @@ export default async function HomePage() {
   const homeMessages = getHomeClientMessages(
     messages as Record<string, unknown>
   );
-  const [featuredTeachers, testimonials, stats] = await Promise.all([
+  const [featuredTeachers, testimonials] = await Promise.all([
     getFeaturedTeachers(),
     getTestimonials(),
-    getPublicStatsDisplay(),
   ]);
   const faqItems = getFaqItems();
 
   return (
     <NextIntlClientProvider locale={locale} messages={homeMessages}>
       <HomeHeroGroup />
-      <QuranVerseMarquee />
-      <StatsSection stats={stats} />
       <QuickNavSection />
       <AboutSection />
       <LearningPlansSection />

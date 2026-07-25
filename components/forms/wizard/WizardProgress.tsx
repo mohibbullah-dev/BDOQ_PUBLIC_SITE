@@ -35,9 +35,9 @@ export function WizardProgress({
         </p>
       </div>
 
-      <div className="h-2 overflow-hidden rounded-full bg-gray-100/90">
+      <div className="h-2.5 overflow-hidden rounded-full bg-gray-100/90">
         <motion.div
-          className="h-full rounded-full bg-gradient-to-r from-primary to-teal"
+          className="h-full rounded-full bg-gradient-to-r from-primary to-primary-dark"
           initial={false}
           animate={{ width: `${progress}%` }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}

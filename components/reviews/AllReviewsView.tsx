@@ -28,7 +28,7 @@ export function AllReviewsView({
           {reviewStats.map((stat) => (
             <div
               key={stat.label}
-              className="rounded-2xl border border-white bg-white px-4 py-5 text-center shadow-sm"
+              className="site-card rounded-2xl border border-white bg-white px-4 py-5 text-center shadow-sm"
             >
               <p className="font-body text-2xl font-bold text-[#32C991] md:text-3xl">
                 {stat.value}

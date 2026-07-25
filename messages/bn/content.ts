@@ -118,6 +118,15 @@ export const contentMessages = {
     pages: "পৃষ্ঠা",
     download: "ডাউনলোড",
     view: "দেখুন",
+    viewAll: "সব দেখুন",
+    sortBy: "সাজান:",
+    sortNewest: "নতুন",
+    sortTitle: "শিরোনাম",
+    sortPages: "পৃষ্ঠা",
+    viewToggle: "বইয়ের লেআউট",
+    viewGrid: "গ্রিড ভিউ",
+    viewList: "লিস্ট ভিউ",
+    emptyCategory: "এই বিভাগে এখনো কোনো বই নেই। অন্য ফিল্টার চেষ্টা করুন।",
     stackAlt: "ইসলামিক বইয়ের স্তূপ",
     reader: {
       eyebrow: "BDOQ Academy · ই-বুক রিডার",
@@ -150,7 +159,7 @@ export const contentMessages = {
     categories: {
       tajweed: "তাজভীদ বই",
       islamicHistory: "ইসলামিক ইতিহাস",
-      religious: "ধর্মীয় বই",
+      religious: "ধর্মীয় বইসমূহ",
     },
     items: {
       "tajweed-made-easy": {
@@ -185,15 +194,61 @@ export const contentMessages = {
       },
     },
   },
+  audio: {
+    nowPlaying: "এখন চলছে",
+    progress: "অডিও প্রোগ্রেস",
+    play: "অডিও চালান",
+    pause: "অডিও থামান",
+    previous: "আগের সূরা",
+    next: "পরের সূরা",
+    repeat: "রিপিট",
+    download: "অডিও ডাউনলোড",
+    volume: "মিউট বা আনমিউট",
+    surahListTitle: "কুরআন সূরা তালিকা",
+    surahListSubtitle: "শোনার জন্য একটি সূরা নির্বাচন করুন",
+    viewAllSurahs: "সব সূরা দেখুন",
+    otherRecitations: "অন্যান্য তিলাওয়াত",
+    viewAll: "সব দেখুন",
+    featuredSubtitle: "{count} আয়াত · ফিচার্ড তিলাওয়াত",
+  },
+  videos: {
+    featuredBadge: "ফিচার্ড ভিডিও",
+    playlist: "প্লেলিস্ট",
+    viewAll: "সব দেখুন",
+    otherVideos: "অন্যান্য ভিডিও",
+    filterLabel: "ভিডিও বিভাগ",
+    sortBy: "সাজান:",
+    sortLatest: "সর্বশেষ",
+    sortPopular: "জনপ্রিয়",
+    sortTitle: "শিরোনাম",
+    loadMore: "আরও ভিডিও দেখুন",
+    emptyCategory: "এই বিভাগে এখনো কোনো ভিডিও নেই। অন্য ফিল্টার চেষ্টা করুন।",
+    views: "{count} ভিউ",
+    recent: "সম্প্রতি যোগ",
+    categories: {
+      allVideos: "সব ভিডিও",
+      quranLearning: "কুরআন শিক্ষা",
+      tajweed: "তাজভীদ",
+      courses: "কোর্স",
+      studentStories: "শিক্ষার্থীর গল্প",
+    },
+  },
   gallery: {
     tabs: {
       ariaLabel: "গ্যালারি মিডিয়া বিভাগ",
+      all: "সব",
       video: "ভিডিও",
       audio: "অডিও",
       gallery: "গ্যালারি",
       image: "ইমেজ",
     },
+    itemCount: "{count}টি আইটেম",
     empty: {
+      all: {
+        title: "এখনো কোনো গ্যালারি আইটেম নেই",
+        description:
+          "BDOQ Academy-র ক্লাস, অনুষ্ঠান ও শিক্ষা কমিউনিটির ফটো, ভিডিও ও অডিও এখানে দেখাবে।",
+      },
       gallery: {
         title: "এখনো কোনো গ্যালারি আইটেম নেই",
         description:
@@ -212,6 +267,18 @@ export const contentMessages = {
         title: "এখনো কোনো অডিও নেই",
         description: "তিলাওয়াত ও অডিও ক্লিপ BDOQ Academy-র এই বিভাগে দেখাবে।",
       },
+    },
+    collections: {
+      onlineClass: "অনলাইন ক্লাস সেশন",
+      nooraniQaida: "নূরানী কায়দা ক্লাস",
+      hifzProgram: "হিফজ প্রোগ্রাম",
+      eventsSeminars: "ইভেন্ট ও সেমিনার",
+      quranRecitation: "কুরআন তিলাওয়াত",
+      teacherTraining: "শিক্ষক প্রশিক্ষণ",
+      studentActivities: "শিক্ষার্থী কার্যক্রম",
+      certificatesAwards: "সার্টিফিকেট ও পুরস্কার",
+      communityGathering: "কমিউনিটি সমাবেশ",
+      internationalStudents: "আন্তর্জাতিক শিক্ষার্থী",
     },
     albums: {
       all: "সব",
@@ -243,6 +310,30 @@ export const contentMessages = {
   blog: {
     allTopics: "সব বিষয়",
     readMore: "আরও পড়ুন",
+    featuredArticles: "ফিচার্ড আর্টিকেল",
+    moreArticles: "আরও আর্টিকেল",
+    viewAllArticles: "সব আর্টিকেল দেখুন",
+    popularArticles: "জনপ্রিয় আর্টিকেল",
+    youMayAlsoLike: "আপনার পছন্দ হতে পারে",
+    stayUpdated: "আপডেট থাকুন",
+    newsletterDesc:
+      "কুরআন শিক্ষার সর্বশেষ আর্টিকেল ও টিপস ইনবক্সে পেতে সাবস্ক্রাইব করুন।",
+    newsletterPlaceholder: "আপনার ইমেইল ঠিকানা",
+    subscribe: "সাবস্ক্রাইব",
+    newsletterSuccess: "সাবস্ক্রাইব করার জন্য ধন্যবাদ!",
+    newsletterError: "সাবস্ক্রাইব করা যায়নি। আবার চেষ্টা করুন।",
+    filterAria: "বিষয় অনুযায়ী আর্টিকেল ফিল্টার",
+    articleQuote:
+      "তোমাদের মধ্যে সর্বোত্তম সেই, যে কুরআন শেখে এবং অন্যকে শেখায়।",
+    articleQuoteSource: "সহীহ আল-বুখারী",
+    academyCalloutTitle: "BDOQ Academy শিক্ষকদের সাথে শিখুন",
+    academyCalloutDesc:
+      "আমাদের সার্টিফাইড হাফেজ শিক্ষকরা শিশু ও বয়স্কদের তাজভীদ, হিফজ ও কুরআন পাঠে ওয়ান-টু-ওয়ান গাইড করেন — নমনীয় সময়ে।",
+    academyCalloutCta: "ফ্রি ট্রায়াল ক্লাস বুক করুন",
+    shareStoryTitle: "শেয়ার করার মতো গল্প বা টিপস আছে?",
+    shareStoryDesc:
+      "অভিভাবকের অভিজ্ঞতা, শিক্ষার্থীর যাত্রা ও কুরআন শিক্ষার ব্যবহারিক টিপস আমাদের ব্লগে স্বাগতম।",
+    shareStoryCta: "আপনার গল্প শেয়ার করুন",
     noArticles: "কোনো নিবন্ধ পাওয়া যায়নি",
     noArticlesDesc:
       "অন্য কীওয়ার্ড চেষ্টা করুন বা সব পোস্ট দেখতে বিষয় ফিল্টার সরিয়ে দিন।",

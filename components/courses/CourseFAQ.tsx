@@ -23,7 +23,7 @@ export function CourseFAQ({ faqs }: ICourseFAQProps) {
             {t("title")}
           </h2>
 
-          <div className="rounded-2xl border border-gray-100 bg-white px-5 md:px-6 shadow-sm">
+          <div className="site-card rounded-2xl border border-gray-100 bg-white px-5 md:px-6 shadow-sm">
             {faqs.map((item) => {
               const isOpen = openId === item.id;
               return (

@@ -6,7 +6,7 @@ import { getBlogPosts } from "@/lib/blog";
 import { ClientMessagesProvider } from "@/components/i18n/ClientMessagesProvider";
 import { getBlogClientMessages } from "@/lib/i18n/clientShellMessages";
 import { BlogPageClient } from "@/components/blog/BlogPageClient";
-import { LocalizedPageHero } from "@/components/shared/LocalizedPageHero";
+import { BlogPageHero } from "@/components/blog/BlogPageHero";
 
 export const metadata: Metadata = {
   title: "Read Our Blog",
@@ -31,23 +31,25 @@ export const metadata: Metadata = {
 
 function BlogListFallback() {
   return (
-    <div className="space-y-6">
-      <div className="mx-auto h-12 max-w-xl animate-pulse rounded-xl bg-gray-200" />
-      <div className="flex justify-center gap-2">
-        {Array.from({ length: 4 }).map((_, index) => (
+    <div className="space-y-8">
+      <div className="flex flex-wrap gap-2">
+        {Array.from({ length: 5 }).map((_, index) => (
           <div
             key={index}
-            className="h-9 w-20 animate-pulse rounded-full bg-gray-100"
+            className="h-10 w-24 animate-pulse rounded-full bg-gray-100"
           />
         ))}
       </div>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {Array.from({ length: 3 }).map((_, index) => (
-          <div
-            key={index}
-            className="h-96 animate-pulse rounded-2xl bg-gray-100"
-          />
-        ))}
+      <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
+        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          {Array.from({ length: 3 }).map((_, index) => (
+            <div
+              key={index}
+              className="h-96 animate-pulse rounded-2xl bg-gray-100"
+            />
+          ))}
+        </div>
+        <div className="h-80 animate-pulse rounded-2xl bg-gray-100" />
       </div>
     </div>
   );
@@ -63,10 +65,12 @@ export default async function BlogPage() {
 
   return (
     <>
-      <LocalizedPageHero pageKey="blog" centered />
+      <ClientMessagesProvider messages={clientMessages}>
+        <BlogPageHero />
+      </ClientMessagesProvider>
 
-      <section className="pb-16 md:pb-24 bg-bg-light">
-        <div className="site-container pt-12 md:pt-16">
+      <section className="bg-[#FCFBF7] pb-16 md:pb-24">
+        <div className="site-container pt-8 md:pt-10">
           <ClientMessagesProvider messages={clientMessages}>
             <Suspense fallback={<BlogListFallback />}>
               <BlogPageClient posts={posts} />

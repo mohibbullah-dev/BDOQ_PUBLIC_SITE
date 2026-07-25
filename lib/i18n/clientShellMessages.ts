@@ -89,8 +89,11 @@ export function getFormClientMessages(
 }
 
 export function getContactClientMessages(messages: MessageTree): MessageTree {
+  const forms = messages.forms as MessageTree | undefined;
   return {
+    ...pickKeys(messages, ["cta"]),
     pages: pickNestedPages(messages, ["contact"]),
+    ...(forms?.common ? { forms: { common: forms.common } } : {}),
   };
 }
 
@@ -113,9 +116,11 @@ export function getAboutClientMessages(messages: MessageTree): MessageTree {
 
 export function getPricingClientMessages(messages: MessageTree): MessageTree {
   const contentPricing = pickContentSections(messages, ["pricing"]);
+  const forms = messages.forms as MessageTree | undefined;
   return {
     pages: pickNestedPages(messages, ["pricing"]),
     ...(contentPricing ? { content: contentPricing } : {}),
+    ...(forms?.layout ? { forms: { layout: forms.layout } } : {}),
   };
 }
 
@@ -135,6 +140,8 @@ export function getResourcesClientMessages(messages: MessageTree): MessageTree {
   const contentResources = pickContentSections(messages, [
     "resources",
     "ebooks",
+    "audio",
+    "videos",
   ]);
   return {
     pages: pickNestedPages(messages, ["resources"]),
@@ -145,11 +152,17 @@ export function getResourcesClientMessages(messages: MessageTree): MessageTree {
 export function getBlogClientMessages(messages: MessageTree): MessageTree {
   const content = messages.content as MessageTree | undefined;
   const blog = content?.blog as MessageTree | undefined;
-  if (!blog) return { content: { blog: {} } };
+  if (!blog) {
+    return {
+      pages: pickNestedPages(messages, ["blog"]),
+      content: { blog: {} },
+    };
+  }
 
   const posts = blog.posts as Record<string, MessageTree> | undefined;
 
   return {
+    pages: pickNestedPages(messages, ["blog"]),
     content: {
       blog: {
         ...blog,

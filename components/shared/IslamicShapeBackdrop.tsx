@@ -17,8 +17,8 @@ const VARIANT: Record<
   { image: string; wash: string }
 > = {
   home: {
-    image: "opacity-[0.22]",
-    wash: "from-[#E8FAF2]/82 via-[#E8FAF2]/68 to-[#E8FAF2]/86",
+    image: "opacity-[0.34]",
+    wash: "from-[#F7FCF9]/55 via-[#E8FAF2]/45 to-[#F7FCF9]/70",
   },
   page: {
     image: "opacity-[0.14]",

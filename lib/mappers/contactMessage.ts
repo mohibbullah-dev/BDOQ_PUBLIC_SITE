@@ -14,12 +14,16 @@ export function mapContactFormToApi(
 ): IContactMessageApiPayload {
   const subjectLine = data.subject.trim();
   const body = data.message.trim();
+  const phone = data.phone?.trim();
+  const phoneLine = phone ? `Phone: ${phone}\n\n` : "";
 
   return {
     name: data.name.trim(),
     email: data.email.trim().toLowerCase(),
     subject: subjectLine,
-    message: subjectLine ? `[${subjectLine}]\n\n${body}` : body,
+    message: subjectLine
+      ? `[${subjectLine}]\n${phoneLine}${body}`
+      : `${phoneLine}${body}`,
     locale: locale === "bn" ? "bn" : "en",
   };
 }

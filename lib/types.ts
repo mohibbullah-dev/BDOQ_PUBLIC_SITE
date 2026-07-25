@@ -103,6 +103,12 @@ export interface IAudioRecitation {
   progress: number;
 }
 
+export type VideoCategoryType =
+  | "quran-learning"
+  | "tajweed"
+  | "courses"
+  | "student-stories";
+
 export interface IVideoItem {
   id: string;
   title: string;
@@ -110,6 +116,10 @@ export interface IVideoItem {
   description?: string;
   startSeconds?: number;
   thumbnailSrc?: string;
+  category?: VideoCategoryType;
+  duration?: string;
+  viewsLabel?: string;
+  publishedLabel?: string;
 }
 
 export type GalleryAlbumType = "gallery-01" | "gallery-02" | "gallery-03";

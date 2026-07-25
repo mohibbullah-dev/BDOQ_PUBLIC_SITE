@@ -15,8 +15,8 @@ export function FormCard({
   innerClassName,
 }: IFormCardProps) {
   return (
-    <div className={cn(formSectionClass, className)}>
-      <IslamicShapeBackdrop overlay="form" />
+    <div className={cn(formSectionClass, "rounded-2xl", className)}>
+      <IslamicShapeBackdrop overlay="form" className="opacity-40" />
       <div className={cn(formSectionInnerClass, innerClassName)}>
         {children}
       </div>

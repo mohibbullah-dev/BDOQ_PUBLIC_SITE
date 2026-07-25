@@ -3,7 +3,7 @@ import { getMessages } from "next-intl/server";
 import { SITE_URL } from "@/lib/constants";
 import { ClientMessagesProvider } from "@/components/i18n/ClientMessagesProvider";
 import { getFormClientMessages } from "@/lib/i18n/clientShellMessages";
-import { LocalizedPageHero } from "@/components/shared/LocalizedPageHero";
+import { RegistrationPageHero } from "@/components/forms/shared/RegistrationPageHero";
 import { FreeClassForm } from "@/components/forms/FreeClassForm";
 import { getCourses } from "@/lib/courses";
 import { buildFreeClassSubjects } from "@/lib/formOptions";
@@ -40,9 +40,9 @@ export default async function FreeClassPage() {
 
   return (
     <>
-      <LocalizedPageHero pageKey="freeClass" centered />
+      <RegistrationPageHero pageKey="freeClass" />
 
-      <section className="py-12 md:py-16 bg-bg-light">
+      <section className="bg-[#F7FBF8] py-10 md:py-14">
         <div className="site-container">
           <ClientMessagesProvider messages={clientMessages}>
             <FreeClassForm subjects={subjectOptions} />

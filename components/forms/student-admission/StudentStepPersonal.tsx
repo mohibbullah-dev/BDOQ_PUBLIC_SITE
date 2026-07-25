@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Controller, useFormContext } from "react-hook-form";
 import { BilingualLabel } from "@/components/forms/shared/BilingualLabel";
 import { PhoneInput } from "@/components/forms/shared/PhoneInput";
-import { SingleSelectChips } from "@/components/forms/shared/SingleSelectChips";
+import { FormSelect } from "@/components/forms/shared/FormSelect";
 import {
   formErrorClass,
   formInputClass,
@@ -126,7 +126,8 @@ export function StudentStepPersonal() {
           name="gender"
           control={control}
           render={({ field }) => (
-            <SingleSelectChips
+            <FormSelect
+              id="gender"
               value={field.value ?? ""}
               onChange={field.onChange}
               error={errors.gender?.message}

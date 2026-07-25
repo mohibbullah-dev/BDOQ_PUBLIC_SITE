@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Controller, useFormContext, useWatch } from "react-hook-form";
 import { BilingualLabel } from "@/components/forms/shared/BilingualLabel";
 import { MultiSelectChips } from "@/components/forms/shared/MultiSelectChips";
-import { SingleSelectChips } from "@/components/forms/shared/SingleSelectChips";
+import { FormSelect } from "@/components/forms/shared/FormSelect";
 import { FormReviewPanel } from "@/components/forms/wizard/FormReviewPanel";
 import {
   formErrorClass,
@@ -112,8 +112,8 @@ export function FreeStepBooking() {
           name="teacherGender"
           control={control}
           render={({ field }) => (
-            <SingleSelectChips
-              columns={3}
+            <FormSelect
+              id="teacherGender"
               value={field.value ?? "any"}
               onChange={field.onChange}
               error={errors.teacherGender?.message}

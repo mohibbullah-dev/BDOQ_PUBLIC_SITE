@@ -99,7 +99,8 @@ export function createContactSchema(v: FormValidationFn) {
   return z.object({
     name: z.string().min(2, v("contactNameRequired")),
     email: z.string().email(v("contactEmailRequired")),
-    subject: z.string().min(3, v("contactSubjectRequired")),
+    subject: z.string().min(2, v("contactSubjectRequired")),
+    phone: z.string().optional(),
     message: z.string().min(10, v("contactMessageRequired")),
   });
 }

@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { Controller, useFormContext, useWatch } from "react-hook-form";
 import { BilingualLabel } from "@/components/forms/shared/BilingualLabel";
 import { FileDropzone } from "@/components/forms/shared/FileDropzone";
-import { SingleSelectChips } from "@/components/forms/shared/SingleSelectChips";
+import { FormSelect } from "@/components/forms/shared/FormSelect";
 import {
   formErrorClass,
   formInputClass,
@@ -123,8 +123,8 @@ export function TeacherStepAcademic() {
           name="isHafiz"
           control={control}
           render={({ field }) => (
-            <SingleSelectChips
-              columns={2}
+            <FormSelect
+              id="isHafiz"
               value={field.value ?? ""}
               onChange={field.onChange}
               error={errors.isHafiz?.message}

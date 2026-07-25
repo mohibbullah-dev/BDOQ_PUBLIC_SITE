@@ -109,7 +109,7 @@ export function AboutVideoPlayer({ compact = false }: IAboutVideoPlayerProps) {
             {highlightStats.map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-xl border border-gray-100 bg-white px-4 py-2.5 text-center shadow-sm"
+                className="site-card rounded-xl border border-gray-100 bg-white px-4 py-2.5 text-center shadow-sm"
               >
                 <p className="font-body text-base font-bold text-[var(--green-primary)]">
                   {stat.value}

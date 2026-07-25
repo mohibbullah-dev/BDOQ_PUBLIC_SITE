@@ -5,10 +5,14 @@ import { useTranslations } from "next-intl";
 import {
   formErrorClass,
   formInputClass,
+  formSelectChevronClass,
+  formSelectClass,
+  formSelectWrapperClass,
 } from "@/components/forms/shared/formStyles";
 import { COUNTRY_OPTIONS } from "@/lib/formOptions";
 import { pickBilingualLabel } from "@/lib/i18n/formLocale";
 import { useFormLocale } from "@/lib/i18n/useFormLocale";
+import { ChevronDown } from "lucide-react";
 
 interface IAddressFieldsProps<T extends Record<string, unknown>> {
   prefix: string;
@@ -103,17 +107,20 @@ export function AddressFields<T extends Record<string, unknown>>({
           {...register(postalCode as never)}
         />
         <div>
-          <select
-            className={formInputClass}
-            aria-label={t("country")}
-            {...register(country as never)}
-          >
-            {COUNTRY_OPTIONS.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
+          <div className={formSelectWrapperClass}>
+            <select
+              className={formSelectClass}
+              aria-label={t("country")}
+              {...register(country as never)}
+            >
+              {COUNTRY_OPTIONS.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+            <ChevronDown className={formSelectChevronClass} aria-hidden="true" />
+          </div>
           {getError(country) && (
             <p className={formErrorClass}>{getError(country)}</p>
           )}

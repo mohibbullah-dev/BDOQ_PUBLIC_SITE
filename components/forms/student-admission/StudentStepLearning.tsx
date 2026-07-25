@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { Controller, useFormContext } from "react-hook-form";
 import { BilingualLabel } from "@/components/forms/shared/BilingualLabel";
 import { MultiSelectChips } from "@/components/forms/shared/MultiSelectChips";
-import { SingleSelectChips } from "@/components/forms/shared/SingleSelectChips";
+import { FormSelect } from "@/components/forms/shared/FormSelect";
 import {
   formErrorClass,
   formInputClass,
@@ -49,8 +49,8 @@ export function StudentStepLearning() {
           name="quranReadingLevel"
           control={control}
           render={({ field }) => (
-            <SingleSelectChips
-              columns={2}
+            <FormSelect
+              id="quranReadingLevel"
               value={field.value ?? ""}
               onChange={field.onChange}
               error={errors.quranReadingLevel?.message}
@@ -70,8 +70,8 @@ export function StudentStepLearning() {
           name="teachingLanguage"
           control={control}
           render={({ field }) => (
-            <SingleSelectChips
-              columns={4}
+            <FormSelect
+              id="teachingLanguage"
               value={field.value ?? ""}
               onChange={field.onChange}
               error={errors.teachingLanguage?.message}
@@ -111,7 +111,8 @@ export function StudentStepLearning() {
           name="classType"
           control={control}
           render={({ field }) => (
-            <SingleSelectChips
+            <FormSelect
+              id="classType"
               value={field.value ?? ""}
               onChange={field.onChange}
               error={errors.classType?.message}
@@ -210,8 +211,8 @@ export function StudentStepLearning() {
           name="internetType"
           control={control}
           render={({ field }) => (
-            <SingleSelectChips
-              columns={3}
+            <FormSelect
+              id="internetType"
               value={field.value ?? ""}
               onChange={field.onChange}
               error={errors.internetType?.message}

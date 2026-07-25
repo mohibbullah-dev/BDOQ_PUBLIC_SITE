@@ -14,7 +14,7 @@ export function Marquee({
   reverse = false,
   pauseOnHover = false,
   vertical = false,
-  repeat = 4,
+  repeat = 2,
   durationSeconds = 55,
   children,
   ...props
@@ -23,30 +23,40 @@ export function Marquee({
     <div
       {...props}
       className={cn(
-        "group flex overflow-hidden [--gap:1.25rem] [gap:var(--gap)]",
+        "group flex overflow-hidden [--gap:1.25rem]",
         vertical ? "flex-col" : "flex-row",
         className
       )}
     >
-      {Array.from({ length: repeat }, (_, index) => (
-        <div
-          key={index}
-          style={{ animationDuration: `${durationSeconds}s` }}
-          className={cn(
-            "flex shrink-0 justify-around [gap:var(--gap)]",
-            vertical
-              ? reverse
-                ? "flex-col animate-marquee-down"
-                : "flex-col animate-marquee-up"
-              : "flex-row",
-            !vertical &&
-              (reverse ? "animate-marquee-right" : "animate-marquee-left"),
-            pauseOnHover && "group-hover:[animation-play-state:paused]"
-          )}
-        >
-          {children}
-        </div>
-      ))}
+      <div
+        style={{ animationDuration: `${durationSeconds}s` }}
+        className={cn(
+          "flex shrink-0 [gap:var(--gap)]",
+          vertical ? "h-max flex-col" : "w-max flex-row",
+          vertical
+            ? reverse
+              ? "animate-marquee-down"
+              : "animate-marquee-up"
+            : reverse
+              ? "animate-marquee-right"
+              : "animate-marquee-left",
+          "motion-reduce:animate-none",
+          pauseOnHover && "group-hover:[animation-play-state:paused]"
+        )}
+      >
+        {Array.from({ length: repeat }, (_, index) => (
+          <div
+            key={index}
+            className={cn(
+              "flex shrink-0 justify-around [gap:var(--gap)]",
+              vertical ? "flex-col" : "flex-row"
+            )}
+            aria-hidden={index > 0 ? true : undefined}
+          >
+            {children}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

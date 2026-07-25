@@ -3,7 +3,7 @@ import { getMessages } from "next-intl/server";
 import { SITE_URL } from "@/lib/constants";
 import { ClientMessagesProvider } from "@/components/i18n/ClientMessagesProvider";
 import { getFormClientMessages } from "@/lib/i18n/clientShellMessages";
-import { LocalizedPageHero } from "@/components/shared/LocalizedPageHero";
+import { RegistrationPageHero } from "@/components/forms/shared/RegistrationPageHero";
 import { TeacherRegistrationWizard } from "@/components/forms/teacher-registration/TeacherRegistrationWizard";
 
 export const metadata: Metadata = {
@@ -37,9 +37,9 @@ export default async function TeacherRegistrationPage() {
 
   return (
     <>
-      <LocalizedPageHero pageKey="teacherRegistration" centered />
+      <RegistrationPageHero pageKey="teacherRegistration" />
 
-      <section className="py-12 md:py-16 bg-bg-light">
+      <section className="bg-[#F7FBF8] py-10 md:py-14">
         <div className="site-container">
           <ClientMessagesProvider messages={clientMessages}>
             <TeacherRegistrationWizard />

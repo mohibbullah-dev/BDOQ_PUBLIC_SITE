@@ -1,6 +1,56 @@
 export const homeMessages = {
   premiumHero: {
+    aria: "BD Online Quran Academy home introduction",
     featuresAria: "Key features",
+    badge: "Trusted by 300+ students across 10 countries",
+    titleBefore: "Start Your Quran",
+    titleHighlight: "Journey",
+    titleAfter: "in a Few Simple Steps.",
+    subtitle:
+      "Book a free trial, meet your teacher, complete admission, and begin regular classes through our Student Portal.",
+    primaryCta: "Book a Free Trial Class",
+    secondaryCta: "How It Works",
+    imageAlt:
+      "Online Quran learning setup with laptop, mushaf on a rehal, and mosque view",
+    features: {
+      teachers: {
+        title: "Experienced Hafiz Teachers",
+        desc: "Verified & Qualified",
+      },
+      classes: {
+        title: "One-to-One Live Classes",
+        desc: "Personalized Learning",
+      },
+      safe: {
+        title: "Safe & Secure Environment",
+        desc: "For Kids & Adults",
+      },
+      schedule: {
+        title: "Flexible Schedule",
+        desc: "Learn at Your Time",
+      },
+    },
+    quotes: {
+      quote1: {
+        ref: "Surah Al-Fath 48:4",
+        arabic: "هُوَ الَّذِي أَنزَلَ السَّكِينَةَ فِي قُلُوبِ الْمُؤْمِنِينَ",
+        translation:
+          "He sent down tranquility into the hearts of the believers.",
+      },
+      quote2: {
+        ref: "Hadith — Muslim",
+        arabic:
+          "اقْرَءُوا الْقُرْآنَ فَإِنَّهُ يَأْتِي يَوْمَ الْقِيَامَةِ شَفِيعًا لِأَصْحَابِهِ",
+        translation:
+          "Recite the Qur'an — on the Day of Judgment it will intercede for its companions.",
+      },
+      quote3: {
+        ref: "Hadith — Bukhari",
+        arabic: "خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ",
+        translation:
+          "The best among you are those who learn the Qur'an and teach it.",
+      },
+    },
     carousel: {
       aria: "Hero highlights",
       prev: "Previous slide",
@@ -37,8 +87,9 @@ export const homeMessages = {
           secondaryCta: "View Learning Path",
         },
         "slide-4": {
-          badge: "Simple Admission & Learning Journey",
-          title: "Start Your Quran Journey in a Few Simple Steps",
+          badge: "Trusted by 300+ students across 10 countries",
+          title: "Start Your Quran Journey in a Few Simple Steps.",
+          titleHighlight: "Journey",
           subtitle:
             "Book a free trial, meet your teacher, complete admission, and begin regular classes through our Student Portal.",
           imageAlt:
@@ -106,25 +157,32 @@ export const homeMessages = {
       "Explore how one-to-one classes, worldwide scheduling, structured Hifz paths, and private learning spaces come together at BD Online Quran Academy.",
   },
   quickNav: {
+    aria: "Quick links",
     maleTeachers: {
       label: "Male Teachers",
-      description: "Hafiz & male scholars",
+      description: "Qualified & Experienced",
     },
     femaleTeachers: {
       label: "Female Teachers",
-      description: "Qualified sisters instructors",
+      description: "Qualified & Experienced",
     },
-    allCourses: { label: "All Courses", description: "Tajweed, Hifz & more" },
-    freeCourse: { label: "Free Course", description: "Learn Quran at no cost" },
-    pricing: { label: "Pricing", description: "Monthly packages" },
-    blog: { label: "Blog", description: "Articles & guidance" },
+    allCourses: {
+      label: "All Courses",
+      description: "Learn & Grow Anytime",
+    },
+    freeCourse: {
+      label: "Free Courses",
+      description: "Learn Quran for Free",
+    },
+    pricing: { label: "Pricing", description: "Perfectly Affordable" },
+    blog: { label: "Blog", description: "Articles & Guidance" },
     studentAdmission: {
       label: "Student Admission",
-      description: "Enroll as a student",
+      description: "Simple & Student Friendly",
     },
     freeClass: {
       label: "Free Trial Class",
-      description: "Book a trial session",
+      description: "Book a Free Class",
     },
   },
   about: {
@@ -143,16 +201,18 @@ export const homeMessages = {
   },
   learningPlans: {
     eyebrow: "Learning pathways",
-    title: "Three ways to learn at BDOQ Academy",
+    titleBefore: "Three ways to learn at",
+    titleHighlight: "BDOQ Academy",
     subtitle:
-      "Record courses for flexible self-paced study, private one-to-one classes for personal care, or live courses with structured group learning.",
+      "Choose the learning path that fits your needs. All courses are designed to deliver results with care and excellence.",
     popularBadge: "Most popular",
     cta: "Get started today",
     explorePlan: "Explore plan",
+    trustBadge: "Trusted by 300+ Students Across 10 Countries",
     plans: {
       record: {
         title: "Record Course",
-        displayTitle: "Record course",
+        displayTitle: "Record Course",
         description:
           "Lifetime access with smart notes, quizzes, and flexible timing.",
         features: [
@@ -170,7 +230,7 @@ export const homeMessages = {
       },
       private: {
         title: "Private (1-to-1)",
-        displayTitle: "Private",
+        displayTitle: "Private One-to-One",
         description:
           "Live one-to-one classes with your preferred schedule and personal care.",
         features: [
@@ -188,7 +248,7 @@ export const homeMessages = {
       },
       live: {
         title: "Live Course",
-        displayTitle: "Live course",
+        displayTitle: "Live Course",
         description:
           "Scheduled live sessions with practice, analytics, and class recordings.",
         features: [
@@ -208,7 +268,8 @@ export const homeMessages = {
   },
   howToStart: {
     eyebrow: "How to start",
-    title: "Start your Quran journey in 3 simple steps",
+    titleBefore: "Start your Quran journey in",
+    titleHighlight: "3 simple steps",
     subtitle:
       "From free trial to regular classes — we guide you at every step.",
     steps: {
@@ -269,41 +330,58 @@ export const homeMessages = {
     secondaryCta: "Chat on WhatsApp",
   },
   whyChoose: {
-    eyebrow: "Why BDOQ Academy",
+    eyebrow: "Why choose us",
     title: "Why choose us?",
     subtitle:
       "Personalized Quran education with trusted teachers, flexible schedules, and a learning environment built for every student.",
+    learnMore: "Learn more",
     items: {
       oneToOne: {
-        title: "One to One System",
-        description: "One teacher for one student",
+        title: "One-to-One System",
+        description:
+          "One dedicated teacher for every student — focused attention and faster progress.",
       },
       batch: {
-        title: "Batch System",
-        description: "Regular and planned group classes",
+        title: "Hifz Courses",
+        description:
+          "Structured memorization pathways with regular revision and teacher guidance.",
       },
       flexible: {
-        title: "Flexible Class Times",
-        description: "Schedule classes according to your time",
+        title: "Flexible Learning",
+        description:
+          "Choose class times that fit your routine — morning, evening, or weekends.",
       },
       separate: {
-        title: "Men & Women Separate",
-        description: "Separate education system ensuring privacy",
+        title: "Male & Female Teachers",
+        description:
+          "Separate education for men and women ensuring comfort, privacy, and trust.",
       },
       teachers: {
-        title: "Domestic & International Teachers",
-        description: "Experienced teachers from BD and abroad",
+        title: "Experienced Teachers",
+        description:
+          "Qualified Hafiz and scholars from Bangladesh and abroad guide every class.",
       },
       multilingual: {
-        title: "Multilingual Teaching",
-        description: "Facilities for Bengali, English, Arabic and Urdu",
+        title: "Arabic & Islamic Studies",
+        description:
+          "Learn Arabic reading, writing, and core Islamic studies alongside Quran.",
+        subjects: [
+          "Arabic Reading",
+          "Arabic Writing",
+          "Quranic Arabic",
+          "Islamic Studies",
+        ],
       },
     },
   },
   globalPresence: {
-    eyebrow: "Worldwide reach",
+    eyebrow: "Our global reach",
     title: "Our Global Presence",
-    subtitle: "Our students are currently learning:",
+    subtitle:
+      "Trusted by students and families across the world — learn the Quran from wherever you are.",
+    studentsLabel: "Students",
+    moreCountries: "+ More Countries",
+    cta: "Join students worldwide",
     studentsFrom: "Students learning from",
     hqNote: "Green dots show active student regions worldwide",
     hqPulse: "Pulsing dot marks BDOQ Academy headquarters",
@@ -314,26 +392,29 @@ export const homeMessages = {
     title: "Our respected teachers and mentors",
     subtitle:
       "Learn from qualified Hafiz and scholars — male and female instructors dedicated to your progress.",
+    experienceFallback: "5+ Years Experience",
   },
   testimonials: {
-    eyebrow: "Student opinions",
+    eyebrow: "Student reviews",
     title: "Why trust BDOQ?",
     subtitle:
-      "Real experiences from students and parents across Bangladesh and worldwide.",
+      "Thousands of students and parents trust us for authentic Quran education online.",
     studentsWorldwide: "students worldwide",
+    trustLine: "Trusted by 300+ students worldwide",
   },
   faq: {
-    eyebrow: "Answers to your common questions",
+    eyebrow: "Always here to help",
     title: "Questions and Answers",
     titleAccent: "(FAQs)",
     stillHaveQuestions: "Still have questions?",
+    whatsappCta: "Chat on WhatsApp",
     highlights: {
-      common: "Common questions",
-      yearsExperience: "Years experience",
-      supportChannels: "Support channels",
+      students: "Satisfied Students",
+      feedback: "Positive Feedback",
+      support: "Support Available",
     },
     intro:
-      "Everything you need to know before starting your Quran journey with BDOQ Academy — from free trials to class times and female teacher options.",
+      "Everything you need to know before starting your Quran journey with BDOQ Academy — from free trials to class times and learning methods.",
     stillHaveQuestionsDesc:
       "Our team is ready to help you choose the right course.",
     items: {

@@ -64,7 +64,14 @@ export default async function BlogDetailPage({ params }: IBlogDetailPageProps) {
   }
 
   const allPosts = await getBlogPosts(locale as "en" | "bn");
-  const relatedPosts = getRelatedBlogPosts(post, allPosts);
+  const relatedPosts = getRelatedBlogPosts(post, allPosts, 4);
+  const popularPosts = allPosts
+    .filter((item) => item.slug !== post.slug)
+    .sort(
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    )
+    .slice(0, 4);
   const { prev, next } = getAdjacentBlogPosts(post, allPosts);
   const messages = await getMessages();
   const clientMessages = getBlogClientMessages(
@@ -76,6 +83,7 @@ export default async function BlogDetailPage({ params }: IBlogDetailPageProps) {
       <BlogDetailView
         post={post}
         relatedPosts={relatedPosts}
+        popularPosts={popularPosts}
         prevPost={prev}
         nextPost={next}
       />

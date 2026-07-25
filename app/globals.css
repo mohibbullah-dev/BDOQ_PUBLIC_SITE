@@ -225,6 +225,74 @@
     height: clamp(220px, 32vw, 360px);
   }
 
+  /* Home hero mihrab / arch frame — tombstone arch matching mockup */
+  .hero-mihrab-frame {
+    border: 3px solid #d4a853;
+    border-radius: 50% 50% 1.35rem 1.35rem / 36% 36% 1.35rem 1.35rem;
+    box-shadow:
+      0 28px 64px -28px rgba(38, 155, 111, 0.4),
+      inset 0 0 0 7px rgba(255, 255, 255, 0.65);
+    background: linear-gradient(180deg, #f8f1df 0%, #ffffff 100%);
+  }
+
+  .hero-mihrab-inner {
+    border-radius: 50% 50% 1rem 1rem / 34% 34% 1rem 1rem;
+  }
+
+  /* Hero carousel arrows — pinned left/right on the slide image */
+  .hero-carousel-nav {
+    position: absolute;
+    top: 50%;
+    z-index: 30;
+    display: flex;
+    height: 2.5rem;
+    width: 2.5rem;
+    transform: translateY(-50%);
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background-color: var(--green-primary);
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.18);
+    transition: filter 0.2s ease;
+  }
+
+  .hero-carousel-nav:hover {
+    filter: brightness(0.95);
+  }
+
+  .hero-carousel-nav:focus-visible {
+    outline: 2px solid var(--green-primary);
+    outline-offset: 2px;
+  }
+
+  .hero-carousel-nav--prev {
+    left: 0.65rem;
+  }
+
+  .hero-carousel-nav--next {
+    right: 0.65rem;
+  }
+
+  @media (min-width: 640px) {
+    .hero-mihrab-frame {
+      border-width: 4px;
+      border-radius: 50% 50% 1.5rem 1.5rem / 38% 38% 1.5rem 1.5rem;
+    }
+
+    .hero-mihrab-inner {
+      border-radius: 50% 50% 1.15rem 1.15rem / 36% 36% 1.15rem 1.15rem;
+    }
+
+    .hero-carousel-nav--prev {
+      left: 0.85rem;
+    }
+
+    .hero-carousel-nav--next {
+      right: 0.85rem;
+    }
+  }
+
   .islamic-pattern-bg {
     background-color: var(--dark);
     background-image: var(--islamic-pattern);
@@ -392,7 +460,7 @@
     isolation: isolate;
   }
 
-  /* Overlay behind content so labels/buttons stay readable */
+  /* Deep brand hover wash — behind content, smooth fade */
   .site-card::after {
     content: "";
     position: absolute;
@@ -400,12 +468,12 @@
     border-radius: inherit;
     background-image: linear-gradient(
       135deg,
-      #269b6f 0%,
-      #1f7a58 45%,
-      #a83530 100%
+      #32c991 0%,
+      #269b6f 42%,
+      #cd443f 100%
     );
     opacity: 0;
-    transition: opacity 0.22s ease;
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     pointer-events: none;
     z-index: 0;
     will-change: opacity;
@@ -413,7 +481,12 @@
 
   .site-card:hover::after,
   .site-card:focus-within::after {
-    opacity: 0.22;
+    opacity: 0.38;
+  }
+
+  .site-card.site-card--no-overlay::after,
+  .site-card-no-overlay::after {
+    display: none;
   }
 
   .site-card > * {
@@ -421,7 +494,7 @@
     z-index: 1;
   }
 
-  /* Legacy span overlay — same brand look (keep for older markup) */
+  /* Legacy span overlay — same deep brand look */
   .site-card-hover-overlay {
     pointer-events: none;
     position: absolute;
@@ -430,19 +503,19 @@
     background-color: transparent;
     background-image: linear-gradient(
       135deg,
-      #269b6f 0%,
-      #1f7a58 45%,
-      #a83530 100%
+      #32c991 0%,
+      #269b6f 42%,
+      #cd443f 100%
     );
     opacity: 0;
-    transition: opacity 0.22s ease;
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     z-index: 0;
     will-change: opacity;
   }
 
   .group:hover .site-card-hover-overlay,
   .group:focus-within .site-card-hover-overlay {
-    opacity: 0.22;
+    opacity: 0.38;
   }
 
   .site-btn-hover-overlay {
@@ -715,14 +788,14 @@
   .home-hero-section {
     min-height: auto;
     padding-top: calc(72px + env(safe-area-inset-top, 0px));
-    padding-bottom: 2.5rem;
+    padding-bottom: 0;
   }
 
   @media (min-width: 768px) {
     .home-hero-section {
-      min-height: min(88svh, 820px);
-      padding-top: calc(108px + env(safe-area-inset-top, 0px));
-      padding-bottom: 3rem;
+      min-height: auto;
+      padding-top: calc(100px + env(safe-area-inset-top, 0px));
+      padding-bottom: 0;
     }
   }
 }
@@ -1027,7 +1100,8 @@ body.site-page-body {
   background-image: var(--brand-grad) !important;
 }
 
-.site-page-surface .site-card-hover-overlay {
+.site-page-surface .site-card-hover-overlay,
+.site-page-surface .site-card::after {
   background-color: transparent !important;
   background-image: var(--brand-grad) !important;
 }

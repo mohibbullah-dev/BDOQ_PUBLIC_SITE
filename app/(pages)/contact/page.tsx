@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages } from "next-intl/server";
 import { SITE_URL } from "@/lib/constants";
 import { ClientMessagesProvider } from "@/components/i18n/ClientMessagesProvider";
 import { getContactClientMessages } from "@/lib/i18n/clientShellMessages";
 import { ContactInfo } from "@/components/contact/ContactInfo";
 import { ContactGlobalMap } from "@/components/contact/ContactGlobalMap";
-import { LocalizedPageHero } from "@/components/shared/LocalizedPageHero";
+import { ContactPageHero } from "@/components/contact/ContactPageHero";
+import { ContactQuickCards } from "@/components/contact/ContactQuickCards";
 
 const ContactForm = dynamic(
   () =>
@@ -46,50 +47,27 @@ export const metadata: Metadata = {
 };
 
 export default async function ContactPage() {
-  const t = await getTranslations("pages.contact");
   const messages = await getMessages();
   const clientMessages = getContactClientMessages(
     messages as Record<string, unknown>
   );
 
-  const stats = [
-    { label: t("responseTime"), value: t("responseValue") },
-    { label: t("studentsWorldwide"), value: t("studentsValue") },
-    { label: t("supportChannels"), value: t("supportValue") },
-  ];
-
   return (
-    <>
-      <LocalizedPageHero pageKey="contact" centered />
+    <ClientMessagesProvider messages={clientMessages}>
+      <ContactPageHero />
 
-      <section className="pb-16 md:pb-24 bg-bg-light">
-        <div className="site-container pt-12 md:pt-16">
-          <div className="mb-10 grid gap-4 sm:grid-cols-3">
-            {stats.map((item) => (
-              <div
-                key={item.label}
-                className="rounded-2xl border border-white bg-white/90 px-5 py-4 text-center shadow-sm backdrop-blur-sm"
-              >
-                <p className="font-body text-xs font-semibold uppercase tracking-wide text-text-gray">
-                  {item.label}
-                </p>
-                <p className="mt-1 font-body text-sm font-semibold text-primary-dark">
-                  {item.value}
-                </p>
-              </div>
-            ))}
-          </div>
+      <section className="bg-[#F9FBF9] pb-16 md:pb-24">
+        <div className="site-container pt-2 md:pt-4">
+          <ContactQuickCards />
 
-          <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
-            <ClientMessagesProvider messages={clientMessages}>
-              <ContactInfo />
-              <ContactForm />
-            </ClientMessagesProvider>
+          <div className="mt-12 grid items-start gap-10 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm md:p-8 lg:mt-14 lg:grid-cols-2 lg:gap-12">
+            <ContactInfo />
+            <ContactForm />
           </div>
 
           <ContactGlobalMap />
         </div>
       </section>
-    </>
+    </ClientMessagesProvider>
   );
 }

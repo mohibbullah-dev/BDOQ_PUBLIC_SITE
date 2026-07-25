@@ -1,6 +1,7 @@
 import { apiFetch } from "./api";
 import type { LocaleType } from "@/i18n/routing";
 import { mapApiBlogToPost, type IApiBlogPost } from "@/lib/i18n/localizeBlog";
+import { STATIC_BLOG_POSTS } from "./constants";
 import type { IBlogPost } from "./types";
 
 const BLOG_REVALIDATE = 300;
@@ -30,9 +31,9 @@ export async function getBlogPosts(
       return posts.map((post) => mapApiBlogToPost(post, locale));
     }
   } catch {
-    return [];
+    return STATIC_BLOG_POSTS;
   }
-  return [];
+  return STATIC_BLOG_POSTS;
 }
 
 export async function getBlogPost(
@@ -48,9 +49,9 @@ export async function getBlogPost(
       return mapApiBlogToPost(response.data, locale);
     }
   } catch {
-    return null;
+    return STATIC_BLOG_POSTS.find((post) => post.slug === slug) ?? null;
   }
-  return null;
+  return STATIC_BLOG_POSTS.find((post) => post.slug === slug) ?? null;
 }
 
 export async function getBlogSlugs(): Promise<string[]> {

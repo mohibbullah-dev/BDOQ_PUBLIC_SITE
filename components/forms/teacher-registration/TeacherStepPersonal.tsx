@@ -6,7 +6,7 @@ import { Controller, useFormContext, useWatch } from "react-hook-form";
 import { BilingualLabel } from "@/components/forms/shared/BilingualLabel";
 import { AddressFields } from "@/components/forms/shared/AddressFields";
 import { PhoneInput } from "@/components/forms/shared/PhoneInput";
-import { SingleSelectChips } from "@/components/forms/shared/SingleSelectChips";
+import { FormSelect } from "@/components/forms/shared/FormSelect";
 import {
   formErrorClass,
   formInputClass,
@@ -130,7 +130,8 @@ export function TeacherStepPersonal() {
             name="gender"
             control={control}
             render={({ field }) => (
-              <SingleSelectChips
+              <FormSelect
+                id="gender"
                 value={field.value ?? ""}
                 onChange={field.onChange}
                 error={errors.gender?.message}
@@ -149,8 +150,8 @@ export function TeacherStepPersonal() {
             name="maritalStatus"
             control={control}
             render={({ field }) => (
-              <SingleSelectChips
-                columns={2}
+              <FormSelect
+                id="maritalStatus"
                 value={field.value ?? ""}
                 onChange={field.onChange}
                 error={errors.maritalStatus?.message}

@@ -1,88 +1,143 @@
 "use client";
 
 import Image from "next/image";
+import { ArrowRight, Globe2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { GLOBAL_COUNTRIES } from "@/lib/constants";
 import type { ICountryPresence } from "@/lib/types";
-import { DualRowMarquee } from "@/components/shared/DualRowMarquee";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
-import { SectionHeader } from "@/components/shared/SectionHeader";
+import { SiteCta } from "@/components/shared/SiteCta";
 import { cn } from "@/lib/cn";
 
-function FlagMarqueeCard({ country }: { country: ICountryPresence }) {
+/** Extra countries shown on home global grid (mockup coverage) */
+const EXTRA_COUNTRIES: ICountryPresence[] = [
+  { name: "Kuwait", flag: "🇰🇼", code: "kw" },
+  { name: "Oman", flag: "🇴🇲", code: "om" },
+  { name: "Bahrain", flag: "🇧🇭", code: "bh" },
+  { name: "Ireland", flag: "🇮🇪", code: "ie" },
+];
+
+function GoldEyebrow({ label }: { label: string }) {
+  return (
+    <div className="mb-4 flex items-center justify-center gap-2.5">
+      <span className="h-px w-8 bg-[#D4A853]/60 sm:w-12" aria-hidden="true" />
+      <span
+        className="inline-block h-1.5 w-1.5 rotate-45 bg-[#D4A853]"
+        aria-hidden="true"
+      />
+      <p className="font-body text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4A853] sm:text-xs">
+        {label}
+      </p>
+      <span
+        className="inline-block h-1.5 w-1.5 rotate-45 bg-[#D4A853]"
+        aria-hidden="true"
+      />
+      <span className="h-px w-8 bg-[#D4A853]/60 sm:w-12" aria-hidden="true" />
+    </div>
+  );
+}
+
+function CountryCard({ country }: { country: ICountryPresence }) {
+  const t = useTranslations("home.globalPresence");
+
   return (
     <article
       className={cn(
-        "site-card flex w-[148px] shrink-0 flex-col items-center gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-5 sm:w-[168px]",
-        "transition-shadow duration-200 hover:shadow-md"
+        "site-card flex flex-col items-center rounded-xl border border-gray-100 bg-white px-2.5 py-3",
+        "shadow-[0_8px_24px_-18px_rgba(15,23,42,0.18)]",
+        "transition-transform duration-200 hover:-translate-y-0.5"
       )}
     >
-      <div className="relative h-11 w-[4.25rem] overflow-hidden rounded-lg ring-1 ring-black/10 sm:h-12 sm:w-[4.75rem]">
+      <div className="relative h-8 w-12 overflow-hidden rounded-md ring-1 ring-black/10 sm:h-9 sm:w-14">
         <Image
-          src={`https://flagcdn.com/w320/${country.code}.png`}
+          src={`https://flagcdn.com/w160/${country.code}.png`}
           alt={`${country.name} flag`}
           fill
           className="object-cover"
-          sizes="76px"
+          sizes="56px"
           quality={90}
         />
       </div>
-      <div className="min-w-0 text-center">
-        <h3 className="font-body text-sm font-semibold leading-snug text-primary-dark">
-          {country.name}
-        </h3>
-        <p className="mt-1 font-body text-[10px] font-bold uppercase tracking-[0.2em] text-primary/65">
-          {country.code}
-        </p>
-      </div>
+      <h3 className="mt-2 line-clamp-1 text-center font-body text-[11px] font-semibold text-primary-dark sm:text-xs">
+        {country.name}
+      </h3>
+      <p className="mt-0.5 font-body text-[10px] text-text-gray">
+        {t("studentsLabel")}
+      </p>
     </article>
   );
 }
 
-function splitCountries(
-  countries: ICountryPresence[]
-): [ICountryPresence[], ICountryPresence[]] {
-  const rowOne = countries.filter((_, index) => index % 2 === 0);
-  const rowTwo = countries.filter((_, index) => index % 2 === 1);
-  return [rowOne, rowTwo];
-}
-
-export function GlobalPresenceSection() {
+function MoreCountriesCard() {
   const t = useTranslations("home.globalPresence");
-  const [rowOne, rowTwo] = splitCountries(GLOBAL_COUNTRIES);
 
   return (
-    <section className="relative overflow-hidden bg-bg-light py-16 md:py-20">
-      <div className="site-container relative">
-        <ScrollReveal className="mb-10 text-center md:mb-12">
-          <SectionHeader
-            eyebrow={t("eyebrow")}
-            title={t("title")}
-            subtitle={t("subtitle")}
-            centered
-          />
+    <article
+      className={cn(
+        "site-card flex flex-col items-center justify-center rounded-xl border border-primary/20 bg-bg-light px-2.5 py-3",
+        "shadow-[0_8px_24px_-18px_rgba(15,23,42,0.12)]"
+      )}
+    >
+      <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary">
+        <Globe2 className="h-4 w-4" aria-hidden="true" />
+      </span>
+      <p className="mt-2 text-center font-body text-[11px] font-semibold leading-snug text-primary-dark sm:text-xs">
+        {t("moreCountries")}
+      </p>
+    </article>
+  );
+}
+
+function mergeCountries(): ICountryPresence[] {
+  const seen = new Set(GLOBAL_COUNTRIES.map((c) => c.code));
+  const extras = EXTRA_COUNTRIES.filter((c) => !seen.has(c.code));
+  return [...GLOBAL_COUNTRIES, ...extras];
+}
+
+/** Global presence — static country flag grid (mockup) */
+export function GlobalPresenceSection() {
+  const t = useTranslations("home.globalPresence");
+  const countries = mergeCountries();
+
+  return (
+    <section className="relative overflow-hidden bg-white py-16 md:py-24">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.07]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 1px 1px, rgba(38,155,111,0.55) 1px, transparent 0)",
+          backgroundSize: "22px 22px",
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="site-container relative z-[1]">
+        <ScrollReveal className="mb-10 md:mb-12">
+          <div className="mx-auto max-w-3xl text-center">
+            <GoldEyebrow label={t("eyebrow")} />
+            <h2 className="font-playfair text-3xl font-bold tracking-tight text-primary-dark md:text-4xl">
+              {t("title")}
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl font-body text-base leading-relaxed text-text-gray">
+              {t("subtitle")}
+            </p>
+          </div>
         </ScrollReveal>
-      </div>
 
-      <div className="mb-10 md:mb-12">
-        <DualRowMarquee
-          rowOneDuration={100}
-          rowTwoDuration={120}
-          gapClassName="gap-3 sm:gap-4"
-          rowOne={rowOne.map((country) => (
-            <FlagMarqueeCard key={`r1-${country.code}`} country={country} />
-          ))}
-          rowTwo={rowTwo.map((country) => (
-            <FlagMarqueeCard key={`r2-${country.code}`} country={country} />
-          ))}
-        />
-      </div>
+        <ScrollReveal>
+          <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 lg:gap-3">
+            {countries.map((country) => (
+              <CountryCard key={country.code} country={country} />
+            ))}
+            <MoreCountriesCard />
+          </div>
+        </ScrollReveal>
 
-      <div className="site-container relative">
-        <ScrollReveal delay={0.1}>
-          <p className="mx-auto max-w-3xl text-center font-body text-base leading-relaxed text-text-gray md:text-lg">
-            {t("countriesLine")}
-          </p>
+        <ScrollReveal delay={0.1} className="mt-10 text-center md:mt-12">
+          <SiteCta href="/student-admission" className="bg-primary-dark hover:brightness-110">
+            {t("cta")}
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </SiteCta>
         </ScrollReveal>
       </div>
     </section>

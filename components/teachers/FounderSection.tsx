@@ -10,7 +10,7 @@ export function FounderSection() {
       <div className="site-container">
         <div className="grid items-center gap-10 md:grid-cols-2 lg:gap-16">
           <div className="flex justify-center md:justify-start">
-            <div className="relative w-full max-w-sm overflow-hidden rounded-2xl border border-gray-200 bg-bg-light">
+            <div className="site-card relative w-full max-w-sm overflow-hidden rounded-2xl border border-gray-200 bg-bg-light">
               <div className="relative aspect-[4/5] w-full">
                 <Image
                   src={FOUNDER.image}
@@ -47,7 +47,7 @@ export function FounderSection() {
               Islamic education.
             </p>
 
-            <div className="rounded-2xl border-l-4 border-gold bg-bg-light p-6">
+            <div className="site-card rounded-2xl border-l-4 border-gold bg-bg-light p-6">
               <h4 className="font-body text-sm font-bold uppercase tracking-wide text-primary mb-3">
                 Vision and goals
               </h4>

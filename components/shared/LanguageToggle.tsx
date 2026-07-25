@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import type { LocaleType } from "@/i18n/routing";
@@ -18,22 +19,20 @@ const LOCALES = [
   { id: "bn" as const, flag: "bd", label: "BN", name: "বাংলা" },
 ] as const;
 
-function FlagChip({
+function FlagImage({
   code,
   name,
-  active,
+  size = "md",
 }: {
   code: string;
   name: string;
-  active: boolean;
+  size?: "sm" | "md";
 }) {
   return (
     <span
       className={cn(
-        "relative h-4 w-6 shrink-0 overflow-hidden rounded-[4px] ring-1 transition-all duration-300",
-        active
-          ? "ring-white/90 shadow-sm"
-          : "ring-black/10 group-hover:ring-[var(--green-primary)]/40"
+        "relative shrink-0 overflow-hidden rounded-full ring-1 ring-black/10",
+        size === "sm" ? "h-5 w-5" : "h-6 w-6"
       )}
     >
       <Image
@@ -55,6 +54,11 @@ export function LanguageToggle({
   const locale = useLocale() as LocaleType;
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  const active = LOCALES.find((item) => item.id === locale) ?? LOCALES[0];
+  const isDark = variant === "dark";
 
   useEffect(() => {
     const stored = getStoredLocale();
@@ -68,7 +72,28 @@ export function LanguageToggle({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const onPointerDown = (event: MouseEvent): void => {
+      if (!rootRef.current?.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+    const onKeyDown = (event: KeyboardEvent): void => {
+      if (event.key === "Escape") setOpen(false);
+    };
+
+    document.addEventListener("mousedown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
+
   const handleSelect = (nextLocale: LocaleType): void => {
+    setOpen(false);
     if (nextLocale === locale || isPending) return;
 
     setLocalePreference(nextLocale);
@@ -77,64 +102,81 @@ export function LanguageToggle({
     });
   };
 
-  const isDark = variant === "dark";
-  const activeIndex = locale === "bn" ? 1 : 0;
-
   return (
-    <div
-      className={cn(
-        "relative inline-flex shrink-0 items-center rounded-[8px] p-1",
-        isDark
-          ? "border border-white/15 bg-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
-          : "border border-[var(--green-primary)]/15 bg-white shadow-[0_4px_14px_rgba(15,23,42,0.06)]",
-        isPending && "opacity-70",
-        className
-      )}
-      role="group"
-      aria-label="Language toggle"
-    >
-      <span
+    <div ref={rootRef} className={cn("relative shrink-0", className)}>
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-label={`Language: ${active.name}`}
+        disabled={isPending}
         className={cn(
-          "pointer-events-none absolute bottom-1 top-1 w-[calc(50%-4px)] rounded-[6px] transition-transform duration-300 ease-out",
-          "bg-[var(--green-primary)] shadow-[0_6px_16px_-6px_rgba(50,201,145,0.65)]",
-          activeIndex === 0 ? "left-1" : "left-[calc(50%+2px)]"
+          "inline-flex h-9 items-center gap-1.5 rounded-full px-2 font-body text-sm font-semibold transition-colors",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+          isPending && "opacity-70",
+          isDark
+            ? "bg-white/10 text-white hover:bg-white/15"
+            : "bg-transparent text-primary-dark hover:bg-bg-light"
         )}
-        aria-hidden="true"
-      />
+      >
+        <FlagImage code={active.flag} name={active.name} />
+        <span className="uppercase tracking-wide">{active.label}</span>
+        <ChevronDown
+          className={cn(
+            "h-3.5 w-3.5 transition-transform",
+            isDark ? "text-white/80" : "text-text-gray",
+            open && "rotate-180"
+          )}
+          aria-hidden="true"
+        />
+      </button>
 
-      {LOCALES.map((item) => {
-        const active = locale === item.id;
-
-        return (
-          <button
-            key={item.id}
-            type="button"
-            onClick={() => handleSelect(item.id)}
-            aria-pressed={active}
-            aria-label={`Switch to ${item.name}`}
-            title={item.name}
-            className={cn(
-              "group relative z-[1] inline-flex min-w-[3.25rem] items-center justify-center gap-1.5 rounded-[6px] px-2.5 py-1.5 transition-colors duration-300",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--green-primary)] focus-visible:ring-offset-2",
-              active
-                ? "text-white"
-                : isDark
-                  ? "text-white/75 hover:text-white"
-                  : "text-[var(--text-gray)] hover:text-[var(--green-primary)]"
-            )}
-          >
-            <FlagChip code={item.flag} name={item.name} active={active} />
-            <span
-              className={cn(
-                "font-body text-[10px] font-bold uppercase tracking-wide",
-                active ? "text-white" : undefined
-              )}
-            >
-              {item.label}
-            </span>
-          </button>
-        );
-      })}
+      {open ? (
+        <ul
+          role="listbox"
+          aria-label="Select language"
+          className={cn(
+            "absolute right-0 top-[calc(100%+6px)] z-50 min-w-[10rem] overflow-hidden rounded-xl border p-1 shadow-lg",
+            isDark
+              ? "border-white/15 bg-primary-dark text-white"
+              : "border-gray-200 bg-white text-primary-dark"
+          )}
+        >
+          {LOCALES.map((item) => {
+            const selected = item.id === locale;
+            return (
+              <li key={item.id} role="option" aria-selected={selected}>
+                <button
+                  type="button"
+                  onClick={() => handleSelect(item.id)}
+                  className={cn(
+                    "flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left font-body text-sm transition-colors",
+                    selected
+                      ? isDark
+                        ? "bg-white/15 font-semibold"
+                        : "bg-bg-light font-semibold text-primary"
+                      : isDark
+                        ? "hover:bg-white/10"
+                        : "hover:bg-bg-light"
+                  )}
+                >
+                  <FlagImage code={item.flag} name={item.name} size="sm" />
+                  <span className="uppercase tracking-wide">{item.label}</span>
+                  <span
+                    className={cn(
+                      "ml-auto text-xs font-normal normal-case",
+                      isDark ? "text-white/60" : "text-text-gray"
+                    )}
+                  >
+                    {item.name}
+                  </span>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      ) : null}
     </div>
   );
 }

@@ -53,7 +53,7 @@ export function FormWizardShell({
         <WizardProgress steps={steps} currentStep={currentStep} compact />
 
         <div className="mb-6 border-b border-gold/20 pb-5">
-          <h2 className="font-amiri text-xl font-bold text-primary-dark md:text-2xl">
+          <h2 className="font-playfair text-xl font-bold text-primary-dark md:text-2xl">
             {activeStep ? stepTitle(activeStep) : ""}
           </h2>
         </div>

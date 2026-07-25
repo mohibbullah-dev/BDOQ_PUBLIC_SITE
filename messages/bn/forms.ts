@@ -17,8 +17,10 @@ export const formsMessages = {
   },
   layout: {
     bismillah: "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ",
+    ahlan: "أهلاً وسهلاً",
     tagline: "এক শিক্ষক · এক শিক্ষার্থী",
     helpTitle: "সাহায্য দরকার?",
+    needHelp: "সাহায্য দরকার?",
     helpBody: "WhatsApp-এ লিখুন — সাধারণত কয়েক ঘণ্টার মধ্যে উত্তর পাবেন।",
     freeClass: {
       title: "ফ্রি ট্রায়াল ক্লাস বুক করুন",

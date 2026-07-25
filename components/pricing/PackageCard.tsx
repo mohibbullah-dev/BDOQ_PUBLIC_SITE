@@ -1,7 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Crown } from "lucide-react";
+import {
+  ArrowRight,
+  Award,
+  Check,
+  Crown,
+  Gem,
+  Star,
+  User,
+  type LucideIcon,
+} from "lucide-react";
 import type { IPackage } from "@/lib/types";
 import {
   useLocalizedPackage,
@@ -17,157 +26,106 @@ export interface IPackageCardProps {
 
 const revealEase = [0.22, 1, 0.36, 1] as const;
 
+const PACKAGE_ICONS: Record<string, LucideIcon> = {
+  basic: User,
+  standard: Crown,
+  advance: Award,
+  premium: Gem,
+};
+
 export function PackageCard({ pkg, index = 0 }: IPackageCardProps) {
   const localized = useLocalizedPackage(pkg);
   const labels = usePricingLabels();
   const isPopular = pkg.popular === true;
-  const priceFormatted = pkg.price.bdt.toLocaleString("en-BD");
+  const priceBdt = pkg.price.bdt.toLocaleString("en-BD");
+  const Icon = PACKAGE_ICONS[pkg.name.toLowerCase()] ?? Crown;
 
   return (
     <motion.article
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.55, delay: index * 0.1, ease: revealEase }}
+      transition={{ duration: 0.55, delay: index * 0.08, ease: revealEase }}
       className={cn(
-        "group relative flex h-full flex-col",
-        isPopular && "lg:-mt-4 lg:mb-4 lg:scale-[1.03] z-10"
+        "group relative flex h-full flex-col pt-4",
+        isPopular && "z-10 lg:-mt-2 lg:mb-2 lg:scale-[1.02]"
       )}
     >
-      {isPopular && (
-        <span
-          className={cn(
-            "absolute -top-3.5 left-1/2 z-10 -translate-x-1/2 rounded-full px-4 py-1",
-            "bg-[linear-gradient(135deg,#CD443F,#A83530)] font-body text-[11px] font-bold uppercase tracking-wider text-white",
-            "shadow-[0_8px_20px_-6px_rgba(205,68,63,0.45)]"
-          )}
-        >
-          {labels.mostPopular}
-        </span>
-      )}
-
       <div
         className={cn(
-          "relative flex h-full flex-col overflow-hidden rounded-3xl transition-all duration-500",
-          isPopular
-            ? [
-                "bg-[linear-gradient(160deg,#32C991_0%,#269B6F_50%,#CD443F_100%)]",
-                "text-white shadow-md",
-              ]
-            : [
-                "site-card border border-gray-200 bg-white text-text-dark",
-                "transition-shadow duration-200 hover:shadow-md",
-              ]
+          "site-card relative flex h-full flex-col overflow-hidden rounded-2xl bg-white",
+          "border shadow-[0_12px_40px_-16px_rgba(15,23,42,0.12)]",
+          "transition-shadow duration-200 hover:shadow-[0_18px_48px_-16px_rgba(38,155,111,0.22)]",
+          isPopular ? "border-primary/45 ring-1 ring-primary/25" : "border-gray-200"
         )}
       >
+        {isPopular ? (
+          <div className="flex items-center justify-center gap-1.5 bg-primary px-4 py-2 font-body text-[11px] font-bold uppercase tracking-[0.14em] text-white">
+            <Star className="h-3.5 w-3.5 fill-gold text-gold" aria-hidden="true" />
+            {labels.mostPopular}
+          </div>
+        ) : null}
 
-        <div className="relative px-6 pb-2 pt-7 md:px-7 md:pt-8">
+        <div
+          className={cn(
+            "relative px-6 pb-1 md:px-7",
+            isPopular ? "pt-6" : "pt-8"
+          )}
+        >
           <div className="flex items-start justify-between gap-3">
             <div>
-              <p
-                className={cn(
-                  "font-body text-xs font-semibold uppercase tracking-widest",
-                  isPopular ? "text-teal/90" : "text-primary"
-                )}
-              >
+              <p className="font-body text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
                 {pkg.period}
               </p>
-              <h3
-                className={cn(
-                  "mt-1 font-playfair text-2xl font-bold md:text-[1.65rem]",
-                  isPopular ? "text-white" : "text-primary-dark"
-                )}
-              >
+              <h3 className="mt-1 font-playfair text-2xl font-bold text-primary-dark md:text-[1.7rem]">
                 {localized.name}
               </h3>
             </div>
-
-            <div
-              className={cn(
-                "flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl",
-                isPopular
-                  ? "bg-white/15 text-white ring-1 ring-white/20"
-                  : "bg-bg-light text-primary"
-              )}
-            >
-              <Crown
-                className="h-5 w-5"
-                strokeWidth={1.75}
-                aria-hidden="true"
-              />
-            </div>
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-bg-light text-primary">
+              <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
+            </span>
           </div>
 
-          <div
-            className={cn(
-              "mt-5 border-b border-dashed pb-5",
-              isPopular ? "border-white/15" : "border-gray-200"
-            )}
-          >
-            <p
-              className={cn(
-                "font-body text-3xl font-bold tracking-tight md:text-[2rem]",
-                isPopular ? "text-white" : "text-primary-dark"
-              )}
-            >
-              ৳{priceFormatted}
-              <span
-                className={cn(
-                  "ml-1 text-base font-medium",
-                  isPopular ? "text-white/65" : "text-text-gray"
-                )}
-              >
+          <div className="mt-5">
+            <p className="font-playfair text-4xl font-bold tracking-tight text-primary-dark md:text-[2.5rem]">
+              ৳{priceBdt}
+              <span className="ml-1 font-body text-base font-medium text-text-gray">
                 {labels.perMonth}
               </span>
             </p>
-            <p
-              className={cn(
-                "mt-1 font-body text-sm",
-                isPopular ? "text-white/70" : "text-text-gray"
-              )}
-            >
+            <p className="mt-1 font-body text-sm text-text-gray">
               {labels.usdMonthly(pkg.price.usd, labels.month)}
             </p>
           </div>
+
+          <div className="my-5 flex items-center gap-3" aria-hidden="true">
+            <span className="h-px flex-1 bg-gradient-to-r from-transparent via-gold/70 to-transparent" />
+            <span className="h-2 w-2 rotate-45 rounded-[1px] bg-gold" />
+            <span className="h-px flex-1 bg-gradient-to-r from-transparent via-gold/70 to-transparent" />
+          </div>
         </div>
 
-        <ul className="relative flex-1 space-y-2.5 px-6 md:px-7">
+        <ul className="relative flex-1 space-y-3 px-6 md:px-7">
           {localized.features.map((feature) => (
             <li key={feature} className="flex items-start gap-2.5">
-              <span
-                className={cn(
-                  "mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full",
-                  isPopular
-                    ? "bg-white/15 text-teal"
-                    : "bg-primary/10 text-primary"
-                )}
-              >
+              <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-white">
                 <Check className="h-3 w-3" strokeWidth={3} aria-hidden="true" />
               </span>
-              <span
-                className={cn(
-                  "font-body text-sm leading-snug",
-                  isPopular ? "text-white/90" : "text-text-gray"
-                )}
-              >
+              <span className="font-body text-sm leading-snug text-text-gray">
                 {feature}
               </span>
             </li>
           ))}
         </ul>
 
-        <div className="relative p-6 pt-5 md:p-7 md:pt-6">
+        <div className="relative p-6 pt-6 md:px-7 md:pb-7">
           <SiteCta
             href="/student-admission"
-            variant={isPopular ? "secondary" : "primary"}
+            variant="primary"
             size="sm"
-            className={cn(
-              "w-full",
-              isPopular &&
-                "border-white/40 bg-white text-primary hover:bg-bg-light hover:text-primary"
-            )}
+            className="w-full"
           >
-            {labels.getStarted(priceFormatted)}
+            {labels.getStarted(priceBdt)}
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </SiteCta>
         </div>

@@ -1,37 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import type { ITestimonial } from "@/lib/types";
 import { getTestimonialAvatarUrls } from "@/lib/testimonialAvatars";
-import { DualRowMarquee } from "@/components/shared/DualRowMarquee";
-import { TestimonialMarqueeCard } from "@/components/home/TestimonialMarqueeCard";
 import { AvatarCircles } from "@/components/ui/avatar-circles";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
-import { SectionHeader } from "@/components/shared/SectionHeader";
 import { SiteCta } from "@/components/shared/SiteCta";
+import { Testimonial3DMarquee } from "@/components/home/Testimonial3DMarquee";
 
-function padRow(items: ITestimonial[], min = 4): ITestimonial[] {
-  if (items.length === 0) return items;
-  const out = [...items];
-  while (out.length < min) {
-    out.push(...items);
-  }
-  return out;
-}
-
-function splitTestimonials(
-  items: ITestimonial[]
-): [ITestimonial[], ITestimonial[]] {
-  if (items.length === 0) return [[], []];
-  const rowOne = items.filter((_, index) => index % 2 === 0);
-  const rowTwo =
-    items.length === 1
-      ? items
-      : items.filter((_, index) => index % 2 === 1);
-  return [padRow(rowOne), padRow(rowTwo.length > 0 ? rowTwo : [...items].reverse())];
-}
-
+/** Student reviews — skewed vertical marquee with dual CTAs */
 export function TestimonialsSection({
   id,
   testimonials = [],
@@ -41,51 +20,44 @@ export function TestimonialsSection({
 }) {
   const t = useTranslations("home.testimonials");
   const tCta = useTranslations("cta");
-  const [rowOne, rowTwo] = splitTestimonials(testimonials);
 
   return (
     <section
       id={id}
-      className="relative overflow-hidden bg-bg-light py-16 md:py-20"
+      className="relative overflow-hidden bg-white py-16 md:py-24"
     >
-      <div className="site-container relative">
-        <ScrollReveal className="mb-10 md:mb-12">
-          <SectionHeader
-            eyebrow={t("eyebrow")}
-            title={t("title")}
-            subtitle={t("subtitle")}
-            centered
-          />
+      <Image
+        src="/brand/footer-mosque.svg"
+        alt=""
+        width={280}
+        height={90}
+        className="pointer-events-none absolute -left-2 bottom-8 z-0 hidden w-56 opacity-[0.1] lg:block"
+        aria-hidden="true"
+      />
+
+      <div className="site-container relative z-[1]">
+        <ScrollReveal className="mb-8 md:mb-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="mb-3 font-body text-[11px] font-bold uppercase tracking-[0.18em] text-brand-red sm:text-xs">
+              {t("eyebrow")}
+            </p>
+            <h2 className="font-playfair text-3xl font-bold tracking-tight text-primary-dark md:text-4xl">
+              {t("title")}
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl font-body text-base leading-relaxed text-text-gray">
+              {t("subtitle")}
+            </p>
+          </div>
         </ScrollReveal>
-      </div>
 
-      {testimonials.length > 0 ? (
-        <div className="mb-10 md:mb-12">
-          <DualRowMarquee
-            rowOneDuration={110}
-            rowTwoDuration={125}
-            gapClassName="gap-4 sm:gap-5"
-            rowOne={rowOne.map((item, index) => (
-              <TestimonialMarqueeCard
-                key={`r1-${item.id}-${index}`}
-                testimonial={item}
-              />
-            ))}
-            rowTwo={rowTwo.map((item, index) => (
-              <TestimonialMarqueeCard
-                key={`r2-${item.id}-${index}`}
-                testimonial={item}
-              />
-            ))}
-          />
-        </div>
-      ) : null}
+        {testimonials.length > 0 ? (
+          <Testimonial3DMarquee testimonials={testimonials} />
+        ) : null}
 
-      <div className="site-container relative">
-        <ScrollReveal delay={0.1} className="text-center">
+        <ScrollReveal delay={0.12} className="mt-10 text-center md:mt-12">
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <SiteCta href="/free-class">
-              {tCta("bookFreeClass")}
+              {tCta("bookFreeTrial")}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </SiteCta>
             <SiteCta href="/reviews" variant="secondary">
@@ -103,7 +75,7 @@ export function TestimonialsSection({
               className="justify-center"
             />
             <p className="font-body text-sm text-text-gray">
-              {t("studentsWorldwide")}
+              {t("trustLine")}
             </p>
           </div>
         </ScrollReveal>

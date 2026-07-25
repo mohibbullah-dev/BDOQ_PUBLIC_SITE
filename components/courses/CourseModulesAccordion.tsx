@@ -25,7 +25,7 @@ export function CourseModulesAccordion({
           <SectionHeader title={t("title")} subtitle={t("subtitle")} />
         </div>
 
-        <div className="max-w-3xl rounded-2xl border border-gray-100 bg-white shadow-sm overflow-hidden">
+        <div className="site-card max-w-3xl overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
           {modules.map((module) => {
             const isOpen = openId === module.id;
             return (

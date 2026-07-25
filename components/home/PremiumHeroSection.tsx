@@ -1,140 +1,185 @@
 "use client";
 
-import { PremiumHeroCarousel } from "@/components/home/PremiumHeroCarousel";
-import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Globe } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  CalendarDays,
+  Play,
+  ShieldCheck,
+  Users,
+} from "lucide-react";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { usePremiumHeroCarouselSlides } from "@/lib/i18n/usePremiumHeroCarouselSlides";
+import { PremiumHeroCarousel } from "@/components/home/PremiumHeroCarousel";
+import { HeroQuoteBanner } from "@/components/home/HeroQuoteBanner";
 import { SiteCta } from "@/components/shared/SiteCta";
+import { IslamicShapeBackdrop } from "@/components/shared/IslamicShapeBackdrop";
+import { usePremiumHeroCarouselSlides } from "@/lib/i18n/usePremiumHeroCarouselSlides";
 import { cn } from "@/lib/cn";
 
-const HERO_BG = "/images/hero/islamic-hero-bg.jpg";
+const FEATURES = [
+  { key: "teachers", icon: Users },
+  { key: "classes", icon: BookOpen },
+  { key: "safe", icon: ShieldCheck },
+  { key: "schedule", icon: CalendarDays },
+] as const;
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] as const },
-});
-
-const copySwap = {
-  initial: { opacity: 0, y: 14 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -10 },
-  transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const },
+const copyTransition = {
+  duration: 0.4,
+  ease: [0.22, 1, 0.36, 1] as const,
 };
 
-/** Premium hero — left copy synced to right carousel (4 client slides) */
+function HighlightedTitle({
+  title,
+  highlight,
+}: {
+  title: string;
+  highlight?: string;
+}) {
+  if (!highlight || !title.includes(highlight)) {
+    return <>{title}</>;
+  }
+
+  const parts = title.split(highlight);
+
+  return (
+    <>
+      {parts[0]}
+      <span className="text-primary">{highlight}</span>
+      {parts.slice(1).join(highlight)}
+    </>
+  );
+}
+
+/** Flat 4-slide hero — mihrab visual + feature strip (mockup design) */
 export function PremiumHeroSection() {
   const t = useTranslations("home.premiumHero");
   const slides = usePremiumHeroCarouselSlides();
   const [activeIndex, setActiveIndex] = useState(0);
-  const activeSlide = slides[activeIndex] ?? slides[0];
-  const isFirstSlide = activeIndex === 0;
+  const slide = slides[activeIndex] ?? slides[0];
+
+  if (!slide) return null;
+
+  const showPlayOnSecondary = slide.secondaryHref.includes("how-to-start");
 
   return (
     <section
       className={cn(
-        "home-hero-section relative flex w-full flex-col overflow-hidden bg-[#F7FCF9] text-[#111827]"
+        "home-hero-section relative flex w-full flex-col overflow-hidden",
+        "bg-[#F7FCF9] text-[#111827]"
       )}
-      aria-label={t("carousel.aria")}
+      aria-label={t("aria")}
     >
-      <div
-        className="pointer-events-none absolute inset-0 z-0"
-        aria-hidden="true"
-      >
-        <Image
-          src={HERO_BG}
-          alt=""
-          fill
-          priority
-          className="object-cover object-[center_bottom] opacity-[0.35] sm:object-center sm:opacity-[0.42]"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-[#F7FCF9]/55" />
-      </div>
+      <IslamicShapeBackdrop overlay="home" priority />
 
-      <div className="site-container relative z-[1] flex min-h-0 flex-1 flex-col">
-        <div className="grid min-h-0 w-full flex-1 pb-8 sm:pb-10 lg:grid-cols-2 lg:items-center lg:gap-10 xl:gap-14">
-          <div className="order-2 flex flex-col justify-center py-8 sm:py-10 lg:order-1 lg:py-12">
-            <div className="relative">
-              <AnimatePresence mode="wait" initial={false}>
-                {activeSlide ? (
-                  <motion.div key={activeSlide.id} {...copySwap}>
-                    <p className="section-eyebrow mb-4 text-[12px] uppercase text-brand-red sm:mb-5 sm:text-[13px]">
-                      <span className="inline-flex items-center gap-2">
-                        <Globe className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-                        {activeSlide.badge}
+      <div className="site-container relative z-[1] flex min-h-0 flex-1 flex-col pb-6 pt-2 md:pb-8">
+        <div className="grid flex-1 items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 xl:gap-14">
+          {/* Left copy — synced to active slide */}
+          <div className="order-2 lg:order-1">
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={slide.id}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={copyTransition}
+              >
+                <p className="inline-flex items-center gap-2 font-body text-[11px] font-bold uppercase tracking-[0.14em] text-brand-red sm:text-xs">
+                  <ShieldCheck
+                    className="h-4 w-4 shrink-0 text-primary"
+                    aria-hidden="true"
+                  />
+                  {slide.badge}
+                </p>
+
+                <h1
+                  className={cn(
+                    "mt-4 max-w-[34rem] font-playfair text-[1.85rem] font-bold leading-[1.18] tracking-tight text-primary-dark",
+                    "sm:text-[2.35rem] lg:text-[2.6rem] xl:text-[2.85rem]",
+                    activeIndex === 0 ? "" : "lg:min-h-[5.5rem]"
+                  )}
+                >
+                  <HighlightedTitle
+                    title={slide.title}
+                    highlight={slide.titleHighlight}
+                  />
+                </h1>
+
+                <p className="mt-4 max-w-[32rem] font-body text-base leading-relaxed text-text-gray sm:mt-5 sm:text-[17px]">
+                  {slide.subtitle}
+                </p>
+
+                <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center">
+                  <SiteCta href={slide.primaryHref}>
+                    {slide.primaryCta}
+                    <ArrowRight className="h-5 w-5" aria-hidden="true" />
+                  </SiteCta>
+                  <SiteCta href={slide.secondaryHref} variant="secondary">
+                    {showPlayOnSecondary ? (
+                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-current">
+                        <Play
+                          className="ml-0.5 h-3 w-3 fill-current"
+                          aria-hidden="true"
+                        />
                       </span>
-                    </p>
-
-                    {isFirstSlide ? (
-                      <h1
-                        className={cn(
-                          "max-w-[560px] font-playfair text-[1.75rem] font-bold leading-[1.2] tracking-tight text-[var(--green-dark)]",
-                          "sm:text-[2.1rem] lg:text-[2.25rem] xl:text-[2.4rem]"
-                        )}
-                      >
-                        {activeSlide.title}
-                      </h1>
-                    ) : (
-                      <h2
-                        className={cn(
-                          "max-w-[560px] font-playfair text-[1.75rem] font-bold leading-[1.2] tracking-tight text-[var(--green-dark)]",
-                          "sm:text-[2.1rem] lg:text-[2.25rem] xl:text-[2.4rem]"
-                        )}
-                      >
-                        {activeSlide.title}
-                      </h2>
-                    )}
-
-                    <p className="mt-4 max-w-[520px] font-body text-base leading-relaxed text-[#6B7280] sm:mt-5 sm:text-[17px]">
-                      {activeSlide.subtitle}
-                    </p>
-                  </motion.div>
-                ) : null}
-              </AnimatePresence>
-            </div>
-
-            <motion.div
-              {...fadeUp(0.2)}
-              className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center"
-            >
-              <AnimatePresence mode="wait" initial={false}>
-                {activeSlide ? (
-                  <motion.div
-                    key={`${activeSlide.id}-ctas`}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center"
-                  >
-                    <SiteCta href={activeSlide.primaryHref}>
-                      {activeSlide.primaryCta}
-                      <ArrowRight className="h-5 w-5" aria-hidden="true" />
-                    </SiteCta>
-                    <SiteCta href={activeSlide.secondaryHref} variant="secondary">
-                      {activeSlide.secondaryCta}
-                    </SiteCta>
-                  </motion.div>
-                ) : null}
-              </AnimatePresence>
-            </motion.div>
+                    ) : null}
+                    {slide.secondaryCta}
+                  </SiteCta>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
 
-          <motion.div
-            {...fadeUp(0.05)}
-            className="order-1 w-full min-w-0 lg:order-2"
-          >
+          {/* Right arch carousel */}
+          <div className="order-1 mx-auto w-full max-w-lg lg:order-2 lg:max-w-none">
             <PremiumHeroCarousel
               activeIndex={activeIndex}
               onActiveIndexChange={setActiveIndex}
             />
-          </motion.div>
+          </div>
+        </div>
+
+        {/* Floating features bar — static across slides */}
+        <div className="relative z-10 mt-8 md:mt-10 lg:-mb-2 lg:mt-4">
+          <ul
+            className={cn(
+              "grid grid-cols-1 gap-4 rounded-3xl border border-gray-100 bg-white p-4",
+              "shadow-[0_18px_50px_-22px_rgba(15,23,42,0.2)]",
+              "sm:grid-cols-2 lg:grid-cols-4 lg:gap-0 lg:p-5 xl:p-6"
+            )}
+            aria-label={t("featuresAria")}
+          >
+            {FEATURES.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <li
+                  key={feature.key}
+                  className={cn(
+                    "flex items-start gap-3 px-2 lg:px-4",
+                    index < FEATURES.length - 1 &&
+                      "lg:border-r lg:border-gray-100"
+                  )}
+                >
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-bg-light text-primary">
+                    <Icon className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block font-body text-sm font-semibold text-primary-dark">
+                      {t(`features.${feature.key}.title`)}
+                    </span>
+                    <span className="mt-0.5 block font-body text-xs text-text-gray">
+                      {t(`features.${feature.key}.desc`)}
+                    </span>
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
+
+      <HeroQuoteBanner />
     </section>
   );
 }

@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { Controller, useFormContext } from "react-hook-form";
 import { BilingualLabel } from "@/components/forms/shared/BilingualLabel";
 import { MultiSelectChips } from "@/components/forms/shared/MultiSelectChips";
-import { SingleSelectChips } from "@/components/forms/shared/SingleSelectChips";
+import { FormSelect } from "@/components/forms/shared/FormSelect";
 import {
   formErrorClass,
   formInputClass,
@@ -188,8 +188,8 @@ export function TeacherStepTeaching() {
           name="referralSource"
           control={control}
           render={({ field }) => (
-            <SingleSelectChips
-              columns={2}
+            <FormSelect
+              id="referralSource"
               value={field.value ?? ""}
               onChange={field.onChange}
               error={errors.referralSource?.message}

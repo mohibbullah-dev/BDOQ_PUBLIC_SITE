@@ -1,22 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import type { FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  ArrowLeft,
-  BookOpen,
-  Eye,
-  EyeOff,
-  LayoutDashboard,
-  Lock,
-  Mail,
-  ShieldCheck,
-} from "lucide-react";
+import { ArrowLeft, Eye, EyeOff, Lock, Mail } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { BdoqLogo } from "@/components/brand/BdoqLogo";
 import {
   formInputClass,
   formLabelClass,
@@ -28,27 +19,15 @@ import { PORTAL_BASE_URL, PORTAL_LOGIN_URL } from "@/lib/navigation";
 import { cn } from "@/lib/cn";
 
 const revealEase = [0.22, 1, 0.36, 1] as const;
-
-const HIGHLIGHT_ICONS = [LayoutDashboard, BookOpen, ShieldCheck] as const;
-
-interface ILoginHighlight {
-  title: string;
-  description: string;
-}
+const AUTH_PROMO_IMAGE = "/images/auth/auth-promo.png";
 
 export function LoginPageContent() {
   const t = useTranslations("pages.login");
-  const tCommon = useTranslations("forms.layout");
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const rawHighlights = t.raw("highlights");
-  const highlights = Array.isArray(rawHighlights)
-    ? (rawHighlights as ILoginHighlight[])
-    : [];
-
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
     const portalUrl = new URL(PORTAL_LOGIN_URL);
@@ -75,71 +54,16 @@ export function LoginPageContent() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.55, ease: revealEase }}
-            className="relative hidden overflow-hidden rounded-3xl border border-[var(--green-primary)]/15 lg:flex lg:flex-col"
+            className="relative hidden min-h-[640px] overflow-hidden rounded-3xl border border-[var(--green-primary)]/15 bg-[var(--green-dark)] lg:block"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[var(--green-dark)] via-[#32C991] to-[var(--green-primary)]" />
-            <IslamicShapeBackdrop overlay="sidebar" className="opacity-60" />
-            <div
-              className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-white/10 blur-2xl"
-              aria-hidden="true"
+            <Image
+              src={AUTH_PROMO_IMAGE}
+              alt="BDOQ Academy — Online Quran Academy"
+              fill
+              priority
+              className="object-cover object-top"
+              sizes="(min-width: 1024px) 55vw, 100vw"
             />
-
-            <div className="relative z-[1] flex flex-1 flex-col p-8 xl:p-10">
-              <p className="text-center font-amiri text-xl leading-relaxed text-white/95 md:text-2xl">
-                {tCommon("bismillah")}
-              </p>
-              <div
-                className="mx-auto mt-4 h-px w-20 bg-gradient-to-r from-transparent via-white/40 to-transparent"
-                aria-hidden="true"
-              />
-
-              <div className="mt-6 inline-flex rounded-2xl bg-white/95 p-3 shadow-lg ring-1 ring-white/30">
-                <BdoqLogo size="sm" priority />
-              </div>
-
-              <p className="mt-8 font-body text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
-                {t("eyebrow")}
-              </p>
-              <h1 className="mt-3 font-playfair text-3xl font-bold leading-tight text-white xl:text-4xl">
-                {t("panelTitle")}
-              </h1>
-              <p className="mt-4 max-w-md font-body text-sm leading-relaxed text-white/85">
-                {t("panelSubtitle")}
-              </p>
-
-              <span className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 font-body text-xs font-semibold text-white backdrop-blur-sm">
-                <ShieldCheck className="h-4 w-4" aria-hidden="true" />
-                {t("secureBadge")}
-              </span>
-
-              <ul className="mt-8 space-y-3">
-                {highlights.map((item, index) => {
-                  const Icon = HIGHLIGHT_ICONS[index] ?? ShieldCheck;
-                  return (
-                    <li
-                      key={item.title}
-                      className="flex items-start gap-3 rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm"
-                    >
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/15 text-white ring-1 ring-white/20">
-                        <Icon
-                          className="h-5 w-5"
-                          strokeWidth={1.75}
-                          aria-hidden="true"
-                        />
-                      </span>
-                      <div>
-                        <p className="font-body text-sm font-semibold text-white">
-                          {item.title}
-                        </p>
-                        <p className="mt-1 font-body text-xs leading-relaxed text-white/80">
-                          {item.description}
-                        </p>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
           </motion.aside>
 
           <motion.div

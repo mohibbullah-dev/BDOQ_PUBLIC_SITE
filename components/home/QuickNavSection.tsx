@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 import { QUICK_NAV_ITEMS } from "@/lib/constants";
 import type { IQuickNavItem } from "@/lib/types";
 import { QUICK_NAV_I18N_KEYS } from "@/lib/i18n/quickNavKeys";
@@ -25,101 +24,68 @@ function QuickNavItemLink({ item, index }: IQuickNavItemLinkProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 18 }}
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.5, delay: index * 0.06, ease: revealEase }}
-      className="relative overflow-hidden bg-white"
+      transition={{ duration: 0.45, delay: index * 0.04, ease: revealEase }}
     >
       <Link
         href={item.href}
-        className="site-card group relative flex h-full flex-col items-center gap-3.5 overflow-hidden px-3 py-6 text-center sm:px-4 sm:py-7"
+        className={cn(
+          "site-card group flex items-center gap-3 rounded-xl px-2 py-2.5 sm:gap-3.5 sm:px-3 sm:py-3",
+          "transition-colors duration-200 hover:bg-white/80"
+        )}
       >
-        <ArrowUpRight
+        <span
           className={cn(
-            "absolute right-3 top-3 z-[3] h-4 w-4 text-primary",
-            "translate-x-1 -translate-y-1 opacity-0",
-            "transition-all duration-200 ease-out",
-            "group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"
+            "relative h-12 w-12 shrink-0 overflow-hidden rounded-full sm:h-14 sm:w-14",
+            "ring-2 ring-primary/15 ring-offset-2 ring-offset-[#F4F7F5]",
+            "transition-transform duration-300 group-hover:scale-105"
           )}
-          aria-hidden="true"
-        />
-
-        <div className="relative z-[1]">
-          <span
-            className={cn(
-              "absolute inset-0 -m-2 rounded-full bg-[var(--green-primary)]/20 opacity-0 blur-xl",
-              "transition-all duration-500 group-hover:opacity-100 group-hover:scale-110"
-            )}
-            aria-hidden="true"
+        >
+          <Image
+            src={getQuickNavImagePath(item.id)}
+            alt={label}
+            fill
+            className="object-cover object-center"
+            sizes="56px"
           />
-          <div
-            className={cn(
-              "relative h-[4.5rem] w-[4.5rem] overflow-hidden rounded-full sm:h-20 sm:w-20",
-              "ring-2 ring-[var(--green-primary)]/10 ring-offset-2 ring-offset-white",
-              "shadow-[0_8px_24px_-6px_rgba(50,201,145,0.35)]",
-              "transition-all duration-500 ease-out",
-              "group-hover:-translate-y-1 group-hover:scale-105 group-hover:shadow-[0_14px_32px_-8px_rgba(50,201,145,0.45)]"
-            )}
-          >
-            <Image
-              src={getQuickNavImagePath(item.id)}
-              alt={label}
-              fill
-              className="object-cover object-center"
-              sizes="(max-width: 640px) 72px, 80px"
-            />
-          </div>
-        </div>
+        </span>
 
-        <div className="relative z-[1] transition-transform duration-500 ease-out group-hover:-translate-y-0.5">
-          <p
-            className={cn(
-              "font-body text-sm font-semibold text-[var(--text-dark)]",
-              "transition-colors duration-300 group-hover:text-[var(--green-primary)]"
-            )}
-          >
+        <span className="min-w-0">
+          <span className="block font-body text-sm font-semibold text-primary-dark transition-colors group-hover:text-primary">
             {label}
-          </p>
-          <p
-            className={cn(
-              "mt-1 font-body text-xs leading-snug text-[var(--text-gray)]",
-              "transition-all duration-300 group-hover:text-[var(--text-dark)]/70"
-            )}
-          >
+          </span>
+          <span className="mt-0.5 block font-body text-xs leading-snug text-text-gray">
             {t(`${key}.description`)}
-          </p>
-          <span
-            className={cn(
-              "mx-auto mt-2.5 block h-0.5 w-0 rounded-full bg-[var(--green-primary)]",
-              "transition-all duration-500 ease-out group-hover:w-8"
-            )}
-            aria-hidden="true"
-          />
-        </div>
+          </span>
+        </span>
       </Link>
     </motion.div>
   );
 }
 
+/** Home quick links — 8-item horizontal icon+text grid (mockup) */
 export function QuickNavSection() {
+  const t = useTranslations("home.quickNav");
+
   return (
     <section
-      className="relative z-20 bg-white py-10 md:py-12"
-      aria-label="Quick navigation"
+      className="relative z-20 bg-white py-8 md:py-10"
+      aria-label={t("aria")}
     >
       <div className="site-container">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5, ease: revealEase }}
           className={cn(
-            "relative overflow-hidden rounded-2xl",
-            "border border-gray-200/80 bg-white"
+            "rounded-2xl border border-gray-100 bg-[#F4F7F5] p-3 sm:p-4 md:p-5",
+            "shadow-[0_10px_40px_-24px_rgba(15,23,42,0.12)]"
           )}
         >
-          <div className="relative grid grid-cols-2 gap-px bg-gray-100 sm:grid-cols-4">
+          <div className="grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-4 lg:gap-2">
             {QUICK_NAV_ITEMS.map((item, index) => (
               <QuickNavItemLink key={item.id} item={item} index={index} />
             ))}
