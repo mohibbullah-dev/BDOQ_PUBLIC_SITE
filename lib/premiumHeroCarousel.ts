@@ -4,7 +4,8 @@ export interface IPremiumHeroCarouselSlideMeta {
   id: string;
   theme: PremiumHeroCarouselTheme;
   image: string;
-  imageClassName?: string;
+  imageObjectPosition?: string;
+  imageScale?: number;
   primaryHref: string;
   secondaryHref: string;
 }
@@ -15,7 +16,8 @@ export const PREMIUM_HERO_CAROUSEL_SLIDES: IPremiumHeroCarouselSlideMeta[] = [
     id: "slide-1",
     theme: "light",
     image: "/images/hero/slide-1-global.webp",
-    imageClassName: "object-cover object-[50%_40%]",
+    imageObjectPosition: "50% 40%",
+    imageScale: 100,
     primaryHref: "/free-class",
     secondaryHref: "/courses",
   },
@@ -23,7 +25,8 @@ export const PREMIUM_HERO_CAROUSEL_SLIDES: IPremiumHeroCarouselSlideMeta[] = [
     id: "slide-2",
     theme: "light",
     image: "/images/hero/slide-2-teachers.webp",
-    imageClassName: "object-cover object-center",
+    imageObjectPosition: "50% 18%",
+    imageScale: 94,
     primaryHref: "/teachers",
     secondaryHref: "/free-class",
   },
@@ -31,7 +34,8 @@ export const PREMIUM_HERO_CAROUSEL_SLIDES: IPremiumHeroCarouselSlideMeta[] = [
     id: "slide-3",
     theme: "light",
     image: "/images/hero/slide-3-courses.webp",
-    imageClassName: "object-cover object-[45%_45%]",
+    imageObjectPosition: "45% 45%",
+    imageScale: 100,
     primaryHref: "/courses",
     secondaryHref: "/#learning-plans",
   },
@@ -39,7 +43,8 @@ export const PREMIUM_HERO_CAROUSEL_SLIDES: IPremiumHeroCarouselSlideMeta[] = [
     id: "slide-4",
     theme: "light",
     image: "/images/hero/slide-4-journey.webp",
-    imageClassName: "object-cover object-[50%_45%]",
+    imageObjectPosition: "50% 45%",
+    imageScale: 100,
     primaryHref: "/free-class",
     secondaryHref: "/#how-to-start",
   },

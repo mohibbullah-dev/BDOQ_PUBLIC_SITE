@@ -12,6 +12,8 @@ import { getWhyChooseImagePath } from "@/lib/whyChooseImages";
 import { IslamicShapeBackdrop } from "@/components/shared/IslamicShapeBackdrop";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { cn } from "@/lib/cn";
+import type { ISectionHeaderContent } from "@/lib/types";
+import { useSectionHeaderText } from "@/lib/i18n/useSectionHeaderText";
 
 const LEARN_MORE_HREFS: Record<string, string> = {
   "one-to-one": "/courses?type=private",
@@ -113,8 +115,17 @@ function FeatureCard({ item, index }: IFeatureCardProps) {
 }
 
 /** Why choose us — horizontal feature cards (mockup) */
-export function WhyChooseUsSection() {
+export function WhyChooseUsSection({
+  header,
+}: {
+  header?: ISectionHeaderContent;
+}) {
   const t = useTranslations("home.whyChoose");
+  const copy = useSectionHeaderText("home.whyChoose", header, [
+    "eyebrow",
+    "title",
+    "subtitle",
+  ]);
 
   return (
     <section className="relative overflow-hidden bg-[#F7FCF9] py-16 md:py-24">
@@ -131,12 +142,12 @@ export function WhyChooseUsSection() {
       <div className="site-container relative z-[1]">
         <ScrollReveal className="mb-10 md:mb-12">
           <div className="mx-auto max-w-3xl text-center">
-            <GoldEyebrow label={t("eyebrow")} />
+            <GoldEyebrow label={copy.eyebrow ?? t("eyebrow")} />
             <h2 className="font-playfair text-3xl font-bold tracking-tight text-primary-dark md:text-4xl">
-              {t("title")}
+              {copy.title}
             </h2>
             <p className="mx-auto mt-4 max-w-2xl font-body text-base leading-relaxed text-text-gray">
-              {t("subtitle")}
+              {copy.subtitle}
             </p>
           </div>
         </ScrollReveal>

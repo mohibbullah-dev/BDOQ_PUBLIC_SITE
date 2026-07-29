@@ -7,6 +7,8 @@ import { GLOBAL_COUNTRIES } from "@/lib/constants";
 import type { ICountryPresence } from "@/lib/types";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { SiteCta } from "@/components/shared/SiteCta";
+import type { ISectionHeaderContent } from "@/lib/types";
+import { useSectionHeaderText } from "@/lib/i18n/useSectionHeaderText";
 import { cn } from "@/lib/cn";
 
 /** Extra countries shown on home global grid (mockup coverage) */
@@ -95,8 +97,17 @@ function mergeCountries(): ICountryPresence[] {
 }
 
 /** Global presence — static country flag grid (mockup) */
-export function GlobalPresenceSection() {
+export function GlobalPresenceSection({
+  header,
+}: {
+  header?: ISectionHeaderContent;
+}) {
   const t = useTranslations("home.globalPresence");
+  const copy = useSectionHeaderText("home.globalPresence", header, [
+    "eyebrow",
+    "title",
+    "subtitle",
+  ]);
   const countries = mergeCountries();
 
   return (
@@ -114,12 +125,12 @@ export function GlobalPresenceSection() {
       <div className="site-container relative z-[1]">
         <ScrollReveal className="mb-10 md:mb-12">
           <div className="mx-auto max-w-3xl text-center">
-            <GoldEyebrow label={t("eyebrow")} />
+            <GoldEyebrow label={copy.eyebrow ?? t("eyebrow")} />
             <h2 className="font-playfair text-3xl font-bold tracking-tight text-primary-dark md:text-4xl">
-              {t("title")}
+              {copy.title}
             </h2>
             <p className="mx-auto mt-4 max-w-2xl font-body text-base leading-relaxed text-text-gray">
-              {t("subtitle")}
+              {copy.subtitle}
             </p>
           </div>
         </ScrollReveal>

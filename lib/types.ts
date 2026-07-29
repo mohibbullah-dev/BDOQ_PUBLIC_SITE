@@ -161,6 +161,15 @@ export interface ITestimonial {
   youtubeId?: string;
 }
 
+export interface ISectionHeaderContent {
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  titleHighlight?: string;
+  titleAccent?: string;
+  intro?: string;
+}
+
 export interface IFAQItem {
   id: string;
   question: string;

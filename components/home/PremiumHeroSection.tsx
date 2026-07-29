@@ -15,7 +15,10 @@ import { PremiumHeroCarousel } from "@/components/home/PremiumHeroCarousel";
 import { HeroQuoteBanner } from "@/components/home/HeroQuoteBanner";
 import { SiteCta } from "@/components/shared/SiteCta";
 import { IslamicShapeBackdrop } from "@/components/shared/IslamicShapeBackdrop";
-import { usePremiumHeroCarouselSlides } from "@/lib/i18n/usePremiumHeroCarouselSlides";
+import {
+  usePremiumHeroCarouselSlides,
+  type IPremiumHeroCarouselSlide,
+} from "@/lib/i18n/usePremiumHeroCarouselSlides";
 import { cn } from "@/lib/cn";
 
 const FEATURES = [
@@ -53,9 +56,13 @@ function HighlightedTitle({
 }
 
 /** Flat 4-slide hero — mihrab visual + feature strip (mockup design) */
-export function PremiumHeroSection() {
+export function PremiumHeroSection({
+  cmsSlides,
+}: {
+  cmsSlides?: IPremiumHeroCarouselSlide[] | null;
+}) {
   const t = useTranslations("home.premiumHero");
-  const slides = usePremiumHeroCarouselSlides();
+  const slides = usePremiumHeroCarouselSlides(cmsSlides);
   const [activeIndex, setActiveIndex] = useState(0);
   const slide = slides[activeIndex] ?? slides[0];
 
@@ -73,10 +80,10 @@ export function PremiumHeroSection() {
     >
       <IslamicShapeBackdrop overlay="home" priority />
 
-      <div className="site-container relative z-[1] flex min-h-0 flex-1 flex-col pb-6 pt-2 md:pb-8">
-        <div className="grid flex-1 items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 xl:gap-14">
+      <div className="site-container relative z-[1] flex min-h-0 flex-1 flex-col pb-6 pt-4 md:pb-8 md:pt-6 lg:pt-8">
+        <div className="grid flex-1 items-start gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 xl:gap-14">
           {/* Left copy — synced to active slide */}
-          <div className="order-2 lg:order-1">
+          <div className="order-2 lg:order-1 lg:pt-4">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={slide.id}
@@ -132,10 +139,11 @@ export function PremiumHeroSection() {
           </div>
 
           {/* Right arch carousel */}
-          <div className="order-1 mx-auto w-full max-w-lg lg:order-2 lg:max-w-none">
+          <div className="order-1 mx-auto w-full max-w-lg pt-1 sm:pt-2 lg:order-2 lg:mx-0 lg:max-w-none lg:pt-4">
             <PremiumHeroCarousel
               activeIndex={activeIndex}
               onActiveIndexChange={setActiveIndex}
+              cmsSlides={cmsSlides}
             />
           </div>
         </div>

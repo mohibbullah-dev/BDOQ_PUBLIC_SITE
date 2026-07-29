@@ -43,7 +43,7 @@ export function AllReviewsView({
 
       <section className="py-12 md:py-16 bg-bg-light">
         <div className="site-container">
-          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {testimonials.map((testimonial) => (
               <ReviewCard key={testimonial.id} testimonial={testimonial} />
             ))}

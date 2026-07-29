@@ -1,10 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { FOUNDER, FOUNDER_VISION } from "@/lib/constants";
+import { useTranslations } from "next-intl";
+import { FOUNDER } from "@/lib/constants";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 
 export function FounderSection() {
+  const t = useTranslations("pages.teachers.founder");
+
   return (
     <section className="bg-white py-16 md:py-20">
       <div className="site-container">
@@ -14,7 +17,7 @@ export function FounderSection() {
               <div className="relative aspect-[4/5] w-full">
                 <Image
                   src={FOUNDER.image}
-                  alt={`${FOUNDER.name} — Founder & Director, BD Online Quran Academy`}
+                  alt={t("imageAlt", { name: FOUNDER.name })}
                   fill
                   className="object-contain object-bottom p-4 pb-0"
                   sizes="(max-width: 768px) 100vw, 384px"
@@ -26,33 +29,27 @@ export function FounderSection() {
                   {FOUNDER.name}
                 </p>
                 <p className="mt-1 font-body text-xs text-text-gray">
-                  {FOUNDER.role}
+                  {t("role")}
                 </p>
               </div>
             </div>
           </div>
 
           <div>
-            <SectionHeader
-              eyebrow="Briefly about the founder and director"
-              title="Founder & Director"
-            />
+            <SectionHeader eyebrow={t("eyebrow")} title={t("title")} />
             <h3 className="mt-3 mb-5 font-amiri text-2xl font-bold text-primary-dark md:text-3xl">
               {FOUNDER.name}
             </h3>
             <p className="font-body text-sm text-text-gray leading-relaxed mb-8">
-              {FOUNDER.bio} Under his leadership, BD Online Quran Academy has
-              grown into a trusted international platform serving hundreds of
-              students with one-to-one live Quran classes, Tajweed, Hifz, and
-              Islamic education.
+              {t("bio")}
             </p>
 
             <div className="site-card rounded-2xl border-l-4 border-gold bg-bg-light p-6">
               <h4 className="font-body text-sm font-bold uppercase tracking-wide text-primary mb-3">
-                Vision and goals
+                {t("visionTitle")}
               </h4>
               <blockquote className="font-body text-sm text-text-dark leading-relaxed italic">
-                &ldquo;{FOUNDER_VISION}&rdquo;
+                &ldquo;{t("vision")}&rdquo;
               </blockquote>
             </div>
           </div>

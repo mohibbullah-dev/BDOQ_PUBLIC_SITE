@@ -5,6 +5,12 @@ import { getLocale, getMessages } from "next-intl/server";
 import { ACADEMY_INFO, SITE_URL } from "@/lib/constants";
 import { getHomeClientMessages } from "@/lib/i18n/clientShellMessages";
 import { getFaqItems } from "@/lib/faq";
+import { getHomeHeroSlides } from "@/lib/homeHero";
+import {
+  getSectionHeaders,
+  pickSectionHeader,
+} from "@/lib/sectionHeaders";
+import { HOME_SECTION_HEADER_KEYS } from "@/lib/sectionHeaderKeys";
 import { getFeaturedTeachers } from "@/lib/teachers";
 import { getTestimonials } from "@/lib/testimonials";
 import { HomeHeroGroup } from "@/components/home/HomeHeroGroup";
@@ -20,10 +26,26 @@ const LearningPlansSection = dynamic(
   { loading: () => <SectionSkeleton /> }
 );
 
+const TopicsSection = dynamic(
+  () =>
+    import("@/components/home/TopicsSection").then((m) => ({
+      default: m.TopicsSection,
+    })),
+  { loading: () => <SectionSkeleton /> }
+);
+
 const HowToStartSection = dynamic(
   () =>
     import("@/components/home/HowToStartSection").then((m) => ({
       default: m.HowToStartSection,
+    })),
+  { loading: () => <SectionSkeleton /> }
+);
+
+const LiveAcademySection = dynamic(
+  () =>
+    import("@/components/home/LiveAcademySection").then((m) => ({
+      default: m.LiveAcademySection,
     })),
   { loading: () => <SectionSkeleton /> }
 );
@@ -115,24 +137,44 @@ export default async function HomePage() {
   const homeMessages = getHomeClientMessages(
     messages as Record<string, unknown>
   );
-  const [featuredTeachers, testimonials, faqItems] = await Promise.all([
-    getFeaturedTeachers(),
-    getTestimonials(),
-    getFaqItems(),
-  ]);
+  const [featuredTeachers, testimonials, faqItems, cmsHeroSlides, sectionHeaders] =
+    await Promise.all([
+      getFeaturedTeachers(),
+      getTestimonials(),
+      getFaqItems(),
+      getHomeHeroSlides(locale),
+      getSectionHeaders(locale, HOME_SECTION_HEADER_KEYS),
+    ]);
 
   return (
     <NextIntlClientProvider locale={locale} messages={homeMessages}>
-      <HomeHeroGroup />
+      <HomeHeroGroup cmsSlides={cmsHeroSlides} />
       <QuickNavSection />
       <AboutSection />
+      <TopicsSection />
       <LearningPlansSection />
       <HowToStartSection />
-      <WhyChooseUsSection />
-      <GlobalPresenceSection />
-      <TeachersPreviewSection teachers={featuredTeachers} />
-      <TestimonialsSection testimonials={testimonials} />
-      <FAQSection items={faqItems} />
+      <LiveAcademySection
+        header={pickSectionHeader(sectionHeaders, "home.liveAcademy")}
+      />
+      <WhyChooseUsSection
+        header={pickSectionHeader(sectionHeaders, "home.whyChoose")}
+      />
+      <GlobalPresenceSection
+        header={pickSectionHeader(sectionHeaders, "home.globalPresence")}
+      />
+      <TeachersPreviewSection
+        teachers={featuredTeachers}
+        header={pickSectionHeader(sectionHeaders, "home.teachers")}
+      />
+      <TestimonialsSection
+        testimonials={testimonials}
+        header={pickSectionHeader(sectionHeaders, "home.testimonials")}
+      />
+      <FAQSection
+        items={faqItems}
+        header={pickSectionHeader(sectionHeaders, "home.faq")}
+      />
     </NextIntlClientProvider>
   );
 }

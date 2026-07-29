@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   Baby,
@@ -25,6 +25,7 @@ import { LocalizedPageHeroClient } from "@/components/shared/LocalizedPageHeroCl
 import { SegmentedTabBar } from "@/components/shared/SegmentedTabBar";
 import { CourseCard } from "@/components/shared/CourseCard";
 import { CoursesEmptyState } from "@/components/courses/CoursesEmptyState";
+import { cn } from "@/lib/cn";
 
 const CATEGORY_ICONS = {
   private: Users,
@@ -43,6 +44,7 @@ const GENDER_ICONS = {
 export function CoursesPageClient({ allCourses }: { allCourses: ICourse[] }) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [isPending, startTransition] = useTransition();
   const { categoryLabel, genderLabel } = useCourseFilterLabels();
 
   const typeParam = searchParams.get("type");
@@ -98,23 +100,27 @@ export function CoursesPageClient({ allCourses }: { allCourses: ICourse[] }) {
         else params.set(key, value);
       });
 
-      router.push(`/courses?${params.toString()}`, { scroll: false });
+      router.replace(`/courses?${params.toString()}`, { scroll: false });
     },
     [router, searchParams]
   );
 
   const handleCategoryChange = (category: CourseFilterType): void => {
-    if (category === "private") {
-      updateParams({ type: category });
-    } else {
-      updateParams({ type: category, gender: null });
-    }
+    startTransition(() => {
+      if (category === "private") {
+        updateParams({ type: category });
+      } else {
+        updateParams({ type: category, gender: null });
+      }
+    });
   };
 
   const handleGenderChange = (gender: CourseGenderType | "all"): void => {
-    updateParams({
-      type: "private",
-      gender: gender === "all" ? null : gender,
+    startTransition(() => {
+      updateParams({
+        type: "private",
+        gender: gender === "all" ? null : gender,
+      });
     });
   };
 
@@ -159,7 +165,12 @@ export function CoursesPageClient({ allCourses }: { allCourses: ICourse[] }) {
         </div>
       </LocalizedPageHeroClient>
 
-      <section className="py-12 md:py-16 bg-bg-light">
+      <section
+        className={cn(
+          "bg-bg-light py-12 md:py-16 transition-opacity duration-200",
+          isPending && "opacity-70"
+        )}
+      >
         <div className="site-container">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {courses.length > 0 ? (

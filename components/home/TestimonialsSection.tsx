@@ -8,18 +8,27 @@ import { getTestimonialAvatarUrls } from "@/lib/testimonialAvatars";
 import { AvatarCircles } from "@/components/ui/avatar-circles";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { SiteCta } from "@/components/shared/SiteCta";
-import { Testimonial3DMarquee } from "@/components/home/Testimonial3DMarquee";
+import { TestimonialReviewGrid } from "@/components/home/TestimonialReviewGrid";
+import type { ISectionHeaderContent } from "@/lib/types";
+import { useSectionHeaderText } from "@/lib/i18n/useSectionHeaderText";
 
-/** Student reviews — skewed vertical marquee with dual CTAs */
+/** Student reviews — straight grid with popup media + dual CTAs */
 export function TestimonialsSection({
   id,
   testimonials = [],
+  header,
 }: {
   id?: string;
   testimonials?: ITestimonial[];
+  header?: ISectionHeaderContent;
 }) {
   const t = useTranslations("home.testimonials");
   const tCta = useTranslations("cta");
+  const copy = useSectionHeaderText("home.testimonials", header, [
+    "eyebrow",
+    "title",
+    "subtitle",
+  ]);
 
   return (
     <section
@@ -39,19 +48,19 @@ export function TestimonialsSection({
         <ScrollReveal className="mb-8 md:mb-10">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-3 font-body text-[11px] font-bold uppercase tracking-[0.18em] text-brand-red sm:text-xs">
-              {t("eyebrow")}
+              {copy.eyebrow}
             </p>
             <h2 className="font-playfair text-3xl font-bold tracking-tight text-primary-dark md:text-4xl">
-              {t("title")}
+              {copy.title}
             </h2>
             <p className="mx-auto mt-4 max-w-2xl font-body text-base leading-relaxed text-text-gray">
-              {t("subtitle")}
+              {copy.subtitle}
             </p>
           </div>
         </ScrollReveal>
 
         {testimonials.length > 0 ? (
-          <Testimonial3DMarquee testimonials={testimonials} />
+          <TestimonialReviewGrid testimonials={testimonials} limit={8} />
         ) : null}
 
         <ScrollReveal delay={0.12} className="mt-10 text-center md:mt-12">

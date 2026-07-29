@@ -1,6 +1,7 @@
 "use client";
 
 import { UserRound, UsersRound } from "lucide-react";
+import { useTranslations } from "next-intl";
 import type {
   ITeacherGenderTab,
   TeacherGenderTabType,
@@ -27,18 +28,20 @@ export function TeachersTabBar({
   activeTab,
   onChange,
 }: ITeachersTabBarProps) {
+  const t = useTranslations("pages.teachers");
+
   return (
     <SegmentedTabBar
       tabs={tabs.map((tab) => ({
         id: tab.id,
-        label: tab.label,
-        shortLabel: tab.id === "male" ? "Male" : "Female",
+        label: t(`tabs.${tab.id}.label`),
+        shortLabel: t(`tabs.${tab.id}.shortLabel`),
         icon: TAB_ICONS[tab.iconId],
         count: tab.teachers.length,
       }))}
       activeTab={activeTab}
       onChange={onChange}
-      ariaLabel="Teacher categories"
+      ariaLabel={t("tabBarAria")}
       layoutId="teachers-tab-indicator"
       panelIdPrefix="teachers-panel"
       maxWidthClass="max-w-2xl"

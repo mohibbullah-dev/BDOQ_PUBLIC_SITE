@@ -27,6 +27,8 @@ import { IslamicShapeBackdrop } from "@/components/shared/IslamicShapeBackdrop";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { SiteCta } from "@/components/shared/SiteCta";
 import { cn } from "@/lib/cn";
+import type { ISectionHeaderContent } from "@/lib/types";
+import { useSectionHeaderText } from "@/lib/i18n/useSectionHeaderText";
 
 const FAQ_ICONS: Record<string, LucideIcon> = {
   "faq-1": CalendarDays,
@@ -169,11 +171,23 @@ function FAQAccordionItem({
 }
 
 /** Home FAQ — help panel + accordion (mockup) */
-export function FAQSection({ items = [] }: { items?: IFAQItem[] }) {
+export function FAQSection({
+  items = [],
+  header,
+}: {
+  items?: IFAQItem[];
+  header?: ISectionHeaderContent;
+}) {
   const [openId, setOpenId] = useState<string | null>(items[0]?.id ?? null);
   const t = useTranslations("home.faq");
   const tCta = useTranslations("cta");
   const tHighlights = useTranslations("home.faq.highlights");
+  const copy = useSectionHeaderText("home.faq", header, [
+    "eyebrow",
+    "title",
+    "titleAccent",
+    "intro",
+  ]);
 
   const handleToggle = (id: string): void => {
     setOpenId((current) => (current === id ? null : id));
@@ -221,26 +235,21 @@ export function FAQSection({ items = [] }: { items?: IFAQItem[] }) {
       <div className="site-container relative z-[1]">
         <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-10 xl:gap-12">
           <ScrollReveal direction="left">
-            <div
-              className={cn(
-                "site-card rounded-2xl border border-gray-100 bg-white p-6 shadow-[0_18px_48px_-28px_rgba(15,23,42,0.2)]",
-                "sm:p-7 lg:sticky lg:top-28"
-              )}
-            >
+            <div className="lg:sticky lg:top-28">
               <div className="mb-4 flex flex-col items-start gap-2">
                 <span className="inline-flex items-center gap-2 rounded-full bg-bg-light px-3 py-1 font-body text-[11px] font-bold uppercase tracking-[0.16em] text-primary">
                   <MessageCircle className="h-3.5 w-3.5" aria-hidden="true" />
-                  {t("eyebrow")}
+                  {copy.eyebrow}
                 </span>
               </div>
 
               <h2 className="font-playfair text-3xl font-bold leading-tight tracking-tight text-primary-dark md:text-[2.15rem]">
-                {t("title")}{" "}
-                <span className="text-primary">{t("titleAccent")}</span>
+                {copy.title}{" "}
+                <span className="text-primary">{copy.titleAccent}</span>
               </h2>
 
               <p className="mt-4 font-body text-base leading-relaxed text-text-gray">
-                {t("intro")}
+                {copy.intro}
               </p>
 
               <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">

@@ -16,7 +16,7 @@ export function StatsSection({ stats }: IStatsSectionProps) {
       <div className="site-container">
         <div
           className={cn(
-            "rounded-2xl border border-primary/15 bg-bg-light/60 px-3 py-4 sm:px-6 sm:py-5"
+            "site-card rounded-2xl border border-primary/15 bg-bg-light/60 px-3 py-4 sm:px-6 sm:py-5"
           )}
         >
           <div

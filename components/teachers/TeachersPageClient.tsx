@@ -136,11 +136,10 @@ export function TeachersPageClient({ tabs }: { tabs: ITeacherGenderTab[] }) {
             id="all-teachers-heading"
             className="font-body text-2xl font-semibold text-primary-dark md:text-3xl"
           >
-            All Our Teachers
+            {t("allTeachersTitle")}
           </h2>
           <p className="mx-auto mt-3 max-w-2xl font-body text-base text-text-gray">
-            Male and female instructors — separate, respectful learning paths
-            with certified Hafiz teachers from Bangladesh and abroad.
+            {t("allTeachersSubtitle")}
           </p>
         </div>
 
@@ -163,7 +162,7 @@ export function TeachersPageClient({ tabs }: { tabs: ITeacherGenderTab[] }) {
         <div className="mb-8 flex justify-center">
           <p className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white px-4 py-2 font-body text-sm text-text-gray shadow-sm">
             <ShieldCheck className="h-4 w-4 text-primary" aria-hidden="true" />
-            {currentTab.subtitle}
+            {t(`tabs.${currentTab.id}.subtitle`)}
             {searchQuery.trim() && (
               <span className="text-primary">
                 ·{" "}
@@ -192,7 +191,7 @@ export function TeachersPageClient({ tabs }: { tabs: ITeacherGenderTab[] }) {
                   query={searchQuery}
                   title={t("noTeachers")}
                   description={t("noTeachersDesc", {
-                    category: currentTab.label,
+                    category: t(`tabs.${currentTab.id}.label`),
                     query: searchQuery,
                   })}
                   ctaHref="/free-class"

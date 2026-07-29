@@ -2,8 +2,7 @@
 
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { isNavLinkActive } from "@/lib/navActive";
+import { useNavLinkActive } from "@/lib/useNavMatch";
 import { cn } from "@/lib/cn";
 
 interface INavLinkProps {
@@ -14,8 +13,7 @@ interface INavLinkProps {
 }
 
 export function NavLink({ href, children, className, onClick }: INavLinkProps) {
-  const pathname = usePathname();
-  const isActive = isNavLinkActive(href, pathname);
+  const isActive = useNavLinkActive(href);
 
   return (
     <Link

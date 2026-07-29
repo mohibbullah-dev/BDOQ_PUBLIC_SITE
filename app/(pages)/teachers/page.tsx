@@ -63,15 +63,15 @@ export default async function TeachersPage() {
     <>
       <LocalizedPageHero pageKey="teachers" centered />
 
-      <FounderSection />
-
       <ClientMessagesProvider messages={clientMessages}>
+        <FounderSection />
+
         <Suspense fallback={<TeachersTabsFallback />}>
           <TeachersPageClient tabs={tabs} />
         </Suspense>
-      </ClientMessagesProvider>
 
-      <TeacherRegistrationCTA />
+        <TeacherRegistrationCTA />
+      </ClientMessagesProvider>
     </>
   );
 }

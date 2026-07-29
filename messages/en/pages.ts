@@ -48,13 +48,46 @@ export const pagesMessages = {
     title: "Teachers and Mentors",
     subtitle:
       "Our male and female instructors are qualified Hafiz and scholars dedicated to guiding every student with patience, expertise, and Islamic adab.",
+    allTeachersTitle: "All Our Teachers",
+    allTeachersSubtitle:
+      "Male and female instructors — separate, respectful learning paths with certified Hafiz teachers from Bangladesh and abroad.",
     searchPlaceholder: "Search by name, role, language, or skill…",
     searchAria: "Search teachers",
+    tabBarAria: "Teacher categories",
     noTeachers: "No teachers found",
     noTeachersDesc:
       'No {category} match "{query}". Try another name, language, or skill.',
     results: "{count} result",
     resultsPlural: "{count} results",
+    tabs: {
+      male: {
+        label: "Male Teachers",
+        shortLabel: "Male",
+        subtitle: "Hafiz & male scholars for brothers",
+      },
+      female: {
+        label: "Female Teachers",
+        shortLabel: "Female",
+        subtitle: "Certified female teachers for sisters",
+      },
+    },
+    founder: {
+      eyebrow: "Briefly about the founder and director",
+      title: "Founder & Director",
+      imageAlt: "{name} — Founder & Director, BD Online Quran Academy",
+      role: "Founder & Director, BD Online Quran Academy",
+      bio: "Hafiz, trained Mufti, experienced Da'i. Established BDOQ Academy as an international standard online Quran education platform. Under his leadership, BD Online Quran Academy has grown into a trusted international platform serving hundreds of students with one-to-one live Quran classes, Tajweed, Hifz, and Islamic education.",
+      visionTitle: "Vision and goals",
+      vision:
+        "To illuminate every home with the light of the Quran through accessible, trustworthy, and internationally standard online education — nurturing generations of confident reciters, Hafiz, and practicing Muslims across the world.",
+    },
+    registrationCta: {
+      title: "Are you a Teacher?",
+      subtitle:
+        "Join BD Online Quran Academy and share your knowledge with students worldwide. We welcome experienced Hafiz, scholars, and qualified Quran teachers from Bangladesh and abroad.",
+      primaryBtn: "Register by creating an account to join as a teacher",
+      secondaryBtn: "Create an account as a teacher",
+    },
   },
   blog: {
     eyebrow: "Blog & Insights",

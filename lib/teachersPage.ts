@@ -6,8 +6,6 @@ export type TeacherTabIconId = "user-round" | "users-round";
 
 export interface ITeacherGenderTab {
   id: TeacherGenderTabType;
-  label: string;
-  subtitle: string;
   hash: string;
   iconId: TeacherTabIconId;
   teachers: ITeacher[];
@@ -19,16 +17,12 @@ export function buildTeacherGenderTabs(
   return [
     {
       id: "male",
-      label: "Male Teachers",
-      subtitle: "Hafiz & male scholars for brothers",
       hash: "male-teachers",
       iconId: "user-round",
       teachers: allTeachers.filter((teacher) => teacher.gender === "male"),
     },
     {
       id: "female",
-      label: "Female Teachers",
-      subtitle: "Certified female teachers for sisters",
       hash: "female-teachers",
       iconId: "users-round",
       teachers: allTeachers.filter((teacher) => teacher.gender === "female"),

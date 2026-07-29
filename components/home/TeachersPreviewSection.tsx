@@ -12,6 +12,8 @@ import { IslamicShapeBackdrop } from "@/components/shared/IslamicShapeBackdrop";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { SiteCta } from "@/components/shared/SiteCta";
 import { cn } from "@/lib/cn";
+import type { ISectionHeaderContent } from "@/lib/types";
+import { useSectionHeaderText } from "@/lib/i18n/useSectionHeaderText";
 
 interface ITeacherPreviewCardProps {
   teacher: ITeacher;
@@ -92,9 +94,20 @@ function TeacherPreviewCard({ teacher, index }: ITeacherPreviewCardProps) {
 }
 
 /** Home mentors preview — octagon-framed teacher cards (mockup) */
-export function TeachersPreviewSection({ teachers }: { teachers: ITeacher[] }) {
+export function TeachersPreviewSection({
+  teachers,
+  header,
+}: {
+  teachers: ITeacher[];
+  header?: ISectionHeaderContent;
+}) {
   const t = useTranslations("home.teachers");
   const tCta = useTranslations("cta");
+  const copy = useSectionHeaderText("home.teachers", header, [
+    "eyebrow",
+    "title",
+    "subtitle",
+  ]);
 
   return (
     <section className="relative overflow-hidden bg-[#F7FCF9] py-16 md:py-24">
@@ -112,13 +125,13 @@ export function TeachersPreviewSection({ teachers }: { teachers: ITeacher[] }) {
         <ScrollReveal className="mb-10 md:mb-12">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-3 font-body text-[11px] font-bold uppercase tracking-[0.18em] text-brand-red sm:text-xs">
-              {t("eyebrow")}
+              {copy.eyebrow}
             </p>
             <h2 className="font-playfair text-3xl font-bold tracking-tight text-primary-dark md:text-4xl">
-              {t("title")}
+              {copy.title}
             </h2>
             <p className="mx-auto mt-4 max-w-2xl font-body text-base leading-relaxed text-text-gray">
-              {t("subtitle")}
+              {copy.subtitle}
             </p>
           </div>
         </ScrollReveal>

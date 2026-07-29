@@ -14,10 +14,17 @@ export interface IPremiumHeroCarouselSlide extends IPremiumHeroCarouselSlideMeta
   imageAlt: string;
   primaryCta: string;
   secondaryCta: string;
+  slideId?: string;
 }
 
-export function usePremiumHeroCarouselSlides(): IPremiumHeroCarouselSlide[] {
+export function usePremiumHeroCarouselSlides(
+  cmsSlides?: IPremiumHeroCarouselSlide[] | null
+): IPremiumHeroCarouselSlide[] {
   const t = useTranslations("home.premiumHero.carousel.slides");
+
+  if (cmsSlides && cmsSlides.length > 0) {
+    return cmsSlides;
+  }
 
   return PREMIUM_HERO_CAROUSEL_SLIDES.map((meta) => {
     const highlightKey = `${meta.id}.titleHighlight` as const;
@@ -34,6 +41,8 @@ export function usePremiumHeroCarouselSlides(): IPremiumHeroCarouselSlide[] {
       imageAlt: t(`${meta.id}.imageAlt`),
       primaryCta: t(`${meta.id}.primaryCta`),
       secondaryCta: t(`${meta.id}.secondaryCta`),
+      imageObjectPosition: meta.imageObjectPosition,
+      imageScale: meta.imageScale,
     };
   });
 }

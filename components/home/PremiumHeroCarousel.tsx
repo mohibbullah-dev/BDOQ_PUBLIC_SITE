@@ -31,16 +31,29 @@ function PhotoSlide({
   slide: IPremiumHeroCarouselSlide;
   priority?: boolean;
 }) {
+  const scale = (slide.imageScale ?? 100) / 100;
+
   return (
     <div className="absolute inset-0 overflow-hidden bg-[#E8F5EF]">
-      <Image
-        src={slide.image}
-        alt={slide.imageAlt}
-        fill
-        className={cn(slide.imageClassName ?? "object-cover object-center")}
-        sizes="(max-width: 1024px) 90vw, 480px"
-        priority={priority}
-      />
+      <div
+        className="absolute inset-0"
+        style={{
+          transform: scale !== 1 ? `scale(${scale})` : undefined,
+          transformOrigin: "center top",
+        }}
+      >
+        <Image
+          src={slide.image}
+          alt={slide.imageAlt}
+          fill
+          className="object-cover"
+          style={{
+            objectPosition: slide.imageObjectPosition ?? "50% 25%",
+          }}
+          sizes="(max-width: 1024px) 90vw, 480px"
+          priority={priority}
+        />
+      </div>
       <div
         className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary-dark/20 via-transparent to-transparent"
         aria-hidden="true"
@@ -52,15 +65,17 @@ function PhotoSlide({
 export interface IPremiumHeroCarouselProps {
   activeIndex: number;
   onActiveIndexChange: Dispatch<SetStateAction<number>>;
+  cmsSlides?: IPremiumHeroCarouselSlide[] | null;
 }
 
 /** Mihrab-framed image carousel — 4 flat slides with autoplay */
 export function PremiumHeroCarousel({
   activeIndex,
   onActiveIndexChange,
+  cmsSlides,
 }: IPremiumHeroCarouselProps) {
   const t = useTranslations("home.premiumHero.carousel");
-  const slides = usePremiumHeroCarouselSlides();
+  const slides = usePremiumHeroCarouselSlides(cmsSlides);
   const [isPaused, setIsPaused] = useState(false);
   const totalSlides = slides.length;
 
