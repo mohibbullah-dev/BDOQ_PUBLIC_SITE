@@ -15,7 +15,7 @@ const ADMIN_IMAGE = "/images/live-academy-admin.png";
 
 function GoldEyebrow({ label }: { label: string }) {
   return (
-    <div className="mb-4 flex items-center justify-center gap-2.5 lg:justify-start">
+    <div className="mb-4 flex items-center justify-center gap-2.5">
       <span className="hidden h-px w-8 bg-[#D4A853]/60 sm:block sm:w-12" aria-hidden="true" />
       <span className="inline-block h-1.5 w-1.5 rotate-45 bg-[#D4A853]" aria-hidden="true" />
       <p className="font-body text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4A853] sm:text-xs">
@@ -42,7 +42,7 @@ export function LiveAcademySection({
   return (
     <section className="bg-white py-16 md:py-24" aria-labelledby="live-academy-heading">
       <div className="site-container">
-        <ScrollReveal className="mx-auto max-w-3xl text-center lg:mx-0 lg:max-w-2xl lg:text-left">
+        <ScrollReveal className="mx-auto max-w-3xl text-center">
           <GoldEyebrow label={copy.eyebrow ?? t("eyebrow")} />
           <h2
             id="live-academy-heading"
@@ -53,7 +53,7 @@ export function LiveAcademySection({
           <p className="mt-4 font-inter text-base leading-relaxed text-gray-600">
             {copy.subtitle}
           </p>
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <SiteCta href="/free-class" className="inline-flex items-center gap-2">
               {t("primaryCta")}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
