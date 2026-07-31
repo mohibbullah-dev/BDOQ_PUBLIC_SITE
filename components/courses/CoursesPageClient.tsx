@@ -49,19 +49,44 @@ export function CoursesPageClient({ allCourses }: { allCourses: ICourse[] }) {
 
   const typeParam = searchParams.get("type");
   const genderParam = searchParams.get("gender");
+  const courseParam = searchParams.get("course");
 
-  const activeCategory: CourseFilterType = isValidCourseCategory(typeParam)
-    ? typeParam
-    : "private";
+  const focusedCourse = useMemo(() => {
+    if (!courseParam) return null;
+    return allCourses.find((course) => course.slug === courseParam) ?? null;
+  }, [allCourses, courseParam]);
 
-  const activeGender: CourseGenderType | undefined =
-    activeCategory === "private" && isValidCourseGender(genderParam)
-      ? genderParam
-      : undefined;
+  const activeCategory: CourseFilterType = useMemo(() => {
+    if (
+      focusedCourse?.category &&
+      isValidCourseCategory(focusedCourse.category)
+    ) {
+      return focusedCourse.category;
+    }
+    return isValidCourseCategory(typeParam) ? typeParam : "private";
+  }, [focusedCourse, typeParam]);
+
+  const activeGender: CourseGenderType | undefined = useMemo(() => {
+    if (activeCategory !== "private") return undefined;
+
+    if (
+      focusedCourse?.gender &&
+      isValidCourseGender(focusedCourse.gender)
+    ) {
+      return focusedCourse.gender;
+    }
+
+    return isValidCourseGender(genderParam) ? genderParam : undefined;
+  }, [activeCategory, focusedCourse, genderParam]);
 
   const activeGenderTab: CourseGenderType | "all" = activeGender ?? "all";
 
-  const courses = filterCourses(allCourses, activeCategory, activeGender);
+  const courses = useMemo(() => {
+    if (focusedCourse) {
+      return allCourses.filter((course) => course.slug === focusedCourse.slug);
+    }
+    return filterCourses(allCourses, activeCategory, activeGender);
+  }, [activeCategory, activeGender, allCourses, focusedCourse]);
 
   const activeCategoryLabel = categoryLabel(activeCategory);
 
@@ -108,9 +133,9 @@ export function CoursesPageClient({ allCourses }: { allCourses: ICourse[] }) {
   const handleCategoryChange = (category: CourseFilterType): void => {
     startTransition(() => {
       if (category === "private") {
-        updateParams({ type: category });
+        updateParams({ type: category, course: null });
       } else {
-        updateParams({ type: category, gender: null });
+        updateParams({ type: category, gender: null, course: null });
       }
     });
   };
@@ -120,6 +145,7 @@ export function CoursesPageClient({ allCourses }: { allCourses: ICourse[] }) {
       updateParams({
         type: "private",
         gender: gender === "all" ? null : gender,
+        course: null,
       });
     });
   };

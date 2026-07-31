@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { getMessages } from "next-intl/server";
 import { SITE_URL } from "@/lib/constants";
 import { buildFreeClassSubjects } from "@/lib/formOptions";
 import {
@@ -10,6 +11,8 @@ import {
   getTeachersForCourse,
 } from "@/lib/courses";
 import { CourseDetailView } from "@/components/courses/CourseDetailView";
+import { ClientMessagesProvider } from "@/components/i18n/ClientMessagesProvider";
+import { getCourseDetailClientMessages } from "@/lib/i18n/clientShellMessages";
 
 interface ICourseDetailPageProps {
   params: { slug: string };
@@ -51,13 +54,17 @@ export default async function CourseDetailPage({
     getCourses(),
   ]);
   const subjectOptions = buildFreeClassSubjects(allCourses);
+  const messages = await getMessages();
+  const clientMessages = getCourseDetailClientMessages(messages);
 
   return (
-    <CourseDetailView
-      course={course}
-      detail={getCourseDetailFromCourse(course)}
-      teachers={teachers}
-      subjectOptions={subjectOptions}
-    />
+    <ClientMessagesProvider messages={clientMessages}>
+      <CourseDetailView
+        course={course}
+        detail={getCourseDetailFromCourse(course)}
+        teachers={teachers}
+        subjectOptions={subjectOptions}
+      />
+    </ClientMessagesProvider>
   );
 }

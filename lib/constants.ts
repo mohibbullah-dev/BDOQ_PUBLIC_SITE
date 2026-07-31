@@ -222,6 +222,57 @@ export const COURSES: ICourse[] = [
   },
 ];
 
+/** Homepage trust metrics — floating stats band below hero */
+export const HOME_TRUST_STATS = [
+  {
+    id: "years",
+    value: 7,
+    suffix: "+",
+    labelKey: "yearsExperience",
+    icon: "calendar" as const,
+  },
+  {
+    id: "teachers",
+    value: 40,
+    suffix: "+",
+    labelKey: "qualifiedTeachers",
+    icon: "graduation" as const,
+  },
+  {
+    id: "students",
+    value: 200,
+    suffix: "+",
+    labelKey: "satisfiedStudents",
+    icon: "users" as const,
+  },
+  {
+    id: "rating",
+    value: 98,
+    suffix: "%",
+    labelKey: "averageRating",
+    icon: "star" as const,
+  },
+] as const;
+
+export const FOOTER_COURSES: { labelKey: string; href: string }[] = [
+  {
+    labelKey: "noorani-qaida",
+    href: "/courses?course=noorani-qaida",
+  },
+  {
+    labelKey: "quran-hifz",
+    href: "/courses?course=quran-hifz-male",
+  },
+  {
+    labelKey: "tajweed",
+    href: "/courses?course=tajweed-male",
+  },
+  {
+    labelKey: "free-learning",
+    href: "/courses?course=free-learning",
+  },
+];
+
 export const PACKAGES: IPackage[] = [
   {
     name: "Basic",

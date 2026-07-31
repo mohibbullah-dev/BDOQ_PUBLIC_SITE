@@ -200,6 +200,33 @@ export async function getTeachersForCourse(
 export function getCourseDetailFromCourse(
   course: ICourse & { detail?: ICourseDetail }
 ): ICourseDetail {
-  if (course.detail) return course.detail;
-  return getCourseDetail(course.slug);
+  const staticDetail = getCourseDetail(course.slug);
+  const apiDetail = course.detail;
+
+  if (!apiDetail) return staticDetail;
+
+  return {
+    benefits:
+      Array.isArray(apiDetail.benefits) && apiDetail.benefits.length > 0
+        ? apiDetail.benefits
+        : staticDetail.benefits,
+    modules:
+      Array.isArray(apiDetail.modules) && apiDetail.modules.length > 0
+        ? apiDetail.modules
+        : staticDetail.modules,
+    audience:
+      Array.isArray(apiDetail.audience) && apiDetail.audience.length > 0
+        ? apiDetail.audience
+        : staticDetail.audience,
+    faqs:
+      Array.isArray(apiDetail.faqs) && apiDetail.faqs.length > 0
+        ? apiDetail.faqs
+        : staticDetail.faqs,
+    startingPriceBdt:
+      typeof apiDetail.startingPriceBdt === "number"
+        ? apiDetail.startingPriceBdt
+        : staticDetail.startingPriceBdt,
+    recommendedPackage:
+      apiDetail.recommendedPackage?.trim() || staticDetail.recommendedPackage,
+  };
 }

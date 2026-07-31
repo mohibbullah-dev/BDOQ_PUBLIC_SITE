@@ -28,15 +28,25 @@ export function TestimonialReviewCard({
     .join(" · ");
   const videoThumbnail = getTestimonialVideoThumbnail(testimonial);
 
+  function handleKeyDown(e: React.KeyboardEvent): void {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onClick();
+    }
+  }
+
   return (
-    <button
-      type="button"
+    <article
+      role="button"
+      tabIndex={0}
       onClick={onClick}
+      onKeyDown={handleKeyDown}
       className={cn(
-        "group site-card flex h-full w-full flex-col rounded-2xl border border-gray-100 bg-white p-5 text-left sm:p-6",
-        "shadow-[0_10px_28px_-20px_rgba(15,23,42,0.14)]",
+        "flex w-full shrink-0 cursor-pointer flex-col rounded-2xl border border-gray-100 bg-white p-5 text-left sm:p-6",
+        "shadow-[0_10px_28px_-20px_rgba(15,23,42,0.16)]",
         "transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/20",
-        "hover:shadow-[0_16px_40px_-18px_rgba(38,155,111,0.24)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
+        "hover:shadow-[0_16px_40px_-18px_rgba(38,155,111,0.24)]",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
         className
       )}
     >
@@ -59,7 +69,7 @@ export function TestimonialReviewCard({
           ))}
         </div>
         <Quote
-          className="size-6 shrink-0 text-primary/30 transition-colors group-hover:text-primary/50"
+          className="size-6 shrink-0 text-primary/30"
           aria-hidden="true"
         />
       </div>
@@ -77,13 +87,10 @@ export function TestimonialReviewCard({
             />
           ) : (
             <div className="flex aspect-video w-full items-center justify-center bg-gradient-to-br from-[#E8FAF2] to-[#D1F5E8]">
-              <Play
-                className="size-10 text-primary/40"
-                aria-hidden="true"
-              />
+              <Play className="size-10 text-primary/40" aria-hidden="true" />
             </div>
           )}
-          <div className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors group-hover:bg-black/30">
+          <div className="absolute inset-0 flex items-center justify-center bg-black/20">
             <span className="flex size-12 items-center justify-center rounded-full bg-white text-primary shadow-lg">
               <Play className="ml-0.5 size-5 fill-current" aria-hidden="true" />
             </span>
@@ -103,12 +110,12 @@ export function TestimonialReviewCard({
             <p className="font-body text-sm font-semibold text-primary-dark">
               Audio review
             </p>
-            <p className="font-body text-xs text-text-gray">Tap to listen</p>
+            <p className="font-body text-xs text-text-dark/70">Tap to listen</p>
           </div>
         </div>
       ) : null}
 
-      <blockquote className="line-clamp-4 flex-1 font-body text-[15px] leading-relaxed text-text-gray sm:text-base sm:leading-relaxed">
+      <blockquote className="line-clamp-4 flex-1 font-body text-[15px] leading-relaxed text-text-dark/90 sm:text-base sm:leading-relaxed">
         {testimonial.content}
       </blockquote>
 
@@ -118,7 +125,7 @@ export function TestimonialReviewCard({
           <p className="truncate font-body text-sm font-semibold text-primary-dark sm:text-base">
             {testimonial.name}
           </p>
-          <p className="mt-0.5 flex items-center gap-1.5 truncate font-body text-xs text-text-gray sm:text-sm">
+          <p className="mt-0.5 flex items-center gap-1.5 truncate font-body text-xs text-text-dark sm:text-sm">
             {flagCode ? (
               <CountryFlag
                 code={flagCode}
@@ -130,6 +137,6 @@ export function TestimonialReviewCard({
           </p>
         </div>
       </div>
-    </button>
+    </article>
   );
 }

@@ -48,5 +48,6 @@ export function useCourseDetailUi() {
 
 export function useWhyBdoqItems(): string[] {
   const t = useTranslations("courseDetails");
-  return t.raw("whyBdoq") as string[];
+  const raw = t.raw("whyBdoq");
+  return Array.isArray(raw) ? (raw as string[]) : [];
 }

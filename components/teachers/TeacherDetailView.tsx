@@ -134,15 +134,33 @@ export function TeacherDetailView({
             <aside className="lg:sticky lg:top-28 lg:self-start">
               <div className="overflow-hidden rounded-3xl border border-[#32C991]/10 bg-white shadow-lg">
                 <div className="bg-[linear-gradient(160deg,#E8FAF2,#FFFFFF)] px-6 py-8 text-center">
-                  <TeacherAvatar
-                    teacher={teacher}
-                    context="detail"
-                    avatarVariant={
-                      teacher.gender === "female" ? "female" : "default"
-                    }
-                    size={128}
-                    className="mx-auto shadow-md"
-                  />
+                  <div className="relative mx-auto mb-5 h-[8.5rem] w-[8.5rem]">
+                    <div
+                      className="absolute inset-0 bg-primary/20"
+                      style={{
+                        clipPath:
+                          "polygon(22% 0%, 78% 0%, 100% 22%, 100% 78%, 78% 100%, 22% 100%, 0% 78%, 0% 22%)",
+                      }}
+                      aria-hidden="true"
+                    />
+                    <div
+                      className="absolute inset-[3px] overflow-hidden bg-bg-light"
+                      style={{
+                        clipPath:
+                          "polygon(22% 0%, 78% 0%, 100% 22%, 100% 78%, 78% 100%, 22% 100%, 0% 78%, 0% 22%)",
+                      }}
+                    >
+                      <TeacherAvatar
+                        teacher={teacher}
+                        context="card"
+                        avatarVariant={
+                          teacher.gender === "female" ? "female" : "default"
+                        }
+                        size={128}
+                        className="!h-full !w-full !rounded-none !border-0 object-cover"
+                      />
+                    </div>
+                  </div>
                   <h1 className="mt-5 font-body text-2xl font-bold text-[#32C991]">
                     {teacher.name}
                   </h1>

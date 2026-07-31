@@ -62,7 +62,7 @@ export function SectionHeader({
       {subtitle && (
         <p
           className={cn(
-            "font-body text-text-gray leading-relaxed",
+            "font-body text-text-dark leading-relaxed",
             isPage ? "text-base md:text-lg" : "text-base",
             centered && "mx-auto max-w-2xl"
           )}

@@ -113,7 +113,7 @@ export function PremiumHeroSection({
                   />
                 </h1>
 
-                <p className="mt-4 max-w-[32rem] font-body text-base leading-relaxed text-text-gray sm:mt-5 sm:text-[17px]">
+                <p className="mt-4 max-w-[32rem] font-body text-base leading-relaxed text-text-dark sm:mt-5 sm:text-[17px]">
                   {slide.subtitle}
                 </p>
 

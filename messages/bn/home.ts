@@ -1,4 +1,11 @@
 export const homeMessages = {
+  trustStats: {
+    aria: "একাডেমির বিশ্বস্ততার পরিসংখ্যান",
+    yearsExperience: "বছরের অভিজ্ঞতা",
+    qualifiedTeachers: "যোগ্য শিক্ষক",
+    satisfiedStudents: "সন্তুষ্ট শিক্ষার্থী",
+    averageRating: "গড় রেটিং",
+  },
   premiumHero: {
     aria: "বিডি অনলাইন কুরআন একাডেমি হোম পরিচিতি",
     featuresAria: "মূল বৈশিষ্ট্য",

@@ -7,8 +7,7 @@ import { BdoqLogo } from "@/components/brand/BdoqLogo";
 import { SocialIconRow } from "@/components/shared/SocialIcons";
 import { FooterDarkBand } from "@/components/layout/footer/FooterDarkBand";
 import { FooterNavColumns } from "@/components/layout/footer/FooterNavColumns";
-import { ACADEMY_INFO, COURSES, SOCIAL_LINKS } from "@/lib/constants";
-import { getCourses } from "@/lib/courses";
+import { ACADEMY_INFO, FOOTER_COURSES, SOCIAL_LINKS } from "@/lib/constants";
 import { FOOTER_SOCIAL_ORDER } from "@/lib/navigation";
 import { orderSocialLinks } from "@/lib/social";
 import { cn } from "@/lib/cn";
@@ -36,9 +35,6 @@ export async function Footer() {
   const tCta = await getTranslations("cta");
   const tCourses = await getTranslations("courses");
 
-  const apiCourses = await getCourses();
-  const popularCourses =
-    apiCourses.length > 0 ? apiCourses.slice(0, 5) : COURSES.slice(0, 5);
   const socialLinks = orderSocialLinks(SOCIAL_LINKS, FOOTER_SOCIAL_ORDER);
 
   const navColumns = [
@@ -58,9 +54,9 @@ export async function Footer() {
       id: "courses",
       label: tFooter("courses"),
       icon: "bookOpen" as const,
-      links: popularCourses.map((course) => ({
-        href: `/courses/${course.slug}`,
-        label: tCourses(course.slug),
+      links: FOOTER_COURSES.map((course) => ({
+        href: course.href,
+        label: tCourses(course.labelKey),
       })),
     },
     {

@@ -247,7 +247,7 @@ export function LearningPlansSection() {
                 highlight={t("titleHighlight")}
               />
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl font-body text-base leading-relaxed text-text-gray">
+            <p className="mx-auto mt-4 max-w-2xl font-body text-base leading-relaxed text-text-dark">
               {t("subtitle")}
             </p>
           </div>

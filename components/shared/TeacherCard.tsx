@@ -14,7 +14,7 @@ export function TeacherCard({
   avatarVariant,
 }: ITeacherCardProps) {
   return (
-    <article className="site-card group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 text-center transition-shadow duration-200 hover:shadow-md">
+    <article className="site-card site-card-no-overlay group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 text-center transition-shadow duration-200 hover:shadow-md">
       <div className="relative z-[1] mb-4 flex justify-center">
         <TeacherAvatar
           teacher={teacher}

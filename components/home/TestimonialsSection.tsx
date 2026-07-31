@@ -8,11 +8,11 @@ import { getTestimonialAvatarUrls } from "@/lib/testimonialAvatars";
 import { AvatarCircles } from "@/components/ui/avatar-circles";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { SiteCta } from "@/components/shared/SiteCta";
-import { TestimonialReviewGrid } from "@/components/home/TestimonialReviewGrid";
+import { TestimonialReviewMarquee } from "@/components/home/TestimonialReviewMarquee";
 import type { ISectionHeaderContent } from "@/lib/types";
 import { useSectionHeaderText } from "@/lib/i18n/useSectionHeaderText";
 
-/** Student reviews — straight grid with popup media + dual CTAs */
+/** Student reviews — straight vertical marquee + popup media + dual CTAs */
 export function TestimonialsSection({
   id,
   testimonials = [],
@@ -53,14 +53,14 @@ export function TestimonialsSection({
             <h2 className="font-playfair text-3xl font-bold tracking-tight text-primary-dark md:text-4xl">
               {copy.title}
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl font-body text-base leading-relaxed text-text-gray">
+            <p className="mx-auto mt-4 max-w-2xl font-body text-base leading-relaxed text-text-dark">
               {copy.subtitle}
             </p>
           </div>
         </ScrollReveal>
 
         {testimonials.length > 0 ? (
-          <TestimonialReviewGrid testimonials={testimonials} limit={8} />
+          <TestimonialReviewMarquee testimonials={testimonials} />
         ) : null}
 
         <ScrollReveal delay={0.12} className="mt-10 text-center md:mt-12">

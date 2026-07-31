@@ -148,8 +148,10 @@ export const coreMessages = {
   },
   courses: {
     "noorani-qaida": "Noorani Qaida Course",
+    "quran-hifz": "Quran Hifz Course",
     "quran-hifz-male": "Quran Hifz Course (Male)",
     "quran-hifz-female": "Quran Hifz Course (Women)",
+    tajweed: "Quran Learning with Tajweed",
     "tajweed-male": "Quran Learning with Tajweed (Male)",
     "tajweed-female": "Quran Learning with Tajweed (Women)",
     "free-learning": "Free Quran Learning Course",

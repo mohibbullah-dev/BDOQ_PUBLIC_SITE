@@ -1,4 +1,11 @@
 export const homeMessages = {
+  trustStats: {
+    aria: "Academy trust metrics",
+    yearsExperience: "Years of Experience",
+    qualifiedTeachers: "Qualified Teachers",
+    satisfiedStudents: "Satisfied Students",
+    averageRating: "Average Rating",
+  },
   premiumHero: {
     aria: "BD Online Quran Academy home introduction",
     featuresAria: "Key features",

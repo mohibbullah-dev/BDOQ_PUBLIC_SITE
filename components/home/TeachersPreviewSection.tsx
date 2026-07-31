@@ -31,7 +31,7 @@ function TeacherPreviewCard({ teacher, index }: ITeacherPreviewCardProps) {
       <Link
         href={`/teachers/${teacher.slug}`}
         className={cn(
-          "site-card relative flex h-full flex-col items-center rounded-2xl border border-gray-100 bg-white p-5 text-center",
+          "site-card site-card-no-overlay relative flex h-full flex-col items-center rounded-2xl border border-gray-100 bg-white p-5 text-center",
           "shadow-[0_12px_32px_-22px_rgba(15,23,42,0.18)]",
           "transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-22px_rgba(38,155,111,0.28)]"
         )}
@@ -70,11 +70,11 @@ function TeacherPreviewCard({ teacher, index }: ITeacherPreviewCardProps) {
         <h3 className="font-body text-sm font-bold leading-snug text-primary-dark sm:text-[15px]">
           {teacher.name}
         </h3>
-        <p className="mt-1 font-body text-xs leading-snug text-text-gray">
+        <p className="mt-1 font-body text-xs leading-snug text-text-dark">
           {teacher.role}
         </p>
 
-        <span className="mt-3 inline-flex rounded-full bg-bg-light px-2.5 py-1 font-body text-[10px] font-semibold text-primary sm:text-[11px]">
+        <span className="relative z-[2] mt-3 inline-flex rounded-full border border-primary/15 bg-white px-2.5 py-1 font-body text-[10px] font-semibold text-primary-dark shadow-sm sm:text-[11px]">
           {experience}
         </span>
 
@@ -83,7 +83,7 @@ function TeacherPreviewCard({ teacher, index }: ITeacherPreviewCardProps) {
             {flagCode ? (
               <CountryFlag code={flagCode} name={teacher.country} size="sm" />
             ) : null}
-            <span className="font-body text-xs font-medium text-text-gray">
+            <span className="font-body text-xs font-medium text-text-dark">
               {teacher.country}
             </span>
           </div>
@@ -130,7 +130,7 @@ export function TeachersPreviewSection({
             <h2 className="font-playfair text-3xl font-bold tracking-tight text-primary-dark md:text-4xl">
               {copy.title}
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl font-body text-base leading-relaxed text-text-gray">
+            <p className="mx-auto mt-4 max-w-2xl font-body text-base leading-relaxed text-text-dark">
               {copy.subtitle}
             </p>
           </div>

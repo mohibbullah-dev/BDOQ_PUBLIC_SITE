@@ -24,12 +24,7 @@ export function TeacherAvatar({
   className,
 }: ITeacherAvatarProps) {
   const isDetail = context === "detail";
-  const src = getTeacherAvatarSrc(
-    teacher,
-    avatarVariant,
-    context,
-    isDetail ? Math.max(size, 256) : size
-  );
+  const src = getTeacherAvatarSrc(teacher, avatarVariant, context);
   const isPhoto = isDetail && isTeacherDetailPhoto(teacher);
 
   return (

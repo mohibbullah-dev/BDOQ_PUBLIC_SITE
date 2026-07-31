@@ -118,7 +118,7 @@ export function HowToStartSection() {
               {t("titleBefore")}{" "}
               <span className="text-primary">{t("titleHighlight")}</span>
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl font-body text-base leading-relaxed text-text-gray">
+            <p className="mx-auto mt-4 max-w-2xl font-body text-base leading-relaxed text-text-dark">
               {t("subtitle")}
             </p>
           </div>

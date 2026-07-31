@@ -248,7 +248,7 @@ export function FAQSection({
                 <span className="text-primary">{copy.titleAccent}</span>
               </h2>
 
-              <p className="mt-4 font-body text-base leading-relaxed text-text-gray">
+              <p className="mt-4 font-body text-base leading-relaxed text-text-dark">
                 {copy.intro}
               </p>
 

@@ -89,7 +89,7 @@ export function TopicsSection() {
               <span className="text-primary">{titleHighlight}</span>
               {titleAfter}
             </h2>
-            <p className="mt-4 font-inter text-base leading-relaxed text-gray-600">
+            <p className="mt-4 font-inter text-base leading-relaxed text-text-dark">
               {subtitle}
             </p>
           </ScrollReveal>

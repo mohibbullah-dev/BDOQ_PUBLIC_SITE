@@ -146,7 +146,7 @@ export function WhyChooseUsSection({
             <h2 className="font-playfair text-3xl font-bold tracking-tight text-primary-dark md:text-4xl">
               {copy.title}
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl font-body text-base leading-relaxed text-text-gray">
+            <p className="mx-auto mt-4 max-w-2xl font-body text-base leading-relaxed text-text-dark">
               {copy.subtitle}
             </p>
           </div>

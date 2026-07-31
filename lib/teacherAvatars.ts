@@ -1,5 +1,4 @@
 import { TEACHER_AVATARS } from "@/lib/teacherData";
-import { teacherAvatarUrl } from "@/lib/avatarCatalog";
 import type { ITeacher } from "@/lib/types";
 
 export type TeacherAvatarContext = "card" | "detail";
@@ -21,20 +20,14 @@ export function getTeacherCardAvatarSrc(
   return TEACHER_AVATARS[resolveTeacherGender(teacher, avatarVariant)];
 }
 
-/** Per-teacher Cloudinary photo — teacher profile page only */
+/** Teacher profile — custom upload only; otherwise same Islamic illustration as cards */
 export function getTeacherDetailAvatarSrc(
   teacher: ITeacher,
-  avatarVariant?: "default" | "female",
-  size = 512
+  avatarVariant?: "default" | "female"
 ): string {
   const image = teacher.image?.trim() ?? "";
   if (image.length > 0) {
     return image;
-  }
-
-  const slug = teacher.slug?.trim() ?? "";
-  if (slug.length > 0) {
-    return teacherAvatarUrl(slug, size);
   }
 
   return TEACHER_AVATARS[resolveTeacherGender(teacher, avatarVariant)];
@@ -43,15 +36,13 @@ export function getTeacherDetailAvatarSrc(
 export function getTeacherAvatarSrc(
   teacher: ITeacher,
   avatarVariant?: "default" | "female",
-  context: TeacherAvatarContext = "card",
-  size?: number
+  context: TeacherAvatarContext = "card"
 ): string {
   return context === "detail"
-    ? getTeacherDetailAvatarSrc(teacher, avatarVariant, size)
+    ? getTeacherDetailAvatarSrc(teacher, avatarVariant)
     : getTeacherCardAvatarSrc(teacher, avatarVariant);
 }
 
 export function isTeacherDetailPhoto(teacher: ITeacher): boolean {
-  const image = teacher.image?.trim() ?? "";
-  return image.length > 0 || Boolean(teacher.slug?.trim());
+  return Boolean(teacher.image?.trim());
 }

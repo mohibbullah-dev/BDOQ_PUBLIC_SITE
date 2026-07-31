@@ -48,8 +48,8 @@ export function Marquee({
           <div
             key={index}
             className={cn(
-              "flex shrink-0 justify-around [gap:var(--gap)]",
-              vertical ? "flex-col" : "flex-row"
+              "flex shrink-0 [gap:var(--gap)]",
+              vertical ? "flex-col" : "flex-row justify-around"
             )}
             aria-hidden={index > 0 ? true : undefined}
           >
