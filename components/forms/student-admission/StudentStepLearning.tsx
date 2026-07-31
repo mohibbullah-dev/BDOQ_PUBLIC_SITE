@@ -249,8 +249,8 @@ export function StudentStepLearning() {
         <div>
           <BilingualLabel
             htmlFor="paymentMethod"
-            labelBn="পেমেন্ট পদ্ধতি"
-            labelEn="How would you like to pay?"
+            labelBn="মাসিক পেমেন্ট পদ্ধতি"
+            labelEn="Monthly tuition payment method"
             required
           />
           <select

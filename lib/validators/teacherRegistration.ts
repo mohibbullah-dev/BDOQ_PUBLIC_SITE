@@ -36,16 +36,18 @@ function addressFields(v: FormValidationFn) {
   return {
     currentAddressLine1: z.string().min(2, v("currentAddressRequired")),
     currentAddressLine2: z.string().optional(),
+    currentState: z.string().min(1, v("stateRequired")),
     currentCity: z.string().min(2, v("cityRequired")),
     currentDistrict: z.string().min(2, v("districtRequired")),
-    currentPostalCode: z.string().optional(),
+    currentPostalCode: z.string().min(1, v("postalRequired")),
     currentCountry: z.string().min(2, v("countryRequired")),
     sameAsCurrentAddress: z.boolean(),
     permanentAddressLine1: z.string().min(2, v("permanentAddressRequired")),
     permanentAddressLine2: z.string().optional(),
+    permanentState: z.string().min(1, v("stateRequired")),
     permanentCity: z.string().min(2, v("cityRequired")),
     permanentDistrict: z.string().min(2, v("districtRequired")),
-    permanentPostalCode: z.string().optional(),
+    permanentPostalCode: z.string().min(1, v("postalRequired")),
     permanentCountry: z.string().min(2, v("countryRequired")),
   };
 }

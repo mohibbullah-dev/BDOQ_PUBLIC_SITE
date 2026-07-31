@@ -74,9 +74,11 @@ export function StudentStepReview() {
       {
         label: t("review.currentAddress"),
         value: [
-          values.currentAddressLine1,
-          values.currentCity,
+          values.currentState,
           values.currentDistrict,
+          values.currentCity,
+          values.currentPostalCode,
+          values.currentAddressLine1,
           values.currentCountry,
         ]
           .filter(Boolean)
@@ -85,9 +87,11 @@ export function StudentStepReview() {
       {
         label: t("review.permanentAddress"),
         value: [
-          values.permanentAddressLine1,
-          values.permanentCity,
+          values.permanentState,
           values.permanentDistrict,
+          values.permanentCity,
+          values.permanentPostalCode,
+          values.permanentAddressLine1,
           values.permanentCountry,
         ]
           .filter(Boolean)
@@ -147,6 +151,39 @@ export function StudentStepReview() {
                 | "paypal"
                 | "cash"
             )
+          : "",
+      },
+      {
+        label: t("review.admissionFee"),
+        value: values.admissionFeeAmount
+          ? `${values.admissionFeeAmount} ${(values.admissionFeeCurrency ?? "bdt").toUpperCase()}`
+          : "",
+      },
+      {
+        label: t("review.admissionPaymentMethod"),
+        value: values.admissionFeePaymentMethod
+          ? tPay(
+              values.admissionFeePaymentMethod as
+                | "bkash"
+                | "nagad"
+                | "bank"
+                | "paypal"
+                | "cash"
+            )
+          : "",
+      },
+      {
+        label: t("review.admissionReference"),
+        value: values.admissionPaymentReference ?? "",
+      },
+      {
+        label: t("review.admissionPaymentDate"),
+        value: values.admissionPaymentDate ?? "",
+      },
+      {
+        label: t("review.admissionProof"),
+        value: values.admissionPaymentProofFile
+          ? values.admissionPaymentProofFile.name
           : "",
       },
       { label: t("review.parentName"), value: values.parentName ?? "" },

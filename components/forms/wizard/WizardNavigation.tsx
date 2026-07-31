@@ -47,6 +47,7 @@ export function WizardNavigation({
         <SubmitButton
           isLoading={isSubmitting}
           label={submitLabel ?? t("continue")}
+          onClick={onNext}
         />
       ) : (
         <button

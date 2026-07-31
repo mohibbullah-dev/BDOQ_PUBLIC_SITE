@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { ADMISSION_FEE } from "@/lib/constants";
 import type { FormValidationFn } from "@/lib/validators/freeClass";
 
 const referralEnum = z.enum(["facebook", "youtube", "google", "friend"]);
@@ -31,16 +32,18 @@ function addressFields(v: FormValidationFn) {
   return {
     currentAddressLine1: z.string().min(2, v("currentAddressRequired")),
     currentAddressLine2: z.string().optional(),
+    currentState: z.string().min(1, v("stateRequired")),
     currentCity: z.string().min(2, v("cityRequired")),
     currentDistrict: z.string().min(2, v("districtRequired")),
-    currentPostalCode: z.string().optional(),
+    currentPostalCode: z.string().min(1, v("postalRequired")),
     currentCountry: z.string().min(2, v("countryRequired")),
     sameAsCurrentAddress: z.boolean(),
     permanentAddressLine1: z.string().min(2, v("permanentAddressRequired")),
     permanentAddressLine2: z.string().optional(),
+    permanentState: z.string().min(1, v("stateRequired")),
     permanentCity: z.string().min(2, v("cityRequired")),
     permanentDistrict: z.string().min(2, v("districtRequired")),
-    permanentPostalCode: z.string().optional(),
+    permanentPostalCode: z.string().min(1, v("postalRequired")),
     permanentCountry: z.string().min(2, v("countryRequired")),
   };
 }
@@ -87,13 +90,82 @@ export function createStudentAdmissionSchemas(v: FormValidationFn) {
     goals: z.string().min(10, v("goalsRequired")),
   });
 
-  const step5 = z.object({
-    termsAccepted: z.boolean().refine((val) => val === true, {
-      message: v("termsRequired"),
+  const proofSchema = z
+    .instanceof(File, { message: v("imageRequired") })
+    .refine((file) => file.size <= 5 * 1024 * 1024, v("fileSize5mb"))
+    .refine((file) => file.type.startsWith("image/"), v("imageType"));
+
+  const step5Base = z.object({
+    admissionFeeCurrency: z.enum(["bdt", "usd"], {
+      message: v("admissionCurrencyRequired"),
     }),
+    admissionFeeAmount: z.string().min(1, v("admissionAmountRequired")),
+    admissionFeePaymentMethod: z.string().min(1, v("admissionPaymentRequired")),
+    admissionPaymentReference: z
+      .string()
+      .min(3, v("admissionReferenceRequired")),
+    admissionPaymentDate: z.string().min(1, v("admissionDateRequired")),
+    admissionPaymentSender: z.string().optional(),
+    admissionPaymentNote: z.string().optional(),
+    admissionPaymentProofFile: proofSchema,
   });
 
-  const full = step1.merge(step2).merge(step3).merge(step4).merge(step5);
+  const applyAdmissionFeeRefinement = (
+    data: Pick<
+      z.infer<typeof step5Base>,
+      "admissionFeeAmount" | "admissionFeeCurrency"
+    >,
+    ctx: z.RefinementCtx
+  ): void => {
+    const amount = Number(data.admissionFeeAmount);
+    if (!Number.isFinite(amount) || amount <= 0) {
+      ctx.addIssue({
+        code: "custom",
+        message: v("admissionAmountInvalid"),
+        path: ["admissionFeeAmount"],
+      });
+      return;
+    }
+
+    const expected =
+      ADMISSION_FEE[data.admissionFeeCurrency === "usd" ? "usd" : "bdt"];
+    if (amount < expected) {
+      ctx.addIssue({
+        code: "custom",
+        message: v("admissionAmountTooLow"),
+        path: ["admissionFeeAmount"],
+      });
+    }
+  };
+
+  const step5 = step5Base.superRefine(applyAdmissionFeeRefinement);
+
+  const step6Base = z.object({
+    termsAccepted: z.boolean(),
+  });
+
+  const step6 = step6Base.refine((data) => data.termsAccepted === true, {
+    message: v("termsRequired"),
+    path: ["termsAccepted"],
+  });
+
+  const full = step1
+    .merge(step2)
+    .merge(step3)
+    .merge(step4)
+    .merge(step5Base)
+    .merge(step6Base)
+    .superRefine((data, ctx) => {
+      applyAdmissionFeeRefinement(data, ctx);
+
+      if (!data.termsAccepted) {
+        ctx.addIssue({
+          code: "custom",
+          message: v("termsRequired"),
+          path: ["termsAccepted"],
+        });
+      }
+    });
 
   return {
     step1,
@@ -101,8 +173,9 @@ export function createStudentAdmissionSchemas(v: FormValidationFn) {
     step3,
     step4,
     step5,
+    step6,
     full,
-    steps: [step1, step2, step3, step4, step5] as const,
+    steps: [step1, step2, step3, step4, step5, step6] as const,
   };
 }
 
@@ -129,14 +202,18 @@ export const STUDENT_ADMISSION_STEPS = [
     titleBn: "ঠিকানা",
     titleEn: "Current & Permanent Address",
     fields: [
-      "currentAddressLine1",
-      "currentCity",
-      "currentDistrict",
       "currentCountry",
-      "permanentAddressLine1",
-      "permanentCity",
-      "permanentDistrict",
+      "currentState",
+      "currentDistrict",
+      "currentCity",
+      "currentPostalCode",
+      "currentAddressLine1",
       "permanentCountry",
+      "permanentState",
+      "permanentDistrict",
+      "permanentCity",
+      "permanentPostalCode",
+      "permanentAddressLine1",
     ],
   },
   {
@@ -168,6 +245,19 @@ export const STUDENT_ADMISSION_STEPS = [
       "parentWhatsapp",
       "referralSources",
       "goals",
+    ],
+  },
+  {
+    id: "admissionFee",
+    titleBn: "ভর্তি ফি",
+    titleEn: "Admission Fee",
+    fields: [
+      "admissionFeeCurrency",
+      "admissionFeeAmount",
+      "admissionFeePaymentMethod",
+      "admissionPaymentReference",
+      "admissionPaymentDate",
+      "admissionPaymentProofFile",
     ],
   },
   {

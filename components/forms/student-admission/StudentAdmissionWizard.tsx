@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLocale, useTranslations } from "next-intl";
@@ -21,13 +21,16 @@ import { StudentStepAddress } from "@/components/forms/student-admission/Student
 import { StudentStepGuardian } from "@/components/forms/student-admission/StudentStepGuardian";
 import { StudentStepLearning } from "@/components/forms/student-admission/StudentStepLearning";
 import { StudentStepPersonal } from "@/components/forms/student-admission/StudentStepPersonal";
+import { StudentStepAdmissionFee } from "@/components/forms/student-admission/StudentStepAdmissionFee";
 import { StudentStepReview } from "@/components/forms/student-admission/StudentStepReview";
+import { ADMISSION_FEE } from "@/lib/constants";
 
 const STEP_COMPONENTS = [
   StudentStepPersonal,
   StudentStepAddress,
   StudentStepLearning,
   StudentStepGuardian,
+  StudentStepAdmissionFee,
   StudentStepReview,
 ] as const;
 
@@ -43,7 +46,7 @@ export function StudentAdmissionWizard() {
 
   const [currentStep, setCurrentStep] = useState(0);
   const [submitState, setSubmitState] = useState<
-    "idle" | "loading" | "success" | "error"
+    "idle" | "loading" | "success" | "error" | "validation"
   >("idle");
 
   const methods = useForm<StudentAdmissionFormValues>({
@@ -51,19 +54,56 @@ export function StudentAdmissionWizard() {
     defaultValues: {
       nationality: "Bangladeshi",
       currentCountry: "Bangladesh",
+      currentState: "",
+      currentDistrict: "",
+      currentCity: "",
+      currentPostalCode: "",
       permanentCountry: "Bangladesh",
+      permanentState: "",
+      permanentDistrict: "",
+      permanentCity: "",
+      permanentPostalCode: "",
       sameAsCurrentAddress: false,
       topicsOfInterest: [],
       devices: [],
       referralSources: [],
       preferredPeriod: "PM",
       timezone: TIMEZONE_OPTIONS[0],
+      admissionFeeCurrency: "bdt",
+      admissionFeeAmount: String(ADMISSION_FEE.bdt),
       termsAccepted: false,
     },
     mode: "onTouched",
   });
 
-  const { handleSubmit, trigger, getValues, setError, clearErrors } = methods;
+  const { handleSubmit, getValues, setError, clearErrors } = methods;
+
+  useEffect(() => {
+    if (submitState === "validation") {
+      setSubmitState("idle");
+    }
+  }, [currentStep]);
+
+  const applyStepErrors = (stepIndex: number): void => {
+    const stepSchema = schemas.steps[stepIndex];
+    if (!stepSchema) return;
+
+    const result = stepSchema.safeParse(getValues());
+    if (result.success) {
+      clearErrors();
+      return;
+    }
+
+    result.error.issues.forEach((issue) => {
+      const fieldName = issue.path[0];
+      if (typeof fieldName === "string") {
+        setError(fieldName as keyof StudentAdmissionFormValues, {
+          type: "manual",
+          message: issue.message,
+        });
+      }
+    });
+  };
 
   const validateCurrentStep = async (): Promise<boolean> => {
     const stepSchema = schemas.steps[currentStep];
@@ -87,6 +127,16 @@ export function StudentAdmissionWizard() {
     return false;
   };
 
+  const findFirstInvalidStep = (): number | null => {
+    const values = getValues();
+    for (let index = 0; index < schemas.steps.length; index += 1) {
+      if (!schemas.steps[index]?.safeParse(values).success) {
+        return index;
+      }
+    }
+    return null;
+  };
+
   const handleNext = async (): Promise<void> => {
     const isValid = await validateCurrentStep();
     if (!isValid) return;
@@ -102,10 +152,30 @@ export function StudentAdmissionWizard() {
   const onSubmit = async (data: StudentAdmissionFormValues): Promise<void> => {
     setSubmitState("loading");
     try {
+      const formData = new FormData();
+      if (data.admissionPaymentProofFile) {
+        formData.append(
+          "admissionPaymentProof",
+          data.admissionPaymentProofFile
+        );
+      }
+
+      const fileKeys = new Set(["admissionPaymentProofFile"]);
+      const rest = Object.fromEntries(
+        Object.entries(data).filter(([key]) => !fileKeys.has(key))
+      );
+
+      formData.append(
+        "data",
+        JSON.stringify({
+          ...rest,
+          locale,
+        })
+      );
+
       const response = await fetch(`${API_BASE}/public/student-admissions`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, locale }),
+        body: formData,
         cache: "no-store",
       });
       if (!response.ok) throw new Error("Failed");
@@ -117,8 +187,15 @@ export function StudentAdmissionWizard() {
 
   const handleWizardNext = async (): Promise<void> => {
     if (currentStep === STUDENT_ADMISSION_STEPS.length - 1) {
-      const isValid = await trigger();
-      if (!isValid) return;
+      const invalidStep = findFirstInvalidStep();
+      if (invalidStep !== null) {
+        setCurrentStep(invalidStep);
+        applyStepErrors(invalidStep);
+        setSubmitState("validation");
+        return;
+      }
+
+      setSubmitState("idle");
       await handleSubmit(onSubmit)();
       return;
     }
@@ -153,6 +230,9 @@ export function StudentAdmissionWizard() {
       <form onSubmit={(event) => event.preventDefault()} noValidate>
         {submitState === "error" && (
           <FormAlert type="error" message={t("error")} className="mb-6" />
+        )}
+        {submitState === "validation" && (
+          <FormAlert type="error" message={t("validationError")} className="mb-6" />
         )}
 
         <FormWizardShell

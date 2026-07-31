@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { useFormContext, useWatch } from "react-hook-form";
 import { AddressFields } from "@/components/forms/shared/AddressFields";
@@ -22,6 +22,7 @@ export function StudentStepAddress() {
     name: [
       "currentAddressLine1",
       "currentAddressLine2",
+      "currentState",
       "currentCity",
       "currentDistrict",
       "currentPostalCode",
@@ -32,10 +33,12 @@ export function StudentStepAddress() {
   useEffect(() => {
     if (!sameAsCurrent) return;
 
-    const [line1, line2, city, district, postalCode, country] = currentValues;
+    const [line1, line2, stateName, city, district, postalCode, country] =
+      currentValues;
 
     setValue("permanentAddressLine1", line1 ?? "", { shouldDirty: true });
     setValue("permanentAddressLine2", line2 ?? "", { shouldDirty: true });
+    setValue("permanentState", stateName ?? "", { shouldDirty: true });
     setValue("permanentCity", city ?? "", { shouldDirty: true });
     setValue("permanentDistrict", district ?? "", { shouldDirty: true });
     setValue("permanentPostalCode", postalCode ?? "", { shouldDirty: true });

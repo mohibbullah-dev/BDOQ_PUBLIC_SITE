@@ -9,6 +9,8 @@ interface ISubmitButtonProps {
   label: string;
   loadingLabel?: string;
   className?: string;
+  onClick?: () => void;
+  type?: "button" | "submit";
 }
 
 export function SubmitButton({
@@ -16,14 +18,17 @@ export function SubmitButton({
   label,
   loadingLabel,
   className,
+  onClick,
+  type = "button",
 }: ISubmitButtonProps) {
   const t = useTranslations("forms.common");
   const pendingLabel = loadingLabel ?? t("submitting");
 
   return (
     <button
-      type="submit"
+      type={type}
       disabled={isLoading}
+      onClick={onClick}
       className={cn(
         "inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-primary px-8 py-3 font-body text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl disabled:opacity-60 sm:w-auto",
         className

@@ -769,6 +769,33 @@ export const SOCIAL_LINKS: ISocialLink[] = [
 
 export const FAMILY_DISCOUNT = "20% off second child";
 
+/** One-time admission fee shown on the student admission form (manual payment). */
+export const ADMISSION_FEE = {
+  bdt: 1000,
+  usd: 10,
+} as const;
+
+export type AdmissionFeeCurrency = keyof typeof ADMISSION_FEE;
+
+/** Wallet / account details for manual admission fee payment instructions. */
+export const ADMISSION_PAYMENT_ACCOUNTS = {
+  bkash: { label: "bKash (Send Money)", number: "01923-947460" },
+  nagad: { label: "Nagad", number: "01923-947460" },
+  bank: {
+    label: "Bank transfer",
+    accountName: "BD Online Quran Academy",
+    note: "Contact us on WhatsApp for bank account details before transfer.",
+  },
+  paypal: {
+    label: "PayPal",
+    email: "contact@bdonlinequranacademy.com",
+  },
+  cash: {
+    label: "Cash",
+    note: "Pay in person or via a local representative — confirm with our team first.",
+  },
+} as const;
+
 export const WHATSAPP_PHONE = "+8801923-947460";
 export const WHATSAPP_URL = "https://wa.me/8801923947460";
 
