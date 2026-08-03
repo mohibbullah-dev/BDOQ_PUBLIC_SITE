@@ -38,10 +38,10 @@ export default function PrivacyPolicyPage() {
             <p>
               For questions about this policy, contact us at{" "}
               <a
-                href="mailto:contact@bdonlinequranacademy.com"
+                href="mailto:bdonlinequranacademy@gmail.com"
                 className="text-primary hover:text-primary-dark"
               >
-                contact@bdonlinequranacademy.com
+                bdonlinequranacademy@gmail.com
               </a>
               .
             </p>

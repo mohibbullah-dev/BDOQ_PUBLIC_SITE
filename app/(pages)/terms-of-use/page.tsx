@@ -41,10 +41,10 @@ export default function TermsOfUsePage() {
               use of our services constitutes acceptance of any revisions.
               Contact{" "}
               <a
-                href="mailto:contact@bdonlinequranacademy.com"
+                href="mailto:bdonlinequranacademy@gmail.com"
                 className="text-primary hover:text-primary-dark"
               >
-                contact@bdonlinequranacademy.com
+                bdonlinequranacademy@gmail.com
               </a>{" "}
               with questions.
             </p>

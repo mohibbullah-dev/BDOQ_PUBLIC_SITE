@@ -171,11 +171,11 @@ export function getRelatedTeachers(
 }
 
 export function getTeacherContactEmail(): string {
-  return "contact@bdonlinequranacademy.com";
+  return "bdonlinequranacademy@gmail.com";
 }
 
 export function getTeacherContactPhone(): string {
-  return "+8801923-947460";
+  return "+8801923947460";
 }
 
 export function getTeacherWhatsAppUrl(): string {
