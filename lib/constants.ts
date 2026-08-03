@@ -58,7 +58,6 @@ export const ACADEMY_INFO: IAcademyInfo = {
   whatsapp: "+8801923947460",
   address: "Gopalganj, Dhaka, Bangladesh",
   website: "bdonlinequranacademy.com",
-  footerMobile: "+8801923947460",
 };
 
 export const ABOUT_HOME_SNIPPET =

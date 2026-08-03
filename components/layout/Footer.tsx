@@ -118,13 +118,13 @@ export async function Footer() {
               </li>
               <li>
                 <a
-                  href={`tel:${ACADEMY_INFO.footerMobile.replace(/\s/g, "")}`}
+                  href={`tel:${ACADEMY_INFO.contactBD.replace(/\s/g, "")}`}
                   className="footer-contact-link"
                 >
                   <span className="footer-contact-icon">
                     <Phone className="size-3.5" aria-hidden="true" />
                   </span>
-                  <span>{ACADEMY_INFO.footerMobile}</span>
+                  <span>{ACADEMY_INFO.contactBD}</span>
                 </a>
               </li>
               <li className="flex items-start gap-2.5 font-body text-sm text-text-gray">

@@ -238,7 +238,6 @@ export interface IAcademyInfo {
   whatsapp: string;
   address: string;
   website: string;
-  footerMobile: string;
 }
 
 export interface IFounder {
