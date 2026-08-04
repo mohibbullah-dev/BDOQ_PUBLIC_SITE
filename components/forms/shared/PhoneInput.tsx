@@ -139,7 +139,7 @@ export const PhoneInput = forwardRef<HTMLInputElement, IPhoneInputProps>(
             ariaLabel={t("selectCountryCode")}
             searchPlaceholder={t("searchCountryCode")}
             buttonClassName="min-h-[44px] rounded-none border-0 bg-transparent px-2.5 py-2.5 shadow-none focus:ring-0"
-            listClassName="min-w-[280px]"
+            dropdownMinWidth={300}
             renderValue={() => (
               <>
                 <CountryFlagImg

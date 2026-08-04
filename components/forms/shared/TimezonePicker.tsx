@@ -67,7 +67,7 @@ export function TimezonePicker({
         searchPlaceholder={t("searchTimezone")}
         ariaLabel={t("selectTimezone")}
         buttonClassName={formInputClass}
-        listClassName="min-w-[min(100%,320px)] sm:min-w-[360px]"
+        dropdownMinWidth={360}
         renderValue={(option) =>
           option
             ? renderTimezoneValue(
