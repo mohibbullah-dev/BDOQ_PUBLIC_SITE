@@ -55,6 +55,7 @@ export function FreeStepBooking() {
     () => [
       { label: t("review.name"), value: values.fullName ?? "" },
       { label: t("review.whatsapp"), value: values.whatsapp ?? "" },
+      { label: t("review.age"), value: values.age ?? "" },
       {
         label: t("review.gender"),
         value: values.gender ? lookupLabel(genderOptions, values.gender) : "",

@@ -28,10 +28,21 @@ function resolveCourseSlug(subject: string): string | undefined {
   return subject.trim() || undefined;
 }
 
+export function ageToLearnerType(age: string): "child" | "teen" | "adult" {
+  if (age === "70+") return "adult";
+  const years = Number.parseInt(age, 10);
+  if (Number.isNaN(years)) return "adult";
+  if (years < 12) return "child";
+  if (years < 18) return "teen";
+  return "adult";
+}
+
 export interface ITrialBookingApiPayload {
   parentName: string;
   whatsapp: string;
   country: string;
+  age: string;
+  learnerGender: "male" | "female";
   learnerType: "child" | "teen" | "adult";
   timeSlot?: BackendTimeSlot;
   teacherPreference: "any" | "female" | "male";
@@ -46,16 +57,17 @@ export function mapFreeClassToTrialBooking(
 ): ITrialBookingApiPayload {
   const firstSlot = data.classTimeSlots?.[0];
   const mappedSlot = firstSlot ? SLOT_MAP[firstSlot] : undefined;
-  const preferredDays = [
-    ...(data.classTimeSlots ?? []).map((slot) => DAY_LABELS[slot] ?? slot),
-    data.gender ? `Learner: ${data.gender}` : null,
-  ].filter((value): value is string => Boolean(value));
+  const preferredDays = (data.classTimeSlots ?? []).map(
+    (slot) => DAY_LABELS[slot] ?? slot
+  );
 
   return {
     parentName: data.fullName.trim(),
     whatsapp: data.whatsapp.trim(),
     country: "Bangladesh",
-    learnerType: "adult",
+    age: data.age.trim(),
+    learnerGender: data.gender,
+    learnerType: ageToLearnerType(data.age),
     timeSlot: mappedSlot,
     teacherPreference:
       data.teacherGender === "male" || data.teacherGender === "female"

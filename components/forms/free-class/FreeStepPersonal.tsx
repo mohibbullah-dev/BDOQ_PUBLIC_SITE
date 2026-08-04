@@ -9,6 +9,7 @@ import {
   formErrorClass,
   formInputClass,
 } from "@/components/forms/shared/formStyles";
+import { FREE_CLASS_AGE_OPTIONS } from "@/lib/formOptions";
 import type { FreeClassFormValues } from "@/lib/validators/freeClass";
 
 export function FreeStepPersonal() {
@@ -67,6 +68,28 @@ export function FreeStepPersonal() {
         {errors.whatsapp && (
           <p className={formErrorClass}>{errors.whatsapp.message}</p>
         )}
+      </div>
+
+      <div>
+        <BilingualLabel labelBn="বয়স" labelEn="Age" required />
+        <Controller
+          name="age"
+          control={control}
+          render={({ field }) => (
+            <FormSelect
+              id="age"
+              value={field.value ?? ""}
+              onChange={field.onChange}
+              placeholder={t("placeholders.age")}
+              error={errors.age?.message}
+              options={FREE_CLASS_AGE_OPTIONS.map((option) => ({
+                value: option.value,
+                labelBn: option.label,
+                labelEn: option.label,
+              }))}
+            />
+          )}
+        />
       </div>
 
       <div>

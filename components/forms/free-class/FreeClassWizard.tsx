@@ -59,6 +59,7 @@ export function FreeClassWizard({
       teacherGender: "any",
       classTimeSlots: [],
       timezone: DEFAULT_TIMEZONE,
+      age: "",
     },
     mode: "onTouched",
   });

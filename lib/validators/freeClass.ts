@@ -4,6 +4,7 @@ export type FormValidationKey =
   | "fullNameRequired"
   | "whatsappRequired"
   | "genderRequired"
+  | "ageRequired"
   | "subjectRequired"
   | "teacherGenderRequired"
   | "classTimeRequired"
@@ -76,6 +77,7 @@ export function createFreeClassSchemas(v: FormValidationFn) {
     fullName: z.string().min(2, v("fullNameRequired")),
     whatsapp: z.string().min(10, v("whatsappRequired")),
     gender: z.enum(["male", "female"], { message: v("genderRequired") }),
+    age: z.string().min(1, v("ageRequired")),
   });
 
   const step2 = z.object({

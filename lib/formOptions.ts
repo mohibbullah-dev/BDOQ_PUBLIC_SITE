@@ -31,6 +31,15 @@ export {
   type ITimezoneOption,
 } from "./timezoneCatalog";
 
+/** Ages 4–70 plus 70+ for free trial registration */
+export const FREE_CLASS_AGE_OPTIONS: IFormSelectOption[] = [
+  ...Array.from({ length: 67 }, (_, index) => {
+    const age = String(index + 4);
+    return { value: age, label: age };
+  }),
+  { value: "70+", label: "70+" },
+];
+
 export const CLASS_TIME_SLOTS = [
   { value: "morning", labelBn: "সকাল", labelEn: "Morning" },
   { value: "noon", labelBn: "দুপুর", labelEn: "Noon" },

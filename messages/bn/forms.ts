@@ -123,15 +123,17 @@ export const formsMessages = {
   },
   freeClass: {
     infoBanner:
-      "শুধু ৩টা তথ্য — আমরা WhatsApp-এ আপনার ফ্রি ট্রায়াল ক্লাস কনফার্ম করব।",
+      "শুধু ৪টা তথ্য — আমরা WhatsApp-এ আপনার ফ্রি ট্রায়াল ক্লাস কনফার্ম করব।",
     placeholders: {
       fullName: "আপনার সম্পূর্ণ নাম",
       whatsapp: "সক্রিয় WhatsApp নম্বর",
+      age: "বয়স নির্বাচন করুন",
       subject: "বিষয় নির্বাচন করুন",
     },
     review: {
       name: "নাম",
       whatsapp: "WhatsApp",
+      age: "বয়স",
       gender: "লিঙ্গ",
       subject: "বিষয়",
       teacher: "শিক্ষক",
@@ -274,6 +276,7 @@ export const formsMessages = {
     fullNameRequired: "সম্পূর্ণ নাম প্রয়োজন",
     whatsappRequired: "বৈধ WhatsApp নম্বর প্রয়োজন",
     genderRequired: "লিঙ্গ নির্বাচন করুন",
+    ageRequired: "বয়স নির্বাচন করুন",
     subjectRequired: "বিষয় নির্বাচন করুন",
     teacherGenderRequired: "শিক্ষক পছন্দ নির্বাচন করুন",
     classTimeRequired: "কমপক্ষে একটি ক্লাস সময় নির্বাচন করুন",

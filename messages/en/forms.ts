@@ -122,15 +122,17 @@ export const formsMessages = {
     },
   },
   freeClass: {
-    infoBanner: "Only 3 details — we will confirm your free trial on WhatsApp.",
+    infoBanner: "Only 4 details — we will confirm your free trial on WhatsApp.",
     placeholders: {
       fullName: "Your full name",
       whatsapp: "Active WhatsApp number",
+      age: "Select age",
       subject: "Select subject",
     },
     review: {
       name: "Name",
       whatsapp: "WhatsApp",
+      age: "Age",
       gender: "Gender",
       subject: "Subject",
       teacher: "Teacher",
@@ -271,6 +273,7 @@ export const formsMessages = {
     fullNameRequired: "Full name is required",
     whatsappRequired: "Valid WhatsApp number is required",
     genderRequired: "Please select gender",
+    ageRequired: "Please select age",
     subjectRequired: "Please select a subject",
     teacherGenderRequired: "Please select teacher preference",
     classTimeRequired: "Select at least one class time",
