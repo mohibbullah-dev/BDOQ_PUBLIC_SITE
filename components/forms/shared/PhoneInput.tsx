@@ -9,7 +9,13 @@ import {
 } from "react";
 import { forwardRef } from "react";
 import { useTranslations } from "next-intl";
-import { PHONE_DIAL_CODES } from "@/lib/formOptions";
+import {
+  DEFAULT_DIAL_CODE,
+  findDialCodeEntry,
+  PHONE_DIAL_CODES,
+} from "@/lib/phoneDialCodes";
+import { CountryFlagImg } from "@/components/forms/shared/CountryFlagImg";
+import { SearchableListbox } from "@/components/forms/shared/SearchableListbox";
 import { cn } from "@/lib/cn";
 
 interface ISplitPhoneNumber {
@@ -19,7 +25,7 @@ interface ISplitPhoneNumber {
 
 export function splitPhoneNumber(
   full: string,
-  defaultDialCode = "+880"
+  defaultDialCode = DEFAULT_DIAL_CODE
 ): ISplitPhoneNumber {
   const normalized = full.trim();
   if (!normalized) {
@@ -71,7 +77,7 @@ export const PhoneInput = forwardRef<HTMLInputElement, IPhoneInputProps>(
       value = "",
       onChange,
       onBlur,
-      defaultDialCode = "+880",
+      defaultDialCode = DEFAULT_DIAL_CODE,
       id,
       ...props
     },
@@ -107,39 +113,44 @@ export const PhoneInput = forwardRef<HTMLInputElement, IPhoneInputProps>(
       emitChange(dialCode, nextLocal);
     };
 
-    const selectedDial =
-      PHONE_DIAL_CODES.find((entry) => entry.dialCode === dialCode) ??
-      PHONE_DIAL_CODES[0];
+    const dialOptions = useMemo(
+      () =>
+        PHONE_DIAL_CODES.map((entry) => ({
+          value: entry.dialCode,
+          label: `${entry.dialCode} ${entry.country}`,
+          searchText: `${entry.iso} ${entry.country} ${entry.dialCode}`,
+          leading: (
+            <CountryFlagImg iso={entry.iso} alt={entry.country} size={18} />
+          ),
+        })),
+      []
+    );
+
+    const selectedDial = findDialCodeEntry(dialCode) ?? PHONE_DIAL_CODES[0];
 
     return (
-      <div className="flex rounded-xl border border-gray-200 overflow-hidden focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary">
-        <div className="relative shrink-0 border-r border-gray-200 bg-bg-light">
-          <label htmlFor={`${id}-dial-code`} className="sr-only">
-            {t("countryCode")}
-          </label>
-          <select
+      <div className="flex rounded-xl border border-gray-200 overflow-visible focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary">
+        <div className="relative z-[2] w-[132px] shrink-0 border-r border-gray-200 bg-bg-light sm:w-[148px]">
+          <SearchableListbox
             id={`${id}-dial-code`}
             value={dialCode}
-            onChange={(event) => handleDialCodeChange(event.target.value)}
-            className="h-full min-h-[44px] max-w-[118px] cursor-pointer appearance-none bg-transparent py-2.5 pl-3 pr-7 font-body text-sm text-text-dark focus:outline-none"
-            aria-label={t("selectCountryCode")}
-          >
-            {PHONE_DIAL_CODES.map((entry) => (
-              <option
-                key={`${entry.iso}-${entry.dialCode}`}
-                value={entry.dialCode}
-              >
-                {entry.flag} {entry.dialCode}
-              </option>
-            ))}
-          </select>
-          <span
-            className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-text-gray"
-            aria-hidden="true"
-          >
-            ▼
-          </span>
-          <span className="sr-only">{selectedDial?.country}</span>
+            onChange={handleDialCodeChange}
+            options={dialOptions}
+            ariaLabel={t("selectCountryCode")}
+            searchPlaceholder={t("searchCountryCode")}
+            buttonClassName="min-h-[44px] rounded-none border-0 bg-transparent px-2.5 py-2.5 shadow-none focus:ring-0"
+            listClassName="min-w-[280px]"
+            renderValue={() => (
+              <>
+                <CountryFlagImg
+                  iso={selectedDial.iso}
+                  alt={selectedDial.country}
+                  size={18}
+                />
+                <span className="truncate font-semibold">{selectedDial.dialCode}</span>
+              </>
+            )}
+          />
         </div>
         <input
           ref={ref}
@@ -150,7 +161,7 @@ export const PhoneInput = forwardRef<HTMLInputElement, IPhoneInputProps>(
           onChange={(event) => handleLocalChange(event.target.value)}
           onBlur={onBlur}
           className={cn(
-            "flex-1 min-h-[44px] border-0 px-4 py-2.5 font-body text-sm focus:outline-none focus:ring-0",
+            "relative z-[1] flex-1 min-h-[44px] border-0 px-4 py-2.5 font-body text-sm focus:outline-none focus:ring-0",
             className
           )}
           {...props}

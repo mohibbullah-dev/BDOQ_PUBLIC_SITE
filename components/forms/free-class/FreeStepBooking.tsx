@@ -12,7 +12,8 @@ import {
   formInputClass,
 } from "@/components/forms/shared/formStyles";
 import { useLocalizedOptionLookup } from "@/lib/i18n/useFormLocale";
-import { CLASS_TIME_SLOTS, TIMEZONE_OPTIONS } from "@/lib/formOptions";
+import { CLASS_TIME_SLOTS, DEFAULT_TIMEZONE, formatTimezoneLabel } from "@/lib/formOptions";
+import { TimezonePicker } from "@/components/forms/shared/TimezonePicker";
 import { useFreeClassSubjects } from "@/components/forms/free-class/FreeClassSubjectsContext";
 import type { FreeClassFormValues } from "@/lib/validators/freeClass";
 
@@ -71,7 +72,10 @@ export function FreeStepBooking() {
           .map((slot) => lookupLabel(CLASS_TIME_SLOTS, slot))
           .join(", "),
       },
-      { label: t("review.timezone"), value: values.timezone ?? "" },
+      {
+        label: t("review.timezone"),
+        value: values.timezone ? formatTimezoneLabel(values.timezone) : "",
+      },
     ],
     [values, t, genderOptions, lookupLabel, selectedSubjectLabel]
   );
@@ -150,20 +154,19 @@ export function FreeStepBooking() {
           labelEn="Your timezone"
           required
         />
-        <select
-          id="timezone"
-          className={formInputClass}
-          {...register("timezone")}
-        >
-          {TIMEZONE_OPTIONS.map((timezone) => (
-            <option key={timezone} value={timezone}>
-              {timezone}
-            </option>
-          ))}
-        </select>
-        {errors.timezone && (
-          <p className={formErrorClass}>{errors.timezone.message}</p>
-        )}
+        <Controller
+          name="timezone"
+          control={control}
+          render={({ field }) => (
+            <TimezonePicker
+              id="timezone"
+              value={field.value ?? DEFAULT_TIMEZONE}
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              error={errors.timezone?.message}
+            />
+          )}
+        />
       </div>
 
       <div>

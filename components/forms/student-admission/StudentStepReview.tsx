@@ -14,6 +14,7 @@ import {
   TEACHING_LANGUAGE_OPTIONS,
   TOPIC_INTEREST_OPTIONS,
   QURAN_READING_LEVELS,
+  formatTimezoneLabel,
 } from "@/lib/formOptions";
 import type { StudentAdmissionFormValues } from "@/lib/validators/studentAdmission";
 import { cn } from "@/lib/cn";
@@ -118,7 +119,7 @@ export function StudentStepReview() {
       },
       {
         label: t("review.preferredTime"),
-        value: `${values.preferredHour ?? ""}:${values.preferredMinute ?? ""} ${values.preferredPeriod ?? ""} (${values.timezone ?? ""})`,
+        value: `${values.preferredHour ?? ""}:${values.preferredMinute ?? ""} ${values.preferredPeriod ?? ""} (${values.timezone ? formatTimezoneLabel(values.timezone) : ""})`,
       },
       {
         label: t("review.devices"),

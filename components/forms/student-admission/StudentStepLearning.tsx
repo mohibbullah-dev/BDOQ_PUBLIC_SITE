@@ -16,14 +16,15 @@ import {
 import {
   CLASS_TYPE_OPTIONS,
   DEVICE_MULTI_OPTIONS,
-  HOUR_OPTIONS,
   INTERNET_CONNECTION_TYPES,
+  HOUR_OPTIONS,
   MINUTE_OPTIONS,
   QURAN_READING_LEVELS,
   TEACHING_LANGUAGE_OPTIONS,
-  TIMEZONE_OPTIONS,
   TOPIC_INTEREST_OPTIONS,
+  DEFAULT_TIMEZONE,
 } from "@/lib/formOptions";
+import { TimezonePicker } from "@/components/forms/shared/TimezonePicker";
 import type { StudentAdmissionFormValues } from "@/lib/validators/studentAdmission";
 
 export function StudentStepLearning() {
@@ -130,20 +131,19 @@ export function StudentStepLearning() {
             labelEn="Convenient time zone"
             required
           />
-          <select
-            id="timezone"
-            className={formInputClass}
-            {...register("timezone")}
-          >
-            {TIMEZONE_OPTIONS.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-          {errors.timezone && (
-            <p className={formErrorClass}>{errors.timezone.message}</p>
-          )}
+          <Controller
+            name="timezone"
+            control={control}
+            render={({ field }) => (
+              <TimezonePicker
+                id="timezone"
+                value={field.value ?? DEFAULT_TIMEZONE}
+                onChange={field.onChange}
+                onBlur={field.onBlur}
+                error={errors.timezone?.message}
+              />
+            )}
+          />
         </div>
         <div>
           <BilingualLabel

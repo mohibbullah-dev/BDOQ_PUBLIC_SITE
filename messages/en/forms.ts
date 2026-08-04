@@ -73,6 +73,9 @@ export const formsMessages = {
     previewAlt: "Uploaded file preview",
     countryCode: "Country code",
     selectCountryCode: "Select country code",
+    selectTimezone: "Select timezone",
+    searchTimezone: "Search timezone or country…",
+    searchCountryCode: "Search country or dial code…",
   },
   options: {
     gender: {

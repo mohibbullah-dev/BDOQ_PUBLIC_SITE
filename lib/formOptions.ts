@@ -17,18 +17,19 @@ export function buildFreeClassSubjects(
 
 export const COUNTRY_OPTIONS = GLOBAL_COUNTRIES.map((c) => c.name);
 
-export const TIMEZONE_OPTIONS = [
-  "Asia/Dhaka (GMT+6)",
-  "Asia/Riyadh (GMT+3)",
-  "Asia/Dubai (GMT+4)",
-  "Asia/Kuala_Lumpur (GMT+8)",
-  "Asia/Tokyo (GMT+9)",
-  "Europe/London (GMT+0)",
-  "America/New_York (GMT-5)",
-  "America/Los_Angeles (GMT-8)",
-  "America/Chicago (GMT-6)",
-  "Australia/Sydney (GMT+11)",
-];
+export {
+  PHONE_DIAL_CODES,
+  DEFAULT_DIAL_CODE,
+  type IPhoneDialCode,
+} from "./phoneDialCodes";
+
+export {
+  TIMEZONE_OPTIONS,
+  DEFAULT_TIMEZONE,
+  formatTimezoneLabel,
+  normalizeTimezoneValue,
+  type ITimezoneOption,
+} from "./timezoneCatalog";
 
 export const CLASS_TIME_SLOTS = [
   { value: "morning", labelBn: "সকাল", labelEn: "Morning" },
@@ -263,31 +264,3 @@ export const HOUR_OPTIONS = Array.from({ length: 12 }, (_, index) =>
 
 export const MINUTE_OPTIONS = ["00", "15", "30", "45"];
 
-export interface IPhoneDialCode {
-  iso: string;
-  country: string;
-  flag: string;
-  dialCode: string;
-}
-
-export const PHONE_DIAL_CODES: IPhoneDialCode[] = [
-  { iso: "bd", country: "Bangladesh", flag: "🇧🇩", dialCode: "+880" },
-  { iso: "sa", country: "Saudi Arabia", flag: "🇸🇦", dialCode: "+966" },
-  { iso: "ae", country: "UAE", flag: "🇦🇪", dialCode: "+971" },
-  { iso: "qa", country: "Qatar", flag: "🇶🇦", dialCode: "+974" },
-  { iso: "eg", country: "Egypt", flag: "🇪🇬", dialCode: "+20" },
-  { iso: "gb", country: "United Kingdom", flag: "🇬🇧", dialCode: "+44" },
-  { iso: "us", country: "United States", flag: "🇺🇸", dialCode: "+1" },
-  { iso: "ca", country: "Canada", flag: "🇨🇦", dialCode: "+1" },
-  { iso: "au", country: "Australia", flag: "🇦🇺", dialCode: "+61" },
-  { iso: "my", country: "Malaysia", flag: "🇲🇾", dialCode: "+60" },
-  { iso: "pk", country: "Pakistan", flag: "🇵🇰", dialCode: "+92" },
-  { iso: "in", country: "India", flag: "🇮🇳", dialCode: "+91" },
-  { iso: "jp", country: "Japan", flag: "🇯🇵", dialCode: "+81" },
-  { iso: "de", country: "Germany", flag: "🇩🇪", dialCode: "+49" },
-  { iso: "fr", country: "France", flag: "🇫🇷", dialCode: "+33" },
-  { iso: "sg", country: "Singapore", flag: "🇸🇬", dialCode: "+65" },
-  { iso: "nz", country: "New Zealand", flag: "🇳🇿", dialCode: "+64" },
-  { iso: "tr", country: "Turkey", flag: "🇹🇷", dialCode: "+90" },
-  { iso: "id", country: "Indonesia", flag: "🇮🇩", dialCode: "+62" },
-];

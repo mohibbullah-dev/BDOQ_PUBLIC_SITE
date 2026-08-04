@@ -73,6 +73,9 @@ export const formsMessages = {
     previewAlt: "আপলোড করা ফাইলের প্রিভিউ",
     countryCode: "দেশের কোড",
     selectCountryCode: "দেশের কোড নির্বাচন করুন",
+    selectTimezone: "টাইমজোন নির্বাচন করুন",
+    searchTimezone: "টাইমজোন বা দেশ খুঁজুন…",
+    searchCountryCode: "দেশ বা ডায়াল কোড খুঁজুন…",
   },
   options: {
     gender: {

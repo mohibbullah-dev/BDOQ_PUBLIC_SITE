@@ -6,7 +6,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLocale, useTranslations } from "next-intl";
 import { API_BASE } from "@/lib/constants";
-import { TIMEZONE_OPTIONS } from "@/lib/formOptions";
+import { DEFAULT_TIMEZONE } from "@/lib/formOptions";
 import { useFormValidation } from "@/lib/i18n/useFormValidation";
 import {
   createStudentAdmissionSchemas,
@@ -68,7 +68,7 @@ export function StudentAdmissionWizard() {
       devices: [],
       referralSources: [],
       preferredPeriod: "PM",
-      timezone: TIMEZONE_OPTIONS[0],
+      timezone: DEFAULT_TIMEZONE,
       admissionFeeCurrency: "bdt",
       admissionFeeAmount: String(ADMISSION_FEE.bdt),
       termsAccepted: false,

@@ -8,7 +8,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { API_BASE } from "@/lib/constants";
 import { mapFreeClassToTrialBooking } from "@/lib/mappers/trialBooking";
 import type { IFormSelectOption } from "@/lib/formOptions";
-import { TIMEZONE_OPTIONS } from "@/lib/formOptions";
+import { DEFAULT_TIMEZONE } from "@/lib/formOptions";
 import { useFormValidation } from "@/lib/i18n/useFormValidation";
 import {
   createFreeClassSchemas,
@@ -58,7 +58,7 @@ export function FreeClassWizard({
       subject: defaultSubject || subjects[0]?.value || "",
       teacherGender: "any",
       classTimeSlots: [],
-      timezone: TIMEZONE_OPTIONS[0],
+      timezone: DEFAULT_TIMEZONE,
     },
     mode: "onTouched",
   });
