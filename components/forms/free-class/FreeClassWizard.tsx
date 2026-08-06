@@ -8,7 +8,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { API_BASE } from "@/lib/constants";
 import { mapFreeClassToTrialBooking } from "@/lib/mappers/trialBooking";
 import type { IFormSelectOption } from "@/lib/formOptions";
-import { DEFAULT_TIMEZONE } from "@/lib/formOptions";
+import { DEFAULT_COUNTRY } from "@/lib/countryTimezone";
 import { useFormValidation } from "@/lib/i18n/useFormValidation";
 import {
   createFreeClassSchemas,
@@ -55,10 +55,14 @@ export function FreeClassWizard({
   const methods = useForm<FreeClassFormValues>({
     resolver: zodResolver(schemas.full),
     defaultValues: {
+      parentName: "",
+      studentName: "",
+      country: DEFAULT_COUNTRY,
       subject: defaultSubject || subjects[0]?.value || "",
       teacherGender: "any",
-      classTimeSlots: [],
-      timezone: DEFAULT_TIMEZONE,
+      preferredTrialDate: "",
+      preferredTrialTime: "",
+      additionalNote: "",
       age: "",
     },
     mode: "onTouched",

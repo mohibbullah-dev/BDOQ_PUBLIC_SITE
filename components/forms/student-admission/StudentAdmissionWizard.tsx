@@ -5,7 +5,9 @@ import { useMemo, useState, useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLocale, useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
 import { API_BASE } from "@/lib/constants";
+import { fetchAdmissionPrefill } from "@/lib/admissionPrefill";
 import { DEFAULT_TIMEZONE } from "@/lib/formOptions";
 import { useFormValidation } from "@/lib/i18n/useFormValidation";
 import {
@@ -36,7 +38,10 @@ const STEP_COMPONENTS = [
 
 export function StudentAdmissionWizard() {
   const locale = useLocale();
+  const searchParams = useSearchParams();
+  const prefillParam = searchParams.get("prefill") ?? "";
   const t = useTranslations("forms.studentAdmission.wizard");
+  const tPrefill = useTranslations("forms.studentAdmission.prefill");
   const tCommon = useTranslations("forms.common");
   const validate = useFormValidation();
   const schemas = useMemo(
@@ -45,6 +50,9 @@ export function StudentAdmissionWizard() {
   );
 
   const [currentStep, setCurrentStep] = useState(0);
+  const [prefillToken, setPrefillToken] = useState("");
+  const [prefillLoaded, setPrefillLoaded] = useState(false);
+  const [prefillError, setPrefillError] = useState<string | null>(null);
   const [submitState, setSubmitState] = useState<
     "idle" | "loading" | "success" | "error" | "validation"
   >("idle");
@@ -76,7 +84,41 @@ export function StudentAdmissionWizard() {
     mode: "onTouched",
   });
 
-  const { handleSubmit, getValues, setError, clearErrors } = methods;
+  const { handleSubmit, getValues, setError, clearErrors, reset } = methods;
+
+  useEffect(() => {
+    if (!prefillParam) return;
+
+    let cancelled = false;
+    void (async () => {
+      const result = await fetchAdmissionPrefill(prefillParam);
+      if (cancelled) return;
+      if (!result) {
+        setPrefillError(tPrefill("loadError"));
+        return;
+      }
+
+      const prefill = result.prefill as Partial<StudentAdmissionFormValues>;
+      reset({
+        ...getValues(),
+        ...prefill,
+        topicsOfInterest: Array.isArray(prefill.topicsOfInterest)
+          ? prefill.topicsOfInterest
+          : [],
+        devices: Array.isArray(prefill.devices) ? prefill.devices : [],
+        referralSources: Array.isArray(prefill.referralSources)
+          ? prefill.referralSources
+          : [],
+        termsAccepted: false,
+      });
+      setPrefillToken(result.prefillToken);
+      setPrefillLoaded(true);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [prefillParam, reset, tPrefill]);
 
   useEffect(() => {
     if (submitState === "validation") {
@@ -170,6 +212,7 @@ export function StudentAdmissionWizard() {
         JSON.stringify({
           ...rest,
           locale,
+          ...(prefillToken ? { prefillToken } : {}),
         })
       );
 
@@ -228,6 +271,12 @@ export function StudentAdmissionWizard() {
   return (
     <FormProvider {...methods}>
       <form onSubmit={(event) => event.preventDefault()} noValidate>
+        {prefillError ? (
+          <FormAlert type="error" message={prefillError} className="mb-6" />
+        ) : null}
+        {prefillLoaded ? (
+          <FormAlert type="success" message={tPrefill("banner")} className="mb-6" />
+        ) : null}
         {submitState === "error" && (
           <FormAlert type="error" message={t("error")} className="mb-6" />
         )}

@@ -122,22 +122,30 @@ export const formsMessages = {
     },
   },
   freeClass: {
-    infoBanner: "Only 4 details — we will confirm your free trial on WhatsApp.",
+    infoBanner:
+      "Share parent and student details — we will confirm your free trial on WhatsApp.",
     placeholders: {
-      fullName: "Your full name",
+      parentName: "Parent or guardian full name",
+      studentName: "Student full name",
       whatsapp: "Active WhatsApp number",
       age: "Select age",
       subject: "Select subject",
+      additionalNote: "Any special request or note for the teacher",
     },
+    trialTimeHint:
+      "Choose the date and time in your local timezone. Our team will confirm the slot on WhatsApp.",
     review: {
-      name: "Name",
+      parentName: "Parent / Guardian",
+      studentName: "Student",
       whatsapp: "WhatsApp",
       age: "Age",
       gender: "Gender",
+      country: "Country",
       subject: "Subject",
       teacher: "Teacher",
-      times: "Preferred times",
-      timezone: "Timezone",
+      trialDate: "Trial date",
+      trialTime: "Trial time",
+      note: "Note",
     },
     wizard: {
       successTitle: "Jazakumullah Khayran",
@@ -225,6 +233,12 @@ export const formsMessages = {
       validationError: "Please complete all required fields. We moved you to the first step that needs attention.",
       submit: "Submit Application",
     },
+    prefill: {
+      banner:
+        "Your details from the free trial class have been pre-filled. Please review, complete payment, and submit.",
+      loadError:
+        "We could not load your pre-filled application. Please complete the form manually or contact us on WhatsApp.",
+    },
   },
   teacherRegistration: {
     placeholders: {
@@ -304,6 +318,10 @@ export const formsMessages = {
     admissionReferenceRequired: "Transaction / reference number is required",
     admissionDateRequired: "Payment date is required",
     parentNameRequired: "Guardian name is required",
+    studentNameRequired: "Student name is required",
+    trialDateRequired: "Please select a trial date",
+    trialTimeRequired: "Please select a trial time",
+    trialDatePast: "Trial date must be today or in the future",
     relationshipRequired: "Please specify relationship",
     parentWhatsappRequired: "Guardian WhatsApp is required",
     referralRequired: "Select at least one source",

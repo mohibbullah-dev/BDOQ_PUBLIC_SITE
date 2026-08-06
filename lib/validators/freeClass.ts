@@ -9,6 +9,10 @@ export type FormValidationKey =
   | "teacherGenderRequired"
   | "classTimeRequired"
   | "timezoneRequired"
+  | "studentNameRequired"
+  | "trialDateRequired"
+  | "trialTimeRequired"
+  | "trialDatePast"
   | "dobRequired"
   | "nationalityRequired"
   | "emailRequired"
@@ -70,14 +74,21 @@ export type FormValidationKey =
 
 export type FormValidationFn = (key: FormValidationKey) => string;
 
-const classTimeEnum = z.enum(["morning", "noon", "evening", "night", "other"]);
+function isTodayOrFuture(dateStr: string): boolean {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const picked = new Date(`${dateStr}T00:00:00`);
+  return !Number.isNaN(picked.getTime()) && picked >= today;
+}
 
 export function createFreeClassSchemas(v: FormValidationFn) {
   const step1 = z.object({
-    fullName: z.string().min(2, v("fullNameRequired")),
+    parentName: z.string().min(2, v("parentNameRequired")),
+    studentName: z.string().min(2, v("studentNameRequired")),
     whatsapp: z.string().min(10, v("whatsappRequired")),
     gender: z.enum(["male", "female"], { message: v("genderRequired") }),
     age: z.string().min(1, v("ageRequired")),
+    country: z.string().min(1, v("countryRequired")),
   });
 
   const step2 = z.object({
@@ -85,8 +96,12 @@ export function createFreeClassSchemas(v: FormValidationFn) {
     teacherGender: z.enum(["male", "female", "any"], {
       message: v("teacherGenderRequired"),
     }),
-    classTimeSlots: z.array(classTimeEnum).min(1, v("classTimeRequired")),
-    timezone: z.string().min(1, v("timezoneRequired")),
+    preferredTrialDate: z
+      .string()
+      .min(1, v("trialDateRequired"))
+      .refine(isTodayOrFuture, v("trialDatePast")),
+    preferredTrialTime: z.string().min(1, v("trialTimeRequired")),
+    additionalNote: z.string().optional(),
   });
 
   return {

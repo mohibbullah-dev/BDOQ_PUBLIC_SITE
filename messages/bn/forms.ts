@@ -123,22 +123,29 @@ export const formsMessages = {
   },
   freeClass: {
     infoBanner:
-      "শুধু ৪টা তথ্য — আমরা WhatsApp-এ আপনার ফ্রি ট্রায়াল ক্লাস কনফার্ম করব।",
+      "অভিভাবক ও শিক্ষার্থীর তথ্য দিন — আমরা WhatsApp-এ আপনার ফ্রি ট্রায়াল ক্লাস কনফার্ম করব।",
     placeholders: {
-      fullName: "আপনার সম্পূর্ণ নাম",
+      parentName: "অভিভাবকের সম্পূর্ণ নাম",
+      studentName: "শিক্ষার্থীর সম্পূর্ণ নাম",
       whatsapp: "সক্রিয় WhatsApp নম্বর",
       age: "বয়স নির্বাচন করুন",
       subject: "বিষয় নির্বাচন করুন",
+      additionalNote: "শিক্ষকের জন্য বিশেষ অনুরোধ বা নোট",
     },
+    trialTimeHint:
+      "আপনার স্থানীয় সময় অনুযায়ী তারিখ ও সময় বেছে নিন। আমাদের টিম WhatsApp-এ স্লট নিশ্চিত করবে।",
     review: {
-      name: "নাম",
+      parentName: "অভিভাবক",
+      studentName: "শিক্ষার্থী",
       whatsapp: "WhatsApp",
       age: "বয়স",
       gender: "লিঙ্গ",
+      country: "দেশ",
       subject: "বিষয়",
       teacher: "শিক্ষক",
-      times: "পছন্দের সময়",
-      timezone: "টাইম জোন",
+      trialDate: "ট্রায়াল তারিখ",
+      trialTime: "ট্রায়াল সময়",
+      note: "নোট",
     },
     wizard: {
       successTitle: "জাযাকুমুল্লাহু খায়রান",
@@ -228,6 +235,12 @@ export const formsMessages = {
         "সব প্রয়োজনীয় তথ্য পূরণ করুন। যে ধাপে তথ্য বাকি আছে সেখানে নিয়ে যাওয়া হয়েছে।",
       submit: "আবেদন জমা দিন",
     },
+    prefill: {
+      banner:
+        "ফ্রি ট্রায়াল ক্লাসের তথ্য দিয়ে ফর্মটি আগে থেকে পূরণ করা হয়েছে। দয়া করে পর্যালোচনা করুন, পেমেন্ট সম্পূর্ণ করুন এবং জমা দিন।",
+      loadError:
+        "Pre-filled আবেদন লোড করা যায়নি। ফর্মটি নিজে পূরণ করুন বা WhatsApp-এ যোগাযোগ করুন।",
+    },
   },
   teacherRegistration: {
     placeholders: {
@@ -307,6 +320,10 @@ export const formsMessages = {
     admissionReferenceRequired: "ট্রানজেকশন / রেফারেন্স নম্বর প্রয়োজন",
     admissionDateRequired: "পেমেন্টের তারিখ প্রয়োজন",
     parentNameRequired: "অভিভাবকের নাম প্রয়োজন",
+    studentNameRequired: "শিক্ষার্থীর নাম প্রয়োজন",
+    trialDateRequired: "ট্রায়াল তারিখ নির্বাচন করুন",
+    trialTimeRequired: "ট্রায়াল সময় নির্বাচন করুন",
+    trialDatePast: "ট্রায়াল তারিখ আজ বা ভবিষ্যতের হতে হবে",
     relationshipRequired: "সম্পর্ক উল্লেখ করুন",
     parentWhatsappRequired: "অভিভাবকের WhatsApp প্রয়োজন",
     referralRequired: "কমপক্ষে একটি উৎস নির্বাচন করুন",

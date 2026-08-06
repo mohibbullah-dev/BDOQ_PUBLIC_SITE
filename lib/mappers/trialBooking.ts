@@ -1,28 +1,8 @@
 import type { FreeClassFormValues } from "@/lib/validators/freeClass";
-
-type BackendTimeSlot =
-  | "anytime"
-  | "early_morning"
-  | "morning"
-  | "afternoon"
-  | "evening"
-  | "late_evening";
-
-const SLOT_MAP: Record<string, BackendTimeSlot> = {
-  morning: "morning",
-  noon: "afternoon",
-  evening: "evening",
-  night: "late_evening",
-  other: "anytime",
-};
-
-const DAY_LABELS: Record<string, string> = {
-  morning: "Morning",
-  noon: "Noon",
-  evening: "Evening",
-  night: "Night",
-  other: "Flexible",
-};
+import {
+  DEFAULT_COUNTRY,
+  resolveTimezoneFromCountry,
+} from "@/lib/countryTimezone";
 
 function resolveCourseSlug(subject: string): string | undefined {
   return subject.trim() || undefined;
@@ -39,15 +19,17 @@ export function ageToLearnerType(age: string): "child" | "teen" | "adult" {
 
 export interface ITrialBookingApiPayload {
   parentName: string;
+  studentName: string;
   whatsapp: string;
   country: string;
   age: string;
   learnerGender: "male" | "female";
   learnerType: "child" | "teen" | "adult";
-  timeSlot?: BackendTimeSlot;
+  preferredTrialDate: string;
+  preferredTrialTime: string;
+  additionalNote?: string;
   teacherPreference: "any" | "female" | "male";
-  preferredDays: string[];
-  timezone?: string;
+  timezone: string;
   source: string;
   courseSlug?: string;
 }
@@ -55,26 +37,24 @@ export interface ITrialBookingApiPayload {
 export function mapFreeClassToTrialBooking(
   data: FreeClassFormValues
 ): ITrialBookingApiPayload {
-  const firstSlot = data.classTimeSlots?.[0];
-  const mappedSlot = firstSlot ? SLOT_MAP[firstSlot] : undefined;
-  const preferredDays = (data.classTimeSlots ?? []).map(
-    (slot) => DAY_LABELS[slot] ?? slot
-  );
+  const country = data.country.trim() || DEFAULT_COUNTRY;
 
   return {
-    parentName: data.fullName.trim(),
+    parentName: data.parentName.trim(),
+    studentName: data.studentName.trim(),
     whatsapp: data.whatsapp.trim(),
-    country: "Bangladesh",
+    country,
     age: data.age.trim(),
     learnerGender: data.gender,
     learnerType: ageToLearnerType(data.age),
-    timeSlot: mappedSlot,
+    preferredTrialDate: data.preferredTrialDate,
+    preferredTrialTime: data.preferredTrialTime,
+    additionalNote: data.additionalNote?.trim() || undefined,
     teacherPreference:
       data.teacherGender === "male" || data.teacherGender === "female"
         ? data.teacherGender
         : "any",
-    preferredDays,
-    timezone: data.timezone,
+    timezone: resolveTimezoneFromCountry(country),
     source: "public-site-free-class",
     courseSlug: resolveCourseSlug(data.subject),
   };

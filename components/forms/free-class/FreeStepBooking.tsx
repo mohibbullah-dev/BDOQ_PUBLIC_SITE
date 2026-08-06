@@ -4,7 +4,6 @@ import { useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { Controller, useFormContext, useWatch } from "react-hook-form";
 import { BilingualLabel } from "@/components/forms/shared/BilingualLabel";
-import { MultiSelectChips } from "@/components/forms/shared/MultiSelectChips";
 import { FormSelect } from "@/components/forms/shared/FormSelect";
 import { FormReviewPanel } from "@/components/forms/wizard/FormReviewPanel";
 import {
@@ -12,8 +11,6 @@ import {
   formInputClass,
 } from "@/components/forms/shared/formStyles";
 import { useLocalizedOptionLookup } from "@/lib/i18n/useFormLocale";
-import { CLASS_TIME_SLOTS, DEFAULT_TIMEZONE, formatTimezoneLabel } from "@/lib/formOptions";
-import { TimezonePicker } from "@/components/forms/shared/TimezonePicker";
 import { useFreeClassSubjects } from "@/components/forms/free-class/FreeClassSubjectsContext";
 import type { FreeClassFormValues } from "@/lib/validators/freeClass";
 
@@ -51,15 +48,19 @@ export function FreeStepBooking() {
     [tGender]
   );
 
+  const minTrialDate = useMemo(() => new Date().toISOString().slice(0, 10), []);
+
   const reviewItems = useMemo(
     () => [
-      { label: t("review.name"), value: values.fullName ?? "" },
+      { label: t("review.parentName"), value: values.parentName ?? "" },
+      { label: t("review.studentName"), value: values.studentName ?? "" },
       { label: t("review.whatsapp"), value: values.whatsapp ?? "" },
       { label: t("review.age"), value: values.age ?? "" },
       {
         label: t("review.gender"),
         value: values.gender ? lookupLabel(genderOptions, values.gender) : "",
       },
+      { label: t("review.country"), value: values.country ?? "" },
       { label: t("review.subject"), value: selectedSubjectLabel },
       {
         label: t("review.teacher"),
@@ -68,14 +69,16 @@ export function FreeStepBooking() {
           : "",
       },
       {
-        label: t("review.times"),
-        value: (values.classTimeSlots ?? [])
-          .map((slot) => lookupLabel(CLASS_TIME_SLOTS, slot))
-          .join(", "),
+        label: t("review.trialDate"),
+        value: values.preferredTrialDate ?? "",
       },
       {
-        label: t("review.timezone"),
-        value: values.timezone ? formatTimezoneLabel(values.timezone) : "",
+        label: t("review.trialTime"),
+        value: values.preferredTrialTime ?? "",
+      },
+      {
+        label: t("review.note"),
+        value: values.additionalNote?.trim() || "—",
       },
     ],
     [values, t, genderOptions, lookupLabel, selectedSubjectLabel]
@@ -128,45 +131,59 @@ export function FreeStepBooking() {
         />
       </div>
 
-      <div>
-        <BilingualLabel
-          labelBn="কখন ক্লাস নিতে পারবেন?"
-          labelEn="When can you take class?"
-          required
-        />
-        <Controller
-          name="classTimeSlots"
-          control={control}
-          render={({ field }) => (
-            <MultiSelectChips
-              options={CLASS_TIME_SLOTS}
-              value={field.value ?? []}
-              onChange={field.onChange}
-              error={errors.classTimeSlots?.message}
-            />
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <BilingualLabel
+            htmlFor="preferredTrialDate"
+            labelBn="ট্রায়াল ক্লাসের তারিখ"
+            labelEn="Preferred trial date"
+            required
+          />
+          <input
+            id="preferredTrialDate"
+            type="date"
+            min={minTrialDate}
+            className={formInputClass}
+            {...register("preferredTrialDate")}
+          />
+          {errors.preferredTrialDate && (
+            <p className={formErrorClass}>{errors.preferredTrialDate.message}</p>
           )}
-        />
+        </div>
+
+        <div>
+          <BilingualLabel
+            htmlFor="preferredTrialTime"
+            labelBn="ট্রায়াল ক্লাসের সময়"
+            labelEn="Preferred trial time"
+            required
+          />
+          <input
+            id="preferredTrialTime"
+            type="time"
+            className={formInputClass}
+            {...register("preferredTrialTime")}
+          />
+          {errors.preferredTrialTime && (
+            <p className={formErrorClass}>{errors.preferredTrialTime.message}</p>
+          )}
+        </div>
       </div>
+
+      <p className="font-body text-xs text-text-gray">{t("trialTimeHint")}</p>
 
       <div>
         <BilingualLabel
-          htmlFor="timezone"
-          labelBn="টাইম জোন"
-          labelEn="Your timezone"
-          required
+          htmlFor="additionalNote"
+          labelBn="অতিরিক্ত নোট (ঐচ্ছিক)"
+          labelEn="Additional note (optional)"
         />
-        <Controller
-          name="timezone"
-          control={control}
-          render={({ field }) => (
-            <TimezonePicker
-              id="timezone"
-              value={field.value ?? DEFAULT_TIMEZONE}
-              onChange={field.onChange}
-              onBlur={field.onBlur}
-              error={errors.timezone?.message}
-            />
-          )}
+        <textarea
+          id="additionalNote"
+          rows={3}
+          className={formInputClass}
+          placeholder={t("placeholders.additionalNote")}
+          {...register("additionalNote")}
         />
       </div>
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { getMessages, getTranslations } from "next-intl/server";
 import { SITE_URL } from "@/lib/constants";
 import { ClientMessagesProvider } from "@/components/i18n/ClientMessagesProvider";
@@ -49,7 +50,9 @@ export default async function StudentAdmissionPage() {
       >
         <div className="site-container">
           <ClientMessagesProvider messages={clientMessages}>
-            <StudentAdmissionWizard />
+            <Suspense fallback={null}>
+              <StudentAdmissionWizard />
+            </Suspense>
           </ClientMessagesProvider>
 
           <div className="mt-10 grid gap-3 sm:grid-cols-3">

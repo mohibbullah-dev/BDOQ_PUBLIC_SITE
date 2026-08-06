@@ -10,11 +10,13 @@ import {
   formInputClass,
 } from "@/components/forms/shared/formStyles";
 import { FREE_CLASS_AGE_OPTIONS } from "@/lib/formOptions";
+import { FREE_CLASS_COUNTRY_OPTIONS, DEFAULT_COUNTRY } from "@/lib/countryTimezone";
 import type { FreeClassFormValues } from "@/lib/validators/freeClass";
 
 export function FreeStepPersonal() {
   const t = useTranslations("forms.freeClass");
   const tGender = useTranslations("forms.options.gender");
+  const tAddress = useTranslations("forms.address");
   const {
     register,
     control,
@@ -29,19 +31,37 @@ export function FreeStepPersonal() {
 
       <div>
         <BilingualLabel
-          htmlFor="fullName"
-          labelBn="সম্পূর্ণ নাম"
-          labelEn="Full Name"
+          htmlFor="parentName"
+          labelBn="অভিভাবকের নাম"
+          labelEn="Parent / Guardian Name"
           required
         />
         <input
-          id="fullName"
+          id="parentName"
           className={formInputClass}
-          placeholder={t("placeholders.fullName")}
-          {...register("fullName")}
+          placeholder={t("placeholders.parentName")}
+          {...register("parentName")}
         />
-        {errors.fullName && (
-          <p className={formErrorClass}>{errors.fullName.message}</p>
+        {errors.parentName && (
+          <p className={formErrorClass}>{errors.parentName.message}</p>
+        )}
+      </div>
+
+      <div>
+        <BilingualLabel
+          htmlFor="studentName"
+          labelBn="শিক্ষার্থীর নাম"
+          labelEn="Student Name"
+          required
+        />
+        <input
+          id="studentName"
+          className={formInputClass}
+          placeholder={t("placeholders.studentName")}
+          {...register("studentName")}
+        />
+        {errors.studentName && (
+          <p className={formErrorClass}>{errors.studentName.message}</p>
         )}
       </div>
 
@@ -115,6 +135,29 @@ export function FreeStepPersonal() {
                   labelEn: tGender("femaleGirl"),
                 },
               ]}
+            />
+          )}
+        />
+      </div>
+
+      <div>
+        <BilingualLabel labelBn="দেশ" labelEn="Country" required />
+        <Controller
+          name="country"
+          control={control}
+          defaultValue={DEFAULT_COUNTRY}
+          render={({ field }) => (
+            <FormSelect
+              id="country"
+              value={field.value ?? DEFAULT_COUNTRY}
+              onChange={field.onChange}
+              placeholder={tAddress("selectCountry")}
+              error={errors.country?.message}
+              options={FREE_CLASS_COUNTRY_OPTIONS.map((option) => ({
+                value: option.value,
+                labelBn: option.label,
+                labelEn: option.label,
+              }))}
             />
           )}
         />
