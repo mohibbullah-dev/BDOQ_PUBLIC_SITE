@@ -1,4 +1,4 @@
-import { GLOBAL_COUNTRIES } from "./constants";
+import { WORLD_COUNTRY_NAMES } from "./worldCountries";
 import type { ICourse } from "./types";
 
 export interface IFormSelectOption {
@@ -15,7 +15,7 @@ export function buildFreeClassSubjects(
   }));
 }
 
-export const COUNTRY_OPTIONS = GLOBAL_COUNTRIES.map((c) => c.name);
+export const COUNTRY_OPTIONS = WORLD_COUNTRY_NAMES;
 
 export {
   PHONE_DIAL_CODES,

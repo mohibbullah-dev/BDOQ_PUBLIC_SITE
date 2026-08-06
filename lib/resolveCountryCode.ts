@@ -1,4 +1,4 @@
-import { GLOBAL_COUNTRIES } from "@/lib/constants";
+import { NAME_TO_ISO, resolveCountryIso } from "@/lib/worldCountries";
 
 const ALIASES: Record<string, string> = {
   usa: "us",
@@ -44,19 +44,24 @@ export function resolveCountryCode(input?: string): string | null {
   const byAlias = ALIASES[normalized];
   if (byAlias) return byAlias;
 
-  const fromList = GLOBAL_COUNTRIES.find(
-    (country) => country.name.toLowerCase() === normalized
+  const directIso = resolveCountryIso(input);
+  if (directIso) return directIso.toLowerCase();
+
+  const fromMap = Object.entries(NAME_TO_ISO).find(
+    ([name]) => name.toLowerCase() === normalized
   );
-  if (fromList) return fromList.code;
+  if (fromMap) return fromMap[1].toLowerCase();
 
   const parts = normalized.split(/[,|/]/).map((part) => part.trim());
   for (const part of parts.reverse()) {
     if (ALIASES[part]) return ALIASES[part];
-    const match = GLOBAL_COUNTRIES.find(
-      (country) => country.name.toLowerCase() === part
+    const match = Object.entries(NAME_TO_ISO).find(
+      ([name]) => name.toLowerCase() === part
     );
-    if (match) return match.code;
+    if (match) return match[1].toLowerCase();
   }
 
   return null;
 }
+
+export { countryFlagFromName } from "@/lib/worldCountries";
