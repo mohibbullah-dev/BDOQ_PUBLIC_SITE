@@ -37,8 +37,8 @@ export function getAcademyYearsExperience(): number {
 }
 
 export const BRAND_LOGO = {
-  src: "/images/brand/bdoq-logo.png?v=4",
-  footerSrc: "/images/brand/bdoq-logo-footer.png?v=4",
+  src: "/images/brand/bdoq-logo.png?v=5",
+  footerSrc: "/images/brand/bdoq-logo-footer.png?v=5",
   alt: "BDOQ Academy",
   width: 832,
   height: 443,
